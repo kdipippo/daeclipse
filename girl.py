@@ -1,5 +1,6 @@
 from PIL import Image
 from PIL import GifImagePlugin
+import random
 
 def translateOnePixelDown(image):
   transMatrix = [1,0,0,0,1,0]
@@ -43,31 +44,33 @@ def updatePalette(beforeImg, beforeColors, afterColors):
       if currColor in beforeColors:
         afterIndex = beforeColors.index(currColor)
         afterPixelMap[i,j] = afterColors[afterIndex]
-        print(afterColors[afterIndex])
       else:
         afterPixelMap[i,j] = beforePixelMap[i,j]
   return afterImg
 
+skinColors = {
+  "white": "8c2323,c3412d,e66e46,f5a56e,ffd2a5",
+  "black":   "370a14,5a1423,8c3c32,b26247,dc9b78",
+  "pale":   "6e2850,96465f,be6973,e69b96,ffcdb4",
+}
 
-def changeBaseColor(base):
+def changeSkinColor(base, skinColor):
   base = base.convert('RGBA')
-  whiteHexes = "8c2323,c3412d,e66e46,f5a56e,ffd2a5"
-  whiteRGBAs = list(map(getRGBAFromHex, whiteHexes.split(",")))
-  print(whiteRGBAs)
-  blackHexes = "370a14,5a1423,8c3c32,b26247,dc9b78"
-  blackRGBAs = list(map(getRGBAFromHex, blackHexes.split(",")))
-  print(blackRGBAs)
-  return updatePalette(base, whiteRGBAs, blackRGBAs)
+  beforeHexes = skinColors['white']
+  afterHexes = skinColors[skinColor]
+  beforeRGBAs = list(map(getRGBAFromHex, beforeHexes.split(",")))
+  afterRGBAs = list(map(getRGBAFromHex, afterHexes.split(",")))
+  return updatePalette(base, beforeRGBAs, afterRGBAs)
 
 
 
 
-def getFrame(frameNum):
+def getFrame(frameNum, skinColor):
   base = getCustomAsset("base", frameNum)
-  base = changeBaseColor(base)
+  base = changeSkinColor(base, skinColor)
   
   head = get2FrameAsset("head1", frameNum)
-  head = changeBaseColor(head)
+  head = changeSkinColor(head, skinColor)
   base.paste(head, (0, 0), head)
 
   socks = getStaticAsset("socks")
@@ -81,9 +84,14 @@ def getFrame(frameNum):
   return base
 
 def getGif():
+  # pick colors
+  skinColor = random.choice(list(skinColors.keys()))
+  print(f"Skin color will be '{skinColor}'")
+
+  # generate frames
   frames = []
-  frames.append(getFrame(1))
-  frames.append(getFrame(2))
+  for i in range(1, 3):
+    frames.append(getFrame(i, skinColor))
   frames[0].save(
     'GIRL2.gif',
     format='GIF',
