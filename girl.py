@@ -50,27 +50,31 @@ def updatePalette(beforeImg, beforeColors, afterColors):
 
 skinColors = {
   "white": "8c2323,c3412d,e66e46,f5a56e,ffd2a5",
-  "black":   "370a14,5a1423,8c3c32,b26247,dc9b78",
-  "pale":   "6e2850,96465f,be6973,e69b96,ffcdb4",
+  "black": "370a14,5a1423,8c3c32,b26247,dc9b78",
+  "pale":  "6e2850,96465f,be6973,e69b96,ffcdb4",
+}
+hairColors = {
+  "pink":   "4b143c,820a64,b4236e,e65078",
+  "orange": "7d0041,aa143c,d72d2d,f06923"
 }
 
-def changeSkinColor(base, skinColor):
-  base = base.convert('RGBA')
-  beforeHexes = skinColors['white']
-  afterHexes = skinColors[skinColor]
+def changeColor(img, colorDict, defaultColor, newColor):
+  img = img.convert('RGBA')
+  beforeHexes = colorDict[defaultColor]
+  afterHexes = colorDict[newColor]
   beforeRGBAs = list(map(getRGBAFromHex, beforeHexes.split(",")))
   afterRGBAs = list(map(getRGBAFromHex, afterHexes.split(",")))
-  return updatePalette(base, beforeRGBAs, afterRGBAs)
+  return updatePalette(img, beforeRGBAs, afterRGBAs)
 
 
 
 
-def getFrame(frameNum, skinColor):
+def getFrame(frameNum, skinColor, hairColor):
   base = getCustomAsset("base", frameNum)
-  base = changeSkinColor(base, skinColor)
+  base = changeColor(base, skinColors, 'white', skinColor)
   
   head = get2FrameAsset("head1", frameNum)
-  head = changeSkinColor(head, skinColor)
+  head = changeColor(head, skinColors, 'white', skinColor)
   base.paste(head, (0, 0), head)
 
   socks = getStaticAsset("socks")
@@ -80,6 +84,7 @@ def getFrame(frameNum, skinColor):
   base.paste(outfit, (0, 0), outfit)
 
   hair = get2FrameAsset("hair", frameNum)
+  hair = changeColor(hair, hairColors, 'pink', hairColor)
   base.paste(hair, (0, 0), hair)
   return base
 
@@ -87,11 +92,15 @@ def getGif():
   # pick colors
   skinColor = random.choice(list(skinColors.keys()))
   print(f"Skin color will be '{skinColor}'")
+  hairColor = random.choice(list(hairColors.keys()))
+  print(f"Hair color will be '{hairColor}'")
+  skinColor = 'black'
+  hairColor = 'orange'
 
   # generate frames
   frames = []
   for i in range(1, 3):
-    frames.append(getFrame(i, skinColor))
+    frames.append(getFrame(i, skinColor, hairColor))
   frames[0].save(
     'GIRL2.gif',
     format='GIF',
