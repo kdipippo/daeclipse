@@ -52,10 +52,16 @@ skinColors = {
   "white": "8c2323,c3412d,e66e46,f5a56e,ffd2a5",
   "black": "370a14,5a1423,8c3c32,b26247,dc9b78",
   "pale":  "6e2850,96465f,be6973,e69b96,ffcdb4",
+  "green": "14465a,0f7373,0fa569,41cd73,73ff73"
 }
 hairColors = {
   "pink":   "4b143c,820a64,b4236e,e65078",
   "orange": "7d0041,aa143c,d72d2d,f06923"
+}
+eyeColors = {
+  "gray": "000005,191e3c,37415a,55647d",
+  "purple": "000005,4b143c,820a64,b4236e",
+  "teal": "000005,14465a,0f7373,41d7d7"
 }
 
 def changeColor(img, colorDict, defaultColor, newColor):
@@ -69,13 +75,17 @@ def changeColor(img, colorDict, defaultColor, newColor):
 
 
 
-def getFrame(frameNum, skinColor, hairColor):
+def getFrame(frameNum, skinColor, hairColor, eyeColor):
   base = getCustomAsset("base", frameNum)
   base = changeColor(base, skinColors, 'white', skinColor)
   
-  head = get2FrameAsset("head1", frameNum)
+  head = get2FrameAsset("head", frameNum)
   head = changeColor(head, skinColors, 'white', skinColor)
   base.paste(head, (0, 0), head)
+
+  eyes = get2FrameAsset("eyes", frameNum)
+  eyes = changeColor(eyes, eyeColors, 'gray', eyeColor)
+  base.paste(eyes, (0, 0), eyes)
 
   socks = getStaticAsset("socks")
   base.paste(socks, (0, 0), socks)
@@ -94,13 +104,13 @@ def getGif():
   print(f"Skin color will be '{skinColor}'")
   hairColor = random.choice(list(hairColors.keys()))
   print(f"Hair color will be '{hairColor}'")
-  skinColor = 'black'
-  hairColor = 'orange'
+  eyeColor = random.choice(list(eyeColors.keys()))
+  print(f"Eye color will be '{eyeColor}'")
 
   # generate frames
   frames = []
   for i in range(1, 3):
-    frames.append(getFrame(i, skinColor, hairColor))
+    frames.append(getFrame(i, skinColor, hairColor, eyeColor))
   frames[0].save(
     'GIRL2.gif',
     format='GIF',
