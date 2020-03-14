@@ -4,12 +4,13 @@ A set of tools to automate a DeviantArt adoptable account.
 Color Palette reference: https://lospec.com/palette-list/juice-56
 
 # Next Steps
-- [ ] Fix bug where skin tones in the eye layer aren't being recolored.
-- [x] Add a different type of hairstyle that can be randomly selected.
-- [ ] Add a different type of outfit that can be randomly selected.
-- [ ] Make gif transparent
-- [x] Reorganize files in test/ to be better scalable
-- [ ] Add background option (sparkles, hearts, win95 window)
+✅ Fix bug where skin tones in the eye layer aren't being recolored.
+✅ Add a different type of hairstyle that can be randomly selected.
+⚪ Add watermark
+⚪ Add a different type of outfit that can be randomly selected.
+⚪ Make gif transparent
+✅ Reorganize files in test/ to be better scalable
+⚪ Add background option (sparkles, hearts, win95 window)
 
 # Future ideas with no clear implementation flowchart
 - A way to preview what the array of colors for skin/hair/eyes are so that it's easier for me to add new palettes

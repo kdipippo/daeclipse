@@ -110,13 +110,13 @@ def getFrame(frameNum, assets):
     elif imageInfo['type'] == "custom":
       imageLayer = getCustomAsset(imageType, assetName, frameNum)
     
-    if imageInfo['recolor'] != "none":
-      # variables are suffering
-      recolorType = imageInfo['recolor'] # i.e. skin
-      colorDict = assets.json['colorHexes'][recolorType]['options']
-      defaultColor = assets.json['colorHexes'][recolorType]['default']
-      newColor = assets.colors[recolorType]
-      imageLayer = changeColor(imageLayer, colorDict, defaultColor, newColor)
+    if 'recolor' in imageInfo:
+      for recolorType in imageInfo['recolor']:
+        # variables are suffering
+        colorDict = assets.json['colorHexes'][recolorType]['options']
+        defaultColor = assets.json['colorHexes'][recolorType]['default']
+        newColor = assets.colors[recolorType]
+        imageLayer = changeColor(imageLayer, colorDict, defaultColor, newColor)
     frame.paste(imageLayer, (0, 0), imageLayer)
   return frame
 
@@ -142,7 +142,7 @@ def getAssetList(assetsJson):
   return assets
 
 if __name__ == "__main__":
-  overrideColors = {'skin': 'green', 'hair': 'lightBlue', 'eyes': 'teal'}
+  overrideColors = {'skin': 'red', 'hair': 'white', 'eyes': 'teal'}
   overrideImages = {'base': '00', 'hair_back': '00', 'head': '00', 'eyes': '00', 'outfit': '00', 'hair_front': '01'}
 
   # assembleGif()
