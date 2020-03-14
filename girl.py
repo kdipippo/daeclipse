@@ -2,6 +2,12 @@ from PIL import Image
 from PIL import GifImagePlugin
 import random
 
+# returns true if the character should bob down, false otherwise
+def bobDown(frameNum):
+  if frameNum % 4 == 1 or frameNum % 4 == 2:
+    return False
+  return True
+
 def translateOnePixelDown(image):
   transMatrix = [1,0,0,0,1,0]
   # matrix[2] left/right (i.e. 5/-5)
@@ -12,18 +18,24 @@ def translateOnePixelDown(image):
 # assets that are static
 def getStaticAsset(assetName):
   fileName = f"test/{assetName}.png"
+  print(fileName)
   return Image.open(fileName)
 
 # assets where all the frames are stored vs. generated
 def getCustomAsset(assetName, frameNum):
-  fileName = f"test/{assetName}{frameNum}.png"
+  assetNum = 0
+  if bobDown(frameNum):
+    assetNum = 1
+  fileName = f"test/{assetName}{assetNum}.png"
+  print(fileName)
   return Image.open(fileName)
 
 # assets that bob up and down, second frame is generated
 def get2FrameAsset(assetName, frameNum):
   fileName = f"test/{assetName}.png"
+  print(fileName)
   image = Image.open(fileName)
-  if frameNum % 2 == 0:
+  if bobDown(frameNum):
     return translateOnePixelDown(image)
   return image
 
@@ -77,15 +89,22 @@ def changeColor(img, colorDict, defaultColor, newColor):
 
 def getFrame(frameNum, skinColor, hairColor, eyeColor):
   base = getCustomAsset("base", frameNum)
-  base = changeColor(base, skinColors, 'white', skinColor)
-  
   head = get2FrameAsset("head", frameNum)
-  head = changeColor(head, skinColors, 'white', skinColor)
   base.paste(head, (0, 0), head)
-
-  eyes = get2FrameAsset("eyes", frameNum)
-  eyes = changeColor(eyes, eyeColors, 'gray', eyeColor)
+  eyeAsset = "eyes"
+  if frameNum == 29 or frameNum == 25:
+    eyeAsset += "B"
+  elif frameNum == 28 or frameNum == 26:
+    eyeAsset += "C"
+  elif frameNum == 27:
+    eyeAsset += "D"
+  else:
+    eyeAsset += "A"
+  eyes = get2FrameAsset(eyeAsset, frameNum)
   base.paste(eyes, (0, 0), eyes)
+
+  base = changeColor(base, skinColors, 'white', skinColor)
+  base = changeColor(base, eyeColors, 'gray', eyeColor)
 
   socks = getStaticAsset("socks")
   base.paste(socks, (0, 0), socks)
@@ -96,6 +115,7 @@ def getFrame(frameNum, skinColor, hairColor, eyeColor):
   hair = get2FrameAsset("hair", frameNum)
   hair = changeColor(hair, hairColors, 'pink', hairColor)
   base.paste(hair, (0, 0), hair)
+  print("------")
   return base
 
 def getGif():
@@ -109,16 +129,9 @@ def getGif():
 
   # generate frames
   frames = []
-  for i in range(1, 3):
+  for i in range(32):
     frames.append(getFrame(i, skinColor, hairColor, eyeColor))
-  frames[0].save(
-    'GIRL2.gif',
-    format='GIF',
-    append_images=frames[1:],
-    save_all=True,
-    duration=500,
-    loop=0
-  )
+  frames[0].save('GIRL2.gif', format='GIF', append_images=frames[1:], save_all=True, duration=100, loop=0)
 
 if __name__ == "__main__":
   # assembleGif()
