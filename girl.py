@@ -26,11 +26,48 @@ def get2FrameAsset(assetName, frameNum):
     return translateOnePixelDown(image)
   return image
 
+def getRGBAFromHex(hex):
+  rgb = list(int(hex[i:i+2], 16) for i in (0, 2, 4))
+  rgb.append(255)
+  return tuple(rgb)
+
+# im needs to be converted to RGBA
+def updatePalette(beforeImg, beforeColors, afterColors):
+  beforePixelMap = beforeImg.load()
+
+  afterImg = Image.new('RGBA', beforeImg.size)
+  afterPixelMap = afterImg.load()
+  for i in range(afterImg.size[0]):
+    for j in range(afterImg.size[1]):
+      currColor = beforePixelMap[i,j]
+      if currColor in beforeColors:
+        afterIndex = beforeColors.index(currColor)
+        afterPixelMap[i,j] = afterColors[afterIndex]
+        print(afterColors[afterIndex])
+      else:
+        afterPixelMap[i,j] = beforePixelMap[i,j]
+  return afterImg
+
+
+def changeBaseColor(base):
+  base = base.convert('RGBA')
+  whiteHexes = "8c2323,c3412d,e66e46,f5a56e,ffd2a5"
+  whiteRGBAs = list(map(getRGBAFromHex, whiteHexes.split(",")))
+  print(whiteRGBAs)
+  blackHexes = "370a14,5a1423,8c3c32,b26247,dc9b78"
+  blackRGBAs = list(map(getRGBAFromHex, blackHexes.split(",")))
+  print(blackRGBAs)
+  return updatePalette(base, whiteRGBAs, blackRGBAs)
+
+
+
 
 def getFrame(frameNum):
   base = getCustomAsset("base", frameNum)
+  base = changeBaseColor(base)
   
   head = get2FrameAsset("head1", frameNum)
+  head = changeBaseColor(head)
   base.paste(head, (0, 0), head)
 
   socks = getStaticAsset("socks")
@@ -48,7 +85,7 @@ def getGif():
   frames.append(getFrame(1))
   frames.append(getFrame(2))
   frames[0].save(
-    'GIRL.gif',
+    'GIRL2.gif',
     format='GIF',
     append_images=frames[1:],
     save_all=True,
