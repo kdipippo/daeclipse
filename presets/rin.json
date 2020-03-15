@@ -1,0 +1,16 @@
+{
+  "colors": {
+    "skin": "pale",
+    "hair": "blonde",
+    "eyes": "blue"
+  },
+  "images": {
+    "base": "00",
+    "hairbackshort": "01",
+    "hairfront": "02",
+    "head": "00",
+    "eyes": "00",
+    "outfit": "02",
+    "accessorytop": "02"
+  }
+}

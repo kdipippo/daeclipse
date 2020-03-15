@@ -7,11 +7,18 @@
       "type": "custom",
       "recolor": ["skin"]
     },
-    "hair_back": {
+    "hairbacklong": {
       "order": 0,
       "count": 1,
       "probability": 0.5,
       "type": "custom",
+      "recolor": ["hair"]
+    },
+    "hairbackshort": {
+      "order": 0,
+      "count": 2,
+      "probability": 0.5,
+      "type": "2frame",
       "recolor": ["hair"]
     },
     "head": {
@@ -30,16 +37,22 @@
     },
     "outfit": {
       "order": 4,
-      "count": 1,
+      "count": 2,
       "probability": 1,
       "type": "custom"
     },
-    "hair_front": {
+    "hairfront": {
       "order": 5,
       "count": 2,
       "probability": 1,
       "type": "2frame",
       "recolor": ["hair", "skin"]
+    },
+    "accessorytop": {
+      "order": 6,
+      "count": 1,
+      "probability": 0.5,
+      "type": "2frame"
     }
   },
   "colorHexes": {
@@ -59,7 +72,8 @@
         "pink":   "4b143c,820a64,b4236e,e65078",
         "orange": "7d0041,aa143c,d72d2d,f06923",
         "lightBlue": "0f379b,1469c3,14a0cd,41d7d7",
-        "white": "7891a5,a5becd,c8e1eb,ffffff"
+        "white": "7891a5,a5becd,c8e1eb,ffffff",
+        "blonde": "c3412d,f06923,ffaa32,ffe65a"
       }
     },
     "eyes": {
@@ -67,7 +81,8 @@
       "options": {
         "gray": "000005,191e3c,37415a,55647d",
         "purple": "000005,4b143c,820a64,b4236e",
-        "teal": "000005,14465a,0f7373,41d7d7"
+        "teal": "000005,14465a,0f7373,41d7d7",
+        "blue": "0f0f69,0f379b,1469c3,14a0cd"
       }
     }
   }

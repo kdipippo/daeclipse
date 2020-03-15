@@ -13,9 +13,9 @@ class SelectedAssets:
     self.images[imageType] = "{:02d}".format(imageNum)
   def storeJson(self, assetsJson):
     self.json = assetsJson
-  def debugOverride(self, overrideColors, overrideImages):
-    self.colors = overrideColors
-    self.images = overrideImages
+  def debugOverride(self, override):
+    self.colors = override['colors']
+    self.images = override['images']
   def debug(self):
     for color in self.colors.keys():
       print(f"COLOR {color} = {self.colors[color]}")
@@ -133,7 +133,7 @@ def getGif(assets):
   frames = []
   for i in range(32):
     frames.append(getFrame(i, assets))
-  frames[0].save('GIRL3.gif', format='GIF', append_images=frames[1:], save_all=True, duration=100, loop=0)
+  frames[0].save('GIRL4.gif', format='GIF', append_images=frames[1:], save_all=True, duration=100, loop=0)
 
 # returns the list of colors and components for the generated gif
 def getAssetList(assetsJson):
@@ -156,23 +156,9 @@ if __name__ == "__main__":
   assets = getAssetList(assetsJson)
   assets.storeJson(assetsJson)
 
-  '''
-  assets.debugOverride(
-    {
-      'skin': 'red',
-      'hair': 'white',
-      'eyes': 'teal'
-    },
-    {
-      'base': '00',
-      'hair_back': '01',
-      'hair_front': '01',
-      'head': '00',
-      'eyes': '00',
-      'outfit': '00'
-      }
-  )
-  '''
+  with open('presets/rin.json', 'r') as f:
+    rinJson = json.load(f)
+  assets.debugOverride(rinJson)
 
   assets.debug()
   getGif(assets)
