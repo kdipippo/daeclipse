@@ -3,37 +3,43 @@
     "base": {
       "order": 1,
       "count": 1,
+      "probability": 1,
       "type": "custom",
       "recolor": ["skin"]
     },
     "hair_back": {
       "order": 0,
       "count": 1,
+      "probability": 0.5,
       "type": "custom",
       "recolor": ["hair"]
     },
     "head": {
       "order": 2,
       "count": 1,
+      "probability": 1,
       "type": "2frame",
       "recolor": ["skin"]
     },
     "eyes": {
       "order": 3,
       "count": 1,
+      "probability": 1,
       "type": "2frame",
       "recolor": ["eyes", "skin"]
     },
     "outfit": {
       "order": 4,
       "count": 1,
+      "probability": 1,
       "type": "custom"
     },
     "hair_front": {
       "order": 5,
       "count": 2,
+      "probability": 1,
       "type": "2frame",
-      "recolor": ["hair"]
+      "recolor": ["hair", "skin"]
     }
   },
   "colorHexes": {

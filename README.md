@@ -6,7 +6,7 @@ Color Palette reference: https://lospec.com/palette-list/juice-56
 # Next Steps
 ✅ Fix bug where skin tones in the eye layer aren't being recolored.
 ✅ Add a different type of hairstyle that can be randomly selected.
-⚪ Add watermark
+✅ Add watermark
 ⚪ Add a different type of outfit that can be randomly selected.
 ⚪ Make gif transparent
 ✅ Reorganize files in test/ to be better scalable

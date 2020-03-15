@@ -28,21 +28,22 @@ def bobDown(frameNum):
     return False
   return True
 
-def translateOnePixelDown(image):
+def translateImage(image, direction, pixels):
   transMatrix = [1,0,0,0,1,0]
-  # matrix[2] left/right (i.e. 5/-5)
-  # matrix[5] up/down    (i.e. 5/-5)
-  transMatrix[5] = -1
+  if direction == "left":
+    transMatrix[2] += pixels
+  elif direction == "right":
+    transMatrix[2] -= pixels
+  elif direction == "up":
+    transMatrix[5] += pixels
+  elif direction == "down":
+    transMatrix[5] -= pixels
   return image.transform(image.size, Image.AFFINE, tuple(transMatrix))
 
 def getFilename(imageType, assetName):
   filename = f"images/{imageType}/{imageType}{assetName}.png"
   # print(filename)
   return filename
-
-# assets that are static
-def getStaticAsset(imageType, assetName):
-  return Image.open(getFilename(imageType, assetName))
 
 # assets where all the frames are stored vs. generated
 def getCustomAsset(imageType, assetName, frameNum):
@@ -55,7 +56,7 @@ def getCustomAsset(imageType, assetName, frameNum):
 def get2FrameAsset(imageType, assetName, frameNum):
   image = Image.open(getFilename(imageType, assetName))
   if bobDown(frameNum):
-    return translateOnePixelDown(image)
+    return translateImage(image, 'down', 1)
   return image
 
 def getRGBAFromHex(hex):
@@ -94,6 +95,8 @@ def getFrame(frameNum, assets):
   for layer in sortedLayers:
     imageType = layer[0]
     imageInfo = layer[1]
+    if imageType not in assets.images:
+      continue
     assetName = assets.images[imageType]
     # section for handling blinking animation
     if imageType == "eyes":
@@ -118,6 +121,10 @@ def getFrame(frameNum, assets):
         newColor = assets.colors[recolorType]
         imageLayer = changeColor(imageLayer, colorDict, defaultColor, newColor)
     frame.paste(imageLayer, (0, 0), imageLayer)
+
+  frame = translateImage(frame, 'left', 5)
+  watermark = Image.open("images/watermark.png")
+  frame.paste(watermark, (0, 0), watermark)
   return frame
 
 # assets is a SelectedAssets object
@@ -137,23 +144,35 @@ def getAssetList(assetsJson):
     assets.addColor(colorType, selectedColor)
   imageTypes = list(assetsJson['imageTypes'].keys())
   for imageType in imageTypes:
-    selectedNum = random.randint(0, assetsJson['imageTypes'][imageType]['count']-1)
-    assets.addImage(imageType, selectedNum)
+    coinToss = random.random()
+    if coinToss < assetsJson['imageTypes'][imageType]['probability']:
+      selectedNum = random.randint(0, assetsJson['imageTypes'][imageType]['count']-1)
+      assets.addImage(imageType, selectedNum)
   return assets
 
 if __name__ == "__main__":
-  overrideColors = {'skin': 'red', 'hair': 'white', 'eyes': 'teal'}
-  overrideImages = {'base': '00', 'hair_back': '00', 'head': '00', 'eyes': '00', 'outfit': '00', 'hair_front': '01'}
-
-  # assembleGif()
-  # updatePalette()
-  # assembleUpdatedGif()
   with open('assets.json', 'r') as f:
     assetsJson = json.load(f)
   assets = getAssetList(assetsJson)
   assets.storeJson(assetsJson)
 
-  assets.debugOverride(overrideColors, overrideImages)
+  '''
+  assets.debugOverride(
+    {
+      'skin': 'red',
+      'hair': 'white',
+      'eyes': 'teal'
+    },
+    {
+      'base': '00',
+      'hair_back': '01',
+      'hair_front': '01',
+      'head': '00',
+      'eyes': '00',
+      'outfit': '00'
+      }
+  )
+  '''
 
   assets.debug()
   getGif(assets)
