@@ -1,12 +1,12 @@
+name: Pylint
 on: push
 name: on push
 jobs:
-  gitHubActionForPylint:
-    name: GitHub Action for pylint
+  pylint:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: GitHub Action for pylint
+    - name: Run Pylint
       uses: cclauss/GitHub-Action-for-pylint@8ef4d22e119fb1cdc0f58f2e95cb1f8d8b0d55e6
       with:
         args: pip install -r requirements.txt ; pylint scripts
