@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+"""This script generates a 50x50 animated gif either randomly or with provided
+color and image information via a json file."""
+
 from PIL import Image
 from PIL import GifImagePlugin
 import json
@@ -6,184 +10,249 @@ from datetime import datetime
 
 # Used for the background to be erased when the image is made transparent.
 # Set to a muted green color that does not coincide with the pixel art palette.
-DEFAULT_COLOR = (83,106,89,255)
-TRANSPARENT_COLOR = (255,255,255,0)
+DEFAULT_COLOR = (83, 106, 89, 255)
+TRANSPARENT_COLOR = (255, 255, 255, 0)
 
 class SelectedAssets:
-  colors = {}
-  images = {}
-  json = None
-  def addColor(self, colorType, selectedType):
-    self.colors[colorType] = selectedType
-  def addImage(self, imageType, imageNum):
-    self.images[imageType] = "{:02d}".format(imageNum)
-  def storeJson(self, assetsJson):
-    self.json = assetsJson
-  def debugOverride(self, override):
-    self.colors = override['colors']
-    self.images = override['images']
-  def debug(self):
-    for color in self.colors.keys():
-      print(f"COLOR {color} = {self.colors[color]}")
-    for image in self.images.keys():
-      print(f"IMAGE {image} = {self.images[image]}")
-  def getJson(self):
-    json = {}
-    json['colors'] = self.colors
-    json['images'] = self.images
-    return json
+    """Class to handle the list of colors and images randomly generated for gif creation."""
+    colors = {}
+    images = {}
+    json = None
+    def add_color(self, color_type, selected_type):
+        """Assign the selected palette to the component to recolor.
 
-# returns true if the character should bob down, false otherwise
-def bobDown(frameNum):
-  if frameNum % 4 == 1 or frameNum % 4 == 2:
-    return False
-  return True
+        Arguments:
+            color_type {string} -- Component the recolor applies to, i.e. 'skin'.
+            selected_type {string} -- Palette to recolor the component to, i.e. 'pale'.
+        """
+        self.colors[color_type] = selected_type
 
-def translateImage(image, direction, pixels):
-  transMatrix = [1,0,0,0,1,0]
-  if direction == "left":
-    transMatrix[2] += pixels
-  elif direction == "right":
-    transMatrix[2] -= pixels
-  elif direction == "up":
-    transMatrix[5] += pixels
-  elif direction == "down":
-    transMatrix[5] -= pixels
-  return image.transform(image.size, Image.AFFINE, tuple(transMatrix), fillcolor=DEFAULT_COLOR)
+    def add_image(self, image_type, image_num):
+        """Assign the selected image asset to the image layer when gif parts are layered.
+        
+        Arguments:
+            image_type {string} -- Image layer being added, i.e. 'hairbackshort'.
+            image_num {string} -- Asset number for the image layer, i.e. '00A'.
+        """
+        self.images[image_type] = "{:02d}".format(image_num)
 
-def getFilename(imageType, assetName):
-  filename = f"images/{imageType}/{imageType}{assetName}.png"
-  # print(filename)
-  return filename
+    def store_json(self, assets_json):
+        """Store the full, parsed assets.json file for reference.
+
+        Arguments:
+            assets_json {dict} -- Dictionary result from loading assets.json.
+        """
+        self.json = assets_json
+
+    def debugOverride(self, override):
+        """Manually override the colors and images dictionaries.
+        
+        Arguments:
+            override {dict} -- A combined dict with keys 'colors' and 'images'.
+        """
+        self.colors = override['colors']
+        self.images = override['images']
+
+    def debug(self):
+        """Print out the stored colors and images settings."""
+        for color in self.colors.keys():
+            print(f"COLOR {color} = {self.colors[color]}")
+        for image in self.images.keys():
+            print(f"IMAGE {image} = {self.images[image]}")
+
+    def get_json(self):
+        """Return the colors and images dicts as one combined dict.
+        
+        Returns:
+            dict -- A combined dict with keys 'colors' and 'images'.
+        """
+        combined_json = {}
+        combined_json['colors'] = self.colors
+        combined_json['images'] = self.images
+        return combined_json
+
+def bob_down(frameNum):
+    """Returns whether the sprite is bobbing down, false if bobbing up.
+
+    Arguments:
+        frameNum {int} -- Current frame number.
+
+    Returns:
+        boolean -- True if sprite is bobbing down, false if bobbing up.
+    """
+    if frameNum % 4 == 1 or frameNum % 4 == 2:
+        return False
+    return True
+
+def translate_image(image, direction, pixels):
+    """Return a translated image.
+
+    Arguments:
+        image {Image} -- Image object.
+        direction {string} -- "left", "right", "up", or "down".
+        pixels {int} -- Number of pixels to translate.
+
+    Returns:
+        Image -- Translated Image object.
+    """
+    transMatrix = [1, 0, 0, 0, 1, 0]
+    if direction == "left":
+        transMatrix[2] += pixels
+    elif direction == "right":
+        transMatrix[2] -= pixels
+    elif direction == "up":
+        transMatrix[5] += pixels
+    elif direction == "down":
+        transMatrix[5] -= pixels
+    return image.transform(image.size, Image.AFFINE, tuple(transMatrix), fillcolor=DEFAULT_COLOR)
+
+def get_filename(imageType, assetName):
+    """Returns path to the given image asset.
+
+    Arguments:
+        imageType {string} -- Type of image, i.e. 'hairfront', 'eyes'.
+        assetName {string} -- Number of the asset, i.e. '00', '00A'.
+
+    Returns:
+        string -- Path to image asset.
+    """
+    return f"images/{imageType}/{imageType}{assetName}.png"
 
 # assets where all the frames are stored vs. generated
 def getCustomAsset(imageType, assetName, frameNum):
-  assetLetter = "A"
-  if bobDown(frameNum):
-    assetLetter = "B"
-  return Image.open(getFilename(imageType, f"{assetName}{assetLetter}"))
+    assetLetter = "A"
+    if bob_down(frameNum):
+        assetLetter = "B"
+    return Image.open(get_filename(imageType, f"{assetName}{assetLetter}"))
 
 # assets that bob up and down, second frame is generated
 def get2FrameAsset(imageType, assetName, frameNum):
-  image = Image.open(getFilename(imageType, assetName))
-  if bobDown(frameNum):
-    return translateImage(image, 'down', 1)
-  return image
+    image = Image.open(get_filename(imageType, assetName))
+    if bob_down(frameNum):
+        return translate_image(image, 'down', 1)
+    return image
 
 def getRGBAFromHex(hex):
-  rgb = list(int(hex[i:i+2], 16) for i in (0, 2, 4))
-  rgb.append(255)
-  return tuple(rgb)
+    """Converts hex color string to rgba color tuple.
+
+    Arguments:
+        hex {string} -- hex color string, i.e. 79ede2
+
+    Returns:
+        typle -- 4-entry tuple of ints representing rgba, i.e. (121, 237, 226, 255)
+    """
+    rgb = list(int(hex[i:i+2], 16) for i in (0, 2, 4))
+    rgb.append(255)
+    return tuple(rgb)
 
 # im needs to be converted to RGBA
 def updatePalette(beforeImg, beforeColors, afterColors):
-  beforePixelMap = beforeImg.load()
+    beforePixelMap = beforeImg.load()
 
-  afterImg = Image.new('RGBA', beforeImg.size)
-  afterPixelMap = afterImg.load()
-  for i in range(afterImg.size[0]):
-    for j in range(afterImg.size[1]):
-      currColor = beforePixelMap[i,j]
-      if currColor in beforeColors:
-        afterIndex = beforeColors.index(currColor)
-        afterPixelMap[i,j] = afterColors[afterIndex]
-      else:
-        afterPixelMap[i,j] = beforePixelMap[i,j]
-  return afterImg
+    afterImg = Image.new('RGBA', beforeImg.size)
+    afterPixelMap = afterImg.load()
+    for i in range(afterImg.size[0]):
+        for j in range(afterImg.size[1]):
+            currColor = beforePixelMap[i, j]
+            if currColor in beforeColors:
+                afterIndex = beforeColors.index(currColor)
+                afterPixelMap[i, j] = afterColors[afterIndex]
+            else:
+                afterPixelMap[i, j] = beforePixelMap[i, j]
+    return afterImg
 
 def makeTransparent(img):
-  img = updatePalette(img, [DEFAULT_COLOR], [TRANSPARENT_COLOR])
-  return img
+    img = updatePalette(img, [DEFAULT_COLOR], [TRANSPARENT_COLOR])
+    return img
 
 def changeColor(img, colorDict, defaultColor, newColor):
-  img = img.convert('RGBA')
-  beforeHexes = colorDict[defaultColor]
-  afterHexes = colorDict[newColor]
-  beforeRGBAs = list(map(getRGBAFromHex, beforeHexes.split(",")))
-  afterRGBAs = list(map(getRGBAFromHex, afterHexes.split(",")))
-  return updatePalette(img, beforeRGBAs, afterRGBAs)
+    img = img.convert('RGBA')
+    beforeHexes = colorDict[defaultColor]
+    afterHexes = colorDict[newColor]
+    beforeRGBAs = list(map(getRGBAFromHex, beforeHexes.split(",")))
+    afterRGBAs = list(map(getRGBAFromHex, afterHexes.split(",")))
+    return updatePalette(img, beforeRGBAs, afterRGBAs)
 
 def getFrame(frameNum, assets):
-  # get the order that images are layered
-  sortedLayers = sorted(assetsJson['imageTypes'].items(), key=lambda x: x[1]['order'])
-  frame = Image.new('RGBA', (50,50), color=DEFAULT_COLOR)
-  for layer in sortedLayers:
-    imageType = layer[0]
-    imageInfo = layer[1]
-    if imageType not in assets.images:
-      continue
-    assetName = assets.images[imageType]
-    # section for handling blinking animation
-    if imageType == "eyes":
-      if frameNum == 29 or frameNum == 25:
-        assetName += "B"
-      elif frameNum == 28 or frameNum == 26:
-        assetName += "C"
-      elif frameNum == 27:
-        assetName += "D"
-      else:
-        assetName += "A"
-    if imageInfo['type'] == "2frame":
-      imageLayer = get2FrameAsset(imageType, assetName, frameNum)
-    elif imageInfo['type'] == "custom":
-      imageLayer = getCustomAsset(imageType, assetName, frameNum)
-    
-    if 'recolor' in imageInfo:
-      for recolorType in imageInfo['recolor']:
-        # variables are suffering
-        colorDict = assets.json['colorHexes'][recolorType]['options']
-        defaultColor = assets.json['colorHexes'][recolorType]['default']
-        newColor = assets.colors[recolorType]
-        imageLayer = changeColor(imageLayer, colorDict, defaultColor, newColor)
-    frame.paste(imageLayer, (0, 0), imageLayer)
+    # get the order that images are layered
+    sortedLayers = sorted(assetsJson['imageTypes'].items(), key=lambda x: x[1]['order'])
+    frame = Image.new('RGBA', (50, 50), color=DEFAULT_COLOR)
+    for layer in sortedLayers:
+        imageType = layer[0]
+        imageInfo = layer[1]
+        if imageType not in assets.images:
+            continue
+        assetName = assets.images[imageType]
+        # section for handling blinking animation
+        if imageType == "eyes":
+            if frameNum == 29 or frameNum == 25:
+                assetName += "B"
+            elif frameNum == 28 or frameNum == 26:
+                assetName += "C"
+            elif frameNum == 27:
+                assetName += "D"
+            else:
+                assetName += "A"
+        if imageInfo['type'] == "2frame":
+            imageLayer = get2FrameAsset(imageType, assetName, frameNum)
+        elif imageInfo['type'] == "custom":
+            imageLayer = getCustomAsset(imageType, assetName, frameNum)
 
-  frame = translateImage(frame, 'left', 5)
-  frame = makeTransparent(frame)
-  watermark = Image.open("images/watermark.png")
-  frame.paste(watermark, (0, 0), watermark)
-  return frame
+        if 'recolor' in imageInfo:
+            for recolorType in imageInfo['recolor']:
+                # variables are suffering
+                colorDict = assets.json['colorHexes'][recolorType]['options']
+                defaultColor = assets.json['colorHexes'][recolorType]['default']
+                newColor = assets.colors[recolorType]
+                imageLayer = changeColor(imageLayer, colorDict, defaultColor, newColor)
+        frame.paste(imageLayer, (0, 0), imageLayer)
+
+    frame = translate_image(frame, 'left', 5)
+    frame = makeTransparent(frame)
+    watermark = Image.open("images/watermark.png")
+    frame.paste(watermark, (0, 0), watermark)
+    return frame
 
 # assets is a SelectedAssets object
 def getGif(assets, currentTime):
-  # generate frames
-  frames = []
-  for i in range(32):
-    frames.append(getFrame(i, assets))
-  
-  frames[0].save(f'output/{currentTime}.gif', format='GIF', append_images=frames[1:], save_all=True, duration=100, loop=0, transparency=0, disposal=2)
+    # generate frames
+    frames = []
+    for i in range(32):
+        frames.append(getFrame(i, assets))
+    frames[0].save(f'output/{currentTime}.gif', format='GIF', append_images=frames[1:],
+                   save_all=True, duration=100, loop=0, transparency=0, disposal=2)
 
 # returns the list of colors and components for the generated gif
 def getAssetList(assetsJson):
-  assets = SelectedAssets()
-  colorTypes = list(assetsJson['colorHexes'].keys())
-  for colorType in colorTypes:
-    selectedColor = random.choice(list(assetsJson['colorHexes'][colorType]['options'].keys()))
-    assets.addColor(colorType, selectedColor)
-  imageTypes = list(assetsJson['imageTypes'].keys())
-  for imageType in imageTypes:
-    coinToss = random.random()
-    if coinToss < assetsJson['imageTypes'][imageType]['probability']:
-      selectedNum = random.randint(0, assetsJson['imageTypes'][imageType]['count']-1)
-      assets.addImage(imageType, selectedNum)
-  return assets
+    assets = SelectedAssets()
+    colorTypes = list(assetsJson['colorHexes'].keys())
+    for colorType in colorTypes:
+        selectedColor = random.choice(list(assetsJson['colorHexes'][colorType]['options'].keys()))
+        assets.add_color(colorType, selectedColor)
+    imageTypes = list(assetsJson['imageTypes'].keys())
+    for imageType in imageTypes:
+        coinToss = random.random()
+        if coinToss < assetsJson['imageTypes'][imageType]['probability']:
+            selectedNum = random.randint(0, assetsJson['imageTypes'][imageType]['count']-1)
+            assets.add_image(imageType, selectedNum)
+    return assets
 
-def getJson(assets, currentTime):
-  f = open(f'output/{currentTime}.json', "w")
-  f.write(json.dumps(assets.getJson(), indent=2))
-  f.close()
+def get_json(assets, currentTime):
+    f = open(f'output/{currentTime}.json', "w")
+    f.write(json.dumps(assets.get_json(), indent=2))
+    f.close()
 
 if __name__ == "__main__":
-  with open('assets.json', 'r') as f:
-    assetsJson = json.load(f)
-  assets = getAssetList(assetsJson)
-  assets.storeJson(assetsJson)
+    with open('assets.json', 'r') as f:
+        assetsJson = json.load(f)
+    assets = getAssetList(assetsJson)
+    assets.store_json(assetsJson)
 
-  with open('presets/rin.json', 'r') as f:
-    rinJson = json.load(f)
-  assets.debugOverride(rinJson)
+    with open('presets/rin.json', 'r') as f:
+        rinJson = json.load(f)
+    assets.debugOverride(rinJson)
 
-  assets.debug()
-  currentTime = datetime.today().strftime("%Y-%m-%d_%I:%M:%S%p")
-  getGif(assets, currentTime)
-  getJson(assets, currentTime)
-
+    assets.debug()
+    currentTime = datetime.today().strftime("%Y-%m-%d_%I:%M:%S%p")
+    getGif(assets, currentTime)
+    get_json(assets, currentTime)
