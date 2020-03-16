@@ -2,6 +2,7 @@ from PIL import Image
 from PIL import GifImagePlugin
 import json
 import random
+from datetime import datetime
 
 # Used for the background to be erased when the image is made transparent.
 # Set to a muted green color that does not coincide with the pixel art palette.
@@ -26,6 +27,11 @@ class SelectedAssets:
       print(f"COLOR {color} = {self.colors[color]}")
     for image in self.images.keys():
       print(f"IMAGE {image} = {self.images[image]}")
+  def getJson(self):
+    json = {}
+    json['colors'] = self.colors
+    json['images'] = self.images
+    return json
 
 # returns true if the character should bob down, false otherwise
 def bobDown(frameNum):
@@ -138,12 +144,13 @@ def getFrame(frameNum, assets):
   return frame
 
 # assets is a SelectedAssets object
-def getGif(assets):
+def getGif(assets, currentTime):
   # generate frames
   frames = []
   for i in range(32):
     frames.append(getFrame(i, assets))
-  frames[0].save('GIRL5.gif', format='GIF', append_images=frames[1:], save_all=True, duration=100, loop=0, transparency=0, disposal=2)
+  
+  frames[0].save(f'output/{currentTime}.gif', format='GIF', append_images=frames[1:], save_all=True, duration=100, loop=0, transparency=0, disposal=2)
 
 # returns the list of colors and components for the generated gif
 def getAssetList(assetsJson):
@@ -160,6 +167,11 @@ def getAssetList(assetsJson):
       assets.addImage(imageType, selectedNum)
   return assets
 
+def getJson(assets, currentTime):
+  f = open(f'output/{currentTime}.json', "w")
+  f.write(json.dumps(assets.getJson(), indent=2))
+  f.close()
+
 if __name__ == "__main__":
   with open('assets.json', 'r') as f:
     assetsJson = json.load(f)
@@ -171,4 +183,7 @@ if __name__ == "__main__":
   assets.debugOverride(rinJson)
 
   assets.debug()
-  getGif(assets)
+  currentTime = datetime.today().strftime("%Y-%m-%d_%I:%M:%S%p")
+  getGif(assets, currentTime)
+  getJson(assets, currentTime)
+
