@@ -29,7 +29,7 @@ class SelectedAssets:
 
     def add_image(self, image_type, image_num):
         """Assign the selected image asset to the image layer when gif parts are layered.
-        
+
         Arguments:
             image_type {string} -- Image layer being added, i.e. 'hairbackshort'.
             image_num {string} -- Asset number for the image layer, i.e. '00A'.
@@ -44,9 +44,9 @@ class SelectedAssets:
         """
         self.json = assets_json
 
-    def debugOverride(self, override):
+    def debug_override(self, override):
         """Manually override the colors and images dictionaries.
-        
+
         Arguments:
             override {dict} -- A combined dict with keys 'colors' and 'images'.
         """
@@ -62,7 +62,7 @@ class SelectedAssets:
 
     def get_json(self):
         """Return the colors and images dicts as one combined dict.
-        
+
         Returns:
             dict -- A combined dict with keys 'colors' and 'images'.
         """
@@ -71,16 +71,16 @@ class SelectedAssets:
         combined_json['images'] = self.images
         return combined_json
 
-def bob_down(frameNum):
+def bob_down(frame_num):
     """Returns whether the sprite is bobbing down, false if bobbing up.
 
     Arguments:
-        frameNum {int} -- Current frame number.
+        frame_num {int} -- Current frame number.
 
     Returns:
         boolean -- True if sprite is bobbing down, false if bobbing up.
     """
-    if frameNum % 4 == 1 or frameNum % 4 == 2:
+    if frame_num % 4 == 1 or frame_num % 4 == 2:
         return False
     return True
 
@@ -95,40 +95,59 @@ def translate_image(image, direction, pixels):
     Returns:
         Image -- Translated Image object.
     """
-    transMatrix = [1, 0, 0, 0, 1, 0]
+    trans_matrix = [1, 0, 0, 0, 1, 0]
     if direction == "left":
-        transMatrix[2] += pixels
+        trans_matrix[2] += pixels
     elif direction == "right":
-        transMatrix[2] -= pixels
+        trans_matrix[2] -= pixels
     elif direction == "up":
-        transMatrix[5] += pixels
+        trans_matrix[5] += pixels
     elif direction == "down":
-        transMatrix[5] -= pixels
-    return image.transform(image.size, Image.AFFINE, tuple(transMatrix), fillcolor=DEFAULT_COLOR)
+        trans_matrix[5] -= pixels
+    return image.transform(image.size, Image.AFFINE, tuple(trans_matrix), fillcolor=DEFAULT_COLOR)
 
-def get_filename(imageType, assetName):
+def get_filename(image_type, asset_name):
     """Returns path to the given image asset.
 
     Arguments:
-        imageType {string} -- Type of image, i.e. 'hairfront', 'eyes'.
-        assetName {string} -- Number of the asset, i.e. '00', '00A'.
+        image_type {string} -- Type of image, i.e. 'hairfront', 'eyes'.
+        asset_name {string} -- Asset number, sometimes with position letter, i.e. '00', '00A'.
 
     Returns:
         string -- Path to image asset.
     """
-    return f"images/{imageType}/{imageType}{assetName}.png"
+    return f"images/{image_type}/{image_type}{asset_name}.png"
 
-# assets where all the frames are stored vs. generated
-def getCustomAsset(imageType, assetName, frameNum):
-    assetLetter = "A"
-    if bob_down(frameNum):
-        assetLetter = "B"
-    return Image.open(get_filename(imageType, f"{assetName}{assetLetter}"))
+def get_custom_asset(image_type, asset_name, frame_num):
+    """Get the Image object for the current custom asset. The second frame is manually created.
 
-# assets that bob up and down, second frame is generated
-def get2FrameAsset(imageType, assetName, frameNum):
-    image = Image.open(get_filename(imageType, assetName))
-    if bob_down(frameNum):
+    Arguments:
+        image_type {string} -- Type of image, i.e. 'hairfront', 'eyes'.
+        asset_name {string} -- Asset number, i.e. '00'.
+        frame_num {int} -- Current frame number.
+
+    Returns:
+        Image -- Requested Image object.
+    """
+    asset_letter = "A"
+    if bob_down(frame_num):
+        asset_letter = "B"
+    return Image.open(get_filename(image_type, f"{asset_name}{asset_letter}"))
+
+def get_2frame_asset(image_type, asset_name, frame_num):
+    """Get the Image object for the current 2-frame asset. The second frame is generated rather
+    than manually created, as with a custom asset.
+
+    Arguments:
+        image_type {string} -- Type of image, i.e. 'hairfront', 'eyes'.
+        asset_name {string} -- Asset number, i.e. '00'.
+        frame_num {int} -- Current frame number.
+
+    Returns:
+        Image -- Requested Image object.
+    """
+    image = Image.open(get_filename(image_type, asset_name))
+    if bob_down(frame_num):
         return translate_image(image, 'down', 1)
     return image
 
@@ -194,9 +213,9 @@ def getFrame(frameNum, assets):
             else:
                 assetName += "A"
         if imageInfo['type'] == "2frame":
-            imageLayer = get2FrameAsset(imageType, assetName, frameNum)
+            imageLayer = get_2frame_asset(imageType, assetName, frameNum)
         elif imageInfo['type'] == "custom":
-            imageLayer = getCustomAsset(imageType, assetName, frameNum)
+            imageLayer = get_custom_asset(imageType, assetName, frameNum)
 
         if 'recolor' in imageInfo:
             for recolorType in imageInfo['recolor']:
@@ -250,7 +269,7 @@ if __name__ == "__main__":
 
     with open('presets/rin.json', 'r') as f:
         rinJson = json.load(f)
-    assets.debugOverride(rinJson)
+    assets.debug_override(rinJson)
 
     assets.debug()
     currentTime = datetime.today().strftime("%Y-%m-%d_%I:%M:%S%p")
