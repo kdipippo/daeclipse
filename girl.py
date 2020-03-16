@@ -3,6 +3,11 @@ from PIL import GifImagePlugin
 import json
 import random
 
+# Used for the background to be erased when the image is made transparent.
+# Set to a muted green color that does not coincide with the pixel art palette.
+DEFAULT_COLOR = (83,106,89,255)
+TRANSPARENT_COLOR = (255,255,255,0)
+
 class SelectedAssets:
   colors = {}
   images = {}
@@ -38,7 +43,7 @@ def translateImage(image, direction, pixels):
     transMatrix[5] += pixels
   elif direction == "down":
     transMatrix[5] -= pixels
-  return image.transform(image.size, Image.AFFINE, tuple(transMatrix))
+  return image.transform(image.size, Image.AFFINE, tuple(transMatrix), fillcolor=DEFAULT_COLOR)
 
 def getFilename(imageType, assetName):
   filename = f"images/{imageType}/{imageType}{assetName}.png"
@@ -80,6 +85,10 @@ def updatePalette(beforeImg, beforeColors, afterColors):
         afterPixelMap[i,j] = beforePixelMap[i,j]
   return afterImg
 
+def makeTransparent(img):
+  img = updatePalette(img, [DEFAULT_COLOR], [TRANSPARENT_COLOR])
+  return img
+
 def changeColor(img, colorDict, defaultColor, newColor):
   img = img.convert('RGBA')
   beforeHexes = colorDict[defaultColor]
@@ -91,7 +100,7 @@ def changeColor(img, colorDict, defaultColor, newColor):
 def getFrame(frameNum, assets):
   # get the order that images are layered
   sortedLayers = sorted(assetsJson['imageTypes'].items(), key=lambda x: x[1]['order'])
-  frame = Image.new('RGBA', (50,50), color=(83,106,89,255))
+  frame = Image.new('RGBA', (50,50), color=DEFAULT_COLOR)
   for layer in sortedLayers:
     imageType = layer[0]
     imageInfo = layer[1]
@@ -123,6 +132,7 @@ def getFrame(frameNum, assets):
     frame.paste(imageLayer, (0, 0), imageLayer)
 
   frame = translateImage(frame, 'left', 5)
+  frame = makeTransparent(frame)
   watermark = Image.open("images/watermark.png")
   frame.paste(watermark, (0, 0), watermark)
   return frame
@@ -133,7 +143,7 @@ def getGif(assets):
   frames = []
   for i in range(32):
     frames.append(getFrame(i, assets))
-  frames[0].save('GIRL4.gif', format='GIF', append_images=frames[1:], save_all=True, duration=100, loop=0)
+  frames[0].save('GIRL5.gif', format='GIF', append_images=frames[1:], save_all=True, duration=100, loop=0, transparency=0, disposal=2)
 
 # returns the list of colors and components for the generated gif
 def getAssetList(assetsJson):
