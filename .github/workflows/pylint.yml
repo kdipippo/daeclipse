@@ -1,6 +1,6 @@
 name: Pylint
 on: push
-name: on push
+
 jobs:
   pylint:
     runs-on: ubuntu-latest
