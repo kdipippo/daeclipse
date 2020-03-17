@@ -14,9 +14,11 @@ TRANSPARENT_COLOR = (255, 255, 255, 0)
 
 class SelectedAssets:
     """Class to handle the list of colors and images randomly generated for gif creation."""
+
     colors = {}
     images = {}
     json = None
+
     def add_color(self, color_type, selected_type):
         """Assign the selected palette to the component to recolor.
 
