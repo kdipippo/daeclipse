@@ -6,29 +6,54 @@ import json
 import sys
 import time
 from eclipse_api import DeviantArtEclipseAPI as Eclipse
+from eclipse_helpers import get_group_id
 
 def read_file_into_words(filename):
-    with open(filename) as f:
-        content = f.readlines()
+    """Parses a .txt file and returns each line as an entry in a list.
+
+    Arguments:
+        filename {string} -- Filename based on relative path.
+
+    Returns:
+        list -- List of strings.
+    """
+    with open(filename) as file:
+        content = file.readlines()
     content = [x.strip() for x in content]
     return content
 
 def get_percent(count, total):
+    """Return the percentage of how many groups have been parsed in the full input .txt file.
+
+    Arguments:
+        count {int} -- Current count.
+        total {int} -- Total.
+
+    Returns:
+        int -- Rounded-down percentage.
+    """
     result = count / total
     result *= 100
     result = int(result)
     return result
 
 def sleep_delay(start):
+    """Pause the program for 15 times the duration of any call made to DeviantArt.
+
+    Arguments:
+        start {float} -- Unix timestamp representing the start time.
+    """
     # wait 10x longer than it took them to respond
     response_delay = int(15 * (time.time() - start))
     print(f"                                 Sleeping {response_delay} seconds")
     time.sleep(response_delay)
 
-if __name__ == "__main__":
+def update_groups_listing():
+    """Update the eclipse_groups_listing.json file with groups and their folders based on what is
+    currently listed to parse in eclipse_groups_input.txt"""
     groups_listing_filename = 'eclipse_groups_listing.json'
-    with open(groups_listing_filename, 'r') as f:
-        groups_listing = json.load(f)
+    with open(groups_listing_filename, 'r') as file:
+        groups_listing = json.load(file)
 
     group_names = read_file_into_words('eclipse_groups_input.txt')
     eclipse = Eclipse()
@@ -37,9 +62,9 @@ if __name__ == "__main__":
         count += 1
         print(f"{get_percent(count,len(group_names))}% Done - Fetching '{group_name}'")
 
-        t0 = time.time()
-        group_id = eclipse.get_group_id(group_name)
-        sleep_delay(t0)
+        start_time = time.time()
+        group_id = get_group_id(group_name)
+        sleep_delay(start_time)
 
         group_info = {
             "group_name": group_name,
@@ -47,10 +72,10 @@ if __name__ == "__main__":
             "folders": []
         }
 
-        t0 = time.time()
+        start_time = time.time()
         group_folders = eclipse.get_group_folders(group_id)
         if count != len(group_names):
-            sleep_delay(t0)
+            sleep_delay(start_time)
 
         if "errors" in group_folders:
             print(json.dumps(group_folders))
@@ -71,5 +96,5 @@ if __name__ == "__main__":
         json_file.write(json.dumps(groups_listing, indent=2))
         json_file.close()
 
-    # groups I want to fetch: pixelized--world, kawaii-explosion
-
+if __name__ == "__main__":
+    update_groups_listing()
