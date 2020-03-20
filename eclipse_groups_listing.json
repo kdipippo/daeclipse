@@ -7,9 +7,4628 @@
   ],
   "groups_information": [
     {
-      "name": "example", "id": 12345,
+      "group_name": "Official-AnimeLegacy",
+      "group_id": "31077127",
       "folders": [
-        { "name": "Pixel Art and Avatars new", "id": 58457028, "categories": ["pixelart"] }
+        {
+          "folder_name": "Collaboration Arts",
+          "folder_id": 49306639,
+          "categories": []
+        },
+        {
+          "folder_name": "Naruto",
+          "folder_id": 49306284,
+          "categories": []
+        },
+        {
+          "folder_name": "FairyTail",
+          "folder_id": 49306353,
+          "categories": []
+        },
+        {
+          "folder_name": "Eden's Zero",
+          "folder_id": 51787748,
+          "categories": []
+        },
+        {
+          "folder_name": "Bleach",
+          "folder_id": 49306357,
+          "categories": []
+        },
+        {
+          "folder_name": "OnePiece",
+          "folder_id": 49306359,
+          "categories": []
+        },
+        {
+          "folder_name": "Line Arts",
+          "folder_id": 49307047,
+          "categories": []
+        },
+        {
+          "folder_name": "Base Color - PSD",
+          "folder_id": 49307049,
+          "categories": []
+        },
+        {
+          "folder_name": "Naruto - Fan Arts",
+          "folder_id": 51787805,
+          "categories": []
+        },
+        {
+          "folder_name": "FairyTail - Fan Arts",
+          "folder_id": 51787808,
+          "categories": []
+        },
+        {
+          "folder_name": "Bleach - Fan Arts",
+          "folder_id": 51787811,
+          "categories": []
+        },
+        {
+          "folder_name": "Manga Coloring",
+          "folder_id": 51787689,
+          "categories": []
+        },
+        {
+          "folder_name": "Manga Coloring 01",
+          "folder_id": 51787791,
+          "categories": []
+        },
+        {
+          "folder_name": "Manga Coloring 02",
+          "folder_id": 66102657,
+          "categories": []
+        },
+        {
+          "folder_name": "One Piece - Fan Arts",
+          "folder_id": 51787816,
+          "categories": []
+        },
+        {
+          "folder_name": "Air Gear",
+          "folder_id": 51787893,
+          "categories": []
+        },
+        {
+          "folder_name": "Akame Ga Kill",
+          "folder_id": 51787658,
+          "categories": []
+        },
+        {
+          "folder_name": "Akatsuki No Yona",
+          "folder_id": 52989559,
+          "categories": []
+        },
+        {
+          "folder_name": "Aldnoah Zero",
+          "folder_id": 51805831,
+          "categories": []
+        },
+        {
+          "folder_name": "Amnesia",
+          "folder_id": 51787661,
+          "categories": []
+        },
+        {
+          "folder_name": "Angel Beats",
+          "folder_id": 51787659,
+          "categories": []
+        },
+        {
+          "folder_name": "Another",
+          "folder_id": 51787663,
+          "categories": []
+        },
+        {
+          "folder_name": "Ao Haru Ride",
+          "folder_id": 51787666,
+          "categories": []
+        },
+        {
+          "folder_name": "Baka To Test",
+          "folder_id": 51787667,
+          "categories": []
+        },
+        {
+          "folder_name": "Beelzebub",
+          "folder_id": 49306368,
+          "categories": []
+        },
+        {
+          "folder_name": "Black Rock Shooter",
+          "folder_id": 51787675,
+          "categories": []
+        },
+        {
+          "folder_name": "Blood-C",
+          "folder_id": 52145060,
+          "categories": []
+        },
+        {
+          "folder_name": "Blood Plus",
+          "folder_id": 52145061,
+          "categories": []
+        },
+        {
+          "folder_name": "Brothers Conflict",
+          "folder_id": 54293562,
+          "categories": []
+        },
+        {
+          "folder_name": "Cardcaptor Sakura",
+          "folder_id": 51787681,
+          "categories": []
+        },
+        {
+          "folder_name": "Cardfight Vanguard",
+          "folder_id": 52166949,
+          "categories": []
+        },
+        {
+          "folder_name": "Clannad",
+          "folder_id": 51787683,
+          "categories": []
+        },
+        {
+          "folder_name": "Claymore",
+          "folder_id": 51787685,
+          "categories": []
+        },
+        {
+          "folder_name": "Code Geass",
+          "folder_id": 49306410,
+          "categories": []
+        },
+        {
+          "folder_name": "Cowboy Bebop",
+          "folder_id": 52405342,
+          "categories": []
+        },
+        {
+          "folder_name": "Danganronpa",
+          "folder_id": 51801690,
+          "categories": []
+        },
+        {
+          "folder_name": "Danmachi",
+          "folder_id": 54281860,
+          "categories": []
+        },
+        {
+          "folder_name": "Darker Than Black",
+          "folder_id": 52405323,
+          "categories": []
+        },
+        {
+          "folder_name": "Date A Live",
+          "folder_id": 49466918,
+          "categories": []
+        },
+        {
+          "folder_name": "Deadman Wonderland",
+          "folder_id": 51787692,
+          "categories": []
+        },
+        {
+          "folder_name": "DeathNote",
+          "folder_id": 49307247,
+          "categories": []
+        },
+        {
+          "folder_name": "Death Parade",
+          "folder_id": 53821826,
+          "categories": []
+        },
+        {
+          "folder_name": "Diabolik Lovers",
+          "folder_id": 54293536,
+          "categories": []
+        },
+        {
+          "folder_name": "Detective Conan",
+          "folder_id": 49306413,
+          "categories": []
+        },
+        {
+          "folder_name": "Diamond No Ace",
+          "folder_id": 51787694,
+          "categories": []
+        },
+        {
+          "folder_name": "Donten Ni Warau",
+          "folder_id": 54293576,
+          "categories": []
+        },
+        {
+          "folder_name": "Durarara",
+          "folder_id": 52405299,
+          "categories": []
+        },
+        {
+          "folder_name": "Eureka Seven",
+          "folder_id": 51805824,
+          "categories": []
+        },
+        {
+          "folder_name": "Fate - Stay Night",
+          "folder_id": 51811051,
+          "categories": []
+        },
+        {
+          "folder_name": "Fate - Zero",
+          "folder_id": 51811046,
+          "categories": []
+        },
+        {
+          "folder_name": "Free",
+          "folder_id": 51787695,
+          "categories": []
+        },
+        {
+          "folder_name": "Freezing",
+          "folder_id": 51787696,
+          "categories": []
+        },
+        {
+          "folder_name": "Fruits Basket",
+          "folder_id": 51787697,
+          "categories": []
+        },
+        {
+          "folder_name": "FullMetal Alchemist",
+          "folder_id": 49306415,
+          "categories": []
+        },
+        {
+          "folder_name": "Fushigi Yugi",
+          "folder_id": 51787705,
+          "categories": []
+        },
+        {
+          "folder_name": "Garo",
+          "folder_id": 51787706,
+          "categories": []
+        },
+        {
+          "folder_name": "Girls of the Wild's",
+          "folder_id": 51787709,
+          "categories": []
+        },
+        {
+          "folder_name": "Guilty Crown",
+          "folder_id": 49306423,
+          "categories": []
+        },
+        {
+          "folder_name": "Gun Gale Online",
+          "folder_id": 51787711,
+          "categories": []
+        },
+        {
+          "folder_name": "Gurren Lagann",
+          "folder_id": 54293592,
+          "categories": []
+        },
+        {
+          "folder_name": "Haikyuu",
+          "folder_id": 51787713,
+          "categories": []
+        },
+        {
+          "folder_name": "Hajime No Ippo Rising",
+          "folder_id": 51787715,
+          "categories": []
+        },
+        {
+          "folder_name": "Hataraku Maou Sama",
+          "folder_id": 51787716,
+          "categories": []
+        },
+        {
+          "folder_name": "Haruhi Suzumiya",
+          "folder_id": 54293436,
+          "categories": []
+        },
+        {
+          "folder_name": "Hellsing",
+          "folder_id": 53821810,
+          "categories": []
+        },
+        {
+          "folder_name": "Hetalia",
+          "folder_id": 51787717,
+          "categories": []
+        },
+        {
+          "folder_name": "Highschool DxD",
+          "folder_id": 54293602,
+          "categories": []
+        },
+        {
+          "folder_name": "Hunter X Hunter",
+          "folder_id": 49306417,
+          "categories": []
+        },
+        {
+          "folder_name": "Highschool of the Dead",
+          "folder_id": 51787720,
+          "categories": []
+        },
+        {
+          "folder_name": "Hikaru no Go",
+          "folder_id": 51787721,
+          "categories": []
+        },
+        {
+          "folder_name": "Ikkitousen",
+          "folder_id": 51787722,
+          "categories": []
+        },
+        {
+          "folder_name": "Infinite Stratos",
+          "folder_id": 51787723,
+          "categories": []
+        },
+        {
+          "folder_name": "Inuyasha",
+          "folder_id": 51787727,
+          "categories": []
+        },
+        {
+          "folder_name": "Kaichou Wa Maid Sama",
+          "folder_id": 51787730,
+          "categories": []
+        },
+        {
+          "folder_name": "Kamigami No Asobi",
+          "folder_id": 54293463,
+          "categories": []
+        },
+        {
+          "folder_name": "Kenichi",
+          "folder_id": 51787732,
+          "categories": []
+        },
+        {
+          "folder_name": "Kill La Kill",
+          "folder_id": 51787735,
+          "categories": []
+        },
+        {
+          "folder_name": "Kimi ni Todoke",
+          "folder_id": 51787736,
+          "categories": []
+        },
+        {
+          "folder_name": "Kingdom",
+          "folder_id": 51805658,
+          "categories": []
+        },
+        {
+          "folder_name": "Kore Wa Zombie Desu Ka",
+          "folder_id": 51787739,
+          "categories": []
+        },
+        {
+          "folder_name": "Kuroshitsuji",
+          "folder_id": 51787742,
+          "categories": []
+        },
+        {
+          "folder_name": "Kyokai No Kanata",
+          "folder_id": 51787743,
+          "categories": []
+        },
+        {
+          "folder_name": "K-On",
+          "folder_id": 54293505,
+          "categories": []
+        },
+        {
+          "folder_name": "Magi - Labyrinth of Magic",
+          "folder_id": 51787744,
+          "categories": []
+        },
+        {
+          "folder_name": "Mekakucity Actors",
+          "folder_id": 52940356,
+          "categories": []
+        },
+        {
+          "folder_name": "Mirai Nikki",
+          "folder_id": 51787750,
+          "categories": []
+        },
+        {
+          "folder_name": "Nanatsu No Taizai",
+          "folder_id": 51799818,
+          "categories": []
+        },
+        {
+          "folder_name": "Nisekoi",
+          "folder_id": 51787753,
+          "categories": []
+        },
+        {
+          "folder_name": "Noblesse",
+          "folder_id": 51787758,
+          "categories": []
+        },
+        {
+          "folder_name": "No Game No Life",
+          "folder_id": 51787754,
+          "categories": []
+        },
+        {
+          "folder_name": "Noragami",
+          "folder_id": 51787761,
+          "categories": []
+        },
+        {
+          "folder_name": "Ouran Host Club",
+          "folder_id": 51787762,
+          "categories": []
+        },
+        {
+          "folder_name": "Pandora Hearts",
+          "folder_id": 51805791,
+          "categories": []
+        },
+        {
+          "folder_name": "Parasyte",
+          "folder_id": 53821819,
+          "categories": []
+        },
+        {
+          "folder_name": "Pokemon",
+          "folder_id": 49466925,
+          "categories": []
+        },
+        {
+          "folder_name": "Psycho Pass",
+          "folder_id": 51787763,
+          "categories": []
+        },
+        {
+          "folder_name": "Puella Magi Madoka Magica",
+          "folder_id": 51811056,
+          "categories": []
+        },
+        {
+          "folder_name": "Sailor Moon",
+          "folder_id": 51787766,
+          "categories": []
+        },
+        {
+          "folder_name": "Rosario Vampire",
+          "folder_id": 51805607,
+          "categories": []
+        },
+        {
+          "folder_name": "Shaman King",
+          "folder_id": 51787768,
+          "categories": []
+        },
+        {
+          "folder_name": "Shingeki No Kyojin",
+          "folder_id": 49306361,
+          "categories": []
+        },
+        {
+          "folder_name": "Shokugeki No Soma",
+          "folder_id": 51787769,
+          "categories": []
+        },
+        {
+          "folder_name": "Soul Eater",
+          "folder_id": 49306436,
+          "categories": []
+        },
+        {
+          "folder_name": "Steins Gate",
+          "folder_id": 51787773,
+          "categories": []
+        },
+        {
+          "folder_name": "Sword Art Online",
+          "folder_id": 49306412,
+          "categories": []
+        },
+        {
+          "folder_name": "The Prince Of Tennis",
+          "folder_id": 51787776,
+          "categories": []
+        },
+        {
+          "folder_name": "The World God Only Knows",
+          "folder_id": 54293472,
+          "categories": []
+        },
+        {
+          "folder_name": "To Love-Ru",
+          "folder_id": 51787778,
+          "categories": []
+        },
+        {
+          "folder_name": "Tokyo ESP",
+          "folder_id": 51787779,
+          "categories": []
+        },
+        {
+          "folder_name": "Tokyo Ghoul",
+          "folder_id": 51787780,
+          "categories": []
+        },
+        {
+          "folder_name": "Toradora",
+          "folder_id": 51787782,
+          "categories": []
+        },
+        {
+          "folder_name": "Toriko",
+          "folder_id": 51787784,
+          "categories": []
+        },
+        {
+          "folder_name": "Trinity Seven",
+          "folder_id": 51787787,
+          "categories": []
+        },
+        {
+          "folder_name": "Yu-Gi-Oh",
+          "folder_id": 51787800,
+          "categories": []
+        },
+        {
+          "folder_name": "Vocaloid",
+          "folder_id": 51787803,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional Arts",
+          "folder_id": 49306618,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional Arts 01",
+          "folder_id": 51787672,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional Arts 02",
+          "folder_id": 54214347,
+          "categories": []
+        },
+        {
+          "folder_name": "Fan Arts",
+          "folder_id": 49306478,
+          "categories": []
+        },
+        {
+          "folder_name": "Fan Arts 01",
+          "folder_id": 61069080,
+          "categories": []
+        },
+        {
+          "folder_name": "Fan Arts 02",
+          "folder_id": 61069082,
+          "categories": []
+        },
+        {
+          "folder_name": "Fan Arts 03",
+          "folder_id": 51787679,
+          "categories": []
+        },
+        {
+          "folder_name": "Fan Arts 04",
+          "folder_id": 51787798,
+          "categories": []
+        },
+        {
+          "folder_name": "Fan Arts 05",
+          "folder_id": 51787774,
+          "categories": []
+        },
+        {
+          "folder_name": "Fan - Line Art",
+          "folder_id": 49326514,
+          "categories": []
+        },
+        {
+          "folder_name": "OC , Memes",
+          "folder_id": 49306486,
+          "categories": []
+        },
+        {
+          "folder_name": "OC , Memes 01",
+          "folder_id": 61069083,
+          "categories": []
+        },
+        {
+          "folder_name": "OC , Memes 02",
+          "folder_id": 51787796,
+          "categories": []
+        },
+        {
+          "folder_name": "CrossOver",
+          "folder_id": 49311903,
+          "categories": []
+        },
+        {
+          "folder_name": "Artisan Craft",
+          "folder_id": 49310996,
+          "categories": []
+        },
+        {
+          "folder_name": "Chibis",
+          "folder_id": 49307559,
+          "categories": []
+        },
+        {
+          "folder_name": "Stamps",
+          "folder_id": 49306488,
+          "categories": []
+        },
+        {
+          "folder_name": "Pixel",
+          "folder_id": 49310956,
+          "categories": []
+        },
+        {
+          "folder_name": "Animation",
+          "folder_id": 49306491,
+          "categories": []
+        },
+        {
+          "folder_name": "Cosplay",
+          "folder_id": 49306493,
+          "categories": []
+        },
+        {
+          "folder_name": "FanFic",
+          "folder_id": 49306495,
+          "categories": []
+        },
+        {
+          "folder_name": "Photography",
+          "folder_id": 49306537,
+          "categories": []
+        },
+        {
+          "folder_name": "Tutorials",
+          "folder_id": 49306611,
+          "categories": []
+        },
+        {
+          "folder_name": "Journals",
+          "folder_id": 49306614,
+          "categories": []
+        },
+        {
+          "folder_name": "Contests",
+          "folder_id": 49306615,
+          "categories": []
+        },
+        {
+          "folder_name": "Commissions",
+          "folder_id": 49306648,
+          "categories": []
+        },
+        {
+          "folder_name": "Flash Games",
+          "folder_id": 49327313,
+          "categories": []
+        },
+        {
+          "folder_name": "Dress Up Games",
+          "folder_id": 49326954,
+          "categories": []
+        },
+        {
+          "folder_name": "Games",
+          "folder_id": 49306497,
+          "categories": []
+        },
+        {
+          "folder_name": "WIPs",
+          "folder_id": 49327276,
+          "categories": []
+        },
+        {
+          "folder_name": "Mature",
+          "folder_id": 49306500,
+          "categories": []
+        },
+        {
+          "folder_name": "Mature 01",
+          "folder_id": 61069088,
+          "categories": []
+        },
+        {
+          "folder_name": "Mature 02",
+          "folder_id": 54293484,
+          "categories": []
+        },
+        {
+          "folder_name": "Signature",
+          "folder_id": 51017093,
+          "categories": []
+        },
+        {
+          "folder_name": "Manhwa",
+          "folder_id": 51805705,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "MultitalentedARTist",
+      "group_id": "45869094",
+      "folders": [
+        {
+          "folder_name": "Featured",
+          "folder_id": 66545679,
+          "categories": []
+        },
+        {
+          "folder_name": "Adoptables and advertisement",
+          "folder_id": 70328452,
+          "categories": []
+        },
+        {
+          "folder_name": "CHALLENGE: Try something new",
+          "folder_id": 68172880,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital Art",
+          "folder_id": 66545692,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional Art",
+          "folder_id": 66545694,
+          "categories": []
+        },
+        {
+          "folder_name": "Photography",
+          "folder_id": 66545704,
+          "categories": []
+        },
+        {
+          "folder_name": "Photomanipulation",
+          "folder_id": 66762491,
+          "categories": []
+        },
+        {
+          "folder_name": "Fractal Art",
+          "folder_id": 66690854,
+          "categories": []
+        },
+        {
+          "folder_name": "Comics and Manga",
+          "folder_id": 66625392,
+          "categories": []
+        },
+        {
+          "folder_name": "Film and Animation",
+          "folder_id": 66545721,
+          "categories": []
+        },
+        {
+          "folder_name": "Pixel Art",
+          "folder_id": 68132997,
+          "categories": []
+        },
+        {
+          "folder_name": "Design and Interfaces",
+          "folder_id": 66545725,
+          "categories": []
+        },
+        {
+          "folder_name": "Resources and Stock Images",
+          "folder_id": 66545732,
+          "categories": []
+        },
+        {
+          "folder_name": "Artisan Crafts",
+          "folder_id": 70407337,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "raffle-adoptables",
+      "group_id": "26444330",
+      "folders": [
+        {
+          "folder_name": "Featured",
+          "folder_id": 43320510,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "AdoptRaffle",
+      "group_id": "36092897",
+      "folders": [
+        {
+          "folder_name": "Humanoid, Gijinka, Anthro, Kemonomimi",
+          "folder_id": 54874960,
+          "categories": []
+        },
+        {
+          "folder_name": "Ferals, Quads, Avians, etc.",
+          "folder_id": 54874966,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "DiscoverArts",
+      "group_id": "44891356",
+      "folders": [
+        {
+          "folder_name": "Digital Arts 1",
+          "folder_id": 71950636,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional Arts 1",
+          "folder_id": 71950641,
+          "categories": []
+        },
+        {
+          "folder_name": "Photography Arts 1",
+          "folder_id": 71950645,
+          "categories": []
+        },
+        {
+          "folder_name": "3D Arts 1",
+          "folder_id": 71950651,
+          "categories": []
+        },
+        {
+          "folder_name": "Literature Arts 1",
+          "folder_id": 71950655,
+          "categories": []
+        },
+        {
+          "folder_name": "Animation Arts 1",
+          "folder_id": 71950660,
+          "categories": []
+        },
+        {
+          "folder_name": "Anime - Manga Arts 1",
+          "folder_id": 71950664,
+          "categories": []
+        },
+        {
+          "folder_name": "Adoptables Arts 1",
+          "folder_id": 71950669,
+          "categories": []
+        },
+        {
+          "folder_name": "Fan Arts 1",
+          "folder_id": 71950673,
+          "categories": []
+        },
+        {
+          "folder_name": "Stamps Arts 1",
+          "folder_id": 71950678,
+          "categories": []
+        },
+        {
+          "folder_name": "Journals 1",
+          "folder_id": 71950683,
+          "categories": []
+        },
+        {
+          "folder_name": "Tutorials Arts 1",
+          "folder_id": 71950784,
+          "categories": []
+        },
+        {
+          "folder_name": "Scraps Arts 1",
+          "folder_id": 71950789,
+          "categories": []
+        },
+        {
+          "folder_name": "Mature Arts 1",
+          "folder_id": 71950794,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital Arts 2",
+          "folder_id": 71950637,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional Arts 2",
+          "folder_id": 71950642,
+          "categories": []
+        },
+        {
+          "folder_name": "Photography Arts 2",
+          "folder_id": 71950646,
+          "categories": []
+        },
+        {
+          "folder_name": "3D Arts 2",
+          "folder_id": 71950652,
+          "categories": []
+        },
+        {
+          "folder_name": "Literature Arts 2",
+          "folder_id": 71950656,
+          "categories": []
+        },
+        {
+          "folder_name": "Animation Arts 2",
+          "folder_id": 71950661,
+          "categories": []
+        },
+        {
+          "folder_name": "Anime - Manga Arts 2",
+          "folder_id": 71950665,
+          "categories": []
+        },
+        {
+          "folder_name": "Adoptables Arts 2",
+          "folder_id": 71950670,
+          "categories": []
+        },
+        {
+          "folder_name": "Fan Arts 2",
+          "folder_id": 71950674,
+          "categories": []
+        },
+        {
+          "folder_name": "Stamps Arts 2",
+          "folder_id": 71950679,
+          "categories": []
+        },
+        {
+          "folder_name": "Journals 2",
+          "folder_id": 71950775,
+          "categories": []
+        },
+        {
+          "folder_name": "Tutorials Arts 2",
+          "folder_id": 71950786,
+          "categories": []
+        },
+        {
+          "folder_name": "Scraps Arts 2",
+          "folder_id": 71950790,
+          "categories": []
+        },
+        {
+          "folder_name": "Mature Arts 2",
+          "folder_id": 71950795,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital Arts 3",
+          "folder_id": 71950639,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional Arts 3",
+          "folder_id": 71950643,
+          "categories": []
+        },
+        {
+          "folder_name": "Photography Arts 3",
+          "folder_id": 71950648,
+          "categories": []
+        },
+        {
+          "folder_name": "3D Arts 3",
+          "folder_id": 71950653,
+          "categories": []
+        },
+        {
+          "folder_name": "Literature Arts 3",
+          "folder_id": 71950658,
+          "categories": []
+        },
+        {
+          "folder_name": "Animation Arts 3",
+          "folder_id": 71950662,
+          "categories": []
+        },
+        {
+          "folder_name": "Anime - Manga Arts 3",
+          "folder_id": 71950666,
+          "categories": []
+        },
+        {
+          "folder_name": "Adoptables Arts 3",
+          "folder_id": 71950671,
+          "categories": []
+        },
+        {
+          "folder_name": "Fan Arts 3",
+          "folder_id": 71950675,
+          "categories": []
+        },
+        {
+          "folder_name": "Stamps Arts 3",
+          "folder_id": 71950681,
+          "categories": []
+        },
+        {
+          "folder_name": "Journals 3",
+          "folder_id": 71950776,
+          "categories": []
+        },
+        {
+          "folder_name": "Tutorials Arts 3",
+          "folder_id": 71950787,
+          "categories": []
+        },
+        {
+          "folder_name": "Scraps Arts 3",
+          "folder_id": 71950792,
+          "categories": []
+        },
+        {
+          "folder_name": "Mature Arts 3",
+          "folder_id": 71950796,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital Arts 4",
+          "folder_id": 71950640,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional Arts 4",
+          "folder_id": 71950644,
+          "categories": []
+        },
+        {
+          "folder_name": "Photography Arts 4",
+          "folder_id": 71950649,
+          "categories": []
+        },
+        {
+          "folder_name": "3D Arts 4",
+          "folder_id": 71950654,
+          "categories": []
+        },
+        {
+          "folder_name": "Literature Arts 4",
+          "folder_id": 71950659,
+          "categories": []
+        },
+        {
+          "folder_name": "Animation Arts 4",
+          "folder_id": 71950663,
+          "categories": []
+        },
+        {
+          "folder_name": "Anime - Manga Arts 4",
+          "folder_id": 71950667,
+          "categories": []
+        },
+        {
+          "folder_name": "Adoptables Arts 4",
+          "folder_id": 71950672,
+          "categories": []
+        },
+        {
+          "folder_name": "Fan Arts 4",
+          "folder_id": 71950677,
+          "categories": []
+        },
+        {
+          "folder_name": "Stamps Arts 4",
+          "folder_id": 71950682,
+          "categories": []
+        },
+        {
+          "folder_name": "Journals 4",
+          "folder_id": 71950777,
+          "categories": []
+        },
+        {
+          "folder_name": "Tutorials Arts 4",
+          "folder_id": 71950788,
+          "categories": []
+        },
+        {
+          "folder_name": "Scraps Arts 4",
+          "folder_id": 71950793,
+          "categories": []
+        },
+        {
+          "folder_name": "Mature Arts 4",
+          "folder_id": 71950797,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "Adoptable-OC",
+      "group_id": "38612496",
+      "folders": [
+        {
+          "folder_name": "Featured",
+          "folder_id": 58044286,
+          "categories": []
+        },
+        {
+          "folder_name": "Points Set Price",
+          "folder_id": 68952428,
+          "categories": []
+        },
+        {
+          "folder_name": "Points Auctions",
+          "folder_id": 58044312,
+          "categories": []
+        },
+        {
+          "folder_name": "PayPal Auctions II",
+          "folder_id": 72020693,
+          "categories": []
+        },
+        {
+          "folder_name": "Paypal Set Price",
+          "folder_id": 69653039,
+          "categories": []
+        },
+        {
+          "folder_name": "Dual Payment Set Price",
+          "folder_id": 65959013,
+          "categories": []
+        },
+        {
+          "folder_name": "Dual Payment Auctions",
+          "folder_id": 58044314,
+          "categories": []
+        },
+        {
+          "folder_name": "OTA - Offer To Adopt, NYP - Name Your Price",
+          "folder_id": 68316050,
+          "categories": []
+        },
+        {
+          "folder_name": "Mystery, Gacha, Eggs, Breedables, Aesthetics",
+          "folder_id": 58050911,
+          "categories": []
+        },
+        {
+          "folder_name": "Free - Draw or Write to Adopt - Raffles",
+          "folder_id": 58056434,
+          "categories": []
+        },
+        {
+          "folder_name": "F2U + P2U Bases",
+          "folder_id": 58044323,
+          "categories": []
+        },
+        {
+          "folder_name": "Journals, Commissions and Advertisements",
+          "folder_id": 58044584,
+          "categories": []
+        },
+        {
+          "folder_name": "Custom Info",
+          "folder_id": 62402857,
+          "categories": []
+        },
+        {
+          "folder_name": "Original Species ref Sheets ONLY",
+          "folder_id": 58053412,
+          "categories": []
+        },
+        {
+          "folder_name": "FINISHED Comms + YCH + Customs",
+          "folder_id": 64551983,
+          "categories": []
+        },
+        {
+          "folder_name": "YCH - Your Character Here",
+          "folder_id": 69175581,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "Adoptik",
+      "group_id": "42200771",
+      "folders": [
+        {
+          "folder_name": "Auctions",
+          "folder_id": 70207443,
+          "categories": []
+        },
+        {
+          "folder_name": "Set Prices",
+          "folder_id": 70207444,
+          "categories": []
+        },
+        {
+          "folder_name": "Breedables",
+          "folder_id": 62809908,
+          "categories": []
+        },
+        {
+          "folder_name": "DTA, OTA, YCH",
+          "folder_id": 68076543,
+          "categories": []
+        },
+        {
+          "folder_name": "Raffles",
+          "folder_id": 65388236,
+          "categories": []
+        },
+        {
+          "folder_name": "Free",
+          "folder_id": 62636183,
+          "categories": []
+        },
+        {
+          "folder_name": "Comissions",
+          "folder_id": 65588588,
+          "categories": []
+        },
+        {
+          "folder_name": "Customs",
+          "folder_id": 62666082,
+          "categories": []
+        },
+        {
+          "folder_name": "Sold Adopts just for show",
+          "folder_id": 62636204,
+          "categories": []
+        },
+        {
+          "folder_name": "Journals",
+          "folder_id": 65588605,
+          "categories": []
+        },
+        {
+          "folder_name": "Mature Content",
+          "folder_id": 62636184,
+          "categories": []
+        },
+        {
+          "folder_name": "Other",
+          "folder_id": 70207445,
+          "categories": []
+        },
+        {
+          "folder_name": "Auctions 2",
+          "folder_id": 70207446,
+          "categories": []
+        },
+        {
+          "folder_name": "Set Prices 2",
+          "folder_id": 70207447,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "artsu-licious",
+      "group_id": "41176353",
+      "folders": [
+        {
+          "folder_name": "Commission Info, YCHs",
+          "folder_id": 61320749,
+          "categories": []
+        },
+        {
+          "folder_name": "Raffles, LFs, ATs, etc.",
+          "folder_id": 66381500,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional pieces",
+          "folder_id": 61320581,
+          "categories": []
+        },
+        {
+          "folder_name": "Literature",
+          "folder_id": 61322265,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital pieces",
+          "folder_id": 61320580,
+          "categories": []
+        },
+        {
+          "folder_name": "Photography",
+          "folder_id": 61320582,
+          "categories": []
+        },
+        {
+          "folder_name": "Pixel art",
+          "folder_id": 61322245,
+          "categories": []
+        },
+        {
+          "folder_name": "Dollmakers",
+          "folder_id": 63172760,
+          "categories": []
+        },
+        {
+          "folder_name": "Animations",
+          "folder_id": 69366817,
+          "categories": []
+        },
+        {
+          "folder_name": "Adoptables",
+          "folder_id": 61322266,
+          "categories": []
+        },
+        {
+          "folder_name": "Resources, Tutorials, Brush settings",
+          "folder_id": 66128718,
+          "categories": []
+        },
+        {
+          "folder_name": "Collages, Moodboards",
+          "folder_id": 61844884,
+          "categories": []
+        },
+        {
+          "folder_name": "Stamps, Buttons",
+          "folder_id": 63172806,
+          "categories": []
+        },
+        {
+          "folder_name": "MMD",
+          "folder_id": 65141658,
+          "categories": []
+        },
+        {
+          "folder_name": "P2U Bases",
+          "folder_id": 63208093,
+          "categories": []
+        },
+        {
+          "folder_name": "F2U Bases",
+          "folder_id": 63208094,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "ContestsAndGiveaways",
+      "group_id": "25964887",
+      "folders": [
+        {
+          "folder_name": "Kiribans",
+          "folder_id": 42664998,
+          "categories": []
+        },
+        {
+          "folder_name": "Points Giveaways",
+          "folder_id": 42664984,
+          "categories": []
+        },
+        {
+          "folder_name": "PM Giveaways",
+          "folder_id": 42664987,
+          "categories": []
+        },
+        {
+          "folder_name": "Art Giveaways",
+          "folder_id": 42664989,
+          "categories": []
+        },
+        {
+          "folder_name": "Real Life Items Giveaways",
+          "folder_id": 43897469,
+          "categories": []
+        },
+        {
+          "folder_name": "Feature Giveaways",
+          "folder_id": 42664991,
+          "categories": []
+        },
+        {
+          "folder_name": "Other Giveaways",
+          "folder_id": 42664992,
+          "categories": []
+        },
+        {
+          "folder_name": "Winner Announcements and Features",
+          "folder_id": 42769939,
+          "categories": []
+        },
+        {
+          "folder_name": "Kiribans",
+          "folder_id": 64686458,
+          "categories": []
+        },
+        {
+          "folder_name": "Art Contests",
+          "folder_id": 64686480,
+          "categories": []
+        },
+        {
+          "folder_name": "Writing Contests",
+          "folder_id": 64686487,
+          "categories": []
+        },
+        {
+          "folder_name": "Mixed Medium Contests",
+          "folder_id": 64686489,
+          "categories": []
+        },
+        {
+          "folder_name": "Other Contests",
+          "folder_id": 64686498,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "Raffle-Group",
+      "group_id": "40517582",
+      "folders": [
+        {
+          "folder_name": "Featured",
+          "folder_id": 60408805,
+          "categories": []
+        },
+        {
+          "folder_name": "General Raffles",
+          "folder_id": 60408811,
+          "categories": []
+        },
+        {
+          "folder_name": "YCH Raffles",
+          "folder_id": 60408813,
+          "categories": []
+        },
+        {
+          "folder_name": "Watcher Raffles",
+          "folder_id": 64619485,
+          "categories": []
+        },
+        {
+          "folder_name": "Free NON WATCHER Raffles",
+          "folder_id": 64619490,
+          "categories": []
+        },
+        {
+          "folder_name": "Adopt Raffles",
+          "folder_id": 64619514,
+          "categories": []
+        },
+        {
+          "folder_name": "Other Raffles",
+          "folder_id": 64619517,
+          "categories": []
+        },
+        {
+          "folder_name": "Group and Advertisement Raffles",
+          "folder_id": 64619518,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "artist-exposure",
+      "group_id": "2808302",
+      "folders": [
+        {
+          "folder_name": "PLEASE CHOOSE CORRECT FOLDER",
+          "folder_id": 68752234,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital - Places and Things",
+          "folder_id": 68899773,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital - People",
+          "folder_id": 72348145,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional - People",
+          "folder_id": 68899768,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional Art + Places and Things",
+          "folder_id": 64478215,
+          "categories": []
+        },
+        {
+          "folder_name": "Pixel Art",
+          "folder_id": 64478147,
+          "categories": []
+        },
+        {
+          "folder_name": "Photography + People",
+          "folder_id": 64478261,
+          "categories": []
+        },
+        {
+          "folder_name": "Photography + Places and Things",
+          "folder_id": 64478262,
+          "categories": []
+        },
+        {
+          "folder_name": "Photomanipulation",
+          "folder_id": 64478062,
+          "categories": []
+        },
+        {
+          "folder_name": "Mixed Media",
+          "folder_id": 64478047,
+          "categories": []
+        },
+        {
+          "folder_name": "Original Literature",
+          "folder_id": 52454037,
+          "categories": []
+        },
+        {
+          "folder_name": "Fanfiction",
+          "folder_id": 52454030,
+          "categories": []
+        },
+        {
+          "folder_name": "Sketches and WIPs",
+          "folder_id": 64478146,
+          "categories": []
+        },
+        {
+          "folder_name": "Fan Art + Game 2",
+          "folder_id": 67500218,
+          "categories": []
+        },
+        {
+          "folder_name": "Fanart - Animanga 2",
+          "folder_id": 68752012,
+          "categories": []
+        },
+        {
+          "folder_name": "Fan Art + Miscellaneous",
+          "folder_id": 64478131,
+          "categories": []
+        },
+        {
+          "folder_name": "fanart + books movies, tv 2",
+          "folder_id": 72371355,
+          "categories": []
+        },
+        {
+          "folder_name": "Crafts",
+          "folder_id": 52454024,
+          "categories": []
+        },
+        {
+          "folder_name": "Commission Sheets and Info",
+          "folder_id": 58169263,
+          "categories": []
+        },
+        {
+          "folder_name": "Fan Comic Pages",
+          "folder_id": 68752159,
+          "categories": []
+        },
+        {
+          "folder_name": "Original Comic Pages",
+          "folder_id": 64636643,
+          "categories": []
+        },
+        {
+          "folder_name": "Contests",
+          "folder_id": 64478555,
+          "categories": []
+        },
+        {
+          "folder_name": "Animations",
+          "folder_id": 64478080,
+          "categories": []
+        },
+        {
+          "folder_name": "Tutorials",
+          "folder_id": 52454039,
+          "categories": []
+        },
+        {
+          "folder_name": "3D and Fractal 2",
+          "folder_id": 67500206,
+          "categories": []
+        },
+        {
+          "folder_name": "Miscellaneous",
+          "folder_id": 68752149,
+          "categories": []
+        },
+        {
+          "folder_name": "Adoptables",
+          "folder_id": 70899477,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "Cute-in-a-Cup",
+      "group_id": "32016032",
+      "folders": [
+        {
+          "folder_name": "Cuties in Cups and Tiny Tea Time",
+          "folder_id": 66703498,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional",
+          "folder_id": 50348434,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital",
+          "folder_id": 61998043,
+          "categories": []
+        },
+        {
+          "folder_name": "Photos, Arts n' Crafts",
+          "folder_id": 50348438,
+          "categories": []
+        },
+        {
+          "folder_name": "Pixels",
+          "folder_id": 50348997,
+          "categories": []
+        },
+        {
+          "folder_name": "Literature",
+          "folder_id": 50348437,
+          "categories": []
+        },
+        {
+          "folder_name": "Adoptables, Ref, Other",
+          "folder_id": 50348441,
+          "categories": []
+        },
+        {
+          "folder_name": "Recources, Tutorials",
+          "folder_id": 50348981,
+          "categories": []
+        },
+        {
+          "folder_name": "Info n' Advertisements",
+          "folder_id": 52202533,
+          "categories": []
+        },
+        {
+          "folder_name": "\"Baby\" Mascot Art",
+          "folder_id": 53467978,
+          "categories": []
+        },
+        {
+          "folder_name": "Artistic Progress, Art summary, no WIPs",
+          "folder_id": 65191313,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "Cute-Kawaii-Love",
+      "group_id": "27423070",
+      "folders": [
+        {
+          "folder_name": "Artisan Crafts and Jewelry",
+          "folder_id": 44696698,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital Art",
+          "folder_id": 44696702,
+          "categories": []
+        },
+        {
+          "folder_name": "Fan Art",
+          "folder_id": 44696735,
+          "categories": []
+        },
+        {
+          "folder_name": "Food and Drink -Real",
+          "folder_id": 44696711,
+          "categories": []
+        },
+        {
+          "folder_name": "Photography",
+          "folder_id": 44696708,
+          "categories": []
+        },
+        {
+          "folder_name": "Pixel Art",
+          "folder_id": 44696809,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional Art",
+          "folder_id": 44696703,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "ForeverKawaiiDesu",
+      "group_id": "25628324",
+      "folders": [
+        {
+          "folder_name": "Kawaii Digital Art",
+          "folder_id": 42161669,
+          "categories": []
+        },
+        {
+          "folder_name": "Kawaii Traditional Art",
+          "folder_id": 42161677,
+          "categories": []
+        },
+        {
+          "folder_name": "Fan Art",
+          "folder_id": 42161682,
+          "categories": []
+        },
+        {
+          "folder_name": "Pixel Art",
+          "folder_id": 42161683,
+          "categories": []
+        },
+        {
+          "folder_name": "Free to use",
+          "folder_id": 42161686,
+          "categories": []
+        },
+        {
+          "folder_name": "Photography",
+          "folder_id": 42161700,
+          "categories": []
+        },
+        {
+          "folder_name": "Animation - Flash Games",
+          "folder_id": 42161706,
+          "categories": []
+        },
+        {
+          "folder_name": "Tutorials",
+          "folder_id": 42161715,
+          "categories": []
+        },
+        {
+          "folder_name": "Kawaii Stocks",
+          "folder_id": 42161718,
+          "categories": []
+        },
+        {
+          "folder_name": "Kawaii Crafts",
+          "folder_id": 42161723,
+          "categories": []
+        },
+        {
+          "folder_name": "Kawaii Foods",
+          "folder_id": 42161724,
+          "categories": []
+        },
+        {
+          "folder_name": "Kawaii Literature - Poetry",
+          "folder_id": 42163104,
+          "categories": []
+        },
+        {
+          "folder_name": "Kawaii Adopts",
+          "folder_id": 42171064,
+          "categories": []
+        },
+        {
+          "folder_name": "Pay 2 Use",
+          "folder_id": 42171230,
+          "categories": []
+        },
+        {
+          "folder_name": "MikuMikuDance",
+          "folder_id": 42171703,
+          "categories": []
+        },
+        {
+          "folder_name": "Kawaii Misc.",
+          "folder_id": 42171740,
+          "categories": []
+        },
+        {
+          "folder_name": "Contest Entries",
+          "folder_id": 42175328,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "Kawaii--Paradise",
+      "group_id": "20086679",
+      "folders": [
+        {
+          "folder_name": "Featured",
+          "folder_id": 34079177,
+          "categories": []
+        },
+        {
+          "folder_name": "New Digital Art",
+          "folder_id": 63815494,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional Art",
+          "folder_id": 54176937,
+          "categories": []
+        },
+        {
+          "folder_name": "Pixel Art",
+          "folder_id": 54176940,
+          "categories": []
+        },
+        {
+          "folder_name": "Artisan Crafts",
+          "folder_id": 54176945,
+          "categories": []
+        },
+        {
+          "folder_name": "Adopts",
+          "folder_id": 54176958,
+          "categories": []
+        },
+        {
+          "folder_name": "Chibis",
+          "folder_id": 57695429,
+          "categories": []
+        },
+        {
+          "folder_name": "Anime",
+          "folder_id": 58364953,
+          "categories": []
+        },
+        {
+          "folder_name": "Sketches W.I.P.S",
+          "folder_id": 54176951,
+          "categories": []
+        },
+        {
+          "folder_name": "Kawaii Paradise Mascot Alice",
+          "folder_id": 36862401,
+          "categories": []
+        },
+        {
+          "folder_name": "Photography",
+          "folder_id": 57652202,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "manga-anime--art",
+      "group_id": "22189777",
+      "folders": [
+        {
+          "folder_name": "Featured",
+          "folder_id": 37355233,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital Art NEW",
+          "folder_id": 68967708,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional Art",
+          "folder_id": 37355251,
+          "categories": []
+        },
+        {
+          "folder_name": "FanArt Digital NEW",
+          "folder_id": 69954417,
+          "categories": []
+        },
+        {
+          "folder_name": "Fan Art, Traditional",
+          "folder_id": 42049754,
+          "categories": []
+        },
+        {
+          "folder_name": "LineArt and Colorings",
+          "folder_id": 40191952,
+          "categories": []
+        },
+        {
+          "folder_name": "Critique my work",
+          "folder_id": 37904666,
+          "categories": []
+        },
+        {
+          "folder_name": "Commission Info",
+          "folder_id": 37904657,
+          "categories": []
+        },
+        {
+          "folder_name": "Fanfiction",
+          "folder_id": 42049370,
+          "categories": []
+        },
+        {
+          "folder_name": "Tutorials",
+          "folder_id": 37904869,
+          "categories": []
+        },
+        {
+          "folder_name": "Page Strips and Comics",
+          "folder_id": 39380027,
+          "categories": []
+        },
+        {
+          "folder_name": "Cosplay",
+          "folder_id": 42049365,
+          "categories": []
+        },
+        {
+          "folder_name": "Artisan Craft",
+          "folder_id": 42049376,
+          "categories": []
+        },
+        {
+          "folder_name": "Sketches and WIP's",
+          "folder_id": 39380019,
+          "categories": []
+        },
+        {
+          "folder_name": "Memes",
+          "folder_id": 40191933,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital Art FULL",
+          "folder_id": 37355248,
+          "categories": []
+        },
+        {
+          "folder_name": "Fan Art, Digital FULL",
+          "folder_id": 39380025,
+          "categories": []
+        },
+        {
+          "folder_name": "Digtal Art FULL",
+          "folder_id": 62419712,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "Anime-Manga-Fam",
+      "group_id": "33868659",
+      "folders": [
+        {
+          "folder_name": "AniManga",
+          "folder_id": 66658563,
+          "categories": []
+        },
+        {
+          "folder_name": "AniManga 1",
+          "folder_id": 61523565,
+          "categories": []
+        },
+        {
+          "folder_name": "AniManga 2",
+          "folder_id": 64112432,
+          "categories": []
+        },
+        {
+          "folder_name": "AniManga 3",
+          "folder_id": 70667831,
+          "categories": []
+        },
+        {
+          "folder_name": "Fantasy",
+          "folder_id": 61602491,
+          "categories": []
+        },
+        {
+          "folder_name": "Chibi",
+          "folder_id": 57069626,
+          "categories": []
+        },
+        {
+          "folder_name": "Comics",
+          "folder_id": 52447790,
+          "categories": []
+        },
+        {
+          "folder_name": "Monochrome",
+          "folder_id": 62400808,
+          "categories": []
+        },
+        {
+          "folder_name": "Cosplay",
+          "folder_id": 53734091,
+          "categories": []
+        },
+        {
+          "folder_name": "Artisan",
+          "folder_id": 60432022,
+          "categories": []
+        },
+        {
+          "folder_name": "Journals",
+          "folder_id": 54893552,
+          "categories": []
+        },
+        {
+          "folder_name": "Mascot Contest",
+          "folder_id": 61371371,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "All-Art-is-Adored",
+      "group_id": "18962042",
+      "folders": [
+        {
+          "folder_name": "Adoptables",
+          "folder_id": 33896275,
+          "categories": []
+        },
+        {
+          "folder_name": "YCH",
+          "folder_id": 62567721,
+          "categories": []
+        },
+        {
+          "folder_name": "Icons-pixels-stamps-animations-flash",
+          "folder_id": 32545823,
+          "categories": []
+        },
+        {
+          "folder_name": "Memes",
+          "folder_id": 37005928,
+          "categories": []
+        },
+        {
+          "folder_name": "Cosplay",
+          "folder_id": 32545802,
+          "categories": []
+        },
+        {
+          "folder_name": "Photography NOT COSPLAY",
+          "folder_id": 32545815,
+          "categories": []
+        },
+        {
+          "folder_name": "Crafts Merchandise n Paper Children",
+          "folder_id": 32545822,
+          "categories": []
+        },
+        {
+          "folder_name": "ONLY Journals + Commission Info",
+          "folder_id": 36719578,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital",
+          "folder_id": 69635896,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional",
+          "folder_id": 69635918,
+          "categories": []
+        },
+        {
+          "folder_name": "Photomanipulation - Edits - 3DModels",
+          "folder_id": 69635922,
+          "categories": []
+        },
+        {
+          "folder_name": "Literature",
+          "folder_id": 69635930,
+          "categories": []
+        },
+        {
+          "folder_name": "Comics",
+          "folder_id": 69635938,
+          "categories": []
+        },
+        {
+          "folder_name": "I don't know where to submit",
+          "folder_id": 69635964,
+          "categories": []
+        },
+        {
+          "folder_name": "Bases + Tutorials + Patterns",
+          "folder_id": 69636986,
+          "categories": []
+        },
+        {
+          "folder_name": "Graphic Design",
+          "folder_id": 70173035,
+          "categories": []
+        },
+        {
+          "folder_name": "Character Profiles",
+          "folder_id": 71531019,
+          "categories": []
+        },
+        {
+          "folder_name": "Patreon + Other advertisements",
+          "folder_id": 71531024,
+          "categories": []
+        },
+        {
+          "folder_name": "NSFW",
+          "folder_id": 71531030,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "Pretty-Anime-Girls",
+      "group_id": "13299570",
+      "folders": [
+        {
+          "folder_name": "GROUPS- MORE THAN ONE GIRL",
+          "folder_id": 24762719,
+          "categories": []
+        },
+        {
+          "folder_name": "Hetero Couples -Female main focus-",
+          "folder_id": 54623726,
+          "categories": []
+        },
+        {
+          "folder_name": "NON COLORED DRAWINGS",
+          "folder_id": 46562390,
+          "categories": []
+        },
+        {
+          "folder_name": "Cosplay girls photo's",
+          "folder_id": 31505951,
+          "categories": []
+        },
+        {
+          "folder_name": "OC and OC fanart - Single characters 7",
+          "folder_id": 57927609,
+          "categories": []
+        },
+        {
+          "folder_name": "Ecchi 2",
+          "folder_id": 58206100,
+          "categories": []
+        },
+        {
+          "folder_name": "NUDITY- NAKED GIRLS GO HERE",
+          "folder_id": 63120980,
+          "categories": []
+        },
+        {
+          "folder_name": "OC AND OC FANART SINGLE ORIGINAL CHARACTERS",
+          "folder_id": 64184009,
+          "categories": []
+        },
+        {
+          "folder_name": "ANIME FANART - ONE GIRL FROM ANIMES AND GAME 7",
+          "folder_id": 72006180,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "Digital-Anime-United",
+      "group_id": "13210241",
+      "folders": [
+        {
+          "folder_name": "2017",
+          "folder_id": 61770356,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "SHOW-MY-COLORS",
+      "group_id": "12413975",
+      "folders": [
+        {
+          "folder_name": "Submissions",
+          "folder_id": 67743894,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "All-4-all",
+      "group_id": "28194360",
+      "folders": [
+        {
+          "folder_name": "Raffles, Giveaways, Free",
+          "folder_id": 69004548,
+          "categories": []
+        },
+        {
+          "folder_name": "Drawing Contests Journals",
+          "folder_id": 69004549,
+          "categories": []
+        },
+        {
+          "folder_name": "Commissions Info",
+          "folder_id": 69004544,
+          "categories": []
+        },
+        {
+          "folder_name": "Trading Journals",
+          "folder_id": 69004558,
+          "categories": []
+        },
+        {
+          "folder_name": "YCH, CYOP",
+          "folder_id": 69004543,
+          "categories": []
+        },
+        {
+          "folder_name": "OTA, NYP, WTA, DTA",
+          "folder_id": 69004557,
+          "categories": []
+        },
+        {
+          "folder_name": "Gatcha, Eggs, Mystery",
+          "folder_id": 69004828,
+          "categories": []
+        },
+        {
+          "folder_name": "Breedables",
+          "folder_id": 69004836,
+          "categories": []
+        },
+        {
+          "folder_name": "Outfits and Items Adoptables",
+          "folder_id": 54923600,
+          "categories": []
+        },
+        {
+          "folder_name": "Humans, Kemonomimi",
+          "folder_id": 69004522,
+          "categories": []
+        },
+        {
+          "folder_name": "Anthro, Furry",
+          "folder_id": 69004524,
+          "categories": []
+        },
+        {
+          "folder_name": "Felines",
+          "folder_id": 69004525,
+          "categories": []
+        },
+        {
+          "folder_name": "Canines",
+          "folder_id": 69004526,
+          "categories": []
+        },
+        {
+          "folder_name": "Equines",
+          "folder_id": 69004527,
+          "categories": []
+        },
+        {
+          "folder_name": "Avians",
+          "folder_id": 69004528,
+          "categories": []
+        },
+        {
+          "folder_name": "Dragons",
+          "folder_id": 69004541,
+          "categories": []
+        },
+        {
+          "folder_name": "Original Species",
+          "folder_id": 69004542,
+          "categories": []
+        },
+        {
+          "folder_name": "Other Species",
+          "folder_id": 69004584,
+          "categories": []
+        },
+        {
+          "folder_name": "Adoptable F2U and P2U Bases",
+          "folder_id": 45757030,
+          "categories": []
+        },
+        {
+          "folder_name": "Post here if you are lazy to pick folder",
+          "folder_id": 69004563,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "CuteKawaiiClub",
+      "group_id": "27991229",
+      "folders": [
+        {
+          "folder_name": "FEATURED 2 - 2019 ART",
+          "folder_id": 68551593,
+          "categories": []
+        },
+        {
+          "folder_name": "SUBMIT HERE 2018",
+          "folder_id": 66568550,
+          "categories": []
+        },
+        {
+          "folder_name": "Journals Only",
+          "folder_id": 45486025,
+          "categories": []
+        },
+        {
+          "folder_name": "Original Traditional Art",
+          "folder_id": 45485440,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital Art I",
+          "folder_id": 65666178,
+          "categories": []
+        },
+        {
+          "folder_name": "Fan Art 4",
+          "folder_id": 63596292,
+          "categories": []
+        },
+        {
+          "folder_name": "Animations",
+          "folder_id": 45485448,
+          "categories": []
+        },
+        {
+          "folder_name": "Photography, PaperChildren, AND Crafts",
+          "folder_id": 45485444,
+          "categories": []
+        },
+        {
+          "folder_name": "Pixel Art",
+          "folder_id": 45485995,
+          "categories": []
+        },
+        {
+          "folder_name": "Gijinkas",
+          "folder_id": 47231912,
+          "categories": []
+        },
+        {
+          "folder_name": "Adoptables 2",
+          "folder_id": 63203659,
+          "categories": []
+        },
+        {
+          "folder_name": "Fan Art 3",
+          "folder_id": 60643379,
+          "categories": []
+        },
+        {
+          "folder_name": "Original Digital Art 5",
+          "folder_id": 62101099,
+          "categories": []
+        },
+        {
+          "folder_name": "Original Digital Art 6",
+          "folder_id": 63596270,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "All-Without-Limits",
+      "group_id": "32301463",
+      "folders": [
+        {
+          "folder_name": "Cosplay",
+          "folder_id": 50691249,
+          "categories": []
+        },
+        {
+          "folder_name": "Tutorials",
+          "folder_id": 50691253,
+          "categories": []
+        },
+        {
+          "folder_name": "Animation 3",
+          "folder_id": 61050001,
+          "categories": []
+        },
+        {
+          "folder_name": "Other 4",
+          "folder_id": 68712521,
+          "categories": []
+        },
+        {
+          "folder_name": "Photography 18",
+          "folder_id": 68712523,
+          "categories": []
+        },
+        {
+          "folder_name": "Photography 19",
+          "folder_id": 69484886,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional 23",
+          "folder_id": 69484888,
+          "categories": []
+        },
+        {
+          "folder_name": "Fan Art 23",
+          "folder_id": 69484889,
+          "categories": []
+        },
+        {
+          "folder_name": "Other 5",
+          "folder_id": 69484890,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital 34",
+          "folder_id": 71693411,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital 35",
+          "folder_id": 71693412,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital 36",
+          "folder_id": 71693413,
+          "categories": []
+        },
+        {
+          "folder_name": "Fan Art 24",
+          "folder_id": 71693414,
+          "categories": []
+        },
+        {
+          "folder_name": "Fan Art 25",
+          "folder_id": 71693415,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional 24",
+          "folder_id": 71693427,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional 25",
+          "folder_id": 71693428,
+          "categories": []
+        },
+        {
+          "folder_name": "Photography 20",
+          "folder_id": 71693431,
+          "categories": []
+        },
+        {
+          "folder_name": "Literature 11",
+          "folder_id": 71693564,
+          "categories": []
+        },
+        {
+          "folder_name": "Mature 5",
+          "folder_id": 71693565,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "UnlimitedEverything",
+      "group_id": "32110293",
+      "folders": [
+        {
+          "folder_name": "Where Does This Go?",
+          "folder_id": 69439473,
+          "categories": []
+        },
+        {
+          "folder_name": "Adopts II",
+          "folder_id": 71870421,
+          "categories": []
+        },
+        {
+          "folder_name": "Advertising Commissions, YCH, etc",
+          "folder_id": 67561687,
+          "categories": []
+        },
+        {
+          "folder_name": "Artisan Crafts II",
+          "folder_id": 68722242,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital Art XIV",
+          "folder_id": 71869881,
+          "categories": []
+        },
+        {
+          "folder_name": "FanArt XI - FULL",
+          "folder_id": 69745004,
+          "categories": []
+        },
+        {
+          "folder_name": "FanArt XII",
+          "folder_id": 71869991,
+          "categories": []
+        },
+        {
+          "folder_name": "Film And Movies",
+          "folder_id": 67100818,
+          "categories": []
+        },
+        {
+          "folder_name": "LineArt",
+          "folder_id": 56615578,
+          "categories": []
+        },
+        {
+          "folder_name": "Literature II",
+          "folder_id": 67793211,
+          "categories": []
+        },
+        {
+          "folder_name": "Mature III",
+          "folder_id": 69444394,
+          "categories": []
+        },
+        {
+          "folder_name": "Memes",
+          "folder_id": 68014506,
+          "categories": []
+        },
+        {
+          "folder_name": "OCs VIII - FULL",
+          "folder_id": 69666145,
+          "categories": []
+        },
+        {
+          "folder_name": "OCs IX",
+          "folder_id": 71869954,
+          "categories": []
+        },
+        {
+          "folder_name": "Photography VI - FULL",
+          "folder_id": 70085595,
+          "categories": []
+        },
+        {
+          "folder_name": "Photography VII",
+          "folder_id": 71869927,
+          "categories": []
+        },
+        {
+          "folder_name": "Resources And Stock Images",
+          "folder_id": 67036054,
+          "categories": []
+        },
+        {
+          "folder_name": "Stamps",
+          "folder_id": 56615616,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional Art VII - FULL",
+          "folder_id": 69247594,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional Art VIII",
+          "folder_id": 71870803,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "Universe-Artworks",
+      "group_id": "34175353",
+      "folders": [
+        {
+          "folder_name": "New Artworks - 1Everyday",
+          "folder_id": 69018545,
+          "categories": []
+        },
+        {
+          "folder_name": "Universe Artworks Featured - 1Everymonth",
+          "folder_id": 52758840,
+          "categories": []
+        },
+        {
+          "folder_name": "Archived 51",
+          "folder_id": 66810617,
+          "categories": []
+        },
+        {
+          "folder_name": "Cartoon-and-Comics - Weekly",
+          "folder_id": 66810577,
+          "categories": []
+        },
+        {
+          "folder_name": "Mature-content-Naked-Nude - Weekly",
+          "folder_id": 69018366,
+          "categories": []
+        },
+        {
+          "folder_name": "ID Photos,Selfie, Profile image - Weekly",
+          "folder_id": 53421001,
+          "categories": []
+        },
+        {
+          "folder_name": "Literature-poetry-Journals - Weekly",
+          "folder_id": 56241195,
+          "categories": []
+        },
+        {
+          "folder_name": "Drawing-Sketch- Weekly",
+          "folder_id": 69018367,
+          "categories": []
+        },
+        {
+          "folder_name": "Literature-poetry-Journals- Weekly",
+          "folder_id": 53420899,
+          "categories": []
+        },
+        {
+          "folder_name": "Artisan Craft- jewellery-SCULPTOR- Weekly",
+          "folder_id": 59747237,
+          "categories": []
+        },
+        {
+          "folder_name": "Anime and Manga- Weekly",
+          "folder_id": 66020072,
+          "categories": []
+        },
+        {
+          "folder_name": "Resources files- Weekly",
+          "folder_id": 53421015,
+          "categories": []
+        },
+        {
+          "folder_name": "3Dimensional Art-3D objects-3d models- Weekly",
+          "folder_id": 53420920,
+          "categories": []
+        },
+        {
+          "folder_name": "Pixel art-Emoticones-icons-Avatars- Weekly",
+          "folder_id": 53420916,
+          "categories": []
+        },
+        {
+          "folder_name": "FAN ART- Weekly",
+          "folder_id": 69018368,
+          "categories": []
+        },
+        {
+          "folder_name": "DA Realteds-Contests-Release- Weekly",
+          "folder_id": 53421024,
+          "categories": []
+        },
+        {
+          "folder_name": "Artisan Craft-jewellery-SCULPTOR- Weekly",
+          "folder_id": 58744986,
+          "categories": []
+        },
+        {
+          "folder_name": "Fractal Art - Weekly",
+          "folder_id": 53420928,
+          "categories": []
+        },
+        {
+          "folder_name": "Photography - Weekly",
+          "folder_id": 64235625,
+          "categories": []
+        },
+        {
+          "folder_name": "Water color-oil paintings - Weekly",
+          "folder_id": 61746513,
+          "categories": []
+        },
+        {
+          "folder_name": "Miscellaneous - Weekly",
+          "folder_id": 65611093,
+          "categories": []
+        },
+        {
+          "folder_name": "Designs-Interfaces-Logos-Vectors - Weekly",
+          "folder_id": 53420983,
+          "categories": []
+        },
+        {
+          "folder_name": "Body painting-Make up - Weekly",
+          "folder_id": 61746511,
+          "categories": []
+        },
+        {
+          "folder_name": "Motion Books - Weekly",
+          "folder_id": 53420996,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital-artworks-WIP- Weekly",
+          "folder_id": 69018369,
+          "categories": []
+        },
+        {
+          "folder_name": "Film-Animation-gif-flash - Weekly",
+          "folder_id": 53420987,
+          "categories": []
+        },
+        {
+          "folder_name": "Resources files- Weekly 2",
+          "folder_id": 52954793,
+          "categories": []
+        },
+        {
+          "folder_name": "Guests-of-Universe-Artworks-Join us to enter",
+          "folder_id": 69018461,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "Un-seen-Deviants",
+      "group_id": "37480002",
+      "folders": [
+        {
+          "folder_name": "New Traditional Art",
+          "folder_id": 57460419,
+          "categories": []
+        },
+        {
+          "folder_name": "Anime",
+          "folder_id": 56744801,
+          "categories": []
+        },
+        {
+          "folder_name": "Photography, Photomanipulation, Cosplay",
+          "folder_id": 56744680,
+          "categories": []
+        },
+        {
+          "folder_name": "Literature, Comics",
+          "folder_id": 56744681,
+          "categories": []
+        },
+        {
+          "folder_name": "Open Adoptables",
+          "folder_id": 56744684,
+          "categories": []
+        },
+        {
+          "folder_name": "Artisan Crafts, Designs, Backgrounds",
+          "folder_id": 56744802,
+          "categories": []
+        },
+        {
+          "folder_name": "Stamps,icons,fan buttons,emotes,Journal skins",
+          "folder_id": 56744803,
+          "categories": []
+        },
+        {
+          "folder_name": "Mature Content",
+          "folder_id": 56744900,
+          "categories": []
+        },
+        {
+          "folder_name": "Miscellaneous",
+          "folder_id": 56744901,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital Art 2",
+          "folder_id": 57174953,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital Art 3",
+          "folder_id": 57858069,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "AllArtUnited",
+      "group_id": "37382992",
+      "folders": [
+        {
+          "folder_name": "ALL MEDIA ACCEPT 02",
+          "folder_id": 63956749,
+          "categories": []
+        },
+        {
+          "folder_name": "MISC - Photo",
+          "folder_id": 56463008,
+          "categories": []
+        },
+        {
+          "folder_name": "ALL MEDIA ACCEPT 03",
+          "folder_id": 66520446,
+          "categories": []
+        },
+        {
+          "folder_name": "ANIMAL LIFE Photo 01",
+          "folder_id": 56460183,
+          "categories": []
+        },
+        {
+          "folder_name": "ANIMAL LIFE Photo 02",
+          "folder_id": 66291417,
+          "categories": []
+        },
+        {
+          "folder_name": "FLORA Photo 02",
+          "folder_id": 66291456,
+          "categories": []
+        },
+        {
+          "folder_name": "FLORA Photo 01",
+          "folder_id": 56460191,
+          "categories": []
+        },
+        {
+          "folder_name": "Elegant and small flowers photo",
+          "folder_id": 69225690,
+          "categories": []
+        },
+        {
+          "folder_name": "NATURE Photo 02",
+          "folder_id": 65280436,
+          "categories": []
+        },
+        {
+          "folder_name": "NATURE Photo 01",
+          "folder_id": 56460218,
+          "categories": []
+        },
+        {
+          "folder_name": "PEOPLE and PORTRAIT Photo - READ THE RULES",
+          "folder_id": 67141048,
+          "categories": []
+        },
+        {
+          "folder_name": "FUNGIS - Photo 01",
+          "folder_id": 65280645,
+          "categories": []
+        },
+        {
+          "folder_name": "Black and white photo",
+          "folder_id": 69085530,
+          "categories": []
+        },
+        {
+          "folder_name": "Moon Photography",
+          "folder_id": 70474609,
+          "categories": []
+        },
+        {
+          "folder_name": "COSPLAY 01",
+          "folder_id": 65727823,
+          "categories": []
+        },
+        {
+          "folder_name": "Photography  Transportation",
+          "folder_id": 71813786,
+          "categories": []
+        },
+        {
+          "folder_name": "MACRO - CLOSE UP Photo 01",
+          "folder_id": 56460215,
+          "categories": []
+        },
+        {
+          "folder_name": "RURAL URBAN",
+          "folder_id": 56460227,
+          "categories": []
+        },
+        {
+          "folder_name": "DDs - ONLY Daily Deviations",
+          "folder_id": 56460121,
+          "categories": []
+        },
+        {
+          "folder_name": "FRACTAL",
+          "folder_id": 56460172,
+          "categories": []
+        },
+        {
+          "folder_name": "DIGITAL ART 11",
+          "folder_id": 69095764,
+          "categories": []
+        },
+        {
+          "folder_name": "FANTASY  Digital art ART 03",
+          "folder_id": 66520445,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital Art  Drawings and Paintings",
+          "folder_id": 69095767,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital Art  3-Dimensional Art",
+          "folder_id": 69247818,
+          "categories": []
+        },
+        {
+          "folder_name": "ANIMAL Digital ART 02",
+          "folder_id": 66931330,
+          "categories": []
+        },
+        {
+          "folder_name": "ANIMAL Digital ART 01",
+          "folder_id": 56508642,
+          "categories": []
+        },
+        {
+          "folder_name": "PORTRAIT  Digital Art 2",
+          "folder_id": 71375799,
+          "categories": []
+        },
+        {
+          "folder_name": "MANGA - ANIME 04",
+          "folder_id": 65279927,
+          "categories": []
+        },
+        {
+          "folder_name": "ABSTRACT SURREAL 01",
+          "folder_id": 56460125,
+          "categories": []
+        },
+        {
+          "folder_name": "ANIMATION",
+          "folder_id": 56460170,
+          "categories": []
+        },
+        {
+          "folder_name": "MANGA - ANIME 03",
+          "folder_id": 65279910,
+          "categories": []
+        },
+        {
+          "folder_name": "MANIPULATION 02",
+          "folder_id": 66370329,
+          "categories": []
+        },
+        {
+          "folder_name": "Painting Traditional  04",
+          "folder_id": 65714969,
+          "categories": []
+        },
+        {
+          "folder_name": "Painting Traditional  05",
+          "folder_id": 65714975,
+          "categories": []
+        },
+        {
+          "folder_name": "Portrait Painting Traditional",
+          "folder_id": 71770727,
+          "categories": []
+        },
+        {
+          "folder_name": "fantasy Painting Traditional",
+          "folder_id": 71771853,
+          "categories": []
+        },
+        {
+          "folder_name": "Animal Painting Traditional",
+          "folder_id": 71770722,
+          "categories": []
+        },
+        {
+          "folder_name": "ARTISAN CRAFTS",
+          "folder_id": 56460152,
+          "categories": []
+        },
+        {
+          "folder_name": "Artisan Crafts    by ChibiPyro",
+          "folder_id": 70722714,
+          "categories": []
+        },
+        {
+          "folder_name": "Colours of Psychedelia",
+          "folder_id": 69230689,
+          "categories": []
+        },
+        {
+          "folder_name": "ANTHRO 2",
+          "folder_id": 71978420,
+          "categories": []
+        },
+        {
+          "folder_name": "FAN ART 07",
+          "folder_id": 68714770,
+          "categories": []
+        },
+        {
+          "folder_name": "FANART 05",
+          "folder_id": 66520372,
+          "categories": []
+        },
+        {
+          "folder_name": "Comics and Cartoons 2",
+          "folder_id": 69247824,
+          "categories": []
+        },
+        {
+          "folder_name": "FANART 08",
+          "folder_id": 68866839,
+          "categories": []
+        },
+        {
+          "folder_name": "JOURNALS etc",
+          "folder_id": 61088213,
+          "categories": []
+        },
+        {
+          "folder_name": "JOURNALS - ART FEATURES",
+          "folder_id": 69314532,
+          "categories": []
+        },
+        {
+          "folder_name": "LITERATURE",
+          "folder_id": 56460181,
+          "categories": []
+        },
+        {
+          "folder_name": "life style",
+          "folder_id": 69660934,
+          "categories": []
+        },
+        {
+          "folder_name": "Life style 2",
+          "folder_id": 71758603,
+          "categories": []
+        },
+        {
+          "folder_name": "journal Skin",
+          "folder_id": 69438365,
+          "categories": []
+        },
+        {
+          "folder_name": "CONCEPT WALLPAPER 01",
+          "folder_id": 56460158,
+          "categories": []
+        },
+        {
+          "folder_name": "S T O C K",
+          "folder_id": 56460261,
+          "categories": []
+        },
+        {
+          "folder_name": "ADOPT COMMISSION",
+          "folder_id": 61172104,
+          "categories": []
+        },
+        {
+          "folder_name": "PORTRAIT Art Full",
+          "folder_id": 56462843,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "Hidden-Deviants",
+      "group_id": "37020680",
+      "folders": [
+        {
+          "folder_name": "Digital Art",
+          "folder_id": 64638681,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional Art",
+          "folder_id": 64638733,
+          "categories": []
+        },
+        {
+          "folder_name": "Literature",
+          "folder_id": 64692982,
+          "categories": []
+        },
+        {
+          "folder_name": "Cartoons and Comics",
+          "folder_id": 64692990,
+          "categories": []
+        },
+        {
+          "folder_name": "Film and Animation",
+          "folder_id": 64692992,
+          "categories": []
+        },
+        {
+          "folder_name": "Anime and Manga",
+          "folder_id": 64692993,
+          "categories": []
+        },
+        {
+          "folder_name": "Anthro",
+          "folder_id": 64692995,
+          "categories": []
+        },
+        {
+          "folder_name": "Photography",
+          "folder_id": 64692997,
+          "categories": []
+        },
+        {
+          "folder_name": "Stock and Resources",
+          "folder_id": 64693074,
+          "categories": []
+        },
+        {
+          "folder_name": "Fanart",
+          "folder_id": 64693077,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "Art-Acceptance",
+      "group_id": "37981250",
+      "folders": [
+        {
+          "folder_name": "CHOOSE THE CORRECT FOLDER",
+          "folder_id": 57241664,
+          "categories": []
+        },
+        {
+          "folder_name": "Commission Info",
+          "folder_id": 62875025,
+          "categories": []
+        },
+        {
+          "folder_name": "Dolls",
+          "folder_id": 57241765,
+          "categories": []
+        },
+        {
+          "folder_name": "Plushies",
+          "folder_id": 62741284,
+          "categories": []
+        },
+        {
+          "folder_name": "Tutorials",
+          "folder_id": 69647993,
+          "categories": []
+        },
+        {
+          "folder_name": "Stamps and Buttons",
+          "folder_id": 63150284,
+          "categories": []
+        },
+        {
+          "folder_name": "Mature Content",
+          "folder_id": 63165300,
+          "categories": []
+        },
+        {
+          "folder_name": "Scenery FULL",
+          "folder_id": 57246483,
+          "categories": []
+        },
+        {
+          "folder_name": "Literature",
+          "folder_id": 65038986,
+          "categories": []
+        },
+        {
+          "folder_name": "DeviantID",
+          "folder_id": 57268235,
+          "categories": []
+        },
+        {
+          "folder_name": "Line Art",
+          "folder_id": 63951106,
+          "categories": []
+        },
+        {
+          "folder_name": "Photomanipulation",
+          "folder_id": 64608278,
+          "categories": []
+        },
+        {
+          "folder_name": "Makeup Cosplay",
+          "folder_id": 57267267,
+          "categories": []
+        },
+        {
+          "folder_name": "Contests",
+          "folder_id": 57268102,
+          "categories": []
+        },
+        {
+          "folder_name": "Selfie",
+          "folder_id": 57268136,
+          "categories": []
+        },
+        {
+          "folder_name": "Typography Text based art",
+          "folder_id": 57268232,
+          "categories": []
+        },
+        {
+          "folder_name": "Screenshot",
+          "folder_id": 57268237,
+          "categories": []
+        },
+        {
+          "folder_name": "Sculpture",
+          "folder_id": 57268257,
+          "categories": []
+        },
+        {
+          "folder_name": "Pixel Art",
+          "folder_id": 63104353,
+          "categories": []
+        },
+        {
+          "folder_name": "Gif",
+          "folder_id": 57268296,
+          "categories": []
+        },
+        {
+          "folder_name": "Animation",
+          "folder_id": 63128279,
+          "categories": []
+        },
+        {
+          "folder_name": "Icons",
+          "folder_id": 57268379,
+          "categories": []
+        },
+        {
+          "folder_name": "Brush Settings and Brushes",
+          "folder_id": 57268584,
+          "categories": []
+        },
+        {
+          "folder_name": "My Little Pony",
+          "folder_id": 67362389,
+          "categories": []
+        },
+        {
+          "folder_name": "DeviantART Memes",
+          "folder_id": 58328287,
+          "categories": []
+        },
+        {
+          "folder_name": "Chibi",
+          "folder_id": 63128267,
+          "categories": []
+        },
+        {
+          "folder_name": "Gifts FULL",
+          "folder_id": 63657279,
+          "categories": []
+        },
+        {
+          "folder_name": "Gifts",
+          "folder_id": 64338437,
+          "categories": []
+        },
+        {
+          "folder_name": "YCH",
+          "folder_id": 59207714,
+          "categories": []
+        },
+        {
+          "folder_name": "Work in Progress",
+          "folder_id": 59696834,
+          "categories": []
+        },
+        {
+          "folder_name": "Architecture",
+          "folder_id": 59720269,
+          "categories": []
+        },
+        {
+          "folder_name": "Landscape",
+          "folder_id": 59720274,
+          "categories": []
+        },
+        {
+          "folder_name": "Poetry",
+          "folder_id": 63214478,
+          "categories": []
+        },
+        {
+          "folder_name": "Stories with Multiple Chapters",
+          "folder_id": 60300606,
+          "categories": []
+        },
+        {
+          "folder_name": "FanFiction",
+          "folder_id": 66540042,
+          "categories": []
+        },
+        {
+          "folder_name": "Clothing Designs",
+          "folder_id": 62954664,
+          "categories": []
+        },
+        {
+          "folder_name": "Original Species",
+          "folder_id": 63198704,
+          "categories": []
+        },
+        {
+          "folder_name": "Food Art",
+          "folder_id": 66770769,
+          "categories": []
+        },
+        {
+          "folder_name": "Bases and Base Edits",
+          "folder_id": 67202759,
+          "categories": []
+        },
+        {
+          "folder_name": "Logos and Design",
+          "folder_id": 67211260,
+          "categories": []
+        },
+        {
+          "folder_name": "Stock Photos + Reference Images",
+          "folder_id": 67852110,
+          "categories": []
+        },
+        {
+          "folder_name": "Commissions",
+          "folder_id": 67852111,
+          "categories": []
+        },
+        {
+          "folder_name": "Journal",
+          "folder_id": 68464847,
+          "categories": []
+        },
+        {
+          "folder_name": "3D Models",
+          "folder_id": 69031214,
+          "categories": []
+        },
+        {
+          "folder_name": "Resources",
+          "folder_id": 69719490,
+          "categories": []
+        },
+        {
+          "folder_name": "Games",
+          "folder_id": 69845404,
+          "categories": []
+        },
+        {
+          "folder_name": "Furry",
+          "folder_id": 69845408,
+          "categories": []
+        },
+        {
+          "folder_name": "Handicraft",
+          "folder_id": 69992461,
+          "categories": []
+        },
+        {
+          "folder_name": "Adopts",
+          "folder_id": 70647057,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional Art",
+          "folder_id": 70699034,
+          "categories": []
+        },
+        {
+          "folder_name": "Anime and Manga",
+          "folder_id": 71176641,
+          "categories": []
+        },
+        {
+          "folder_name": "OCs",
+          "folder_id": 72014587,
+          "categories": []
+        },
+        {
+          "folder_name": "Fanart",
+          "folder_id": 72169072,
+          "categories": []
+        },
+        {
+          "folder_name": "Comics",
+          "folder_id": 72390608,
+          "categories": []
+        },
+        {
+          "folder_name": "Photography",
+          "folder_id": 72432426,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital Art",
+          "folder_id": 72461396,
+          "categories": []
+        },
+        {
+          "folder_name": "Pixel Art",
+          "folder_id": 72501820,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "All-Is-Permitted",
+      "group_id": "18256508",
+      "folders": [
+        {
+          "folder_name": "Abstract",
+          "folder_id": 56971262,
+          "categories": []
+        },
+        {
+          "folder_name": "Adoptables",
+          "folder_id": 55382792,
+          "categories": []
+        },
+        {
+          "folder_name": "Animation",
+          "folder_id": 31407205,
+          "categories": []
+        },
+        {
+          "folder_name": "Comics",
+          "folder_id": 31407198,
+          "categories": []
+        },
+        {
+          "folder_name": "Commission Prices Guides",
+          "folder_id": 56971208,
+          "categories": []
+        },
+        {
+          "folder_name": "Cosplay",
+          "folder_id": 31407210,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital Art",
+          "folder_id": 31407164,
+          "categories": []
+        },
+        {
+          "folder_name": "Fanart 2",
+          "folder_id": 71886205,
+          "categories": []
+        },
+        {
+          "folder_name": "Fanfics",
+          "folder_id": 31407201,
+          "categories": []
+        },
+        {
+          "folder_name": "Fan Made Characters",
+          "folder_id": 55382763,
+          "categories": []
+        },
+        {
+          "folder_name": "For Sale Items",
+          "folder_id": 56971272,
+          "categories": []
+        },
+        {
+          "folder_name": "Journals",
+          "folder_id": 56971183,
+          "categories": []
+        },
+        {
+          "folder_name": "Literature",
+          "folder_id": 31407175,
+          "categories": []
+        },
+        {
+          "folder_name": "Mature Content 2",
+          "folder_id": 69141674,
+          "categories": []
+        },
+        {
+          "folder_name": "Memes",
+          "folder_id": 31407207,
+          "categories": []
+        },
+        {
+          "folder_name": "Mixed Media",
+          "folder_id": 45394532,
+          "categories": []
+        },
+        {
+          "folder_name": "Original Characters",
+          "folder_id": 59184048,
+          "categories": []
+        },
+        {
+          "folder_name": "Photography",
+          "folder_id": 31407203,
+          "categories": []
+        },
+        {
+          "folder_name": "Photo Manipulation",
+          "folder_id": 33137479,
+          "categories": []
+        },
+        {
+          "folder_name": "Stamps",
+          "folder_id": 56971252,
+          "categories": []
+        },
+        {
+          "folder_name": "Stock",
+          "folder_id": 56971237,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional Art",
+          "folder_id": 31407169,
+          "categories": []
+        },
+        {
+          "folder_name": "Tutorials",
+          "folder_id": 47643667,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "Vocaloid-fanart",
+      "group_id": "16519385",
+      "folders": [
+        {
+          "folder_name": "Featured",
+          "folder_id": 35007680,
+          "categories": []
+        },
+        {
+          "folder_name": "Miku Hatsune",
+          "folder_id": 35010462,
+          "categories": []
+        },
+        {
+          "folder_name": "Miku Hatsune 2",
+          "folder_id": 54517489,
+          "categories": []
+        },
+        {
+          "folder_name": "Rin Kagamine",
+          "folder_id": 35010467,
+          "categories": []
+        },
+        {
+          "folder_name": "Len Kagamine",
+          "folder_id": 35010472,
+          "categories": []
+        },
+        {
+          "folder_name": "Luka Megurine",
+          "folder_id": 35010477,
+          "categories": []
+        },
+        {
+          "folder_name": "Meiko",
+          "folder_id": 35295861,
+          "categories": []
+        },
+        {
+          "folder_name": "Kaito",
+          "folder_id": 35010481,
+          "categories": []
+        },
+        {
+          "folder_name": "Gakupo Kamui",
+          "folder_id": 35010485,
+          "categories": []
+        },
+        {
+          "folder_name": "Gumi Megpoid",
+          "folder_id": 35010482,
+          "categories": []
+        },
+        {
+          "folder_name": "IA",
+          "folder_id": 55087048,
+          "categories": []
+        },
+        {
+          "folder_name": "V flower",
+          "folder_id": 60244075,
+          "categories": []
+        },
+        {
+          "folder_name": "SeeU",
+          "folder_id": 35826888,
+          "categories": []
+        },
+        {
+          "folder_name": "Fukase",
+          "folder_id": 60881608,
+          "categories": []
+        },
+        {
+          "folder_name": "Oliver",
+          "folder_id": 61597779,
+          "categories": []
+        },
+        {
+          "folder_name": "Other vocaloid",
+          "folder_id": 35010488,
+          "categories": []
+        },
+        {
+          "folder_name": "Pairings",
+          "folder_id": 35110451,
+          "categories": []
+        },
+        {
+          "folder_name": "Vocaloid altogether",
+          "folder_id": 35046311,
+          "categories": []
+        },
+        {
+          "folder_name": "Utau",
+          "folder_id": 36236237,
+          "categories": []
+        },
+        {
+          "folder_name": "Song covers",
+          "folder_id": 36189659,
+          "categories": []
+        },
+        {
+          "folder_name": "Cosplay",
+          "folder_id": 58644791,
+          "categories": []
+        },
+        {
+          "folder_name": "Other",
+          "folder_id": 37916347,
+          "categories": []
+        },
+        {
+          "folder_name": "Contest 2",
+          "folder_id": 57866850,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "The-Vocaloid-Fanclub",
+      "group_id": "12902575",
+      "folders": [
+        {
+          "folder_name": "Miku Hatsune",
+          "folder_id": 26639023,
+          "categories": []
+        },
+        {
+          "folder_name": "Rin and Len Kagamine",
+          "folder_id": 26755040,
+          "categories": []
+        },
+        {
+          "folder_name": "Kaito",
+          "folder_id": 26755035,
+          "categories": []
+        },
+        {
+          "folder_name": "Luka Megurine",
+          "folder_id": 26755054,
+          "categories": []
+        },
+        {
+          "folder_name": "Meiko",
+          "folder_id": 26755057,
+          "categories": []
+        },
+        {
+          "folder_name": "Gakupo Kamui",
+          "folder_id": 26755061,
+          "categories": []
+        },
+        {
+          "folder_name": "Gumi Megpoid",
+          "folder_id": 26755065,
+          "categories": []
+        },
+        {
+          "folder_name": "Piko Utatane",
+          "folder_id": 27100050,
+          "categories": []
+        },
+        {
+          "folder_name": "SeeU",
+          "folder_id": 30881370,
+          "categories": []
+        },
+        {
+          "folder_name": "Kiyoteru Hiyama",
+          "folder_id": 26755075,
+          "categories": []
+        },
+        {
+          "folder_name": "Yuki Kaai",
+          "folder_id": 26755073,
+          "categories": []
+        },
+        {
+          "folder_name": "Lily",
+          "folder_id": 26755081,
+          "categories": []
+        },
+        {
+          "folder_name": "SF-A2 Miki",
+          "folder_id": 26755091,
+          "categories": []
+        },
+        {
+          "folder_name": "VY1 Mizki",
+          "folder_id": 26755095,
+          "categories": []
+        },
+        {
+          "folder_name": "Iroha Nekomura",
+          "folder_id": 26755097,
+          "categories": []
+        },
+        {
+          "folder_name": "Teto Kasane UTAU",
+          "folder_id": 26755098,
+          "categories": []
+        },
+        {
+          "folder_name": "Neru Akita Boukaloid",
+          "folder_id": 26755100,
+          "categories": []
+        },
+        {
+          "folder_name": "Haku Yowane Voyakiloid",
+          "folder_id": 26755108,
+          "categories": []
+        },
+        {
+          "folder_name": "Gachapoid",
+          "folder_id": 26904141,
+          "categories": []
+        },
+        {
+          "folder_name": "Hibiki Lui and Ring Suzune",
+          "folder_id": 30818370,
+          "categories": []
+        },
+        {
+          "folder_name": "Fanmade Vocaloids",
+          "folder_id": 26697705,
+          "categories": []
+        },
+        {
+          "folder_name": "Groups Of Vocaloids",
+          "folder_id": 26775349,
+          "categories": []
+        },
+        {
+          "folder_name": "Fan Fiction and Literature",
+          "folder_id": 26579585,
+          "categories": []
+        },
+        {
+          "folder_name": "Cosplay and Photography",
+          "folder_id": 26579656,
+          "categories": []
+        },
+        {
+          "folder_name": "Animations and Games",
+          "folder_id": 26579644,
+          "categories": []
+        },
+        {
+          "folder_name": "Music or Sound",
+          "folder_id": 26697709,
+          "categories": []
+        },
+        {
+          "folder_name": "Icons and Pixel Art",
+          "folder_id": 26755121,
+          "categories": []
+        },
+        {
+          "folder_name": "Stamps",
+          "folder_id": 26755120,
+          "categories": []
+        },
+        {
+          "folder_name": "Gender-Bent, Crossovers",
+          "folder_id": 26925068,
+          "categories": []
+        },
+        {
+          "folder_name": "UTAU",
+          "folder_id": 27690505,
+          "categories": []
+        },
+        {
+          "folder_name": "Sonika",
+          "folder_id": 29559390,
+          "categories": []
+        },
+        {
+          "folder_name": "Engloids",
+          "folder_id": 33362954,
+          "categories": []
+        },
+        {
+          "folder_name": "Comics and Fan Manga",
+          "folder_id": 26993659,
+          "categories": []
+        },
+        {
+          "folder_name": "Cosplay Contest 2011",
+          "folder_id": 31978559,
+          "categories": []
+        },
+        {
+          "folder_name": "Christmas Contest 2011",
+          "folder_id": 34005150,
+          "categories": []
+        },
+        {
+          "folder_name": "OTHER",
+          "folder_id": 35287682,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "HappyfromCute",
+      "group_id": "35609481",
+      "folders": [
+        {
+          "folder_name": "Cats",
+          "folder_id": 54294094,
+          "categories": []
+        },
+        {
+          "folder_name": "Food",
+          "folder_id": 54294111,
+          "categories": []
+        },
+        {
+          "folder_name": "Birds",
+          "folder_id": 54407266,
+          "categories": []
+        },
+        {
+          "folder_name": "Seals",
+          "folder_id": 54407269,
+          "categories": []
+        },
+        {
+          "folder_name": "Cute chibis",
+          "folder_id": 54425332,
+          "categories": []
+        },
+        {
+          "folder_name": "Pikachu",
+          "folder_id": 54425348,
+          "categories": []
+        },
+        {
+          "folder_name": "Photography",
+          "folder_id": 54430806,
+          "categories": []
+        },
+        {
+          "folder_name": "Pokemons",
+          "folder_id": 54449978,
+          "categories": []
+        },
+        {
+          "folder_name": "icons",
+          "folder_id": 54450015,
+          "categories": []
+        },
+        {
+          "folder_name": "Bunnies",
+          "folder_id": 54450018,
+          "categories": []
+        },
+        {
+          "folder_name": "Cute Sayings",
+          "folder_id": 54499707,
+          "categories": []
+        },
+        {
+          "folder_name": "Adoptables",
+          "folder_id": 54612445,
+          "categories": []
+        },
+        {
+          "folder_name": "OC",
+          "folder_id": 54612546,
+          "categories": []
+        },
+        {
+          "folder_name": "My little pony",
+          "folder_id": 54612555,
+          "categories": []
+        },
+        {
+          "folder_name": "Fanart",
+          "folder_id": 54624766,
+          "categories": []
+        },
+        {
+          "folder_name": "Miscellaneous",
+          "folder_id": 54636313,
+          "categories": []
+        },
+        {
+          "folder_name": "Love",
+          "folder_id": 54636360,
+          "categories": []
+        },
+        {
+          "folder_name": "Comics",
+          "folder_id": 54656105,
+          "categories": []
+        },
+        {
+          "folder_name": "Doggies",
+          "folder_id": 54667473,
+          "categories": []
+        },
+        {
+          "folder_name": "Other felines",
+          "folder_id": 54695696,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional Art",
+          "folder_id": 54697606,
+          "categories": []
+        },
+        {
+          "folder_name": "Cute sea creatures",
+          "folder_id": 54729793,
+          "categories": []
+        },
+        {
+          "folder_name": "Fox",
+          "folder_id": 55416092,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital art",
+          "folder_id": 55468562,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "CutiePieWonderland",
+      "group_id": "18773719",
+      "folders": [
+        {
+          "folder_name": "Sweet Cutie Pie",
+          "folder_id": 32194205,
+          "categories": []
+        },
+        {
+          "folder_name": "Dark Cutie Pie",
+          "folder_id": 32194228,
+          "categories": []
+        },
+        {
+          "folder_name": "PIN UP Cutie Pie",
+          "folder_id": 33201856,
+          "categories": []
+        },
+        {
+          "folder_name": "Close Up Cuties",
+          "folder_id": 34527570,
+          "categories": []
+        },
+        {
+          "folder_name": "Spilled Drinks",
+          "folder_id": 33695846,
+          "categories": []
+        },
+        {
+          "folder_name": "FanArts",
+          "folder_id": 32194217,
+          "categories": []
+        },
+        {
+          "folder_name": "Classic Fairy Tales",
+          "folder_id": 32194260,
+          "categories": []
+        },
+        {
+          "folder_name": "Dark Fairy Tales",
+          "folder_id": 37077888,
+          "categories": []
+        },
+        {
+          "folder_name": "Not-so-Deadly Sin Fairies",
+          "folder_id": 32194238,
+          "categories": []
+        },
+        {
+          "folder_name": "Fantasy Land",
+          "folder_id": 32194267,
+          "categories": []
+        },
+        {
+          "folder_name": "Astrological CP",
+          "folder_id": 32194208,
+          "categories": []
+        },
+        {
+          "folder_name": "Mythological CP",
+          "folder_id": 32194275,
+          "categories": []
+        },
+        {
+          "folder_name": "Cute Critters",
+          "folder_id": 43615937,
+          "categories": []
+        },
+        {
+          "folder_name": "Holidays and Specials Occasions",
+          "folder_id": 32194230,
+          "categories": []
+        },
+        {
+          "folder_name": "Jade Random Linearts",
+          "folder_id": 62737056,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "Kawaii-World",
+      "group_id": "14537913",
+      "folders": [
+        {
+          "folder_name": "The \"UNSURE\" Folder",
+          "folder_id": 28799508,
+          "categories": []
+        },
+        {
+          "folder_name": "Adoptables - Digital Goods",
+          "folder_id": 69019182,
+          "categories": []
+        },
+        {
+          "folder_name": "Animals - Photography only",
+          "folder_id": 27782972,
+          "categories": []
+        },
+        {
+          "folder_name": "Animation - Flash - Games",
+          "folder_id": 27105374,
+          "categories": []
+        },
+        {
+          "folder_name": "Bases",
+          "folder_id": 30412880,
+          "categories": []
+        },
+        {
+          "folder_name": "Christmas",
+          "folder_id": 33470359,
+          "categories": []
+        },
+        {
+          "folder_name": "Comics",
+          "folder_id": 28901891,
+          "categories": []
+        },
+        {
+          "folder_name": "Cosplay 2",
+          "folder_id": 62558070,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital Art 14",
+          "folder_id": 69329261,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital Fanart 08",
+          "folder_id": 67518408,
+          "categories": []
+        },
+        {
+          "folder_name": "Easter",
+          "folder_id": 33470428,
+          "categories": []
+        },
+        {
+          "folder_name": "Fashion - Photos only",
+          "folder_id": 26764902,
+          "categories": []
+        },
+        {
+          "folder_name": "Figures - Dolls - PVC",
+          "folder_id": 30655734,
+          "categories": []
+        },
+        {
+          "folder_name": "Halloween",
+          "folder_id": 33470351,
+          "categories": []
+        },
+        {
+          "folder_name": "Handmade Crafts 02",
+          "folder_id": 42763240,
+          "categories": []
+        },
+        {
+          "folder_name": "Journals",
+          "folder_id": 69019183,
+          "categories": []
+        },
+        {
+          "folder_name": "Line Art",
+          "folder_id": 51243012,
+          "categories": []
+        },
+        {
+          "folder_name": "Literature - Texts",
+          "folder_id": 31529147,
+          "categories": []
+        },
+        {
+          "folder_name": "Memes",
+          "folder_id": 68996641,
+          "categories": []
+        },
+        {
+          "folder_name": "Miscellaneous - Mixed Media",
+          "folder_id": 28799503,
+          "categories": []
+        },
+        {
+          "folder_name": "Papercraft - Folding",
+          "folder_id": 30063953,
+          "categories": []
+        },
+        {
+          "folder_name": "Photography",
+          "folder_id": 26764898,
+          "categories": []
+        },
+        {
+          "folder_name": "Photo Manipulation",
+          "folder_id": 29126289,
+          "categories": []
+        },
+        {
+          "folder_name": "Pixel Art 02",
+          "folder_id": 43845458,
+          "categories": []
+        },
+        {
+          "folder_name": "Plushies and Amigurumi 02",
+          "folder_id": 50384988,
+          "categories": []
+        },
+        {
+          "folder_name": "Products",
+          "folder_id": 26764908,
+          "categories": []
+        },
+        {
+          "folder_name": "Resources - Stamps - Buttons - Icons - etc.",
+          "folder_id": 31529098,
+          "categories": []
+        },
+        {
+          "folder_name": "Screenshots - not your own art",
+          "folder_id": 34162909,
+          "categories": []
+        },
+        {
+          "folder_name": "Sketches",
+          "folder_id": 27931164,
+          "categories": []
+        },
+        {
+          "folder_name": "Stationery - Calendar - Wallpaper",
+          "folder_id": 31529135,
+          "categories": []
+        },
+        {
+          "folder_name": "T-Shirt Graphics etc.",
+          "folder_id": 35264029,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional Art 03",
+          "folder_id": 48198185,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional Fanart 02",
+          "folder_id": 48265228,
+          "categories": []
+        },
+        {
+          "folder_name": "Tutorials",
+          "folder_id": 27727215,
+          "categories": []
+        },
+        {
+          "folder_name": "Valentines Day",
+          "folder_id": 35264392,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "Lovery-of-Cuteness",
+      "group_id": "28212031",
+      "folders": [
+        {
+          "folder_name": "Commissions",
+          "folder_id": 45782436,
+          "categories": []
+        },
+        {
+          "folder_name": "Adoptables",
+          "folder_id": 45949067,
+          "categories": []
+        },
+        {
+          "folder_name": "Adoptables 2",
+          "folder_id": 66847388,
+          "categories": []
+        },
+        {
+          "folder_name": "Closed-Original Character",
+          "folder_id": 45784154,
+          "categories": []
+        },
+        {
+          "folder_name": "Chibi",
+          "folder_id": 45782381,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional Art",
+          "folder_id": 45782389,
+          "categories": []
+        },
+        {
+          "folder_name": "Pixel Art",
+          "folder_id": 45782366,
+          "categories": []
+        },
+        {
+          "folder_name": "Free icon",
+          "folder_id": 45782370,
+          "categories": []
+        },
+        {
+          "folder_name": "Non free icon",
+          "folder_id": 45782373,
+          "categories": []
+        },
+        {
+          "folder_name": "Handmade plushies,accessories,etc",
+          "folder_id": 47826822,
+          "categories": []
+        },
+        {
+          "folder_name": "Fanart",
+          "folder_id": 47818255,
+          "categories": []
+        },
+        {
+          "folder_name": "Fanart 2",
+          "folder_id": 69438561,
+          "categories": []
+        },
+        {
+          "folder_name": "Cosplay",
+          "folder_id": 45794120,
+          "categories": []
+        },
+        {
+          "folder_name": "Comics n Mangas",
+          "folder_id": 47826775,
+          "categories": []
+        },
+        {
+          "folder_name": "Memes",
+          "folder_id": 46904858,
+          "categories": []
+        },
+        {
+          "folder_name": "LineArt",
+          "folder_id": 45784171,
+          "categories": []
+        },
+        {
+          "folder_name": "Stamps",
+          "folder_id": 45784429,
+          "categories": []
+        },
+        {
+          "folder_name": "Tutorials",
+          "folder_id": 45785219,
+          "categories": []
+        },
+        {
+          "folder_name": "Merry Christmas",
+          "folder_id": 45782416,
+          "categories": []
+        },
+        {
+          "folder_name": "Happy Halloween",
+          "folder_id": 45782399,
+          "categories": []
+        },
+        {
+          "folder_name": "Happy Easter",
+          "folder_id": 45782409,
+          "categories": []
+        },
+        {
+          "folder_name": "Valentine's Day",
+          "folder_id": 47473809,
+          "categories": []
+        },
+        {
+          "folder_name": "Happy New Year",
+          "folder_id": 45782411,
+          "categories": []
+        },
+        {
+          "folder_name": "I DON'T KNOW WHERE THIS GOES",
+          "folder_id": 45782395,
+          "categories": []
+        },
+        {
+          "folder_name": "Cover of Group",
+          "folder_id": 46260381,
+          "categories": []
+        },
+        {
+          "folder_name": "z- CLOSED Video Game",
+          "folder_id": 45793613,
+          "categories": []
+        },
+        {
+          "folder_name": "z- CLOSED Anime and Manga",
+          "folder_id": 45784476,
+          "categories": []
+        },
+        {
+          "folder_name": "z-CLOSED Tv and Movie",
+          "folder_id": 45793618,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital Art folder 2",
+          "folder_id": 60870749,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital Art Folder 3",
+          "folder_id": 61267087,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital Art Folder 4",
+          "folder_id": 61267098,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital Art Folder 5",
+          "folder_id": 61267102,
+          "categories": []
+        },
+        {
+          "folder_name": "Original Characters 2",
+          "folder_id": 62282403,
+          "categories": []
+        },
+        {
+          "folder_name": "Chibi Folder 2",
+          "folder_id": 64646963,
+          "categories": []
+        },
+        {
+          "folder_name": "Chibi  Folder 3",
+          "folder_id": 64919339,
+          "categories": []
+        },
+        {
+          "folder_name": "Chibi Folder 4",
+          "folder_id": 64919340,
+          "categories": []
+        },
+        {
+          "folder_name": "Chibi folder 5",
+          "folder_id": 64919341,
+          "categories": []
+        },
+        {
+          "folder_name": "Anime and manga folder 2",
+          "folder_id": 64919342,
+          "categories": []
+        },
+        {
+          "folder_name": "Anime and manga folder 3",
+          "folder_id": 64919344,
+          "categories": []
+        },
+        {
+          "folder_name": "Kawaii Folder",
+          "folder_id": 64919346,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "MangAnimeArts",
+      "group_id": "27827241",
+      "folders": [
+        {
+          "folder_name": "FAN ART",
+          "folder_id": 62701054,
+          "categories": []
+        },
+        {
+          "folder_name": "ORIGINAL ART",
+          "folder_id": 62701056,
+          "categories": []
+        },
+        {
+          "folder_name": "TURORIALS",
+          "folder_id": 62701151,
+          "categories": []
+        },
+        {
+          "folder_name": "Chibi",
+          "folder_id": 62701057,
+          "categories": []
+        },
+        {
+          "folder_name": "Cosplay",
+          "folder_id": 62701058,
+          "categories": []
+        },
+        {
+          "folder_name": "Sketches",
+          "folder_id": 62701059,
+          "categories": []
+        },
+        {
+          "folder_name": "Adoptables",
+          "folder_id": 62701103,
+          "categories": []
+        },
+        {
+          "folder_name": "Manga",
+          "folder_id": 62701116,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital",
+          "folder_id": 62701118,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional",
+          "folder_id": 62701119,
+          "categories": []
+        },
+        {
+          "folder_name": "Other",
+          "folder_id": 62701121,
+          "categories": []
+        },
+        {
+          "folder_name": "Original Characters",
+          "folder_id": 62714675,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "ColorsANDAnime",
+      "group_id": "16477765",
+      "folders": [
+        {
+          "folder_name": "2019",
+          "folder_id": 69885629,
+          "categories": []
+        }
+      ]
+    },
+    {
+      "group_name": "Kawaii-Manga",
+      "group_id": "13554377",
+      "folders": [
+        {
+          "folder_name": "Featured",
+          "folder_id": 24998437,
+          "categories": []
+        },
+        {
+          "folder_name": "CUTE",
+          "folder_id": 24999781,
+          "categories": []
+        },
+        {
+          "folder_name": "\"Vocaloid\"",
+          "folder_id": 24999761,
+          "categories": []
+        },
+        {
+          "folder_name": "Fanart",
+          "folder_id": 26393324,
+          "categories": []
+        },
+        {
+          "folder_name": "Digital Work",
+          "folder_id": 24999775,
+          "categories": []
+        },
+        {
+          "folder_name": "Traditional Work",
+          "folder_id": 24999769,
+          "categories": []
+        },
+        {
+          "folder_name": "Pixels",
+          "folder_id": 25009732,
+          "categories": []
+        },
+        {
+          "folder_name": "Other",
+          "folder_id": 26393328,
+          "categories": []
+        },
+        {
+          "folder_name": "Manga Pages",
+          "folder_id": 25009731,
+          "categories": []
+        },
+        {
+          "folder_name": "Writing Works",
+          "folder_id": 25009739,
+          "categories": []
+        },
+        {
+          "folder_name": "Mascot Contest Entries",
+          "folder_id": 30327903,
+          "categories": []
+        }
       ]
     }
   ]

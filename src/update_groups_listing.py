@@ -3,6 +3,7 @@
 listing to use with add_art_to_groups.py."""
 
 import json
+import sys
 import time
 from eclipse_api import DeviantArtEclipseAPI as Eclipse
 
@@ -18,6 +19,12 @@ def get_percent(count, total):
     result = int(result)
     return result
 
+def sleep_delay(start):
+    # wait 10x longer than it took them to respond
+    response_delay = int(15 * (time.time() - start))
+    print(f"                                 Sleeping {response_delay} seconds")
+    time.sleep(response_delay)
+
 if __name__ == "__main__":
     groups_listing_filename = 'eclipse_groups_listing.json'
     with open(groups_listing_filename, 'r') as f:
@@ -27,10 +34,12 @@ if __name__ == "__main__":
     eclipse = Eclipse()
     count = 0
     for group_name in group_names:
-        t0 = time.time()
         count += 1
         print(f"{get_percent(count,len(group_names))}% Done - Fetching '{group_name}'")
+
+        t0 = time.time()
         group_id = eclipse.get_group_id(group_name)
+        sleep_delay(t0)
 
         group_info = {
             "group_name": group_name,
@@ -38,9 +47,17 @@ if __name__ == "__main__":
             "folders": []
         }
 
+        t0 = time.time()
         group_folders = eclipse.get_group_folders(group_id)
-        if len(group_folders) == 0:
+        if count != len(group_names):
+            sleep_delay(t0)
+
+        if "errors" in group_folders:
+            print(json.dumps(group_folders))
+            sys.exit(1)
+        if len(group_folders["results"]) == 0:
             print("❌ No folders found.")
+            print(json.dumps(group_folders))
         for result in group_folders["results"]:
             folder = {
                 "folder_name": result["name"],
@@ -50,9 +67,6 @@ if __name__ == "__main__":
             group_info["folders"].append(folder)
 
         groups_listing["groups_information"].append(group_info)
-        response_delay = time.time() - t0
-        print(f"                                 {response_delay}")
-        time.sleep(10*response_delay)  # wait 10x longer than it took them to respond
 
     json_file = open(groups_listing_filename, 'w')
     json_file.write(json.dumps(groups_listing, indent=2))

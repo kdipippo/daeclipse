@@ -51,7 +51,15 @@ class DeviantArtEclipseAPI:
         group_url = f"https://www.deviantart.com/{group_name}"
         page = requests.get(group_url)
         soup = BeautifulSoup(page.text, 'html.parser')
-        return soup.find("div", {"name":"gmi-GBadge"})["gmi-owner"]
+        gmi = soup.find("div", {"name":"gmi-GBadge"})
+        if gmi is not None:
+            return gmi["gmi-owner"]
+        gmi = soup.find("div", {"name":"gmi-Gruser"})
+        if gmi is not None:
+            return gmi["gmi-id"]
+        print("ERROR")
+        return None
+
 
 
     def get_group_folders(self, group_id):
@@ -62,13 +70,14 @@ class DeviantArtEclipseAPI:
             group_id {int} -- ID number for the group on DeviantArt.
 
         Returns:
-            string -- Full text response from the API call.
+            dict -- Dictionary response from the API call.
         """
         group_folders_url = f"{self.base_uri}/group_folders?groupid={group_id}&type=gallery"
-        print(group_folders_url)
         response = requests.get(group_folders_url, cookies=self.cookies)
-        print(response.status_code)
-        return response.text
+        if response.status_code == 200:
+            return json.loads(response.text)
+        print(f"ERROR!! Status code in get_group_folders was {response.status_code}")
+        return dict()
 
     def add_deviation_to_group(self, group_id, folder_id, deviation_url):
         """Adds the provided deviation to the specified group's folder; prints status and text.
