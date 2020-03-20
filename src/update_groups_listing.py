@@ -67,10 +67,9 @@ if __name__ == "__main__":
             group_info["folders"].append(folder)
 
         groups_listing["groups_information"].append(group_info)
-
-    json_file = open(groups_listing_filename, 'w')
-    json_file.write(json.dumps(groups_listing, indent=2))
-    json_file.close()
+        json_file = open(groups_listing_filename, 'w')
+        json_file.write(json.dumps(groups_listing, indent=2))
+        json_file.close()
 
     # groups I want to fetch: pixelized--world, kawaii-explosion
 
