@@ -25,11 +25,11 @@ with open('eclipse_groups_listing.json', 'r') as f:
     eclipse_groups_listing = json.load(f)
 
 # delete groups by filter OR add categories individually
-PROCEDURE = "delete groups by filter"
+PROCEDURE = "add categories individually"
 
 # ---------------------------------------------------------------
 if PROCEDURE == "delete groups by filter":
-    FILTER_STR = "fiction"
+    FILTER_STR = "breed"
     print("Enter is interpretted the same way as no.")
     for group in eclipse_groups_listing["groups_information"]:
         newFolders = []
