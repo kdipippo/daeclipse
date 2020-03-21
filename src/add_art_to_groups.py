@@ -2,12 +2,17 @@
 """This script takes a deviation url and automatically sends submission requests to groups based
 on the category the image falls into."""
 
+import json
 from eclipse_api import DeviantArtEclipseAPI as Eclipse
 
 def add_art_to_groups():
-    """Reads a deviation URL and adds it to Candycorn-Kingdom's Featured folder."""
+    """Automatically sends out group submission requests based on a user-provided deviation URL and
+    a set of folder categories."""
     print("Please ensure that the deviation is open in Eclipse in Chrome before continuing.")
     art_url = input("Paste deviation URL: ")
+    with open('eclipse_groups_listing.json', 'r') as f:
+        eclipse_groups_listing = json.load(f)
+
     eclipse = Eclipse()
     eclipse.add_deviation_to_group(
         40852213,      # Candycorn-Kingdom
