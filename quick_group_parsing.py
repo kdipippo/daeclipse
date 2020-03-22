@@ -24,8 +24,8 @@ def addFolderCheck(folderName, groupName, filterStr):
 with open('eclipse_groups_listing.json', 'r') as f:
     eclipse_groups_listing = json.load(f)
 
-# delete groups by filter OR add categories individually
-PROCEDURE = "add categories individually"
+# delete groups by filter OR add category individually
+PROCEDURE = "add category individually"
 
 # ---------------------------------------------------------------
 if PROCEDURE == "delete groups by filter":
@@ -47,7 +47,7 @@ if PROCEDURE == "add category individually":
         alreadyPrinted = False
         print(f"\n⭐{group['group_name']}")
         for folder in group["folders"]:
-            if len(folder["categories"]) > 0:
+            if len(folder["category"]) > 0:
                 newFolders.append(folder)
             else:
                 if not alreadyPrinted:
