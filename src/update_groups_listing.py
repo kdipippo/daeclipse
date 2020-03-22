@@ -87,7 +87,7 @@ def update_groups_listing():
             folder = {
                 "folder_name": result["name"],
                 "folder_id": result["folderId"],
-                "categories": []
+                "category": "UNSELECTED"
             }
             group_info["folders"].append(folder)
 

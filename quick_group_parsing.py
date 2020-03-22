@@ -39,7 +39,7 @@ if PROCEDURE == "delete groups by filter":
         group["folders"] = newFolders
 
 # ---------------------------------------------------------------
-if PROCEDURE == "add categories individually":
+if PROCEDURE == "add category individually":
     print("Leave blank to delete folder")
     for group in eclipse_groups_listing["groups_information"]:
         newFolders = []
@@ -58,7 +58,7 @@ if PROCEDURE == "add categories individually":
                 promptContinue = True
                 result = input(f"'{folder['folder_name']}'. Category? : ")
                 if result != "":
-                    folder["categories"].append(result)
+                    folder["category"] = result
                     newFolders.append(folder)
         group["folders"] = newFolders
         if promptContinue:
