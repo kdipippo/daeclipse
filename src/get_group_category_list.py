@@ -1,8 +1,8 @@
 import json
-import groups
+import eclipse_groups
 
 def get_group_categories():
-    groups_listing = groups.GroupsListing()
+    groups_listing = eclipse_groups.Groups()
     categories = groups_listing.get_categories()
     for category in categories:
         print(category)

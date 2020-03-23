@@ -1,7 +1,7 @@
 import json
 import pathlib
 
-class GroupsListing:
+class Groups:
     def __init__(self):
         with open(f'{pathlib.Path(__file__).parent.absolute()}/eclipse_groups_listing.json', 'r') as f:
             self.groups = json.load(f)

@@ -4,14 +4,17 @@ on the category the image falls into."""
 
 import json
 import eclipse_api
+import eclipse_groups
 
 def add_art_to_groups():
     """Automatically sends out group submission requests based on a user-provided deviation URL and
     a set of folder categories."""
     print("Please ensure that the deviation is open in Eclipse in Chrome before continuing.")
     art_url = input("Paste deviation URL: ")
-    with open('eclipse_groups_listing.json', 'r') as f:
-        eclipse_groups_listing = json.load(f)
+    groups_listing = eclipse_groups.Groups()
+
+    # TODO - this is where groups_listing needs to handle which groups & folders are appropriate
+    #  to send to.
 
     eclipse = eclipse_api.Eclipse()
     eclipse.add_deviation_to_group(
