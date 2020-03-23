@@ -5,8 +5,7 @@ listing to use with add_art_to_groups.py."""
 import json
 import sys
 import time
-from eclipse_api import DeviantArtEclipseAPI as Eclipse
-from eclipse_helpers import get_group_id
+import eclipse_api
 
 def read_file_into_words(filename):
     """Parses a .txt file and returns each line as an entry in a list.
@@ -56,14 +55,14 @@ def update_groups_listing():
         groups_listing = json.load(file)
 
     group_names = read_file_into_words('eclipse_groups_input.txt')
-    eclipse = Eclipse()
+    eclipse = eclipse_api.Eclipse()
     count = 0
     for group_name in group_names:
         count += 1
         print(f"{get_percent(count,len(group_names))}% Done - Fetching '{group_name}'")
 
         start_time = time.time()
-        group_id = get_group_id(group_name)
+        group_id = eclipse_api.get_group_id(group_name)
         sleep_delay(start_time)
 
         group_info = {

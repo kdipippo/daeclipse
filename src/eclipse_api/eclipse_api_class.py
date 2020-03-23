@@ -4,7 +4,7 @@
 import json
 import browser_cookie3
 import requests
-from eclipse_helpers import get_csrf
+from .eclipse_helpers import get_csrf
 
 class DeviantArtEclipseAPI:
     """Class to handle making calls to the New DeviantArt API available for Eclipse."""

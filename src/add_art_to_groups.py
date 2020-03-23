@@ -3,7 +3,7 @@
 on the category the image falls into."""
 
 import json
-from eclipse_api import DeviantArtEclipseAPI as Eclipse
+import eclipse_api
 
 def add_art_to_groups():
     """Automatically sends out group submission requests based on a user-provided deviation URL and
@@ -13,7 +13,7 @@ def add_art_to_groups():
     with open('eclipse_groups_listing.json', 'r') as f:
         eclipse_groups_listing = json.load(f)
 
-    eclipse = Eclipse()
+    eclipse = eclipse_api.Eclipse()
     eclipse.add_deviation_to_group(
         40852213,      # Candycorn-Kingdom
         60854872,      # Featured
