@@ -4,7 +4,8 @@
 import json
 import browser_cookie3
 import requests
-from .eclipse_helpers import get_csrf
+import time
+from .eclipse_helpers import get_csrf, sleep_delay
 
 class DeviantArtEclipseAPI:
     """Class to handle making calls to the New DeviantArt API available for Eclipse."""
@@ -31,7 +32,11 @@ class DeviantArtEclipseAPI:
     def get_groups(self):
         """Prints information about a subset (~10) of groups the user is a member of."""
         groups_url = f"{self.base_uri}/groups"
+
+        start_time = time.time()
         response = requests.get(groups_url, cookies=self.cookies)
+        sleep_delay(start_time)
+
         rjson = json.loads(response.text)
         print(json.dumps(rjson, indent=2))
 
@@ -46,7 +51,11 @@ class DeviantArtEclipseAPI:
             dict -- Dictionary response from the API call.
         """
         group_folders_url = f"{self.base_uri}/group_folders?groupid={group_id}&type=gallery"
+
+        start_time = time.time()
         response = requests.get(group_folders_url, cookies=self.cookies)
+        sleep_delay(start_time)
+
         if response.status_code == 200:
             return json.loads(response.text)
         print(f"ERROR!! Status code in get_group_folders was {response.status_code}")
@@ -75,7 +84,11 @@ class DeviantArtEclipseAPI:
             "deviationid": deviation_id,
             "csrf_token": csrf_token
         })
+
+        start_time = time.time()
         response = requests.post(group_add_url, cookies=self.cookies, headers=headers, data=data)
+        sleep_delay(start_time)
+
         print(response.status_code)
         rjson = json.loads(response.text)
         print(json.dumps(rjson, indent=2))

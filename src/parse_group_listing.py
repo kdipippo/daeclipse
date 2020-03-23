@@ -1,74 +1,14 @@
 import json
+import eclipse_groups
 
-def addFolderCheck(folderName, groupName, filterStr):
-    lowerFolderName = folderName.lower()
-    lowerFilter = filterStr.lower()
-    if lowerFolderName == lowerFilter:
-        return False
-    if lowerFilter in lowerFolderName:
-        result = input(f"{groupName} ::: '{folderName}'. Add? (y/n): ")
-        if result == "y":
-            return True
-        elif result in ("n", ""):
-            return False
-        else:
-            result = input("Answer must be y/n: ")
-            if result == "y":
-                return True
-            elif result in ("n", ""):
-                return False
-    return True
+if __name__ == "__main__":
+    groups_listing = eclipse_groups.Groups()
 
-# ===============================================================
-
-with open('eclipse_groups_listing.json', 'r') as f:
-    eclipse_groups_listing = json.load(f)
-
-# delete groups by filter OR add category individually
-PROCEDURE = "add category individually"
-
-# ---------------------------------------------------------------
-if PROCEDURE == "delete groups by filter":
-    FILTER_STR = "breed"
-    print("Enter is interpretted the same way as no.")
-    for group in eclipse_groups_listing["groups_information"]:
-        newFolders = []
-        for folder in group["folders"]:
-            if addFolderCheck(folder["folder_name"], group["group_name"], FILTER_STR):
-                newFolders.append(folder)
-        group["folders"] = newFolders
-
-# ---------------------------------------------------------------
-if PROCEDURE == "add category individually":
-    print("Leave blank to delete folder")
-    for group in eclipse_groups_listing["groups_information"]:
-        newFolders = []
-        promptContinue = False
-        alreadyPrinted = False
-        print(f"\n⭐{group['group_name']}")
-        for folder in group["folders"]:
-            if len(folder["category"]) > 0:
-                newFolders.append(folder)
-            else:
-                if not alreadyPrinted:
-                    for folderListing in group["folders"]:
-                        print(f"-- {folderListing['folder_name']}")
-                    print("-------------------")
-                    alreadyPrinted = True
-                promptContinue = True
-                result = input(f"'{folder['folder_name']}'. Category? : ")
-                if result != "":
-                    folder["category"] = result
-                    newFolders.append(folder)
-        group["folders"] = newFolders
-        if promptContinue:
-            cont = input("Continue? 'EXIT to leave: ")
-            if cont == "EXIT":
-                break
-
-
-json_file = open('eclipse_groups_listing.json', "w")
-json_file.write(json.dumps(eclipse_groups_listing, indent=2))
-json_file.close()
-
-
+    print("1) delete group folders by filter")
+    print("2) add category individually")
+    option = input("Select the number procedure to undergo: ")
+    if option == "1":
+        filter_str = input("Please specify what substring to filter: ")
+        groups_listing.delete_folders_by_filter(filter_str)
+    elif option == "2":
+        groups_listing.go_through_empty_categories()

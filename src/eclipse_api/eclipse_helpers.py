@@ -2,6 +2,7 @@
 """Helper file containing HTML parsing functions for using Eclipse API methods."""
 
 import requests
+import time
 from bs4 import BeautifulSoup
 
 def get_csrf(deviation_url, cookies):
@@ -15,7 +16,10 @@ def get_csrf(deviation_url, cookies):
     Returns:
         string -- CSRF validation token.
     """
+    start_time = time.time()
     page = requests.get(deviation_url, cookies=cookies)
+    sleep_delay(start_time)
+
     soup = BeautifulSoup(page.text, 'html.parser')
     return soup.find("input", {"name":"validate_token"})["value"]
 
@@ -30,7 +34,11 @@ def get_group_id(group_name):
         string -- Eclipse group ID.
     """
     group_url = f"https://www.deviantart.com/{group_name}"
+
+    start_time = time.time()
     page = requests.get(group_url)
+    sleep_delay(start_time)
+
     soup = BeautifulSoup(page.text, 'html.parser')
     gmi = soup.find("div", {"name":"gmi-GBadge"})
     if gmi is not None:
@@ -40,3 +48,14 @@ def get_group_id(group_name):
         return gmi["gmi-id"]
     print("ERROR")
     return None
+
+def sleep_delay(start):
+    """Pause the program for 15 times the duration of any call made to DeviantArt.
+
+    Arguments:
+        start {float} -- Unix timestamp representing the start time.
+    """
+    # wait 10x longer than it took them to respond
+    response_delay = int(15 * (time.time() - start))
+    print(f"                                 Sleeping {response_delay} seconds")
+    time.sleep(response_delay)
