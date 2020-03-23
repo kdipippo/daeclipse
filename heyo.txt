@@ -19,6 +19,7 @@ draw_to_adopt
 f2u
 fanart
 female
+for_sale
 gacha
 gif
 gijinka
