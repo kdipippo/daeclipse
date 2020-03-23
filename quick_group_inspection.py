@@ -10,7 +10,7 @@ for group in eclipse_groups_listing["groups_information"]:
             categoryStr = folder["category"].replace("(","").replace(")","")
             categoryList = categoryStr.split(" ")
             for cat in categoryList:
-                if cat not in categories:
+                if cat not in categories and cat not in ["and", "or"]:
                     categories.append(cat)
 
 categories.sort()

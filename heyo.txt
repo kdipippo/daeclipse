@@ -1,6 +1,5 @@
+*
 adopt
-all
-and
 animal
 anime
 auction
@@ -40,7 +39,6 @@ meiko
 miku
 oc
 offer_to_adopt
-or
 original
 p2u
 paypal
