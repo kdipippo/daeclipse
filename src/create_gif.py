@@ -326,7 +326,7 @@ def get_json(assets, current_time):
     json_file.write(json.dumps(assets.get_json(), indent=2))
     json_file.close()
 
-if __name__ == "__main__":
+def create_gif():
     with open('assets.json', 'r') as f:
         ASSETS_JSON = json.load(f)
     GIF_ASSETS = get_random_asset_list(ASSETS_JSON)
@@ -340,3 +340,6 @@ if __name__ == "__main__":
     CURRENT_TIME = datetime.today().strftime("%Y-%m-%d_%I:%M:%S%p")
     get_gif(GIF_ASSETS, CURRENT_TIME)
     get_json(GIF_ASSETS, CURRENT_TIME)
+
+if __name__ == "__main__":
+    create_gif()

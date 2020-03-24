@@ -1,0 +1,2792 @@
+{
+  "folder_categories": [
+    "*"
+  ],
+  "groups_information": [
+    {
+      "group_name": "Official-AnimeLegacy",
+      "group_id": 31077127,
+      "folders": [
+        {
+          "folder_name": "Danganronpa",
+          "folder_id": 51801690,
+          "category": "danganronpa"
+        },
+        {
+          "folder_name": "Kill La Kill",
+          "folder_id": 51787735,
+          "category": "kill_la_kill"
+        },
+        {
+          "folder_name": "Pokemon",
+          "folder_id": 49466925,
+          "category": "pokemon"
+        },
+        {
+          "folder_name": "Yu-Gi-Oh",
+          "folder_id": 51787800,
+          "category": "yu_gi_oh"
+        },
+        {
+          "folder_name": "Vocaloid",
+          "folder_id": 51787803,
+          "category": "vocaloid"
+        },
+        {
+          "folder_name": "Fan Arts 05",
+          "folder_id": 51787774,
+          "category": "anime and fanart"
+        },
+        {
+          "folder_name": "OC , Memes 02",
+          "folder_id": 51787796,
+          "category": "oc"
+        },
+        {
+          "folder_name": "Chibis",
+          "folder_id": 49307559,
+          "category": "chibi"
+        },
+        {
+          "folder_name": "Stamps",
+          "folder_id": 49306488,
+          "category": "stamp"
+        },
+        {
+          "folder_name": "Pixel",
+          "folder_id": 49310956,
+          "category": "pixel"
+        },
+        {
+          "folder_name": "Tutorials",
+          "folder_id": 49306611,
+          "category": "tutorial"
+        },
+        {
+          "folder_name": "Contests",
+          "folder_id": 49306615,
+          "category": "contest_listing"
+        },
+        {
+          "folder_name": "Commissions",
+          "folder_id": 49306648,
+          "category": "commission"
+        },
+        {
+          "folder_name": "Mature 02",
+          "folder_id": 54293484,
+          "category": "mature"
+        }
+      ]
+    },
+    {
+      "group_name": "MultitalentedARTist",
+      "group_id": 45869094,
+      "folders": [
+        {
+          "folder_name": "Digital Art",
+          "folder_id": 66545692,
+          "category": "digital"
+        },
+        {
+          "folder_name": "Comics and Manga",
+          "folder_id": 66625392,
+          "category": "comic"
+        },
+        {
+          "folder_name": "Pixel Art",
+          "folder_id": 68132997,
+          "category": "pixel"
+        }
+      ]
+    },
+    {
+      "group_name": "raffle-adoptables",
+      "group_id": 26444330,
+      "folders": [
+        {
+          "folder_name": "Featured",
+          "folder_id": 43320510,
+          "category": "raffle and adopt"
+        }
+      ]
+    },
+    {
+      "group_name": "AdoptRaffle",
+      "group_id": 36092897,
+      "folders": [
+        {
+          "folder_name": "Humanoid, Gijinka, Anthro, Kemonomimi",
+          "folder_id": 54874960,
+          "category": "raffle and adopt"
+        }
+      ]
+    },
+    {
+      "group_name": "DiscoverArts",
+      "group_id": 44891356,
+      "folders": [
+        {
+          "folder_name": "Digital Arts 4",
+          "folder_id": 71950640,
+          "category": "digital"
+        },
+        {
+          "folder_name": "Anime - Manga Arts 4",
+          "folder_id": 71950667,
+          "category": "anime"
+        },
+        {
+          "folder_name": "Adoptables Arts 4",
+          "folder_id": 71950672,
+          "category": "adopt"
+        },
+        {
+          "folder_name": "Fan Arts 4",
+          "folder_id": 71950677,
+          "category": "fanart"
+        },
+        {
+          "folder_name": "Stamps Arts 4",
+          "folder_id": 71950682,
+          "category": "stamp"
+        },
+        {
+          "folder_name": "Tutorials Arts 4",
+          "folder_id": 71950788,
+          "category": "tutorial"
+        },
+        {
+          "folder_name": "Mature Arts 4",
+          "folder_id": 71950797,
+          "category": "mature"
+        }
+      ]
+    },
+    {
+      "group_name": "Adoptable-OC",
+      "group_id": 38612496,
+      "folders": [
+        {
+          "folder_name": "Featured",
+          "folder_id": 58044286,
+          "category": "adopt"
+        },
+        {
+          "folder_name": "OTA - Offer To Adopt, NYP - Name Your Price",
+          "folder_id": 68316050,
+          "category": "offer_to_adopt"
+        },
+        {
+          "folder_name": "Mystery, Gacha, Eggs, Breedables, Aesthetics",
+          "folder_id": 58050911,
+          "category": "adopt and gacha"
+        },
+        {
+          "folder_name": "Free - Draw or Write to Adopt - Raffles",
+          "folder_id": 58056434,
+          "category": "adopt or draw_to_adopt or raffle"
+        },
+        {
+          "folder_name": "F2U + P2U Bases",
+          "folder_id": 58044323,
+          "category": "base"
+        },
+        {
+          "folder_name": "FINISHED Comms + YCH + Customs",
+          "folder_id": 64551983,
+          "category": "commission"
+        },
+        {
+          "folder_name": "YCH - Your Character Here",
+          "folder_id": 69175581,
+          "category": "your_character_here"
+        }
+      ]
+    },
+    {
+      "group_name": "Adoptik",
+      "group_id": 42200771,
+      "folders": [
+        {
+          "folder_name": "DTA, OTA, YCH",
+          "folder_id": 68076543,
+          "category": "draw_to_adopt or offer_to_adopt or your_character_here"
+        },
+        {
+          "folder_name": "Raffles",
+          "folder_id": 65388236,
+          "category": "adopt and raffle"
+        },
+        {
+          "folder_name": "Comissions",
+          "folder_id": 65588588,
+          "category": "commission"
+        },
+        {
+          "folder_name": "Customs",
+          "folder_id": 62666082,
+          "category": "custom"
+        },
+        {
+          "folder_name": "Mature Content",
+          "folder_id": 62636184,
+          "category": "mature"
+        },
+        {
+          "folder_name": "Auctions 2",
+          "folder_id": 70207446,
+          "category": "adopt and auction"
+        },
+        {
+          "folder_name": "Set Prices 2",
+          "folder_id": 70207447,
+          "category": "adopt and set_price"
+        }
+      ]
+    },
+    {
+      "group_name": "artsu-licious",
+      "group_id": 41176353,
+      "folders": [
+        {
+          "folder_name": "Commission Info, YCHs",
+          "folder_id": 61320749,
+          "category": "commission_info or your_character_here"
+        },
+        {
+          "folder_name": "Raffles, LFs, ATs, etc.",
+          "folder_id": 66381500,
+          "category": "raffle"
+        },
+        {
+          "folder_name": "Digital pieces",
+          "folder_id": 61320580,
+          "category": "digital"
+        },
+        {
+          "folder_name": "Pixel art",
+          "folder_id": 61322245,
+          "category": "pixel"
+        },
+        {
+          "folder_name": "Adoptables",
+          "folder_id": 61322266,
+          "category": "adopt"
+        },
+        {
+          "folder_name": "Resources, Tutorials, Brush settings",
+          "folder_id": 66128718,
+          "category": "tutorial"
+        },
+        {
+          "folder_name": "Stamps, Buttons",
+          "folder_id": 63172806,
+          "category": "stamp"
+        },
+        {
+          "folder_name": "P2U Bases",
+          "folder_id": 63208093,
+          "category": "base and p2u"
+        },
+        {
+          "folder_name": "F2U Bases",
+          "folder_id": 63208094,
+          "category": "base and f2u"
+        }
+      ]
+    },
+    {
+      "group_name": "ContestsAndGiveaways",
+      "group_id": 25964887,
+      "folders": [
+        {
+          "folder_name": "Art Giveaways",
+          "folder_id": 42664989,
+          "category": "raffle"
+        },
+        {
+          "folder_name": "Art Contests",
+          "folder_id": 64686480,
+          "category": "contest_listing"
+        }
+      ]
+    },
+    {
+      "group_name": "Raffle-Group",
+      "group_id": 40517582,
+      "folders": [
+        {
+          "folder_name": "Adopt Raffles",
+          "folder_id": 64619514,
+          "category": "adopt and raffle"
+        }
+      ]
+    },
+    {
+      "group_name": "artist-exposure",
+      "group_id": 2808302,
+      "folders": [
+        {
+          "folder_name": "Digital - People",
+          "folder_id": 72348145,
+          "category": "digital"
+        },
+        {
+          "folder_name": "Pixel Art",
+          "folder_id": 64478147,
+          "category": "pixel"
+        },
+        {
+          "folder_name": "Fan Art + Game 2",
+          "folder_id": 67500218,
+          "category": "fanart and video_game"
+        },
+        {
+          "folder_name": "Fanart - Animanga 2",
+          "folder_id": 68752012,
+          "category": "fanart and anime"
+        },
+        {
+          "folder_name": "Original Comic Pages",
+          "folder_id": 64636643,
+          "category": "original and comic"
+        },
+        {
+          "folder_name": "Contests",
+          "folder_id": 64478555,
+          "category": "contest_listing"
+        },
+        {
+          "folder_name": "Tutorials",
+          "folder_id": 52454039,
+          "category": "tutorial"
+        },
+        {
+          "folder_name": "Adoptables",
+          "folder_id": 70899477,
+          "category": "adopt"
+        }
+      ]
+    },
+    {
+      "group_name": "Cute-in-a-Cup",
+      "group_id": 32016032,
+      "folders": [
+        {
+          "folder_name": "Digital",
+          "folder_id": 61998043,
+          "category": "digital"
+        },
+        {
+          "folder_name": "Pixels",
+          "folder_id": 50348997,
+          "category": "pixel"
+        },
+        {
+          "folder_name": "Adoptables, Ref, Other",
+          "folder_id": 50348441,
+          "category": "adopt"
+        },
+        {
+          "folder_name": "Recources, Tutorials",
+          "folder_id": 50348981,
+          "category": "tutorial"
+        }
+      ]
+    },
+    {
+      "group_name": "Cute-Kawaii-Love",
+      "group_id": 27423070,
+      "folders": [
+        {
+          "folder_name": "Digital Art",
+          "folder_id": 44696702,
+          "category": "digital"
+        },
+        {
+          "folder_name": "Fan Art",
+          "folder_id": 44696735,
+          "category": "fanart"
+        },
+        {
+          "folder_name": "Pixel Art",
+          "folder_id": 44696809,
+          "category": "pixel"
+        }
+      ]
+    },
+    {
+      "group_name": "ForeverKawaiiDesu",
+      "group_id": 25628324,
+      "folders": [
+        {
+          "folder_name": "Kawaii Digital Art",
+          "folder_id": 42161669,
+          "category": "digital"
+        },
+        {
+          "folder_name": "Fan Art",
+          "folder_id": 42161682,
+          "category": "fanart"
+        },
+        {
+          "folder_name": "Pixel Art",
+          "folder_id": 42161683,
+          "category": "pixel"
+        },
+        {
+          "folder_name": "Free to use",
+          "folder_id": 42161686,
+          "category": "f2u"
+        },
+        {
+          "folder_name": "Tutorials",
+          "folder_id": 42161715,
+          "category": "tutorial"
+        },
+        {
+          "folder_name": "Kawaii Adopts",
+          "folder_id": 42171064,
+          "category": "adopt"
+        },
+        {
+          "folder_name": "Pay 2 Use",
+          "folder_id": 42171230,
+          "category": "p2u"
+        },
+        {
+          "folder_name": "Contest Entries",
+          "folder_id": 42175328,
+          "category": "contest_entry"
+        }
+      ]
+    },
+    {
+      "group_name": "Kawaii--Paradise",
+      "group_id": 20086679,
+      "folders": [
+        {
+          "folder_name": "New Digital Art",
+          "folder_id": 63815494,
+          "category": "digital"
+        },
+        {
+          "folder_name": "Pixel Art",
+          "folder_id": 54176940,
+          "category": "pixel"
+        },
+        {
+          "folder_name": "Adopts",
+          "folder_id": 54176958,
+          "category": "adopt"
+        },
+        {
+          "folder_name": "Chibis",
+          "folder_id": 57695429,
+          "category": "chibi"
+        },
+        {
+          "folder_name": "Anime",
+          "folder_id": 58364953,
+          "category": "anime"
+        }
+      ]
+    },
+    {
+      "group_name": "manga-anime--art",
+      "group_id": 22189777,
+      "folders": [
+        {
+          "folder_name": "Digital Art NEW",
+          "folder_id": 68967708,
+          "category": "digital"
+        },
+        {
+          "folder_name": "FanArt Digital NEW",
+          "folder_id": 69954417,
+          "category": "fanart"
+        },
+        {
+          "folder_name": "Commission Info",
+          "folder_id": 37904657,
+          "category": "commission_info"
+        },
+        {
+          "folder_name": "Tutorials",
+          "folder_id": 37904869,
+          "category": "tutorial"
+        },
+        {
+          "folder_name": "Page Strips and Comics",
+          "folder_id": 39380027,
+          "category": "comic"
+        }
+      ]
+    },
+    {
+      "group_name": "Anime-Manga-Fam",
+      "group_id": 33868659,
+      "folders": [
+        {
+          "folder_name": "AniManga 3",
+          "folder_id": 70667831,
+          "category": "anime"
+        },
+        {
+          "folder_name": "Chibi",
+          "folder_id": 57069626,
+          "category": "chibi"
+        },
+        {
+          "folder_name": "Comics",
+          "folder_id": 52447790,
+          "category": "comic"
+        }
+      ]
+    },
+    {
+      "group_name": "All-Art-is-Adored",
+      "group_id": 18962042,
+      "folders": [
+        {
+          "folder_name": "Icons-pixels-stamps-animations-flash",
+          "folder_id": 32545823,
+          "category": "heyo"
+        }
+      ]
+    },
+    {
+      "group_name": "SHOW-MY-COLORS",
+      "group_id": 12413975,
+      "folders": [
+        {
+          "folder_name": "Submissions",
+          "folder_id": 67743894,
+          "category": ""
+        }
+      ]
+    },
+    {
+      "group_name": "All-4-all",
+      "group_id": 28194360,
+      "folders": [
+        {
+          "folder_name": "Raffles, Giveaways, Free",
+          "folder_id": 69004548,
+          "category": "raffle"
+        },
+        {
+          "folder_name": "Drawing Contests Journals",
+          "folder_id": 69004549,
+          "category": "contest_listing"
+        },
+        {
+          "folder_name": "Commissions Info",
+          "folder_id": 69004544,
+          "category": "commission_info"
+        },
+        {
+          "folder_name": "YCH, CYOP",
+          "folder_id": 69004543,
+          "category": "your_character_here"
+        },
+        {
+          "folder_name": "OTA, NYP, WTA, DTA",
+          "folder_id": 69004557,
+          "category": "offer_to_adopt or draw_to_adopt"
+        },
+        {
+          "folder_name": "Gatcha, Eggs, Mystery",
+          "folder_id": 69004828,
+          "category": "gacha"
+        },
+        {
+          "folder_name": "Humans, Kemonomimi",
+          "folder_id": 69004522,
+          "category": "adopt and (human or kemonomimi)"
+        },
+        {
+          "folder_name": "Adoptable F2U and P2U Bases",
+          "folder_id": 45757030,
+          "category": "base"
+        },
+        {
+          "folder_name": "Post here if you are lazy to pick folder",
+          "folder_id": 69004563,
+          "category": "*"
+        }
+      ]
+    },
+    {
+      "group_name": "CuteKawaiiClub",
+      "group_id": 27991229,
+      "folders": [
+        {
+          "folder_name": "Fan Art 4",
+          "folder_id": 63596292,
+          "category": "fanart"
+        },
+        {
+          "folder_name": "Pixel Art",
+          "folder_id": 45485995,
+          "category": "pixel"
+        },
+        {
+          "folder_name": "Gijinkas",
+          "folder_id": 47231912,
+          "category": "gijinka"
+        },
+        {
+          "folder_name": "Adoptables 2",
+          "folder_id": 63203659,
+          "category": "adopt"
+        },
+        {
+          "folder_name": "Fan Art 3",
+          "folder_id": 60643379,
+          "category": "fanart"
+        },
+        {
+          "folder_name": "Original Digital Art 6",
+          "folder_id": 63596270,
+          "category": "digital"
+        }
+      ]
+    },
+    {
+      "group_name": "All-Without-Limits",
+      "group_id": 32301463,
+      "folders": [
+        {
+          "folder_name": "Tutorials",
+          "folder_id": 50691253,
+          "category": "tutorial"
+        },
+        {
+          "folder_name": "Other 5",
+          "folder_id": 69484890,
+          "category": "*"
+        },
+        {
+          "folder_name": "Digital 36",
+          "folder_id": 71693413,
+          "category": "digital"
+        },
+        {
+          "folder_name": "Fan Art 25",
+          "folder_id": 71693415,
+          "category": "fanart"
+        },
+        {
+          "folder_name": "Mature 5",
+          "folder_id": 71693565,
+          "category": "mature"
+        }
+      ]
+    },
+    {
+      "group_name": "UnlimitedEverything",
+      "group_id": 32110293,
+      "folders": [
+        {
+          "folder_name": "Where Does This Go?",
+          "folder_id": 69439473,
+          "category": "*"
+        },
+        {
+          "folder_name": "Adopts II",
+          "folder_id": 71870421,
+          "category": "adopt"
+        },
+        {
+          "folder_name": "Advertising Commissions, YCH, etc",
+          "folder_id": 67561687,
+          "category": "commission_info or your_character_here"
+        },
+        {
+          "folder_name": "Digital Art XIV",
+          "folder_id": 71869881,
+          "category": "digital"
+        },
+        {
+          "folder_name": "FanArt XII",
+          "folder_id": 71869991,
+          "category": "fanart"
+        },
+        {
+          "folder_name": "Mature III",
+          "folder_id": 69444394,
+          "category": "mature"
+        },
+        {
+          "folder_name": "OCs IX",
+          "folder_id": 71869954,
+          "category": "oc"
+        },
+        {
+          "folder_name": "Stamps",
+          "folder_id": 56615616,
+          "category": "stamps"
+        }
+      ]
+    },
+    {
+      "group_name": "Universe-Artworks",
+      "group_id": 34175353,
+      "folders": [
+        {
+          "folder_name": "New Artworks - 1Everyday",
+          "folder_id": 69018545,
+          "category": "*"
+        }
+      ]
+    },
+    {
+      "group_name": "Un-seen-Deviants",
+      "group_id": 37480002,
+      "folders": [
+        {
+          "folder_name": "Anime",
+          "folder_id": 56744801,
+          "category": "anime"
+        },
+        {
+          "folder_name": "Literature, Comics",
+          "folder_id": 56744681,
+          "category": "comic"
+        },
+        {
+          "folder_name": "Open Adoptables",
+          "folder_id": 56744684,
+          "category": "adopt"
+        },
+        {
+          "folder_name": "Stamps,icons,fan buttons,emotes,Journal skins",
+          "folder_id": 56744803,
+          "category": "stamp"
+        },
+        {
+          "folder_name": "Mature Content",
+          "folder_id": 56744900,
+          "category": "mature"
+        },
+        {
+          "folder_name": "Digital Art 3",
+          "folder_id": 57858069,
+          "category": "digital"
+        }
+      ]
+    },
+    {
+      "group_name": "AllArtUnited",
+      "group_id": 37382992,
+      "folders": [
+        {
+          "folder_name": "ALL MEDIA ACCEPT 03",
+          "folder_id": 66520446,
+          "category": "*"
+        },
+        {
+          "folder_name": "DIGITAL ART 11",
+          "folder_id": 69095764,
+          "category": "digital"
+        },
+        {
+          "folder_name": "ANIMAL Digital ART 02",
+          "folder_id": 66931330,
+          "category": "digital and animal"
+        },
+        {
+          "folder_name": "MANGA - ANIME 04",
+          "folder_id": 65279927,
+          "category": "anime"
+        },
+        {
+          "folder_name": "Comics and Cartoons 2",
+          "folder_id": 69247824,
+          "category": "comic"
+        },
+        {
+          "folder_name": "FANART 08",
+          "folder_id": 68866839,
+          "category": "fanart"
+        },
+        {
+          "folder_name": "ADOPT COMMISSION",
+          "folder_id": 61172104,
+          "category": "adopt or commission"
+        }
+      ]
+    },
+    {
+      "group_name": "Hidden-Deviants",
+      "group_id": 37020680,
+      "folders": [
+        {
+          "folder_name": "Digital Art",
+          "folder_id": 64638681,
+          "category": "digital"
+        },
+        {
+          "folder_name": "Cartoons and Comics",
+          "folder_id": 64692990,
+          "category": "comic"
+        },
+        {
+          "folder_name": "Anime and Manga",
+          "folder_id": 64692993,
+          "category": "anime"
+        },
+        {
+          "folder_name": "Fanart",
+          "folder_id": 64693077,
+          "category": "fanart"
+        }
+      ]
+    },
+    {
+      "group_name": "Art-Acceptance",
+      "group_id": 37981250,
+      "folders": [
+        {
+          "folder_name": "Commission Info",
+          "folder_id": 62875025,
+          "category": "commission_info"
+        },
+        {
+          "folder_name": "Tutorials",
+          "folder_id": 69647993,
+          "category": "tutorial"
+        },
+        {
+          "folder_name": "Stamps and Buttons",
+          "folder_id": 63150284,
+          "category": "stamp"
+        },
+        {
+          "folder_name": "Mature Content",
+          "folder_id": 63165300,
+          "category": "mature"
+        },
+        {
+          "folder_name": "Contests",
+          "folder_id": 57268102,
+          "category": "contest_listing or contest_entry"
+        },
+        {
+          "folder_name": "Pixel Art",
+          "folder_id": 63104353,
+          "category": "pixel"
+        },
+        {
+          "folder_name": "Icons",
+          "folder_id": 57268379,
+          "category": "icon"
+        },
+        {
+          "folder_name": "Chibi",
+          "folder_id": 63128267,
+          "category": "chibi"
+        },
+        {
+          "folder_name": "YCH",
+          "folder_id": 59207714,
+          "category": "your_character_here"
+        },
+        {
+          "folder_name": "Bases and Base Edits",
+          "folder_id": 67202759,
+          "category": "base"
+        },
+        {
+          "folder_name": "Commissions",
+          "folder_id": 67852111,
+          "category": "commission"
+        },
+        {
+          "folder_name": "Adopts",
+          "folder_id": 70647057,
+          "category": "adopt"
+        },
+        {
+          "folder_name": "Anime and Manga",
+          "folder_id": 71176641,
+          "category": "anime"
+        },
+        {
+          "folder_name": "OCs",
+          "folder_id": 72014587,
+          "category": "oc"
+        },
+        {
+          "folder_name": "Fanart",
+          "folder_id": 72169072,
+          "category": "fanart"
+        },
+        {
+          "folder_name": "Comics",
+          "folder_id": 72390608,
+          "category": "comic"
+        },
+        {
+          "folder_name": "Digital Art",
+          "folder_id": 72461396,
+          "category": "digital"
+        },
+        {
+          "folder_name": "Pixel Art",
+          "folder_id": 72501820,
+          "category": "pixel"
+        }
+      ]
+    },
+    {
+      "group_name": "All-Is-Permitted",
+      "group_id": 18256508,
+      "folders": [
+        {
+          "folder_name": "Adoptables",
+          "folder_id": 55382792,
+          "category": "adopt"
+        },
+        {
+          "folder_name": "Comics",
+          "folder_id": 31407198,
+          "category": "comic"
+        },
+        {
+          "folder_name": "Commission Prices Guides",
+          "folder_id": 56971208,
+          "category": "commission_info"
+        },
+        {
+          "folder_name": "Digital Art",
+          "folder_id": 31407164,
+          "category": "digital"
+        },
+        {
+          "folder_name": "Fanart 2",
+          "folder_id": 71886205,
+          "category": "fanart"
+        },
+        {
+          "folder_name": "Mature Content 2",
+          "folder_id": 69141674,
+          "category": "mature"
+        },
+        {
+          "folder_name": "Original Characters",
+          "folder_id": 59184048,
+          "category": "oc"
+        },
+        {
+          "folder_name": "Stamps",
+          "folder_id": 56971252,
+          "category": "stamps"
+        },
+        {
+          "folder_name": "Tutorials",
+          "folder_id": 47643667,
+          "category": "tutorial"
+        }
+      ]
+    },
+    {
+      "group_name": "Vocaloid-fanart",
+      "group_id": 16519385,
+      "folders": [
+        {
+          "folder_name": "Featured",
+          "folder_id": 35007680,
+          "category": "vocaloid"
+        },
+        {
+          "folder_name": "Miku Hatsune 2",
+          "folder_id": 54517489,
+          "category": "vocaloid and miku"
+        },
+        {
+          "folder_name": "Rin Kagamine",
+          "folder_id": 35010467,
+          "category": "vocaloid and rin"
+        },
+        {
+          "folder_name": "Len Kagamine",
+          "folder_id": 35010472,
+          "category": "vocaloid and len"
+        },
+        {
+          "folder_name": "Luka Megurine",
+          "folder_id": 35010477,
+          "category": "vocaloid and luka"
+        },
+        {
+          "folder_name": "Meiko",
+          "folder_id": 35295861,
+          "category": "vocaloid and meiko"
+        },
+        {
+          "folder_name": "Kaito",
+          "folder_id": 35010481,
+          "category": "vocaloid and kaito"
+        },
+        {
+          "folder_name": "Gumi Megpoid",
+          "folder_id": 35010482,
+          "category": "vocaloid and gumi"
+        },
+        {
+          "folder_name": "IA",
+          "folder_id": 55087048,
+          "category": "vocaloid and ia"
+        },
+        {
+          "folder_name": "Other vocaloid",
+          "folder_id": 35010488,
+          "category": "vocaloid"
+        },
+        {
+          "folder_name": "Vocaloid altogether",
+          "folder_id": 35046311,
+          "category": "vocaloid and group"
+        }
+      ]
+    },
+    {
+      "group_name": "The-Vocaloid-Fanclub",
+      "group_id": 12902575,
+      "folders": [
+        {
+          "folder_name": "Miku Hatsune",
+          "folder_id": 26639023,
+          "category": "vocaloid and miku"
+        },
+        {
+          "folder_name": "Rin and Len Kagamine",
+          "folder_id": 26755040,
+          "category": "vocaloid and (rin or len)"
+        },
+        {
+          "folder_name": "Luka Megurine",
+          "folder_id": 26755054,
+          "category": "vocaloid and luka"
+        },
+        {
+          "folder_name": "Meiko",
+          "folder_id": 26755057,
+          "category": "vocaloid and meiko"
+        },
+        {
+          "folder_name": "Gumi Megpoid",
+          "folder_id": 26755065,
+          "category": "vocaloid and gumi"
+        },
+        {
+          "folder_name": "Groups Of Vocaloids",
+          "folder_id": 26775349,
+          "category": "vocaloid and group"
+        },
+        {
+          "folder_name": "Icons and Pixel Art",
+          "folder_id": 26755121,
+          "category": "vocaloid and (pixel or icon)"
+        },
+        {
+          "folder_name": "Stamps",
+          "folder_id": 26755120,
+          "category": "vocaloid and stamp"
+        },
+        {
+          "folder_name": "Comics and Fan Manga",
+          "folder_id": 26993659,
+          "category": "vocaloid and comic"
+        }
+      ]
+    },
+    {
+      "group_name": "HappyfromCute",
+      "group_id": 35609481,
+      "folders": [
+        {
+          "folder_name": "Cute chibis",
+          "folder_id": 54425332,
+          "category": "chibi"
+        },
+        {
+          "folder_name": "Pokemons",
+          "folder_id": 54449978,
+          "category": "pokemon"
+        },
+        {
+          "folder_name": "icons",
+          "folder_id": 54450015,
+          "category": "icon"
+        },
+        {
+          "folder_name": "Adoptables",
+          "folder_id": 54612445,
+          "category": "adopt"
+        },
+        {
+          "folder_name": "OC",
+          "folder_id": 54612546,
+          "category": "oc"
+        },
+        {
+          "folder_name": "Fanart",
+          "folder_id": 54624766,
+          "category": "fanart"
+        },
+        {
+          "folder_name": "Comics",
+          "folder_id": 54656105,
+          "category": "comic"
+        },
+        {
+          "folder_name": "Digital art",
+          "folder_id": 55468562,
+          "category": "digital"
+        }
+      ]
+    },
+    {
+      "group_name": "Kawaii-World",
+      "group_id": 14537913,
+      "folders": [
+        {
+          "folder_name": "The \"UNSURE\" Folder",
+          "folder_id": 28799508,
+          "category": "*"
+        },
+        {
+          "folder_name": "Adoptables - Digital Goods",
+          "folder_id": 69019182,
+          "category": "adopt"
+        },
+        {
+          "folder_name": "Bases",
+          "folder_id": 30412880,
+          "category": "base"
+        },
+        {
+          "folder_name": "Comics",
+          "folder_id": 28901891,
+          "category": "comic"
+        },
+        {
+          "folder_name": "Digital Art 14",
+          "folder_id": 69329261,
+          "category": "digital"
+        },
+        {
+          "folder_name": "Digital Fanart 08",
+          "folder_id": 67518408,
+          "category": "fanart"
+        },
+        {
+          "folder_name": "Pixel Art 02",
+          "folder_id": 43845458,
+          "category": "pixel"
+        },
+        {
+          "folder_name": "Resources - Stamps - Buttons - Icons - etc.",
+          "folder_id": 31529098,
+          "category": "icon or stamp"
+        },
+        {
+          "folder_name": "Tutorials",
+          "folder_id": 27727215,
+          "category": "tutorial"
+        }
+      ]
+    },
+    {
+      "group_name": "Lovery-of-Cuteness",
+      "group_id": 28212031,
+      "folders": [
+        {
+          "folder_name": "Commissions",
+          "folder_id": 45782436,
+          "category": "commission"
+        },
+        {
+          "folder_name": "Adoptables 2",
+          "folder_id": 66847388,
+          "category": "adopt"
+        },
+        {
+          "folder_name": "Chibi",
+          "folder_id": 45782381,
+          "category": "chibi"
+        },
+        {
+          "folder_name": "Pixel Art",
+          "folder_id": 45782366,
+          "category": "pixel"
+        },
+        {
+          "folder_name": "Free icon",
+          "folder_id": 45782370,
+          "category": "icon and f2u"
+        },
+        {
+          "folder_name": "Non free icon",
+          "folder_id": 45782373,
+          "category": "icon and (p2u or commission)"
+        },
+        {
+          "folder_name": "Fanart 2",
+          "folder_id": 69438561,
+          "category": "fanart"
+        },
+        {
+          "folder_name": "Comics n Mangas",
+          "folder_id": 47826775,
+          "category": "comic"
+        },
+        {
+          "folder_name": "Stamps",
+          "folder_id": 45784429,
+          "category": "stamp"
+        },
+        {
+          "folder_name": "Tutorials",
+          "folder_id": 45785219,
+          "category": "tutorial"
+        },
+        {
+          "folder_name": "I DON'T KNOW WHERE THIS GOES",
+          "folder_id": 45782395,
+          "category": "*"
+        },
+        {
+          "folder_name": "Digital Art Folder 5",
+          "folder_id": 61267102,
+          "category": "digital"
+        },
+        {
+          "folder_name": "Original Characters 2",
+          "folder_id": 62282403,
+          "category": "oc"
+        },
+        {
+          "folder_name": "Chibi folder 5",
+          "folder_id": 64919341,
+          "category": "chibi"
+        },
+        {
+          "folder_name": "Anime and manga folder 3",
+          "folder_id": 64919344,
+          "category": "anime"
+        }
+      ]
+    },
+    {
+      "group_name": "MangAnimeArts",
+      "group_id": 27827241,
+      "folders": [
+        {
+          "folder_name": "FAN ART",
+          "folder_id": 62701054,
+          "category": "fanart"
+        },
+        {
+          "folder_name": "ORIGINAL ART",
+          "folder_id": 62701056,
+          "category": "*"
+        },
+        {
+          "folder_name": "TURORIALS",
+          "folder_id": 62701151,
+          "category": "tutorial"
+        },
+        {
+          "folder_name": "Chibi",
+          "folder_id": 62701057,
+          "category": "chibi"
+        },
+        {
+          "folder_name": "Adoptables",
+          "folder_id": 62701103,
+          "category": "adopt"
+        },
+        {
+          "folder_name": "Manga",
+          "folder_id": 62701116,
+          "category": "anime"
+        },
+        {
+          "folder_name": "Digital",
+          "folder_id": 62701118,
+          "category": "digital"
+        },
+        {
+          "folder_name": "Original Characters",
+          "folder_id": 62714675,
+          "category": "oc"
+        }
+      ]
+    },
+    {
+      "group_name": "ColorsANDAnime",
+      "group_id": 16477765,
+      "folders": [
+        {
+          "folder_name": "2019",
+          "folder_id": 69885629,
+          "category": "*"
+        }
+      ]
+    },
+    {
+      "group_name": "Kawaii-Manga",
+      "group_id": 13554377,
+      "folders": [
+        {
+          "folder_name": "CUTE",
+          "folder_id": 24999781,
+          "category": "*"
+        },
+        {
+          "folder_name": "\"Vocaloid\"",
+          "folder_id": 24999761,
+          "category": "vocaloid"
+        },
+        {
+          "folder_name": "Fanart",
+          "folder_id": 26393324,
+          "category": "fanart"
+        },
+        {
+          "folder_name": "Digital Work",
+          "folder_id": 24999775,
+          "category": "digital"
+        },
+        {
+          "folder_name": "Pixels",
+          "folder_id": 25009732,
+          "category": "pixel"
+        }
+      ]
+    },
+    {
+      "group_name": "TheKawaii-Club",
+      "group_id": 6861043,
+      "folders": [
+        {
+          "folder_name": "SUBMIT HERE",
+          "folder_id": 72580110,
+          "category": "*"
+        }
+      ]
+    },
+    {
+      "group_name": "AnimeFanGroup",
+      "group_id": 12500859,
+      "folders": [
+        {
+          "folder_name": "NEW OC 2 Folder",
+          "folder_id": 72662046,
+          "category": "oc"
+        },
+        {
+          "folder_name": "New Fanart 2 Folder",
+          "folder_id": 71194755,
+          "category": "fanart"
+        },
+        {
+          "folder_name": "Animations and Gifs",
+          "folder_id": 68463676,
+          "category": "gif"
+        },
+        {
+          "folder_name": "MATURE CONTENT",
+          "folder_id": 67823940,
+          "category": "mature"
+        },
+        {
+          "folder_name": "LINES + BASES NEW",
+          "folder_id": 67823944,
+          "category": "bases"
+        },
+        {
+          "folder_name": "CHIBIS NEW Folder",
+          "folder_id": 69649326,
+          "category": "chibi"
+        },
+        {
+          "folder_name": "ADOPTABLES",
+          "folder_id": 69414423,
+          "category": "adopt"
+        }
+      ]
+    },
+    {
+      "group_name": "moe-club",
+      "group_id": 10316090,
+      "folders": [
+        {
+          "folder_name": "Chibis",
+          "folder_id": 63668909,
+          "category": "chibi"
+        },
+        {
+          "folder_name": "Fanart 2",
+          "folder_id": 67304491,
+          "category": "fanart"
+        },
+        {
+          "folder_name": "Females",
+          "folder_id": 63816061,
+          "category": "female"
+        },
+        {
+          "folder_name": "Males",
+          "folder_id": 53291663,
+          "category": "male"
+        }
+      ]
+    },
+    {
+      "group_name": "kawaii-explosion",
+      "group_id": 4928626,
+      "folders": [
+        {
+          "folder_name": "Digital Art NEW",
+          "folder_id": 64134258,
+          "category": "digital"
+        },
+        {
+          "folder_name": "Pixel Art and Avatars new",
+          "folder_id": 58457028,
+          "category": "pixel or icon"
+        }
+      ]
+    },
+    {
+      "group_name": "Kawaii--Universe",
+      "group_id": 27583249,
+      "folders": [
+        {
+          "folder_name": "Anime",
+          "folder_id": 44927859,
+          "category": "anime"
+        },
+        {
+          "folder_name": "Chibis",
+          "folder_id": 44927865,
+          "category": "chibi"
+        },
+        {
+          "folder_name": "Pixel Art",
+          "folder_id": 44927870,
+          "category": "pixel"
+        },
+        {
+          "folder_name": "Tutorials",
+          "folder_id": 44927872,
+          "category": "tutorial"
+        },
+        {
+          "folder_name": "Other",
+          "folder_id": 44927878,
+          "category": "*"
+        }
+      ]
+    },
+    {
+      "group_name": "Kawaii-Unite",
+      "group_id": 22588599,
+      "folders": [
+        {
+          "folder_name": "Oc's 4",
+          "folder_id": 45947022,
+          "category": "oc"
+        },
+        {
+          "folder_name": "Tutorials",
+          "folder_id": 38019564,
+          "category": "tutorial"
+        },
+        {
+          "folder_name": "Fanart 2",
+          "folder_id": 53395943,
+          "category": "fanart"
+        },
+        {
+          "folder_name": "Chibi OC",
+          "folder_id": 38020153,
+          "category": "chibi and oc"
+        },
+        {
+          "folder_name": "Chibi Fanart",
+          "folder_id": 38149728,
+          "category": "chibi and fanart"
+        },
+        {
+          "folder_name": "Pixel-Animation-Flash",
+          "folder_id": 37972070,
+          "category": "pixel"
+        },
+        {
+          "folder_name": "commission me -money-",
+          "folder_id": 38434769,
+          "category": "commission_info"
+        },
+        {
+          "folder_name": "adoptables human",
+          "folder_id": 38434701,
+          "category": "adopt"
+        }
+      ]
+    },
+    {
+      "group_name": "Art-Manga-Anime",
+      "group_id": 23312649,
+      "folders": [
+        {
+          "folder_name": "Original NEW",
+          "folder_id": 66955386,
+          "category": "original"
+        },
+        {
+          "folder_name": "Fanart NEW",
+          "folder_id": 67722931,
+          "category": "fanart"
+        },
+        {
+          "folder_name": "Chibi - SD",
+          "folder_id": 54910095,
+          "category": "chibi"
+        },
+        {
+          "folder_name": "Pixel - Animation",
+          "folder_id": 39331148,
+          "category": "pixel"
+        },
+        {
+          "folder_name": "Adoptables, YCHs, Contests, Commission journals",
+          "folder_id": 66969967,
+          "category": "adopt"
+        },
+        {
+          "folder_name": "Tutorial - Process",
+          "folder_id": 39261328,
+          "category": "tutorial"
+        }
+      ]
+    },
+    {
+      "group_name": "CUTE-Ad0ptables",
+      "group_id": 27023781,
+      "folders": [
+        {
+          "folder_name": "Auctions",
+          "folder_id": 44437185,
+          "category": "adopt and auction"
+        },
+        {
+          "folder_name": "Paypal",
+          "folder_id": 44475956,
+          "category": "adopt and paypal"
+        },
+        {
+          "folder_name": "Others",
+          "folder_id": 44141377,
+          "category": "adopt"
+        }
+      ]
+    },
+    {
+      "group_name": "CuteAdopties",
+      "group_id": 22177395,
+      "folders": [
+        {
+          "folder_name": "2 0 1 9",
+          "folder_id": 68759347,
+          "category": "adopt"
+        }
+      ]
+    },
+    {
+      "group_name": "dAdopts",
+      "group_id": 15368791,
+      "folders": [
+        {
+          "folder_name": "Humans",
+          "folder_id": 26795258,
+          "category": "adopt"
+        }
+      ]
+    },
+    {
+      "group_name": "Adopt-Human",
+      "group_id": 18386640,
+      "folders": [
+        {
+          "folder_name": "Featured",
+          "folder_id": 31599198,
+          "category": "adopt"
+        },
+        {
+          "folder_name": "Free, D2A, Trade",
+          "folder_id": 31599405,
+          "category": "draw_to_adopt"
+        },
+        {
+          "folder_name": "Set Price Cash Only 2",
+          "folder_id": 67397888,
+          "category": "adopt and set_price"
+        },
+        {
+          "folder_name": "Auctions and Offer to Adopt 5",
+          "folder_id": 66321290,
+          "category": "offer_to_adopt or (adopt and auction)"
+        },
+        {
+          "folder_name": "YCH",
+          "folder_id": 63896931,
+          "category": "your_character_here"
+        }
+      ]
+    },
+    {
+      "group_name": "IconLuverz",
+      "group_id": 26392728,
+      "folders": [
+        {
+          "folder_name": "Pixels-Animated",
+          "folder_id": 43670089,
+          "category": "icon and gif"
+        },
+        {
+          "folder_name": "Pixels-Static",
+          "folder_id": 43669941,
+          "category": "icon and static"
+        },
+        {
+          "folder_name": "Pixel Animals and Creatures",
+          "folder_id": 43667364,
+          "category": "pixel and animal"
+        },
+        {
+          "folder_name": "Free",
+          "folder_id": 43667741,
+          "category": "pixel and f2u"
+        },
+        {
+          "folder_name": "Stamps",
+          "folder_id": 43667349,
+          "category": "stamp"
+        },
+        {
+          "folder_name": "Commission Info",
+          "folder_id": 45258036,
+          "category": "pixel and icon and commission_info"
+        }
+      ]
+    },
+    {
+      "group_name": "Moe-Cafe",
+      "group_id": 23014540,
+      "folders": [
+        {
+          "folder_name": "Adoptables",
+          "folder_id": 38685711,
+          "category": "adopt"
+        },
+        {
+          "folder_name": "Animation and Pixels",
+          "folder_id": 38685624,
+          "category": "pixel"
+        },
+        {
+          "folder_name": "Chibi",
+          "folder_id": 38685496,
+          "category": "chibi"
+        },
+        {
+          "folder_name": "Couples, Group and Pairs",
+          "folder_id": 38685509,
+          "category": "couple or group"
+        },
+        {
+          "folder_name": "Fan Art",
+          "folder_id": 38685468,
+          "category": "fanart"
+        },
+        {
+          "folder_name": "Original",
+          "folder_id": 38685486,
+          "category": "original"
+        }
+      ]
+    },
+    {
+      "group_name": "Breed-n-adopt",
+      "group_id": 26894503,
+      "folders": [
+        {
+          "folder_name": "Huminoid",
+          "folder_id": 43939656,
+          "category": "adopt and (human or humanoid)"
+        },
+        {
+          "folder_name": "Auctions",
+          "folder_id": 43938370,
+          "category": "adopt and auction"
+        }
+      ]
+    },
+    {
+      "group_name": "CuteArtistUnite",
+      "group_id": 20993677,
+      "folders": [
+        {
+          "folder_name": "Digital Art 22",
+          "folder_id": 72661264,
+          "category": "digital"
+        },
+        {
+          "folder_name": "Pixel and Icons 2",
+          "folder_id": 62184098,
+          "category": "pixel or icon"
+        }
+      ]
+    },
+    {
+      "group_name": "Vocaloids-Club",
+      "group_id": 7936365,
+      "folders": [
+        {
+          "folder_name": "Official VOCALOIDs Folder3",
+          "folder_id": 41032831,
+          "category": "vocaloid"
+        }
+      ]
+    },
+    {
+      "group_name": "VocaloidArtists",
+      "group_id": 15324341,
+      "folders": [
+        {
+          "folder_name": "Hatsune Miku",
+          "folder_id": 26754810,
+          "category": "vocaloid and miku"
+        },
+        {
+          "folder_name": "Rin and Len",
+          "folder_id": 26754872,
+          "category": "vocaloid and (rin or len)"
+        },
+        {
+          "folder_name": "Megurine Luka",
+          "folder_id": 26754818,
+          "category": "vocaloid and luka"
+        },
+        {
+          "folder_name": "Meiko",
+          "folder_id": 26754834,
+          "category": "vocaloid and meiko"
+        },
+        {
+          "folder_name": "Gumi",
+          "folder_id": 26991935,
+          "category": "vocaloid and gumi"
+        },
+        {
+          "folder_name": "Other Vocaloids and Voca Genderbends",
+          "folder_id": 27169205,
+          "category": "vocaloid"
+        },
+        {
+          "folder_name": "Couples or Group",
+          "folder_id": 27797621,
+          "category": "vocaloid and (couple or group)"
+        }
+      ]
+    },
+    {
+      "group_name": "Vocaloid-fanclub",
+      "group_id": 9830034,
+      "folders": [
+        {
+          "folder_name": "MEIKO",
+          "folder_id": 23996912,
+          "category": "vocaloid and meiko"
+        },
+        {
+          "folder_name": "Megurine Luka",
+          "folder_id": 23987388,
+          "category": "vocaloid and luka"
+        },
+        {
+          "folder_name": "GUMI",
+          "folder_id": 24212882,
+          "category": "vocaloid and gumi"
+        },
+        {
+          "folder_name": "Kagamine Rin and Len",
+          "folder_id": 23987330,
+          "category": "vocaloid and (rin or len)"
+        },
+        {
+          "folder_name": "IA",
+          "folder_id": 35010660,
+          "category": "vocaloid and ia"
+        },
+        {
+          "folder_name": "Other Official Vocaloids",
+          "folder_id": 44169212,
+          "category": "vocaloid"
+        },
+        {
+          "folder_name": "Several Vocaloids",
+          "folder_id": 23987366,
+          "category": "vocaloid and group"
+        },
+        {
+          "folder_name": "Hatsune Miku 2",
+          "folder_id": 56022528,
+          "category": "vocaloid and miku"
+        }
+      ]
+    },
+    {
+      "group_name": "Quality-Adopts",
+      "group_id": 17194220,
+      "folders": [
+        {
+          "folder_name": "Humanoids",
+          "folder_id": 67680325,
+          "category": "adopt"
+        },
+        {
+          "folder_name": "Egg-Mystery Adopts",
+          "folder_id": 48513157,
+          "category": "adopt and gacha"
+        },
+        {
+          "folder_name": "YCHs",
+          "folder_id": 66122848,
+          "category": "your_character_here"
+        },
+        {
+          "folder_name": "Commission Info",
+          "folder_id": 48513149,
+          "category": "commission_info"
+        }
+      ]
+    },
+    {
+      "group_name": "Adoptables-Adopt",
+      "group_id": 25064632,
+      "folders": [
+        {
+          "folder_name": "Auction Adoptables",
+          "folder_id": 41513221,
+          "category": "adopt and auction"
+        },
+        {
+          "folder_name": "Human Adoptables",
+          "folder_id": 41512497,
+          "category": "adopt and human"
+        },
+        {
+          "folder_name": "Other Adoptables",
+          "folder_id": 44789581,
+          "category": "adopt"
+        }
+      ]
+    },
+    {
+      "group_name": "AdoptionParty",
+      "group_id": 22329524,
+      "folders": [
+        {
+          "folder_name": "Featured",
+          "folder_id": 37579427,
+          "category": "adopt"
+        },
+        {
+          "folder_name": "CASH adopts",
+          "folder_id": 72536840,
+          "category": "adopt and paypal"
+        },
+        {
+          "folder_name": "OTA DTA adopts",
+          "folder_id": 72536846,
+          "category": "offer_to_adopt or draw_to_adopt"
+        },
+        {
+          "folder_name": "P2U bases",
+          "folder_id": 72536847,
+          "category": "base and p2u"
+        }
+      ]
+    },
+    {
+      "group_name": "Adoptions-Galore",
+      "group_id": 22121748,
+      "folders": [
+        {
+          "folder_name": "Pokemon",
+          "folder_id": 37258095,
+          "category": "adopt and pokemon"
+        },
+        {
+          "folder_name": "Humans",
+          "folder_id": 37250753,
+          "category": "adopt and human"
+        },
+        {
+          "folder_name": "Draw-to-Adopt",
+          "folder_id": 37250784,
+          "category": "draw_to_adopt"
+        },
+        {
+          "folder_name": "Auctions",
+          "folder_id": 37251114,
+          "category": "adopt and auction"
+        },
+        {
+          "folder_name": "Offer a Price",
+          "folder_id": 37258327,
+          "category": "offer_to_adopt"
+        },
+        {
+          "folder_name": "Mixed",
+          "folder_id": 37250841,
+          "category": "adopt"
+        },
+        {
+          "folder_name": "Lineart, Bases",
+          "folder_id": 37250778,
+          "category": "base"
+        },
+        {
+          "folder_name": "Contest Entries",
+          "folder_id": 37250845,
+          "category": "contest_entry"
+        }
+      ]
+    },
+    {
+      "group_name": "Adoptions-Guild",
+      "group_id": 19930915,
+      "folders": [
+        {
+          "folder_name": "Humanoid Adoptables 2",
+          "folder_id": 62131415,
+          "category": "adopt and (human or humanoid)"
+        },
+        {
+          "folder_name": "Pokemon Adoptables 2",
+          "folder_id": 62710729,
+          "category": "adopt and pokemon"
+        },
+        {
+          "folder_name": "Offer to Adopt 2",
+          "folder_id": 62710731,
+          "category": "offer_to_adopt"
+        },
+        {
+          "folder_name": "Auctions 2",
+          "folder_id": 62411276,
+          "category": "adopt and auction"
+        },
+        {
+          "folder_name": "PayPal only 2",
+          "folder_id": 62710732,
+          "category": "adopt and paypal"
+        },
+        {
+          "folder_name": "Draw to Adopt 2",
+          "folder_id": 62710733,
+          "category": "draw_to_adopt"
+        },
+        {
+          "folder_name": "Lineart and Bases 2",
+          "folder_id": 62710784,
+          "category": "base"
+        },
+        {
+          "folder_name": "Miscellaneous Adoptables 2",
+          "folder_id": 62710786,
+          "category": "adopt"
+        }
+      ]
+    },
+    {
+      "group_name": "AdoptionClub",
+      "group_id": 6140573,
+      "folders": [
+        {
+          "folder_name": "Humanoid, Anthros, Gijinka, Kemonomimi",
+          "folder_id": 63494295,
+          "category": "adopt and (human or humanoid or gijinka or kemonomimi)"
+        },
+        {
+          "folder_name": "Mystery Adopts",
+          "folder_id": 38032481,
+          "category": "adopt and gacha"
+        },
+        {
+          "folder_name": "Lineart and Bases",
+          "folder_id": 38032468,
+          "category": "base"
+        },
+        {
+          "folder_name": "Raffles -No MYO or Customs-",
+          "folder_id": 53852428,
+          "category": "adopt and raffle"
+        }
+      ]
+    },
+    {
+      "group_name": "Adoption-City",
+      "group_id": 14688541,
+      "folders": [
+        {
+          "folder_name": "Featured",
+          "folder_id": 33176274,
+          "category": "adopt"
+        },
+        {
+          "folder_name": "Eggs, Mystery, Aesthetics",
+          "folder_id": 70995738,
+          "category": "adopt and gacha"
+        },
+        {
+          "folder_name": "Customs",
+          "folder_id": 70995776,
+          "category": "custom"
+        },
+        {
+          "folder_name": "Free Line Arts and Bases",
+          "folder_id": 61062819,
+          "category": "base and f2u"
+        },
+        {
+          "folder_name": "Raffles and Give Aways",
+          "folder_id": 61076587,
+          "category": "adopt and raffle"
+        },
+        {
+          "folder_name": "YCH",
+          "folder_id": 70995841,
+          "category": "your_character_here"
+        },
+        {
+          "folder_name": "Auctions",
+          "folder_id": 70995778,
+          "category": "adopt and auction"
+        },
+        {
+          "folder_name": "Humanoid -NO ANTHRO-",
+          "folder_id": 70995777,
+          "category": "adopt and (human or humanoid)"
+        }
+      ]
+    },
+    {
+      "group_name": "Adoptable-Overstock",
+      "group_id": 21192436,
+      "folders": [
+        {
+          "folder_name": "Shelf 9",
+          "folder_id": 67430954,
+          "category": "adopt"
+        }
+      ]
+    },
+    {
+      "group_name": "Adoptable-Orphanage",
+      "group_id": 18690181,
+      "folders": [
+        {
+          "folder_name": "Animals",
+          "folder_id": 41379823,
+          "category": "adopt and animal"
+        },
+        {
+          "folder_name": "Humans",
+          "folder_id": 41379831,
+          "category": "adopt and (human or humanoid or kemonomimi)"
+        }
+      ]
+    },
+    {
+      "group_name": "Adoptable-Network",
+      "group_id": 23811135,
+      "folders": [
+        {
+          "folder_name": "Humans",
+          "folder_id": 50231214,
+          "category": "adopt and human"
+        },
+        {
+          "folder_name": "Anthros and Gijikas",
+          "folder_id": 50231229,
+          "category": "adopt and gijinka"
+        },
+        {
+          "folder_name": "Nekos or part animal humans",
+          "folder_id": 50231461,
+          "category": "adopt and kemonomimi"
+        },
+        {
+          "folder_name": "Free or Draw to Adopt",
+          "folder_id": 50231242,
+          "category": "draw_to_adopt"
+        },
+        {
+          "folder_name": "Other",
+          "folder_id": 50231287,
+          "category": "adopt"
+        }
+      ]
+    },
+    {
+      "group_name": "Adoptable-City",
+      "group_id": 22393250,
+      "folders": [
+        {
+          "folder_name": "Raffle",
+          "folder_id": 55486894,
+          "category": "adopt and raffle"
+        },
+        {
+          "folder_name": "Draw-Trade-Write-Free",
+          "folder_id": 37686283,
+          "category": "draw_to_adopt"
+        },
+        {
+          "folder_name": "YCH's",
+          "folder_id": 55447528,
+          "category": "your_character_here"
+        },
+        {
+          "folder_name": "Human",
+          "folder_id": 56295122,
+          "category": "adopt and human"
+        },
+        {
+          "folder_name": "Kemonomimi",
+          "folder_id": 56295124,
+          "category": "adopt and kemonomimi"
+        },
+        {
+          "folder_name": "Other Humanoids",
+          "folder_id": 56295457,
+          "category": "adopt and humanoid"
+        },
+        {
+          "folder_name": "Bases",
+          "folder_id": 38565675,
+          "category": "base"
+        },
+        {
+          "folder_name": "Contests",
+          "folder_id": 41408041,
+          "category": "contest_listing"
+        },
+        {
+          "folder_name": "Commission Info",
+          "folder_id": 41002335,
+          "category": "commission_info"
+        },
+        {
+          "folder_name": "Tutorials",
+          "folder_id": 38215121,
+          "category": "tutorial"
+        }
+      ]
+    },
+    {
+      "group_name": "CuteLoversUnited",
+      "group_id": 21482544,
+      "folders": [
+        {
+          "folder_name": "Featured",
+          "folder_id": 36267000,
+          "category": "*"
+        },
+        {
+          "folder_name": "Digital Art",
+          "folder_id": 36350658,
+          "category": "digital"
+        },
+        {
+          "folder_name": "Anime",
+          "folder_id": 36332572,
+          "category": "anime"
+        },
+        {
+          "folder_name": "Chibis",
+          "folder_id": 36332554,
+          "category": "chibi"
+        },
+        {
+          "folder_name": "Original Characters",
+          "folder_id": 36333504,
+          "category": "oc"
+        },
+        {
+          "folder_name": "Animals and Creatures",
+          "folder_id": 36906041,
+          "category": "animal"
+        },
+        {
+          "folder_name": "Icons",
+          "folder_id": 36485412,
+          "category": "icon"
+        },
+        {
+          "folder_name": "Comic Strips",
+          "folder_id": 36781066,
+          "category": "comic"
+        },
+        {
+          "folder_name": "Adoptables",
+          "folder_id": 36947842,
+          "category": "adopt"
+        }
+      ]
+    },
+    {
+      "group_name": "TheCuteGroup",
+      "group_id": 12987687,
+      "folders": [
+        {
+          "folder_name": "Digital Art",
+          "folder_id": 30690990,
+          "category": "digital"
+        },
+        {
+          "folder_name": "Emotes - Stamps - Non-free Avatars - Pixels",
+          "folder_id": 24499078,
+          "category": "stamp or pixel or icon"
+        },
+        {
+          "folder_name": "Free avatars",
+          "folder_id": 26645219,
+          "category": "icon and f2u"
+        },
+        {
+          "folder_name": "Comics - Literature",
+          "folder_id": 30691030,
+          "category": "comic"
+        }
+      ]
+    },
+    {
+      "group_name": "All-Things-Cute",
+      "group_id": 14718292,
+      "folders": [
+        {
+          "folder_name": "Pixel Art",
+          "folder_id": 63180664,
+          "category": "pixel"
+        },
+        {
+          "folder_name": "Digital Art",
+          "folder_id": 63180668,
+          "category": "digital"
+        },
+        {
+          "folder_name": "Miscellaneous",
+          "folder_id": 63180672,
+          "category": "*"
+        }
+      ]
+    },
+    {
+      "group_name": "Super-Duper-Cute",
+      "group_id": 21411064,
+      "folders": [
+        {
+          "folder_name": "Digital Art 15",
+          "folder_id": 70974461,
+          "category": "digital"
+        },
+        {
+          "folder_name": "Pixel Art",
+          "folder_id": 36173764,
+          "category": "pixel"
+        },
+        {
+          "folder_name": "Icons",
+          "folder_id": 36173766,
+          "category": "icon"
+        },
+        {
+          "folder_name": "Stamps",
+          "folder_id": 36174049,
+          "category": "stamp"
+        },
+        {
+          "folder_name": "Tutorials",
+          "folder_id": 36174041,
+          "category": "tutorial"
+        },
+        {
+          "folder_name": "Adoptables 4",
+          "folder_id": 72370887,
+          "category": "adopt"
+        }
+      ]
+    },
+    {
+      "group_name": "cute-art-club",
+      "group_id": 7967600,
+      "folders": [
+        {
+          "folder_name": "Digital Media",
+          "folder_id": 44080131,
+          "category": "digital"
+        },
+        {
+          "folder_name": "Pixel or Emoticons - NOT ICONS - NOT STAMPS",
+          "folder_id": 24104485,
+          "category": "pixel"
+        },
+        {
+          "folder_name": "Icons or Stamps",
+          "folder_id": 24115064,
+          "category": "stamp or icon"
+        },
+        {
+          "folder_name": "Tutorials or Stocks",
+          "folder_id": 26036427,
+          "category": "tutorial"
+        }
+      ]
+    },
+    {
+      "group_name": "Chibi---Anime",
+      "group_id": 16634374,
+      "folders": [
+        {
+          "folder_name": "Other 3",
+          "folder_id": 51122889,
+          "category": "*"
+        },
+        {
+          "folder_name": "Adoptables",
+          "folder_id": 51122893,
+          "category": "adopt"
+        },
+        {
+          "folder_name": "Vocaloid",
+          "folder_id": 29679598,
+          "category": "vocaloid"
+        },
+        {
+          "folder_name": "Pokemon",
+          "folder_id": 29694883,
+          "category": "pokemon"
+        },
+        {
+          "folder_name": "Original Characters 2",
+          "folder_id": 42903534,
+          "category": "oc"
+        }
+      ]
+    },
+    {
+      "group_name": "Cute-Kawaii-Chibi",
+      "group_id": 18396699,
+      "folders": [
+        {
+          "folder_name": "Kawaii Digital Art",
+          "folder_id": 35692621,
+          "category": "digital"
+        },
+        {
+          "folder_name": "Kawaii Pixel",
+          "folder_id": 31722971,
+          "category": "pixel"
+        },
+        {
+          "folder_name": "Kawaii Misc.",
+          "folder_id": 31634010,
+          "category": "*"
+        }
+      ]
+    },
+    {
+      "group_name": "Chibi4-Ever",
+      "group_id": 17709285,
+      "folders": [
+        {
+          "folder_name": "digital Art",
+          "folder_id": 33914883,
+          "category": "chibi and digital"
+        },
+        {
+          "folder_name": "Fan Art",
+          "folder_id": 30462572,
+          "category": "chibi and fanart"
+        },
+        {
+          "folder_name": "AnimalsChibies",
+          "folder_id": 30378500,
+          "category": "chibi and animal"
+        },
+        {
+          "folder_name": "PIXEL art",
+          "folder_id": 30387519,
+          "category": "pixel"
+        },
+        {
+          "folder_name": "ColorfulArt",
+          "folder_id": 30430359,
+          "category": "chibi"
+        },
+        {
+          "folder_name": "Anime",
+          "folder_id": 30445990,
+          "category": "chibi and anime"
+        }
+      ]
+    },
+    {
+      "group_name": "Precious-Adoptables",
+      "group_id": 25403639,
+      "folders": [
+        {
+          "folder_name": "Humanoids or Anthros",
+          "folder_id": 41871075,
+          "category": "adopt and (human or humanoid)"
+        }
+      ]
+    },
+    {
+      "group_name": "AdoptablesForAnyone",
+      "group_id": 15714064,
+      "folders": [
+        {
+          "folder_name": "Human Humanoids 2",
+          "folder_id": 67252315,
+          "category": "adopt and (human or humanoid)"
+        },
+        {
+          "folder_name": "Outfit Item Mystery etc.",
+          "folder_id": 64045791,
+          "category": "adopt and gacha"
+        },
+        {
+          "folder_name": "YCH",
+          "folder_id": 63962862,
+          "category": "your_character_here"
+        }
+      ]
+    },
+    {
+      "group_name": "Mission-adopt",
+      "group_id": 12794882,
+      "folders": [
+        {
+          "folder_name": "Humans - NOT FANTASY",
+          "folder_id": 52072025,
+          "category": "adopt and human"
+        },
+        {
+          "folder_name": "Fantasy Humanoids and Kemonomimi",
+          "folder_id": 52567141,
+          "category": "adopt and (humanoid or kemonomimi)"
+        },
+        {
+          "folder_name": "Fandom and Gijinka",
+          "folder_id": 52564498,
+          "category": "adopt and gijinka"
+        },
+        {
+          "folder_name": "Eggs, Gacha, Mystery + Ship Grids",
+          "folder_id": 52072100,
+          "category": "adopt and gacha"
+        },
+        {
+          "folder_name": "Commissions, YCHs, and Customs",
+          "folder_id": 70113189,
+          "category": "commission or your_character_here or custom"
+        },
+        {
+          "folder_name": "Bases, Linearts and Resources",
+          "folder_id": 52111176,
+          "category": "base"
+        },
+        {
+          "folder_name": "Other, Unknown, To Be Sorted",
+          "folder_id": 52072027,
+          "category": "adopt"
+        }
+      ]
+    },
+    {
+      "group_name": "Free-PointAdoptsHere",
+      "group_id": 15695084,
+      "folders": [
+        {
+          "folder_name": "OC Adoptables",
+          "folder_id": 27309857,
+          "category": "adopt"
+        },
+        {
+          "folder_name": "Auctions",
+          "folder_id": 28513928,
+          "category": "adopt and auction"
+        },
+        {
+          "folder_name": "Draw To Adopt",
+          "folder_id": 48682578,
+          "category": "draw_to_adopt"
+        },
+        {
+          "folder_name": "Offer To Adopt",
+          "folder_id": 52986887,
+          "category": "offer_to_adopt"
+        },
+        {
+          "folder_name": "Bases and Linearts",
+          "folder_id": 53308886,
+          "category": "base"
+        },
+        {
+          "folder_name": "Custom and Adoptables from Original Species",
+          "folder_id": 53386530,
+          "category": "custom"
+        }
+      ]
+    },
+    {
+      "group_name": "All-Adopts",
+      "group_id": 15653356,
+      "folders": [
+        {
+          "folder_name": "Money adopts",
+          "folder_id": 30270967,
+          "category": "adopt and paypal"
+        },
+        {
+          "folder_name": "Pictures of your characters made by you",
+          "folder_id": 30645304,
+          "category": "oc"
+        },
+        {
+          "folder_name": "Auctions 2",
+          "folder_id": 46930211,
+          "category": "adopt and auction"
+        }
+      ]
+    },
+    {
+      "group_name": "dA-World",
+      "group_id": 19836756,
+      "folders": [
+        {
+          "folder_name": "The Post Office",
+          "folder_id": 33721834,
+          "category": "stamp"
+        },
+        {
+          "folder_name": "The Pet Shop",
+          "folder_id": 33721932,
+          "category": "adopt"
+        },
+        {
+          "folder_name": "The Mannequin Warehouse",
+          "folder_id": 33721996,
+          "category": "base"
+        },
+        {
+          "folder_name": "The Fan Base",
+          "folder_id": 33723228,
+          "category": "fanart"
+        },
+        {
+          "folder_name": "The Anime Shanai",
+          "folder_id": 33723250,
+          "category": "anime or chibi"
+        },
+        {
+          "folder_name": "The Comic-Book Store",
+          "folder_id": 33740385,
+          "category": "comic"
+        },
+        {
+          "folder_name": "The Commissions House",
+          "folder_id": 33933323,
+          "category": "commission"
+        },
+        {
+          "folder_name": "The Zoo",
+          "folder_id": 34244134,
+          "category": "animal"
+        },
+        {
+          "folder_name": "The Classroom",
+          "folder_id": 34506110,
+          "category": "tutorial"
+        }
+      ]
+    },
+    {
+      "group_name": "Draw-To-Adopt",
+      "group_id": 14416505,
+      "folders": [
+        {
+          "folder_name": "Humanoid DTA",
+          "folder_id": 40794482,
+          "category": "draw_to_adopt and (human or humanoid or kemonomimi)"
+        },
+        {
+          "folder_name": "Mixed DTA",
+          "folder_id": 44473782,
+          "category": "draw_to_adopt"
+        },
+        {
+          "folder_name": "OTA-Art Accepted",
+          "folder_id": 51735464,
+          "category": "offer_to_adopt"
+        }
+      ]
+    },
+    {
+      "group_name": "cute-as-pie",
+      "group_id": 13074649,
+      "folders": [
+        {
+          "folder_name": "Featured",
+          "folder_id": 24540735,
+          "category": "*"
+        },
+        {
+          "folder_name": "Pixel Art",
+          "folder_id": 26937239,
+          "category": "pixel"
+        },
+        {
+          "folder_name": "Cute Advertisement",
+          "folder_id": 38642429,
+          "category": "commission_info"
+        },
+        {
+          "folder_name": "Tutorials",
+          "folder_id": 39114643,
+          "category": "tutorial"
+        },
+        {
+          "folder_name": "Digital art 5",
+          "folder_id": 50859650,
+          "category": "digital"
+        },
+        {
+          "folder_name": "cute products for sale",
+          "folder_id": 27338770,
+          "category": "for_sale"
+        },
+        {
+          "folder_name": "Free Icons",
+          "folder_id": 27241681,
+          "category": "icon and f2u"
+        },
+        {
+          "folder_name": "Stamps",
+          "folder_id": 26937240,
+          "category": "stamp"
+        },
+        {
+          "folder_name": "Animated GIF",
+          "folder_id": 28301222,
+          "category": "gif"
+        }
+      ]
+    },
+    {
+      "group_name": "Imagination-Cafe",
+      "group_id": 38997870,
+      "folders": [
+        {
+          "folder_name": "Animation GIF",
+          "folder_id": 58489588,
+          "category": "gif"
+        },
+        {
+          "folder_name": "Comics",
+          "folder_id": 58491488,
+          "category": "comic"
+        },
+        {
+          "folder_name": "Digital Media",
+          "folder_id": 58489560,
+          "category": "digital"
+        },
+        {
+          "folder_name": "Fan Art",
+          "folder_id": 58489565,
+          "category": "fanart"
+        },
+        {
+          "folder_name": "Manga-Anime",
+          "folder_id": 58508571,
+          "category": "anime"
+        },
+        {
+          "folder_name": "Original Characters",
+          "folder_id": 58546810,
+          "category": "oc"
+        },
+        {
+          "folder_name": "Pixel Art",
+          "folder_id": 58490353,
+          "category": "pixel"
+        }
+      ]
+    },
+    {
+      "group_name": "Kawaii-Food",
+      "group_id": 13163355,
+      "folders": [
+        {
+          "folder_name": "Digital Art",
+          "folder_id": 34100437,
+          "category": "digital"
+        }
+      ]
+    },
+    {
+      "group_name": "TheKawaiiKorner",
+      "group_id": 13245248,
+      "folders": [
+        {
+          "folder_name": "Member's Commission Info",
+          "folder_id": 38906719,
+          "category": "commission_info"
+        },
+        {
+          "folder_name": "Pixels, Avis, and Icons 2 -OPEN-",
+          "folder_id": 51007825,
+          "category": "pixel or icon"
+        },
+        {
+          "folder_name": "- OPEN - Digital Art 12",
+          "folder_id": 69721852,
+          "category": "digital"
+        },
+        {
+          "folder_name": "-NEW- Pixel Art",
+          "folder_id": 72639817,
+          "category": "pixel"
+        },
+        {
+          "folder_name": "-NEW- Resources",
+          "folder_id": 72639843,
+          "category": "tutorial"
+        }
+      ]
+    }
+  ]
+}
