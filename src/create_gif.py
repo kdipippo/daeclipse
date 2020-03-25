@@ -72,6 +72,9 @@ class SelectedAssets:
         combined_json['images'] = self.images
         return combined_json
 
+    def get_sorted_layers(self):
+        return sorted(self.json['imageTypes'].items(), key=lambda x: x[1]['order'])
+
 def bob_down(frame_num):
     """Returns whether the sprite is bobbing down, false if bobbing up.
 
@@ -232,7 +235,7 @@ def get_frame(frame_num, assets):
         Image -- Frame as an Image object.
     """
     # Get the order that images are layered.
-    sorted_layers = sorted(ASSETS_JSON['imageTypes'].items(), key=lambda x: x[1]['order'])
+    sorted_layers = assets.get_sorted_layers()
     frame = Image.new('RGBA', (50, 50), color=DEFAULT_COLOR)
     for layer in sorted_layers:
         image_type = layer[0]
@@ -329,17 +332,22 @@ def get_json(assets, current_time):
 def create_gif():
     with open('assets.json', 'r') as f:
         ASSETS_JSON = json.load(f)
+
+    result = input("Do you want to use a preset instead of randomly generating? (Yes/No): ")
     GIF_ASSETS = get_random_asset_list(ASSETS_JSON)
     GIF_ASSETS.store_json(ASSETS_JSON)
-
-    with open('presets/rin.json', 'r') as f:
-        RIN_JSON = json.load(f)
-    GIF_ASSETS.debug_override(RIN_JSON)
+    if result == "Yes":
+        preset_filename = input("[FILE INPUT] Please select the preset json file to use")
+        if preset_filename is not None:
+            with open(preset_filename, 'r') as f:
+                RIN_JSON = json.load(f)
+            GIF_ASSETS.debug_override(RIN_JSON)
 
     GIF_ASSETS.debug()
     CURRENT_TIME = datetime.today().strftime("%Y-%m-%d_%I:%M:%S%p")
     get_gif(GIF_ASSETS, CURRENT_TIME)
     get_json(GIF_ASSETS, CURRENT_TIME)
+    return f'output/{CURRENT_TIME}.gif'
 
 if __name__ == "__main__":
     create_gif()

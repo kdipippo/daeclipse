@@ -2,6 +2,8 @@ import json
 import eclipse_groups
 import PySimpleGUI as sg
 import builtins
+from create_gif import create_gif
+import os
 
 def popup_input(prompt):
     """Override the input() function when working in the UI, based on what the
@@ -15,6 +17,8 @@ def popup_input(prompt):
     """
     if "(Yes/No)" in prompt:
         result = sg.PopupYesNo(prompt)
+    elif "[FILE INPUT]" in prompt:
+        result = sg.PopupGetFile(prompt)
     else:
         result = sg.PopupGetText(prompt)
     return result
@@ -45,11 +49,15 @@ def get_button_menu(actions, menu_title):
 def todo():
     print("TODO")
 
+def call_create_gif():
+    gif_filename = create_gif()
+    os.system(f'code {gif_filename}')
+
 if __name__ == "__main__":
     sg.ChangeLookAndFeel('DarkBlack')
     actions = {
         'Art': {
-            'Generate Icon': 'todo()'
+            'Generate Icon': 'call_create_gif()'
         },
         'Groups': {
             'Add New Group': 'todo()',
