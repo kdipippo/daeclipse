@@ -68,7 +68,8 @@ def update_groups_listing():
     groups_listing = eclipse_groups.Groups()
     eclipse = eclipse_api.Eclipse()
 
-    group_names = read_file_into_words('eclipse_groups_input.txt')
+    groups_input_filename = input("[FILE INPUT] Specify the .txt file containing the new groups.")
+    group_names = read_file_into_words(groups_input_filename)
     count = 0
     for group_name in group_names:
         count += 1

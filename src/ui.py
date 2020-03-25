@@ -3,6 +3,7 @@ import eclipse_groups
 import PySimpleGUI as sg
 import builtins
 from create_gif import create_gif
+from update_groups_listing import update_groups_listing
 import os
 
 def popup_input(prompt):
@@ -60,9 +61,10 @@ if __name__ == "__main__":
             'Generate Icon': 'call_create_gif()'
         },
         'Groups': {
-            'Add New Group': 'todo()',
+            'Add New Groups': 'update_groups_listing()',
             'Get Folder Categories': 'get_folder_categories()',       # TODO remove this function
             'Delete Folders by Filter': 'delete_folders_by_filter()', # TODO remove this function
+            'Populate Empty Folder Categories': 'populate_empty_folder_categories()', # TODO remove this function
             'Submit Art to Group': 'todo()'
         }
     }

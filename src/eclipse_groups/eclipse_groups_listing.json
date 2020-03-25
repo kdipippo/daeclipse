@@ -2817,6 +2817,83 @@
           "category": "tutorial"
         }
       ]
+    },
+    {
+      "group_name": "TeamAdoptables",
+      "group_id": "46910371",
+      "folders": [
+        {
+          "folder_name": "Featured",
+          "folder_id": 67472913,
+          "category": null
+        },
+        {
+          "folder_name": "+ Auction",
+          "folder_id": 69336289,
+          "category": "adopt and auction"
+        },
+        {
+          "folder_name": "+ DTA_WTA",
+          "folder_id": 70881054,
+          "category": "draw_to_adopt"
+        },
+        {
+          "folder_name": "+ Flatsale_Setprice 2",
+          "folder_id": 71950842,
+          "category": "adopt and set_price"
+        },
+        {
+          "folder_name": "+ Free Adopts",
+          "folder_id": 71557218,
+          "category": null
+        },
+        {
+          "folder_name": "+ NYP_OTA 2",
+          "folder_id": 70403500,
+          "category": "offer_to_adopt"
+        },
+        {
+          "folder_name": "- YCHs",
+          "folder_id": 67473149,
+          "category": "your_character_here"
+        },
+        {
+          "folder_name": "_F2U Bases",
+          "folder_id": 67473128,
+          "category": "base and f2u"
+        },
+        {
+          "folder_name": "_P2U Bases",
+          "folder_id": 67473130,
+          "category": "base and p2u"
+        }
+      ]
+    },
+    {
+      "group_name": "HumanoidAdopts",
+      "group_id": "31423483",
+      "folders": [
+        {
+          "folder_name": "Human",
+          "folder_id": 71541587,
+          "category": "adopt and human"
+        },
+        {
+          "folder_name": "Kemonomimi",
+          "folder_id": 71541589,
+          "category": "adopt and kemonomimi"
+        },
+        {
+          "folder_name": "Mixed what part of humanoid is hard to understand",
+          "folder_id": 67762140,
+          "category": "adopt and humanoid"
+        },
+        {
+          "folder_name": "Base P2U F2U",
+          "folder_id": 49714459,
+          "category": "base and (p2u or f2u)"
+        }
+      ]
     }
   ]
 }

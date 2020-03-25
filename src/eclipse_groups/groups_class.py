@@ -2,7 +2,7 @@ import json
 import pathlib
 
 class Groups:
-    groups_listing_file = f'{pathlib.Path(__file__).parent.absolute()}/temp.json'
+    groups_listing_file = f'{pathlib.Path(__file__).parent.absolute()}/eclipse_groups_listing.json'
     def __init__(self):
         with open(self.groups_listing_file, 'r') as f:
             self.groups = json.load(f)
@@ -47,7 +47,7 @@ class Groups:
             alreadyPrinted = False
             print(f"\n⭐{group['group_name']}")
             for folder in group["folders"]:
-                if len(folder["category"]) > 0:
+                if folder["category"] != "UNSELECTED":
                     newFolders.append(folder)
                 else:
                     if not alreadyPrinted:
