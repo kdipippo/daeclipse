@@ -74,7 +74,7 @@ def todo():
 
 
 def call_create_gif():
-    """Generate an animated icon gif and open the result in VSCode."""
+    """Generate an animated icon gif and open the result as a preview HTML page in the browser."""
     gif_filename = create_gif()
     with open('create_gif_template.html', 'r') as file:
         html = file.read().replace('\n', '')
