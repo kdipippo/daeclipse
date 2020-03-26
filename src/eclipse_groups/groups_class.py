@@ -8,6 +8,11 @@ class Groups:
             self.groups = json.load(f)
 
     def get_categories(self):
+        """Return the list of categories assigned to folders.
+
+        Returns:
+            list: Alphabetized list of folder category strings.
+        """
         categories = []
         for group in self.groups["groups_information"]:
             for folder in group["folders"]:

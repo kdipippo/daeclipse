@@ -1,20 +1,23 @@
-import json
 import eclipse_groups
 import PySimpleGUI as sg
 import builtins
-from create_gif import create_gif
+from gif_generator import create_gif
 from update_groups_listing import update_groups_listing
 import os
 
-def popup_input(prompt):
+
+window = sg.Window('MitzyBANANA Control Center')
+
+
+def popup_input(prompt) -> str:
     """Override the input() function when working in the UI, based on what the
     prompt string contains.
 
-    Arguments:
-        prompt {string} -- Message the user sees when prompted.
+    Args:
+        prompt (string): Message the user sees when prompted.
 
     Returns:
-        string -- user input result.
+        string: user input result.
     """
     if "(Yes/No)" in prompt:
         result = sg.PopupYesNo(prompt)
@@ -24,22 +27,38 @@ def popup_input(prompt):
         result = sg.PopupGetText(prompt)
     return result
 
+
 builtins.input = popup_input
 
+
+def print(*args, **kwargs) -> None:
+    """Override the print() function to call window.Refresh() after all print() calls."""
+    builtins.print(*args, **kwargs)
+    window.Refresh()
+
+
 def get_folder_categories():
+    """Display the list of
+
+    Returns:
+
+    """
     groups_listing = eclipse_groups.Groups()
     categories = groups_listing.get_categories()
     for category in categories:
         print(category)
+
 
 def delete_folders_by_filter():
     groups_listing = eclipse_groups.Groups()
     filter_str = input('Please specify what substring to filter:')
     groups_listing.delete_folders_by_filter(filter_str)
 
+
 def populate_empty_folder_categories():
     groups_listing = eclipse_groups.Groups()
     groups_listing.go_through_empty_categories()
+
 
 def get_button_menu(actions, menu_title):
     menu_def = [menu_title]
@@ -47,39 +66,46 @@ def get_button_menu(actions, menu_title):
     print(menu_def)
     return sg.ButtonMenu(menu_title, menu_def, key=menu_title)
 
+
 def todo():
+    """Placeholder function for actions that are not implemented yet."""
     print("TODO")
 
+
 def call_create_gif():
+    """Generate an animated icon gif and open the result in VSCode."""
     gif_filename = create_gif()
     os.system(f'code {gif_filename}')
 
+
 if __name__ == "__main__":
     sg.ChangeLookAndFeel('DarkBlack')
-    actions = {
+    # TODO The lines below marked as TODO contain functionality that should be refactored simpler.
+    ACTIONS = {
         'Art': {
-            'Generate Icon': 'call_create_gif()'
+            'Generate Icon': call_create_gif
         },
         'Groups': {
-            'Add New Groups': 'update_groups_listing()',
-            'Get Folder Categories': 'get_folder_categories()',       # TODO remove this function
-            'Delete Folders by Filter': 'delete_folders_by_filter()', # TODO remove this function
-            'Populate Empty Folder Categories': 'populate_empty_folder_categories()', # TODO remove this function
-            'Submit Art to Group': 'todo()'
+            'Add New Groups': update_groups_listing,
+            'Get Folder Categories': get_folder_categories,                       # TODO
+            'Delete Folders by Filter': delete_folders_by_filter,                 # TODO
+            'Populate Empty Folder Categories': populate_empty_folder_categories, # TODO
+            'Submit Art to Group': todo
         }
     }
 
     layout = [
-        [get_button_menu(actions, 'Art'), get_button_menu(actions, 'Groups'), sg.Button('Exit')],
+        [get_button_menu(ACTIONS, 'Art'), get_button_menu(ACTIONS, 'Groups'), sg.Button('Exit')],
         [sg.Output(size=(120, 40))],
     ]
+
     window = sg.Window('MitzyBANANA Control Center', layout, border_depth=0, use_default_focus=False)
 
     while True:
-        event, values = window.Read()
-        if event in (None, 'Exit'):
+        EVENT, VALUES = window.Read()
+        if EVENT in (None, 'Exit'):
             break
         print("#" * 120)
         print("#" * 120)
-        if values[event] in actions[event]:
-            eval(actions[event][values[event]])
+        if VALUES[EVENT] in ACTIONS[EVENT]:
+            ACTIONS[EVENT][VALUES[EVENT]]()

@@ -2823,11 +2823,6 @@
       "group_id": "46910371",
       "folders": [
         {
-          "folder_name": "Featured",
-          "folder_id": 67472913,
-          "category": null
-        },
-        {
           "folder_name": "+ Auction",
           "folder_id": 69336289,
           "category": "adopt and auction"
@@ -2841,11 +2836,6 @@
           "folder_name": "+ Flatsale_Setprice 2",
           "folder_id": 71950842,
           "category": "adopt and set_price"
-        },
-        {
-          "folder_name": "+ Free Adopts",
-          "folder_id": 71557218,
-          "category": null
         },
         {
           "folder_name": "+ NYP_OTA 2",
