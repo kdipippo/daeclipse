@@ -4,6 +4,7 @@ import builtins
 from gif_generator import create_gif
 from update_groups_listing import update_groups_listing
 import os
+import webbrowser
 
 
 window = sg.Window('MitzyBANANA Control Center')
@@ -75,7 +76,15 @@ def todo():
 def call_create_gif():
     """Generate an animated icon gif and open the result in VSCode."""
     gif_filename = create_gif()
-    os.system(f'code {gif_filename}')
+    with open('create_gif_template.html', 'r') as file:
+        html = file.read().replace('\n', '')
+    html = html.replace("{{gif_filename}}", gif_filename)
+    path = os.path.abspath('create_gif_result.html')
+    url = 'file://' + path
+
+    with open(path, 'w') as f:
+        f.write(html)
+    webbrowser.open(url)
 
 
 if __name__ == "__main__":

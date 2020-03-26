@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Create Gif Result</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f9fafa;
+      margin-top: 30px;
+    }
+    .preview-card {
+      border-radius: 10px;
+      box-shadow: 0px 1px 1px rgba(10,10,10,0.1), 0px 1px 2px rgba(10,10,10,0.1), 0px 0px 1px rgba(10,10,10,0.8);
+      margin-bottom: 10px;
+    }
+    /* OLD DEVIANTART */
+    .da-top-bar {
+      background: #c1d1bc url(https://st.deviantart.net/minish/gruzecontrol/bubbletop-gruze.gif) repeat-x bottom left;
+      display: flex;
+      justify-content: space-around;
+      padding: 8px 15px 0px 15px;
+      align-items: flex-end;
+      border-radius: 10px 10px 0 0;
+    }
+    .da-bottom-bar {
+      background: -webkit-linear-gradient(top, #e2e8e1, #d0ddcf);
+      height: 30px;
+      border-radius: 0 0 10px 10px;
+    }
+    .da-top-bar a, .da-top-bar a:hover, .da-top-bar a:focus {
+      color: #2c3635;
+      font-family: Verdana,sans-serif;
+      font-size: 9pt;
+    }
+    .da-top-bar .nav-tabs {
+      border: none;
+    }
+    .da-top-bar .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+      border: 1px solid transparent;
+    }
+    .da-top-bar a.nav-link.active {
+      background: -webkit-linear-gradient(top, #e1e7e1, #e2e8e1);
+      color: #405147;
+      border: 1px solid #9cb0a2 !important;
+      border-bottom: 1px solid #e2e8e1 !important;
+      box-shadow: 0 2px 0 #e2e8e1, inset 0 1px 0 rgba(255,255,255,0.5);
+      border-radius: 6px 6px 0 0;
+    }
+    .da-top-bar .user {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 5px;
+    }
+    .da-top-bar .userinfo .username {
+      color: #121516;
+      font: bold 18pt Trebuchet MS,sans-serif;
+    }
+    .da-top-bar .userinfo .status {
+      color: #405147;
+      font-size: 9pt;
+      font-family: Verdana,sans-serif;
+    }
+    .da-top-bar .avatar {
+      display: block;
+      width: 50px;
+      height: 50px;
+      margin-right: 5px;
+      image-rendering: pixelated;
+    }
+    .da-top-bar .avatar-dotted {
+      display: block;
+      width: 52px;
+      height: 52px;
+      margin-right: 5px;
+      image-rendering: pixelated;
+      border: 1px dotted #FFF;
+    }
+    /* DEVIANTART ECLIPSE */
+    .da-eclipse {
+      background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+      padding: 15px;
+      border-radius: 10px;
+    }
+    .da-eclipse .user {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 5px;
+    }
+    .da-eclipse .userinfo .username {
+      color: #06070d;
+      font-family: devioussans02extrabold,Helvetica Neue,Helvetica,Arial,メイリオ\, meiryo,ヒラギノ角ゴ pro w3,hiragino kaku gothic pro,sans-serif;
+      font-weight: 600;
+      font-size: 48px;
+      letter-spacing: .3px;
+      line-height: normal;
+    }
+    .da-eclipse .userinfo .status {
+      color: #06070d;
+      font-family: devioussans02regular,Helvetica Neue,Helvetica,Arial,メイリオ\, meiryo,ヒラギノ角ゴ pro w3,hiragino kaku gothic pro,sans-serif;
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.5;
+      letter-spacing: .3px;
+    }
+    .da-eclipse .avatar {
+      display: block;
+      width: 100px;
+      height: 100px;
+      margin-right: 5px;
+      image-rendering: pixelated;
+    }
+    .da-eclipse .avatar-dotted {
+      display: block;
+      width: 102px;
+      height: 102px;
+      margin-right: 5px;
+      image-rendering: pixelated;
+      border: 1px dotted #5d5d6c;
+    }
+    .da-eclipse .info-bar {
+      height: 52px;
+      background: #FFF;
+      box-shadow: 0 1px 8px 0 rgba(0,0,0,.1);
+      display: flex;
+      justify-content: space-between;
+    }
+    .da-eclipse .info-bar > div {
+      color: #5d5d6c;
+      font-family: devioussans02extrabold,Helvetica Neue,Helvetica,Arial,メイリオ\, meiryo,ヒラギノ角ゴ pro w3,hiragino kaku gothic pro,sans-serif;
+      font-weight: 600;
+      font-size: 11px;
+      line-height: 1.22;
+      letter-spacing: 1.3px;
+      box-sizing: border-box;
+      display: inline-flex;
+      flex: 0 1 auto;
+      align-items: center;
+      padding: 0 20px;
+      height: 100%;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .da-eclipse .info-bar > div.active {
+      color: #0e0d20;
+    }
+    .da-eclipse .info-bar > div.watch {
+      margin-left: auto;
+      color: #06070d;
+      background: linear-gradient(114deg,#4cddbd,#06f286);
+    }
+  </style>
+</head>
+
+<body>
+  <main role="main" class="container">
+    <div class="preview-card">
+      <div class="da-top-bar">
+        <div class="user">
+          <img class="avatar-dotted" src="{{gif_filename}}">
+          <img class="avatar" src="{{gif_filename}}">
+          <div class="userinfo">
+            <div class="username">MitzyBanana</div>
+            <div class="status">New in Town</div>
+          </div>
+        </div>
+        <ul class="nav nav-tabs">
+          <li class="nav-item"><a class="nav-link active" href="javascript:void(0)">Profile</a></li>
+          <li class="nav-item"><a class="nav-link" href="javascript:void(0)">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="javascript:void(0)">Prints</a></li>
+          <li class="nav-item"><a class="nav-link" href="javascript:void(0)">Favourites</a></li>
+          <li class="nav-item"><a class="nav-link" href="javascript:void(0)">Journal</a></li>
+        </ul>
+      </div>
+      <div class="da-bottom-bar"></div>
+    </div>
+    <div class="preview-card">
+      <div class="da-eclipse">
+        <div class="user">
+          <img class="avatar-dotted" src="{{gif_filename}}">
+          <img class="avatar" src="{{gif_filename}}">
+          <div class="userinfo">
+            <div class="username">MitzyBanana</div>
+            <div class="status">New in Town</div>
+            <div class="status">415 Watchers | 42.3K Page Views | 508 Deviations</div>
+          </div>
+        </div>
+        <div class="info-bar">
+          <div>About</div>
+          <div class="active">Home</div>
+          <div>Gallery</div>
+          <div>Favourites</div>
+          <div>Posts</div>
+          <div>Shop</div>
+          <div class="watch">+ Watch</div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>
