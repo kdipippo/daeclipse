@@ -72,6 +72,29 @@ class Groups:
                     break
         self.save_json()
 
+    def get_submission_folders(self, checkboxes):
+        for variable in checkboxes.keys():
+            locals()[variable] = checkboxes[variable]
+        all = True # Default category to always submit to if no other folder in group applies.
+        results = []
+        for group in self.groups["groups_information"]:
+            folder_id = None
+            folder_name = None
+            max_query_length = 0
+            for folder in group["folders"]:
+                if eval(folder["category"]) and len(folder["category"]) > max_query_length:
+                    folder_id = folder['folder_id']
+                    folder_name = folder['folder_name']
+                    max_query_length = len(folder["category"])
+            if folder_id is not None:
+                print(f"{group['group_name']} :: {folder_name}")
+                results.append({
+                    "group_id": group["group_id"],
+                    "folder_id": folder_id
+                })
+        return results
+
+
 def addFolderCheck(folderName, groupName, filterStr):
     lowerFolderName = folderName.lower()
     lowerFilter = filterStr.lower()

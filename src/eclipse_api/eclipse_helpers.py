@@ -17,6 +17,7 @@ def get_csrf(deviation_url, cookies):
         string -- CSRF validation token.
     """
     start_time = time.time()
+    print("requests.get for get_csrf")
     page = requests.get(deviation_url, cookies=cookies)
     sleep_delay(start_time)
 
@@ -49,6 +50,17 @@ def get_group_id(group_name):
     print("ERROR")
     return None
 
+def custom_sleep(delay):
+    start = time.time()
+    curr_seconds = int(start)
+    curr_time = time.time()
+    while curr_time < (start + delay):
+        if int(curr_time) > curr_seconds:
+            print('.', end='')
+            curr_seconds = int(curr_time)
+        curr_time = time.time()
+    print()
+
 def sleep_delay(start):
     """Pause the program for 15 times the duration of any call made to DeviantArt.
 
@@ -58,4 +70,4 @@ def sleep_delay(start):
     # wait 10x longer than it took them to respond
     response_delay = int(15 * (time.time() - start))
     print(f"                                 Sleeping {response_delay} seconds")
-    time.sleep(response_delay)
+    custom_sleep(response_delay)

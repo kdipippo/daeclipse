@@ -86,6 +86,7 @@ class DeviantArtEclipseAPI:
         })
 
         start_time = time.time()
+        print("requests.post for add_deviation_to_group")
         response = requests.post(group_add_url, cookies=self.cookies, headers=headers, data=data)
         sleep_delay(start_time)
 

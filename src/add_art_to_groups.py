@@ -13,15 +13,21 @@ def add_art_to_groups():
     art_url = input("Paste deviation URL: ")
     groups_listing = eclipse_groups.Groups()
 
-    # TODO - this is where groups_listing needs to handle which groups & folders are appropriate
-    #  to send to.
+    # TODO 1) obtain the list of categories
+    categories = groups_listing.get_categories()
+    # TODO 2) send out a window with checkbox options to submit
+    # TODO 3) receive the list of checkbox selections
+    # TODO 4) use the checkbox selections to get the list of groups & folders to submit to
+    # TODO 5) iterate over result with add_deviation_to_group. Be sure that this call shows with delays.
 
+    '''
     eclipse = eclipse_api.Eclipse()
     eclipse.add_deviation_to_group(
         40852213,      # Candycorn-Kingdom
         60854872,      # Featured
         art_url, # "https://www.deviantart.com/pepper-wood/art/Digital-Inktober-Test-2018-765976537"
     )
+    '''
 
 if __name__ == "__main__":
     add_art_to_groups()

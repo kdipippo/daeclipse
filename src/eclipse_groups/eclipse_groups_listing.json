@@ -1,7 +1,4 @@
 {
-  "folder_categories": [
-    "*"
-  ],
   "groups_information": [
     {
       "group_name": "Official-AnimeLegacy",
@@ -593,7 +590,7 @@
         {
           "folder_name": "Submissions",
           "folder_id": 67743894,
-          "category": "*"
+          "category": "all"
         }
       ]
     },
@@ -644,7 +641,7 @@
         {
           "folder_name": "Post here if you are lazy to pick folder",
           "folder_id": 69004563,
-          "category": "*"
+          "category": "all"
         }
       ]
     },
@@ -696,7 +693,7 @@
         {
           "folder_name": "Other 5",
           "folder_id": 69484890,
-          "category": "*"
+          "category": "all"
         },
         {
           "folder_name": "Digital 36",
@@ -722,7 +719,7 @@
         {
           "folder_name": "Where Does This Go?",
           "folder_id": 69439473,
-          "category": "*"
+          "category": "all"
         },
         {
           "folder_name": "Adopts II",
@@ -768,7 +765,7 @@
         {
           "folder_name": "New Artworks - 1Everyday",
           "folder_id": 69018545,
-          "category": "*"
+          "category": "all"
         }
       ]
     },
@@ -815,7 +812,7 @@
         {
           "folder_name": "ALL MEDIA ACCEPT 03",
           "folder_id": 66520446,
-          "category": "*"
+          "category": "all"
         },
         {
           "folder_name": "DIGITAL ART 11",
@@ -1187,7 +1184,7 @@
         {
           "folder_name": "The \"UNSURE\" Folder",
           "folder_id": 28799508,
-          "category": "*"
+          "category": "all"
         },
         {
           "folder_name": "Adoptables - Digital Goods",
@@ -1288,7 +1285,7 @@
         {
           "folder_name": "I DON'T KNOW WHERE THIS GOES",
           "folder_id": 45782395,
-          "category": "*"
+          "category": "all"
         },
         {
           "folder_name": "Digital Art Folder 5",
@@ -1324,7 +1321,7 @@
         {
           "folder_name": "ORIGINAL ART",
           "folder_id": 62701056,
-          "category": "*"
+          "category": "all"
         },
         {
           "folder_name": "TURORIALS",
@@ -1365,7 +1362,7 @@
         {
           "folder_name": "2019",
           "folder_id": 69885629,
-          "category": "*"
+          "category": "all"
         }
       ]
     },
@@ -1376,7 +1373,7 @@
         {
           "folder_name": "CUTE",
           "folder_id": 24999781,
-          "category": "*"
+          "category": "all"
         },
         {
           "folder_name": "\"Vocaloid\"",
@@ -1407,7 +1404,7 @@
         {
           "folder_name": "SUBMIT HERE",
           "folder_id": 72580110,
-          "category": "*"
+          "category": "all"
         }
       ]
     },
@@ -1521,7 +1518,7 @@
         {
           "folder_name": "Other",
           "folder_id": 44927878,
-          "category": "*"
+          "category": "all"
         }
       ]
     },
@@ -2241,7 +2238,7 @@
         {
           "folder_name": "Featured",
           "folder_id": 36267000,
-          "category": "*"
+          "category": "all"
         },
         {
           "folder_name": "Digital Art",
@@ -2328,7 +2325,7 @@
         {
           "folder_name": "Miscellaneous",
           "folder_id": 63180672,
-          "category": "*"
+          "category": "all"
         }
       ]
     },
@@ -2401,7 +2398,7 @@
         {
           "folder_name": "Other 3",
           "folder_id": 51122889,
-          "category": "*"
+          "category": "all"
         },
         {
           "folder_name": "Adoptables",
@@ -2442,7 +2439,7 @@
         {
           "folder_name": "Kawaii Misc.",
           "folder_id": 31634010,
-          "category": "*"
+          "category": "all"
         }
       ]
     },
@@ -2691,7 +2688,7 @@
         {
           "folder_name": "Featured",
           "folder_id": 24540735,
-          "category": "*"
+          "category": "all"
         },
         {
           "folder_name": "Pixel Art",
