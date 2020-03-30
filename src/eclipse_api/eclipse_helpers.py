@@ -1,20 +1,20 @@
 #!/usr/bin/env python
 """Helper file containing HTML parsing functions for using Eclipse API methods."""
 
-import requests
 import time
+import requests
 from bs4 import BeautifulSoup
 
 def get_csrf(deviation_url, cookies):
     """Parses the HTML of the deviation to get the csrf token in the page. It's stored as the
     value of a hidden input with name 'validate_token'.
 
-    Arguments:
-        deviation_url {string} -- deviation URL, i.e. https://da.com/art/Art-12345.
-        http.cookiejar.CookieJar object -- .deviantart.com Cookie Jar.
+    Args:
+        deviation_url (string): deviation URL, i.e. https://da.com/art/Art-12345.
+        cookie (http.cookiejar.CookieJar): .deviantart.com Cookie Jar.
 
     Returns:
-        string -- CSRF validation token.
+        string: CSRF validation token.
     """
     start_time = time.time()
     print("requests.get for get_csrf")
@@ -28,11 +28,11 @@ def get_group_id(group_name):
     """Parses the HTML of a DeviantArt group page to extract the group's Eclispe ID from two
     possible places on the page.
 
-    Arguments:
-        group_name {string} -- DeviantArt group name.
+    Args:
+        group_name (string): DeviantArt group name.
 
     Returns:
-        string -- Eclipse group ID.
+        string: Eclipse group ID.
     """
     group_url = f"https://www.deviantart.com/{group_name}"
 
@@ -50,7 +50,13 @@ def get_group_id(group_name):
     print("ERROR")
     return None
 
-def custom_sleep(delay):
+
+def sleep_without_freeze(delay):
+    """Pauses for a provided delay period without causing the script to freeze.
+
+    Args:
+        delay (int): Time in seconds to pause.
+    """
     start = time.time()
     curr_seconds = int(start)
     curr_time = time.time()
@@ -61,13 +67,14 @@ def custom_sleep(delay):
         curr_time = time.time()
     print()
 
+
 def sleep_delay(start):
     """Pause the program for 15 times the duration of any call made to DeviantArt.
 
-    Arguments:
-        start {float} -- Unix timestamp representing the start time.
+    Args:
+        start (float): Unix timestamp representing the start time.
     """
     # wait 10x longer than it took them to respond
     response_delay = int(15 * (time.time() - start))
     print(f"                                 Sleeping {response_delay} seconds")
-    custom_sleep(response_delay)
+    sleep_without_freeze(response_delay)

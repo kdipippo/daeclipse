@@ -1,11 +1,12 @@
 #!/usr/bin/env python
-"""Class to handle making calls through the DeviantArt Eclipse API."""
+"""Class to handle making calls to the New DeviantArt API available for Eclipse."""
 
 import json
+import time
 import browser_cookie3
 import requests
-import time
 from .eclipse_helpers import get_csrf, sleep_delay
+
 
 class DeviantArtEclipseAPI:
     """Class to handle making calls to the New DeviantArt API available for Eclipse."""
@@ -16,8 +17,8 @@ class DeviantArtEclipseAPI:
         """Initialze DeviantArtNAPI by fetching Chrome's DeviantArt-related cookies, extracting
         the csrf token, and storing the deviation_id to perform actions on.
 
-        Arguments:
-            deviation_url {string} -- optional deviation URL, i.e. https://da.com/art/Art-12345.
+        Args:
+            deviation_url (string): optional deviation URL, i.e. https://da.com/art/Art-12345.
         """
         self.cookies = browser_cookie3.chrome(domain_name='.deviantart.com')
 
@@ -25,7 +26,7 @@ class DeviantArtEclipseAPI:
         """Return the logged-in DeviantArt user's cookies.
 
         Returns:
-            http.cookiejar.CookieJar object -- .deviantart.com Cookie Jar.
+            http.cookiejar.CookieJar: .deviantart.com Cookie Jar.
         """
         return self.cookies
 
@@ -44,11 +45,11 @@ class DeviantArtEclipseAPI:
         """Returns folder information for the provided group_id ONLY if the cookies stored are
         of a user who is a member of the provided group_id.
 
-        Arguments:
-            group_id {int} -- ID number for the group on DeviantArt.
+        Args:
+            group_id (int): ID number for the group on DeviantArt.
 
         Returns:
-            dict -- Dictionary response from the API call.
+            dict: Dictionary response from the API call.
         """
         group_folders_url = f"{self.base_uri}/group_folders?groupid={group_id}&type=gallery"
 
@@ -64,10 +65,10 @@ class DeviantArtEclipseAPI:
     def add_deviation_to_group(self, group_id, folder_id, deviation_url):
         """Adds the provided deviation to the specified group's folder; prints status and text.
 
-        Arguments:
-            group_id {int} -- ID number for the group on DeviantArt.
-            folder_id {int} -- ID number for the folder of the group on DeviantArt.
-            deviation_url {string} -- optional deviation URL, i.e. https://da.com/art/Art-12345.
+        Args:
+            group_id (int): ID number for the group on DeviantArt.
+            folder_id (int): ID number for the folder of the group on DeviantArt.
+            deviation_url (string): optional deviation URL, i.e. https://da.com/art/Art-12345.
         """
         csrf_token = get_csrf(deviation_url, self.cookies)
         deviation_id = get_deviation_id(deviation_url)
@@ -97,8 +98,8 @@ class DeviantArtEclipseAPI:
 def get_deviation_id(deviation_url):
     """Extract the deviation_id from the full deviantart image URL.
 
-    Arguments:
-        deviation_url {string} -- deviation URL, i.e. https://da.com/art/Art-12345.
+    Args:
+        deviation_url (string): deviation URL, i.e. https://da.com/art/Art-12345.
     """
     url_parts = deviation_url.split("-")
     return url_parts[-1]

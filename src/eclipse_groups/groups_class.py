@@ -1,11 +1,19 @@
+#!/usr/bin/env python
+"""Class to handle managing the list of DeviantArt Eclipse groups to perform actions against."""
+
 import json
 import pathlib
 
+
 class Groups:
-    groups_listing_file = f'{pathlib.Path(__file__).parent.absolute()}/eclipse_groups_listing.json'
+    """Class to handle managing the list of DeviantArt Eclipse groups to perform actions against."""
+
+    base_path = pathlib.Path(__file__).parent.absolute()
+    groups_listing_filename = f'{base_path}/eclipse_groups_listing.json'
+
     def __init__(self):
-        with open(self.groups_listing_file, 'r') as f:
-            self.groups = json.load(f)
+        with open(self.groups_listing_filename, 'r') as groups_listing_file:
+            self.groups = json.load(groups_listing_file)
 
     def get_categories(self):
         """Return the list of categories assigned to folders.
@@ -17,62 +25,68 @@ class Groups:
         for group in self.groups["groups_information"]:
             for folder in group["folders"]:
                 if len(folder["category"]) > 0:
-                    categoryStr = folder["category"].replace("(","").replace(")","")
-                    categoryList = categoryStr.split(" ")
-                    for cat in categoryList:
+                    category_str = folder["category"].replace("(", "").replace(")", "")
+                    category_list = category_str.split(" ")
+                    for cat in category_list:
                         if cat not in categories and cat not in ["and", "or"]:
                             categories.append(cat)
         categories.sort()
         return categories
 
-    def add_group(self, group_info):
+    def add_group(self, group_info) -> None:
+        """Adds provided group_info dict to the json file and saves.
+
+        Args:
+            group_info (dict): Provided group_info dict.
+        """
         self.groups["groups_information"].append(group_info)
         self.save_json()
 
     def save_json(self):
-        json_file = open(self.groups_listing_file, 'w')
+        """Saves the current groups dictionary to eclipse_groups_listing.json."""
+        json_file = open(self.groups_listing_filename, 'w')
         json_file.write(json.dumps(self.groups, indent=2))
         json_file.close()
 
-    def delete_folders_by_filter(self, filter_str):
-        print("Enter is interpretted the same way as no.")
-        for group in self.groups["groups_information"]:
-            newFolders = []
-            for folder in group["folders"]:
-                if addFolderCheck(folder["folder_name"], group["group_name"], filter_str):
-                    newFolders.append(folder)
-            group["folders"] = newFolders
-        self.save_json()
-
     def go_through_empty_categories(self):
+        """Iterates over UNSELECTED folder categories to correctly assign them."""
         print("Leave blank to delete folder")
         for group in self.groups["groups_information"]:
-            newFolders = []
-            promptContinue = False
-            alreadyPrinted = False
+            new_folders = []
+            prompt_continue = False
+            already_printed = False
             print(f"\n⭐{group['group_name']}")
             for folder in group["folders"]:
                 if folder["category"] != "UNSELECTED":
-                    newFolders.append(folder)
+                    new_folders.append(folder)
                 else:
-                    if not alreadyPrinted:
-                        for folderListing in group["folders"]:
-                            print(f"-- {folderListing['folder_name']}")
+                    if not already_printed:
+                        for folder_listing in group["folders"]:
+                            print(f"-- {folder_listing['folder_name']}")
                         print("-------------------")
-                        alreadyPrinted = True
-                    promptContinue = True
+                        already_printed = True
+                    prompt_continue = True
                     result = input(f"'{folder['folder_name']}'. Category? : ")
                     if result != "":
                         folder["category"] = result
-                        newFolders.append(folder)
-            group["folders"] = newFolders
-            if promptContinue:
+                        new_folders.append(folder)
+            group["folders"] = new_folders
+            if prompt_continue:
                 cont = input("Continue? 'EXIT to leave: ")
                 if cont == "EXIT":
                     break
         self.save_json()
 
     def get_submission_folders(self, checkboxes):
+        """Return the list of group ids and corresponding folder ids to submit to based on the
+        provided checkbox selections.
+
+        Args:
+            checkboxes (dict): Folder categories marked as True or False, i.e. { 'pixel': True }
+
+        Returns:
+            list(dict): List of group and folder ids to submit to, as a list of dictionaries.
+        """
         for variable in checkboxes.keys():
             locals()[variable] = checkboxes[variable]
         all = True # Default category to always submit to if no other folder in group applies.
@@ -93,17 +107,3 @@ class Groups:
                     "folder_id": folder_id
                 })
         return results
-
-
-def addFolderCheck(folderName, groupName, filterStr):
-    lowerFolderName = folderName.lower()
-    lowerFilter = filterStr.lower()
-    if lowerFolderName == lowerFilter:
-        return False
-    if lowerFilter in lowerFolderName:
-        result = input(f"{groupName} ::: '{folderName}'. Add? (Yes/No): ")
-        if result == "Yes":
-            return True
-        elif result == "No":
-            return False
-    return True
