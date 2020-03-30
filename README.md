@@ -13,3 +13,14 @@ These will eventually be added to a Milestone. Not sure how to add them to the i
 - The ability to generate multiple of these side-by-side (while still saving these files as separates)
 - Add Mitzy watermark over the enlarged gif
 - Ability to send in config file or config arguments to force generate the resulting sprite
+
+# Notes about da-groups.py
+## Fetching group and folder ids for json file
+### folder_id
+In the folder's url, the number in it is the folder_id.
+i.e. given https://www.deviantart.com/all-things-cute/gallery/, getting the link for "Pixel Art" is https://www.deviantart.com/all-things-cute/gallery/63180664/pixel-art
+folder_id = 63180664
+
+### group_id
+Go into the page source of the group and search for gruser_id. The number that succeeds is the group_id. i.e. view sourcing https://www.deviantart.com/all-things-cute
+group_id = 14718292
