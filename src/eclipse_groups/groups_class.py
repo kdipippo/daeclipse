@@ -87,16 +87,17 @@ class Groups:
         Returns:
             list(dict): List of group and folder ids to submit to, as a list of dictionaries.
         """
+        checkboxes['all'] = True
         for variable in checkboxes.keys():
             locals()[variable] = checkboxes[variable]
-        all = True # Default category to always submit to if no other folder in group applies.
         results = []
         for group in self.groups["groups_information"]:
             folder_id = None
             folder_name = None
             max_query_length = 0
             for folder in group["folders"]:
-                if eval(folder["category"]) and len(folder["category"]) > max_query_length:
+                folder_query = eval(folder["category"]) # pylint: disable=eval-used
+                if folder_query and len(folder["category"]) > max_query_length:
                     folder_id = folder['folder_id']
                     folder_name = folder['folder_name']
                     max_query_length = len(folder["category"])

@@ -14,7 +14,7 @@ import PySimpleGUI as sg
 import eclipse_api
 import eclipse_groups
 from gif_generator import create_gif
-from update_groups_listing import update_groups_listing
+from update_groups_listing import update_groups_listing, get_percent
 
 
 WINDOW = sg.Window('MitzyBANANA Command Center')
@@ -53,6 +53,7 @@ def print(*args, **kwargs):
     end:   string appended after the last value, default a newline.
     flush: whether to forcibly flush the stream.
     """
+    # pylint: disable=redefined-builtin
     file_print = kwargs.pop("file", None)
     if file_print is None:
         file_print = sys.stdout
@@ -82,7 +83,7 @@ def print(*args, **kwargs):
     write(end)
     if flush:
         file_print.flush()
-    window.Refresh()
+    WINDOW.Refresh()
 
 
 builtins.print = print
@@ -166,22 +167,6 @@ def get_category_selection(categories):
             return checkbox_values
 
 
-def get_percent(count, total):
-    """Return the percentage of how many groups have been parsed in the full input .txt file.
-
-    Args:
-        count (int): Current count.
-        total (int): Total.
-
-    Returns:
-        int: Rounded-down percentage.
-    """
-    result = count / total
-    result *= 100
-    result = int(result)
-    return result
-
-
 def add_art_to_groups():
     """Automatically sends out group submission requests based on a user-provided deviation URL and
     a set of folder categories."""
@@ -225,6 +210,8 @@ def main() -> None:
         [sg.Output(size=(120, 40))]
     ]
 
+    # pylint: disable=redefined-outer-name
+    # pylint: disable=invalid-name
     WINDOW = sg.Window('MitzyBANANA Command Center', layout, border_depth=0)
 
     while True:
