@@ -1,0 +1,25 @@
+version: 2
+updates:
+- package-ecosystem: pip
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "11:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: pysimplegui
+    versions:
+    - 4.34.0
+    - 4.35.0
+    - 4.36.0
+    - 4.37.0
+    - 4.38.0
+    - 4.39.1
+  - dependency-name: pillow
+    versions:
+    - 8.1.0
+    - 8.1.1
+    - 8.1.2
+  - dependency-name: browser-cookie3
+    versions:
+    - 0.12.0
