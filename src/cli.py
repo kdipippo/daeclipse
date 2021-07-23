@@ -13,7 +13,7 @@ import eclipse_groups
 import gif_generator
 from update_groups_listing import update_groups_listing, get_percent
 
-class TestCliParentClass:
+class DeviantArtCLI:
     def get_folder_categories(self) -> None:
         """Displays the list of categories."""
         groups_listing = eclipse_groups.Groups()
@@ -122,4 +122,4 @@ class TestCliParentClass:
             cli_ui.info_1(cli_ui.bold, action['func'].ljust(35), cli_ui.reset, action['desc'])
 
 if __name__ == "__main__":
-    fire.Fire(TestCliParentClass)
+    fire.Fire(DeviantArtCLI)
