@@ -262,6 +262,12 @@ def get_random_asset_list(assets_json):
             assets.add_image(image_type, selected_num)
     return assets
 
+def get_preset_asset_list(assets_json, preset):
+    assets = SelectedAssets()
+    assets.colors = preset['colors']
+    assets.images = preset['images']
+    return assets
+
 def get_json(assets, current_time):
     """Creates a json file with the generated asset settings along with the same-named gif.
 
@@ -274,29 +280,43 @@ def get_json(assets, current_time):
     json_file.write(json.dumps(assets.get_json(), indent=2))
     json_file.close()
 
+def load_assets():
+    return yaml.safe_load(open(f"{pathlib.Path(__file__).parent.absolute()}/assets.yaml"))
+
 def get_presets():
-    assets_yaml = yaml.safe_load(open(f"{pathlib.Path(__file__).parent.absolute()}/assets.yaml"))
+    assets_yaml = load_assets()
     presets = list(assets_yaml['presets'].keys())
-    presets.append("Random")
     return presets
 
-def create_gif(preset_name = None):
-    """Generates a gif icon along with its config json into the outputs/ folder.
+def create_gif_preset(preset_name):
+    """TBD - Generates a gif icon along with its config json into the outputs/ folder.
 
     Returns:
         string: full path to the gif result.
     """
-    assets_yaml = yaml.safe_load(open(f"{pathlib.Path(__file__).parent.absolute()}/assets.yaml"))
+    assets_yaml = load_assets()
 
-    gif_assets = get_random_asset_list(assets_yaml)
+    preset = assets_yaml['presets'][preset_name]
+    gif_assets = get_preset_asset_list(assets_yaml, preset)
     gif_assets.store_json(assets_yaml)
-    if preset_name is not None:
-        gif_assets.update_json(assets_yaml['presets'][preset_name])
 
     current_time = datetime.today().strftime("%Y-%m-%d_%I:%M:%S%p")
     get_gif(gif_assets, current_time)
     get_json(gif_assets, current_time)
     return f"{OUTPUT_FILE_PREFIX}/output/{current_time}.gif"
 
-if __name__ == "__main__":
-    create_gif()
+def create_gif_random():
+    """TBD - Generates a gif icon along with its config json into the outputs/ folder.
+
+    Returns:
+        string: full path to the gif result.
+    """
+    assets_yaml = load_assets()
+
+    gif_assets = get_random_asset_list(assets_yaml)
+    gif_assets.store_json(assets_yaml)
+
+    current_time = datetime.today().strftime("%Y-%m-%d_%I:%M:%S%p")
+    get_gif(gif_assets, current_time)
+    get_json(gif_assets, current_time)
+    return f"{OUTPUT_FILE_PREFIX}/output/{current_time}.gif"

@@ -30,18 +30,22 @@ class DeviantArtEclipseAPI:
         """
         return self.cookies
 
-    def get_groups(self):
+    def get_groups(self, username, offset, limit = 24):
         """Prints information about a subset (~10) of groups the user is a member of."""
-        groups_url = f"{self.base_uri}/groups"
+        # limit at most has to be 24.
+        # groups_url = f"{self.base_uri}/groups"
+        username = "Pepper-Wood"
+        offset = "15"
+        limit = "24"
+        moduleid = "1761969747" # Static value that DeviantArt uses to tie this to the "Get Members" block.
+        groups_url = f"https://www.deviantart.com/_napi/da-user-profile/api/module/groups/members?username={username}&moduleid={moduleid}&offset={offset}&limit={limit}"
 
-        start_time = time.time()
         response = requests.get(groups_url, cookies=self.cookies)
-        sleep_delay(start_time)
 
         rjson = json.loads(response.text)
-        print(json.dumps(rjson, indent=2))
+        return rjson
 
-    def get_group_folders(self, group_id):
+    def get_group_folders(self, group_id, deviation_url):
         """Returns folder information for the provided group_id ONLY if the cookies stored are
         of a user who is a member of the provided group_id.
 
@@ -52,10 +56,7 @@ class DeviantArtEclipseAPI:
             dict: Dictionary response from the API call.
         """
         group_folders_url = f"{self.base_uri}/group_folders?groupid={group_id}&type=gallery"
-
-        start_time = time.time()
-        response = requests.get(group_folders_url, cookies=self.cookies)
-        sleep_delay(start_time)
+        response = requests.get(group_folders_url, cookies=self.cookies, headers={'referer': deviation_url})
 
         if response.status_code == 200:
             return json.loads(response.text)

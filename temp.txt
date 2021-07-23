@@ -1,0 +1,235 @@
+➜  MitzyBanana git:(cli-refactor) ✗ python3 src/cli2.py testing
+                                 Sleeping 5 seconds
+.....
+{
+  "error": "unauthorized",
+  "errorDescription": "Not authorized",
+  "status": "error"
+}
+None
+➜  MitzyBanana git:(cli-refactor) ✗ python3 src/cli2.py testing
+{
+  "hasMore": true,
+  "nextOffset": 39,
+  "total": 186,
+  "results": [
+    {
+      "userId": 37208387,
+      "useridUuid": "d95ea904-1740-47ef-8e4b-ff932d037826",
+      "username": "Tukou-Island",
+      "usericon": "https://a.deviantart.net/avatars-big/t/u/tukou-island.png?5",
+      "type": "super group",
+      "isWatching": false,
+      "isNewDeviant": false
+    },
+    {
+      "userId": 26444330,
+      "useridUuid": "4c1256f5-eb1f-440b-a0c1-b7f91aede02b",
+      "username": "raffle-adoptables",
+      "usericon": "https://a.deviantart.net/avatars-big/r/a/raffle-adoptables.jpg?1",
+      "type": "group",
+      "isWatching": false,
+      "isNewDeviant": false
+    },
+    {
+      "userId": 36092897,
+      "useridUuid": "dbf8169e-267b-43c1-823c-fb66d5d94ee0",
+      "username": "AdoptRaffle",
+      "usericon": "https://a.deviantart.net/avatars-big/a/d/adoptraffle.gif?1",
+      "type": "group",
+      "isWatching": false,
+      "isNewDeviant": false
+    },
+    {
+      "userId": 44891356,
+      "useridUuid": "4df76362-7cb1-40e5-9142-3eb51a213fe5",
+      "username": "DiscoverArts",
+      "usericon": "https://a.deviantart.net/avatars-big/d/i/discoverarts.gif?1",
+      "type": "group",
+      "isWatching": false,
+      "isNewDeviant": false
+    },
+    {
+      "userId": 38612496,
+      "useridUuid": "eb67deaa-1c39-4424-b63e-e0b49908bf18",
+      "username": "Adoptable-OC",
+      "usericon": "https://a.deviantart.net/avatars-big/a/d/adoptable-oc.gif?2",
+      "type": "group",
+      "isWatching": false,
+      "isNewDeviant": false
+    },
+    {
+      "userId": 42200771,
+      "useridUuid": "366099a3-87b5-410c-81fb-42c895e56b27",
+      "username": "Adoptik",
+      "usericon": "https://a.deviantart.net/avatars-big/a/d/adoptik.jpg?1",
+      "type": "group",
+      "isWatching": false,
+      "isNewDeviant": false
+    },
+    {
+      "userId": 42145616,
+      "useridUuid": "ce03d9ef-e40c-48c9-8a24-ed016a0ca945",
+      "username": "Tradingcenter",
+      "usericon": "https://a.deviantart.net/avatars-big/t/r/tradingcenter.gif?9",
+      "type": "super group",
+      "isWatching": false,
+      "isNewDeviant": false
+    },
+    {
+      "userId": 39517561,
+      "useridUuid": "2113ae4a-29e0-4d86-8f8c-e74addc12038",
+      "username": "Species-Cafe",
+      "usericon": "https://a.deviantart.net/avatars-big/s/p/species-cafe.gif?7",
+      "type": "group",
+      "isWatching": false,
+      "isNewDeviant": false
+    },
+    {
+      "userId": 45529009,
+      "useridUuid": "af958dfb-657b-49dc-b78d-ab3fe1d551da",
+      "username": "Gachagoops",
+      "usericon": "https://a.deviantart.net/avatars-big/g/a/gachagoops.gif?3",
+      "type": "super group",
+      "isWatching": false,
+      "isNewDeviant": false
+    },
+    {
+      "userId": 45025882,
+      "useridUuid": "8166910e-8125-4205-89ac-8a8bbe73d793",
+      "username": "Scribblins",
+      "usericon": "https://a.deviantart.net/avatars-big/s/c/scribblins.png?1",
+      "type": "group",
+      "isWatching": false,
+      "isNewDeviant": false
+    },
+    {
+      "userId": 42956438,
+      "useridUuid": "892de2f6-e01f-42b2-afeb-3ccd6de8e151",
+      "username": "STRUDELcafe",
+      "usericon": "https://a.deviantart.net/avatars-big/s/t/strudelcafe.gif?5",
+      "type": "super group",
+      "isWatching": false,
+      "isNewDeviant": false
+    },
+    {
+      "userId": 42370556,
+      "useridUuid": "aba1be79-107c-4ec4-a533-1723bbd4fa67",
+      "username": "FluffleTales",
+      "usericon": "https://a.deviantart.net/avatars-big/f/l/fluffletales.gif?2",
+      "type": "super group",
+      "isWatching": false,
+      "isNewDeviant": false
+    },
+    {
+      "userId": 39502349,
+      "useridUuid": "385aac9c-2ab0-46f6-89b4-27acecb953ab",
+      "username": "WishDrops",
+      "usericon": "https://a.deviantart.net/avatars-big/w/i/wishdrops.gif?1",
+      "type": "group",
+      "isWatching": false,
+      "isNewDeviant": false
+    },
+    {
+      "userId": 43117272,
+      "useridUuid": "cba3b447-d6f4-474c-8958-f3615b63779b",
+      "username": "Slugglez",
+      "usericon": "https://a.deviantart.net/avatars-big/s/l/slugglez.png?2",
+      "type": "super group",
+      "isWatching": false,
+      "isNewDeviant": false
+    },
+    {
+      "userId": 33775525,
+      "useridUuid": "d640495b-19ff-43e3-8712-a371c13b46e2",
+      "username": "Pouflons",
+      "usericon": "https://a.deviantart.net/avatars-big/p/o/pouflons.png?7",
+      "type": "super group",
+      "isWatching": false,
+      "isNewDeviant": false
+    },
+    {
+      "userId": 32550604,
+      "useridUuid": "5b30a57a-500f-4148-b0d8-d5dd8230d7cc",
+      "username": "Entranclinged",
+      "usericon": "https://a.deviantart.net/avatars-big/e/n/entranclinged.gif?5",
+      "type": "group",
+      "isWatching": false,
+      "isNewDeviant": false
+    },
+    {
+      "userId": 22399413,
+      "useridUuid": "e4f084dc-e6ee-4a7a-bdc9-a14f94653e33",
+      "username": "MagicalGirlAlliance",
+      "usericon": "https://a.deviantart.net/avatars-big/m/a/magicalgirlalliance.gif?3",
+      "type": "group",
+      "isWatching": false,
+      "isNewDeviant": false
+    },
+    {
+      "userId": 35640467,
+      "useridUuid": "53467bfc-6b6b-4a74-ad90-1a8704e16651",
+      "username": "BirdFolk-Nest",
+      "usericon": "https://a.deviantart.net/avatars-big/b/i/birdfolk-nest.gif?1",
+      "type": "group",
+      "isWatching": false,
+      "isNewDeviant": false
+    },
+    {
+      "userId": 31980865,
+      "useridUuid": "79fecf3b-499e-4055-90f2-b4ee0083c6ff",
+      "username": "min-kin",
+      "usericon": "https://a.deviantart.net/avatars-big/m/i/min-kin.gif?7",
+      "type": "super group",
+      "isWatching": false,
+      "isNewDeviant": false
+    },
+    {
+      "userId": 41498608,
+      "useridUuid": "da73387e-8776-40f5-9ef4-a8a0071563cb",
+      "username": "FawnashiForest",
+      "usericon": "https://a.deviantart.net/avatars-big/f/a/fawnashiforest.gif?1",
+      "type": "group",
+      "isWatching": false,
+      "isNewDeviant": false
+    },
+    {
+      "userId": 41176353,
+      "useridUuid": "9a51f0c7-514c-4db7-be11-0dea60446c3e",
+      "username": "artsu-licious",
+      "usericon": "https://a.deviantart.net/avatars-big/a/r/artsu-licious.gif?4",
+      "type": "group",
+      "isWatching": false,
+      "isNewDeviant": false
+    },
+    {
+      "userId": 38153787,
+      "useridUuid": "f7b6ef92-524b-405c-bc03-f4131db8be77",
+      "username": "Lockette-paradise",
+      "usericon": "https://a.deviantart.net/avatars-big/l/o/lockette-paradise.gif?3",
+      "type": "super group",
+      "isWatching": false,
+      "isNewDeviant": false
+    },
+    {
+      "userId": 32984047,
+      "useridUuid": "19d9ae35-8b98-4552-84d6-8063dd90de32",
+      "username": "GremCorps",
+      "usericon": "https://a.deviantart.net/avatars-big/g/r/gremcorps.gif?2",
+      "type": "super group",
+      "isWatching": false,
+      "isNewDeviant": false
+    },
+    {
+      "userId": 25964887,
+      "useridUuid": "57960a2a-30e9-4cb8-818c-e63be934bf9c",
+      "username": "ContestsAndGiveaways",
+      "usericon": "https://a.deviantart.net/avatars-big/c/o/contestsandgiveaways.gif?1",
+      "type": "group",
+      "isWatching": false,
+      "isNewDeviant": false
+    }
+  ]
+}
+None
+➜  MitzyBanana git:(cli-refactor) ✗

@@ -102,7 +102,6 @@ class Groups:
                     folder_name = folder['folder_name']
                     max_query_length = len(folder["category"])
             if folder_id is not None:
-                print(f"{group['group_name']} :: {folder_name}")
                 results.append({
                     "group_id": group["group_id"],
                     "folder_id": folder_id
