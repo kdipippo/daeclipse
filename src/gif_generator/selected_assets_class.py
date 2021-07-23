@@ -34,7 +34,7 @@ class SelectedAssets:
         """
         self.json = assets_json
 
-    def debug_override(self, override):
+    def update_json(self, override):
         """Manually override the colors and images dictionaries.
 
         Args:
@@ -42,13 +42,6 @@ class SelectedAssets:
         """
         self.colors = override['colors']
         self.images = override['images']
-
-    def debug(self):
-        """Print out the stored colors and images settings."""
-        for color in self.colors.keys():
-            print(f"COLOR {color} = {self.colors[color]}")
-        for image in self.images.keys():
-            print(f"IMAGE {image} = {self.images[image]}")
 
     def get_json(self):
         """Return the colors and images dicts as one combined dict.

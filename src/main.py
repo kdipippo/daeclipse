@@ -2,38 +2,16 @@
 """Main file for building the app into a GUI."""
 
 # standard imports
+import cli_ui
+import fire
 import os
 import sys
-import webbrowser
-
-import cli_ui
 
 # local package imports
 import eclipse_api
 import eclipse_groups
-from gif_generator import create_gif
+import gif_generator
 from update_groups_listing import update_groups_listing, get_percent
-
-import fire
-
-def popup_input(prompt) -> str:
-    """Override the input() function when working in the UI, based on what the
-    prompt string contains.
-
-    Args:
-        prompt (string): Message the user sees when prompted.
-
-    Returns:
-        string: user input result.
-    """
-    if "(Yes/No)" in prompt:
-        result = cli_ui.ask_yes_no(prompt)
-    elif "[FILE INPUT]" in prompt:
-        result = None
-        print("ERROR!!!!! this needs to be a function parameter")
-    else:
-        result = cli_ui.ask_string(prompt)
-    return result
 
 class TestCliParentClass:
     def get_folder_categories(self) -> None:
@@ -43,7 +21,6 @@ class TestCliParentClass:
         for category in categories:
             print(category)
 
-
     def populate_empty_folder_categories(self):
         """Pass-through for go_through_empty_categories()."""
         groups_listing = eclipse_groups.Groups()
@@ -51,17 +28,13 @@ class TestCliParentClass:
 
     def call_create_gif(self):
         """Generate an animated icon gif and open the result as a preview HTML page in the browser."""
-        gif_filename = create_gif()
-        with open('create_gif_template.html', 'r') as file:
-            html = file.read().replace('\n', '')
-        html = html.replace("{{gif_filename}}", gif_filename)
-        create_gif_result_path = os.path.abspath('create_gif_result.html')
-        create_gif_result_url = f"file://{create_gif_result_path}"
-
-        with open(create_gif_result_path, 'w') as create_gif_result:
-            create_gif_result.write(html)
-        webbrowser.open(create_gif_result_url)
-
+        presets = gif_generator.get_presets()
+        selected_preset = cli_ui.ask_choice("Select which option to generate", choices=presets, sort=False)
+        if selected_preset == "Random":
+            gif_filename = gif_generator.create_gif()
+        else:
+            gif_filename = gif_generator.create_gif(selected_preset)
+        cli_ui.info("Generated pixel icon created at", gif_filename)
 
     def get_category_selection(self, categories):
         # TODO - this will break since it's multiple selection
@@ -99,7 +72,6 @@ class TestCliParentClass:
                         print(f"- {checkbox_key}")
                 print("==================")
                 return checkbox_values
-
 
     def add_art_to_groups(self):
         """Automatically sends out group submission requests based on a user-provided deviation URL and

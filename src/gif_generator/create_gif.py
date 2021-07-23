@@ -8,6 +8,7 @@ import random
 import pathlib
 from PIL import Image
 from gif_generator.selected_assets_class import SelectedAssets
+import yaml
 
 # Used for the background to be erased when the image is made transparent.
 # Set to a muted green color that does not coincide with the pixel art palette.
@@ -273,27 +274,25 @@ def get_json(assets, current_time):
     json_file.write(json.dumps(assets.get_json(), indent=2))
     json_file.close()
 
-def create_gif():
+def get_presets():
+    assets_yaml = yaml.safe_load(open(f"{pathlib.Path(__file__).parent.absolute()}/assets.yaml"))
+    presets = list(assets_yaml['presets'].keys())
+    presets.append("Random")
+    return presets
+
+def create_gif(preset_name = None):
     """Generates a gif icon along with its config json into the outputs/ folder.
 
     Returns:
         string: full path to the gif result.
     """
-    assets_filename = f'{pathlib.Path(__file__).parent.absolute()}/assets.json'
-    with open(assets_filename, 'r') as assets_file:
-        assets_json = json.load(assets_file)
+    assets_yaml = yaml.safe_load(open(f"{pathlib.Path(__file__).parent.absolute()}/assets.yaml"))
 
-    result = input("Do you want to use a preset instead of randomly generating? (Yes/No): ")
-    gif_assets = get_random_asset_list(assets_json)
-    gif_assets.store_json(assets_json)
-    if result == "Yes":
-        preset_filename = input("[FILE INPUT] Please select the preset json file to use")
-        if preset_filename is not None:
-            with open(preset_filename, 'r') as preset_file:
-                preset_json = json.load(preset_file)
-            gif_assets.debug_override(preset_json)
+    gif_assets = get_random_asset_list(assets_yaml)
+    gif_assets.store_json(assets_yaml)
+    if preset_name is not None:
+        gif_assets.update_json(assets_yaml['presets'][preset_name])
 
-    gif_assets.debug()
     current_time = datetime.today().strftime("%Y-%m-%d_%I:%M:%S%p")
     get_gif(gif_assets, current_time)
     get_json(gif_assets, current_time)
