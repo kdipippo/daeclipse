@@ -82,7 +82,7 @@ def add_art_to_groups():
 
 @app.command()
 def testing():
-    deviation = "https://www.deviantart.com/pepper-wood/art/Gawr-Gura-gif-868331085"
+    deviation_url = "https://www.deviantart.com/pepper-wood/art/Gawr-Gura-gif-868331085"
     eclipse = eclipse_api.Eclipse()
     offset = 0
     while True:
@@ -90,17 +90,34 @@ def testing():
         offset = groups_result['nextOffset']
         group_names = [group['username'] for group in groups_result['results']]
         group_names.sort()
+        skiptext = "None of the above. Skip to next page"
+        group_names.append(skiptext)
 
         title = "Select which groups to add your artwork into (press SPACE to mark, ENTER to continue): "
         selected_groups = pick(group_names, title, multiselect=True, min_selection_count=1)
 
-        for selected_group in selected_groups:
-            # ('group name', index)
-            selected_group_name = selected_group[0]
-            selected_group_index = selected_group[1]
-            folders_result = eclipse.get_group_folders(groups_result['results'][selected_group_index]['userId'], deviation)
-            print(folders_result)
-            return
+        if len(selected_groups) == 1 and selected_groups[0][0] == skiptext:
+            print("skipping")
+        else:
+            for selected_group in selected_groups:
+                # ('group name', index)
+                selected_group_name = selected_group[0]
+                selected_group_index = selected_group[1]
+                folders_result = eclipse.get_group_folders(groups_result['results'][selected_group_index]['userId'], deviation_url)
+                folder_names = [folder['name'] for folder in folders_result['results']]
+                if len(folder_names) == 0:
+                    cli_ui.error(cli_ui.cross, f"{selected_group_name} | | No folders returned for group")
+                else:
+                    title = f"Select which folder in '{selected_group_name}' to add your artwork into (ENTER to continue): "
+                    selected_folder = pick(folder_names, title, multiselect=False)
+                    selected_folder_name = selected_folder[0]
+                    selected_folder_index = selected_folder[1]
+                    folder_go = folders_result['results'][selected_folder_index]
+                    folder_status, folder_message = eclipse.add_deviation_to_group(folder_go['owner']['userId'], folder_go['folderId'], deviation_url)
+                    if folder_status:
+                        cli_ui.info(cli_ui.check, f"{selected_group_name} | {selected_folder_name} | {folder_message}")
+                    else:
+                        cli_ui.error(cli_ui.cross, f"{selected_group_name} | {selected_folder_name} | {folder_message}")
 
         if not groups_result['hasMore']:
             return

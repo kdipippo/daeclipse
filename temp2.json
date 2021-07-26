@@ -1,0 +1,1918 @@
+{
+    "results": [
+        {
+            "folderId": 57208668,
+            "gallectionUuid": "94F37E23-6E1B-3105-4FCC-28F3EA6BDD8C",
+            "parentId": null,
+            "type": "gallery",
+            "name": "Featured",
+            "description": "",
+            "owner": {
+                "userId": 37957746,
+                "useridUuid": "3cf18d4e-b949-4cde-8d67-83223466b9d9",
+                "username": "CSCommunity",
+                "usericon": "https://a.deviantart.net/avatars-big/c/s/cscommunity.png?2",
+                "type": "group",
+                "isWatching": true,
+                "isNewDeviant": false
+            },
+            "commentCount": 0,
+            "size": 64,
+            "thumb": {
+                "deviationId": 838385063,
+                "type": "image",
+                "typeId": 1,
+                "printId": null,
+                "url": "https://www.deviantart.com/animal53315/art/DTGB-9-Astral-number-838385063",
+                "title": "DTGB 9 - Astral number",
+                "isJournal": false,
+                "isVideo": false,
+                "isPurchasable": false,
+                "isFavouritable": true,
+                "publishedTime": "2020-04-18T10:57:35-0700",
+                "isTextEditable": false,
+                "legacyTextEditUrl": null,
+                "isShareable": true,
+                "isCommentable": true,
+                "isFavourited": false,
+                "isDeleted": false,
+                "isMature": false,
+                "isDownloadable": false,
+                "isAntisocial": false,
+                "isBlocked": false,
+                "isPublished": true,
+                "isDailyDeviation": false,
+                "hasPrivateComments": false,
+                "blockReasons": [],
+                "author": {
+                    "userId": 45343782,
+                    "useridUuid": "b2cdfb82-4503-4ff3-8e93-e95f7305836c",
+                    "username": "animal53315",
+                    "usericon": "https://a.deviantart.net/avatars-big/a/n/animal53315.gif?7",
+                    "type": "regular",
+                    "isWatching": false,
+                    "isNewDeviant": false
+                },
+                "stats": {
+                    "comments": 1,
+                    "favourites": 15
+                },
+                "media": {
+                    "baseUri": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b2cdfb82-4503-4ff3-8e93-e95f7305836c/ddv5i1z-aca8a1a5-78ca-4871-b103-1557b5b9f3b1.png",
+                    "prettyName": "dtgb_9___astral_number_by_animal53315_ddv5i1z",
+                    "token": [
+                        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MjM5NiIsInBhdGgiOiJcL2ZcL2IyY2RmYjgyLTQ1MDMtNGZmMy04ZTkzLWU5NWY3MzA1ODM2Y1wvZGR2NWkxei1hY2E4YTFhNS03OGNhLTQ4NzEtYjEwMy0xNTU3YjViOWYzYjEucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.dF083b_J75BEjvepDnNiNifGx8JAGJ9h98BvkJmwFjs"
+                    ],
+                    "types": [
+                        {
+                            "t": "150",
+                            "r": 0,
+                            "c": "v1/fit/w_150,h_150,strp/<prettyName>-150.png",
+                            "h": 150,
+                            "w": 80,
+                            "o": true
+                        },
+                        {
+                            "t": "200H",
+                            "r": 0,
+                            "c": "v1/fill/w_107,h_200,strp/<prettyName>-200h.png",
+                            "h": 200,
+                            "w": 107,
+                            "o": true
+                        },
+                        {
+                            "t": "300W",
+                            "r": 0,
+                            "c": "v1/fit/w_300,h_900,strp/<prettyName>-300w.png",
+                            "h": 562,
+                            "w": 300,
+                            "o": true
+                        },
+                        {
+                            "t": "250T",
+                            "r": 0,
+                            "c": "v1/crop/w_134,h_250,x_0,y_0,scl_0.056779661016949,strp/<prettyName>-250t.png",
+                            "h": 250,
+                            "w": 134,
+                            "o": true
+                        },
+                        {
+                            "t": "350T",
+                            "r": 0,
+                            "c": "v1/fill/w_187,h_350,strp/<prettyName>-350t.png",
+                            "h": 350,
+                            "w": 187,
+                            "o": true
+                        },
+                        {
+                            "t": "400T",
+                            "r": 0,
+                            "c": "v1/crop/w_214,h_400,x_0,y_0,scl_0.090677966101695,strp/<prettyName>-400t.png",
+                            "h": 400,
+                            "w": 214,
+                            "o": true
+                        },
+                        {
+                            "t": "preview",
+                            "r": 0,
+                            "c": "v1/fill/w_653,h_1223,strp/<prettyName>-pre.png",
+                            "h": 1223,
+                            "w": 653,
+                            "o": true,
+                            "f": 1359202
+                        },
+                        {
+                            "t": "social_preview",
+                            "r": 0,
+                            "c": "v1/fill/w_653,h_1223,strp/<prettyName>-pre.png",
+                            "h": 1223,
+                            "w": 653,
+                            "o": true
+                        },
+                        {
+                            "t": "fullview",
+                            "r": 0,
+                            "c": "v1/fill/w_1280,h_2396,strp/<prettyName>-fullview.png",
+                            "h": 2396,
+                            "w": 1280,
+                            "o": true,
+                            "f": 1359202
+                        }
+                    ]
+                }
+            },
+            "hasSubfolders": false,
+            "totalItemCount": 64
+        },
+        {
+            "folderId": 62375753,
+            "gallectionUuid": "872E7293-0797-5B7B-7778-8466DD194F79",
+            "parentId": null,
+            "type": "gallery",
+            "name": "Species References + Info",
+            "description": "",
+            "owner": {
+                "userId": 37957746,
+                "useridUuid": "3cf18d4e-b949-4cde-8d67-83223466b9d9",
+                "username": "CSCommunity",
+                "usericon": "https://a.deviantart.net/avatars-big/c/s/cscommunity.png?2",
+                "type": "group",
+                "isWatching": true,
+                "isNewDeviant": false
+            },
+            "commentCount": 0,
+            "size": 472,
+            "thumb": {
+                "deviationId": 836600223,
+                "type": "image",
+                "typeId": 1,
+                "printId": null,
+                "url": "https://www.deviantart.com/sl1med0g/art/VS-Alternate-Gijinka-Forms-Guide-836600223",
+                "title": "[VS] Alternate Gijinka Forms Guide",
+                "isJournal": false,
+                "isVideo": false,
+                "isPurchasable": false,
+                "isFavouritable": true,
+                "publishedTime": "2020-04-05T03:53:47-0700",
+                "isTextEditable": false,
+                "legacyTextEditUrl": null,
+                "isShareable": true,
+                "isCommentable": true,
+                "isFavourited": false,
+                "isDeleted": false,
+                "isMature": false,
+                "isDownloadable": true,
+                "isAntisocial": false,
+                "isBlocked": false,
+                "isPublished": true,
+                "isDailyDeviation": false,
+                "hasPrivateComments": false,
+                "blockReasons": [],
+                "author": {
+                    "userId": 32101313,
+                    "useridUuid": "f62129c7-87d2-4c7a-b30d-d0dcbd4edecb",
+                    "username": "sl1med0g",
+                    "usericon": "https://a.deviantart.net/avatars-big/s/l/sl1med0g.png?1",
+                    "type": "regular",
+                    "isWatching": false,
+                    "isNewDeviant": false
+                },
+                "stats": {
+                    "comments": 7,
+                    "favourites": 10
+                },
+                "media": {
+                    "baseUri": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f62129c7-87d2-4c7a-b30d-d0dcbd4edecb/ddu38v3-2884da3f-5852-42a2-854b-bfe490bfa20e.png",
+                    "prettyName": "_vs__alternate_gijinka_forms_guide_by_sl1med0g_ddu38v3",
+                    "token": [
+                        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MjEwMCIsInBhdGgiOiJcL2ZcL2Y2MjEyOWM3LTg3ZDItNGM3YS1iMzBkLWQwZGNiZDRlZGVjYlwvZGR1Mzh2My0yODg0ZGEzZi01ODUyLTQyYTItODU0Yi1iZmU0OTBiZmEyMGUucG5nIiwid2lkdGgiOiI8PTQwNjIifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.ztxZnDlcc9hDlDFNa9HmmxT-a-OXKQMycDw0r462dVI",
+                        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y2MjEyOWM3LTg3ZDItNGM3YS1iMzBkLWQwZGNiZDRlZGVjYlwvZGR1Mzh2My0yODg0ZGEzZi01ODUyLTQyYTItODU0Yi1iZmU0OTBiZmEyMGUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.9CHDFO16wlf6zp_fmnY0yHqsoM-eO-h8WGPR9INllj0"
+                    ],
+                    "types": [
+                        {
+                            "t": "150",
+                            "r": 0,
+                            "c": "v1/fit/w_150,h_150,q_70,strp/<prettyName>-150.jpg",
+                            "h": 78,
+                            "w": 150
+                        },
+                        {
+                            "t": "200H",
+                            "r": 0,
+                            "c": "v1/fill/w_300,h_155,q_70,strp/<prettyName>-200h.jpg",
+                            "h": 155,
+                            "w": 300
+                        },
+                        {
+                            "t": "300W",
+                            "r": 0,
+                            "c": "v1/fit/w_300,h_900,q_70,strp/<prettyName>-300w.jpg",
+                            "h": 155,
+                            "w": 300
+                        },
+                        {
+                            "t": "250T",
+                            "r": 0,
+                            "c": "v1/fill/w_484,h_250,q_70,strp/<prettyName>-250t.jpg",
+                            "h": 250,
+                            "w": 484
+                        },
+                        {
+                            "t": "350T",
+                            "r": 0,
+                            "c": "v1/fill/w_677,h_350,q_70,strp/<prettyName>-350t.jpg",
+                            "h": 350,
+                            "w": 677
+                        },
+                        {
+                            "t": "400T",
+                            "r": 0,
+                            "c": "v1/fill/w_774,h_400,q_70,strp/<prettyName>-400t.jpg",
+                            "h": 400,
+                            "w": 774
+                        },
+                        {
+                            "t": "preview",
+                            "r": 0,
+                            "c": "v1/fill/w_1243,h_643,q_70,strp/<prettyName>-pre.jpg",
+                            "h": 643,
+                            "w": 1243,
+                            "f": 3537828
+                        },
+                        {
+                            "t": "social_preview",
+                            "r": 0,
+                            "c": "v1/fill/w_1243,h_643,q_70,strp/<prettyName>-pre.jpg",
+                            "h": 643,
+                            "w": 1243
+                        },
+                        {
+                            "t": "fullview",
+                            "r": 1,
+                            "h": 2100,
+                            "w": 4062,
+                            "f": 3537828
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "folderId": 60518563,
+            "gallectionUuid": "6FD4F1DD-CA11-6D9F-F484-FD6FF82E3C1A",
+            "parentId": null,
+            "type": "gallery",
+            "name": "Species Concepts",
+            "description": "",
+            "owner": {
+                "userId": 37957746,
+                "useridUuid": "3cf18d4e-b949-4cde-8d67-83223466b9d9",
+                "username": "CSCommunity",
+                "usericon": "https://a.deviantart.net/avatars-big/c/s/cscommunity.png?2",
+                "type": "group",
+                "isWatching": true,
+                "isNewDeviant": false
+            },
+            "commentCount": 0,
+            "size": 40,
+            "thumb": {
+                "deviationId": 808146723,
+                "type": "image",
+                "typeId": 1,
+                "printId": null,
+                "url": "https://www.deviantart.com/retrospectra/art/CS-Introduction-to-Chirraks-808146723",
+                "title": "[CS] Introduction to Chirraks",
+                "isJournal": false,
+                "isVideo": false,
+                "isPurchasable": false,
+                "isFavouritable": true,
+                "publishedTime": "2019-08-23T11:00:01-0700",
+                "isTextEditable": false,
+                "legacyTextEditUrl": null,
+                "isShareable": true,
+                "isCommentable": true,
+                "isFavourited": false,
+                "isDeleted": false,
+                "isMature": false,
+                "isDownloadable": false,
+                "isAntisocial": false,
+                "isBlocked": false,
+                "isPublished": true,
+                "isDailyDeviation": false,
+                "hasPrivateComments": false,
+                "blockReasons": [],
+                "author": {
+                    "userId": 48172515,
+                    "useridUuid": "77bf9d5f-c623-4b40-aba7-336ca70bd403",
+                    "username": "RetroSpectra",
+                    "usericon": "https://a.deviantart.net/avatars-big/r/e/retrospectra.png?12",
+                    "type": "regular",
+                    "isWatching": false,
+                    "isNewDeviant": false
+                },
+                "stats": {
+                    "comments": 0,
+                    "favourites": 17
+                },
+                "media": {
+                    "baseUri": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/77bf9d5f-c623-4b40-aba7-336ca70bd403/ddd5e03-07cc0cd8-256b-45b5-bc79-03ea35f76061.png",
+                    "prettyName": "_cs__introduction_to_chirraks_by_retrospectra_ddd5e03",
+                    "token": [
+                        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTgwNCIsInBhdGgiOiJcL2ZcLzc3YmY5ZDVmLWM2MjMtNGI0MC1hYmE3LTMzNmNhNzBiZDQwM1wvZGRkNWUwMy0wN2NjMGNkOC0yNTZiLTQ1YjUtYmM3OS0wM2VhMzVmNzYwNjEucG5nIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ._PqrqGsNNcJxTg5WyDy3LZp6qCEWnuCjgi7HiERFMX8"
+                    ],
+                    "types": [
+                        {
+                            "t": "150",
+                            "r": 0,
+                            "c": "v1/fit/w_150,h_150,strp/<prettyName>-150.png",
+                            "h": 150,
+                            "w": 85,
+                            "o": true
+                        },
+                        {
+                            "t": "200H",
+                            "r": 0,
+                            "c": "v1/crop/w_114,h_200,x_0,y_0,scl_0.095,strp/<prettyName>-200h.png",
+                            "h": 200,
+                            "w": 114,
+                            "o": true
+                        },
+                        {
+                            "t": "300W",
+                            "r": 0,
+                            "c": "v1/fit/w_300,h_900,strp/<prettyName>-300w.png",
+                            "h": 529,
+                            "w": 300,
+                            "o": true
+                        },
+                        {
+                            "t": "250T",
+                            "r": 0,
+                            "c": "v1/fill/w_142,h_250,strp/<prettyName>-250t.png",
+                            "h": 250,
+                            "w": 142,
+                            "o": true
+                        },
+                        {
+                            "t": "350T",
+                            "r": 0,
+                            "c": "v1/fill/w_199,h_350,strp/<prettyName>-350t.png",
+                            "h": 350,
+                            "w": 199,
+                            "o": true
+                        },
+                        {
+                            "t": "400T",
+                            "r": 0,
+                            "c": "v1/fill/w_227,h_400,strp/<prettyName>-400t.png",
+                            "h": 400,
+                            "w": 227,
+                            "o": true
+                        },
+                        {
+                            "t": "preview",
+                            "r": 0,
+                            "c": "v1/fill/w_673,h_1187,strp/<prettyName>-pre.png",
+                            "h": 1187,
+                            "w": 673,
+                            "o": true,
+                            "f": 850700
+                        },
+                        {
+                            "t": "social_preview",
+                            "r": 0,
+                            "c": "v1/fill/w_673,h_1187,strp/<prettyName>-pre.png",
+                            "h": 1187,
+                            "w": 673,
+                            "o": true
+                        },
+                        {
+                            "t": "fullview",
+                            "r": 0,
+                            "c": "v1/fill/w_1024,h_1804,strp/<prettyName>-fullview.png",
+                            "h": 1804,
+                            "w": 1024,
+                            "o": true,
+                            "f": 850700
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "folderId": 57277917,
+            "gallectionUuid": "AB21BB54-7BFC-B969-CD2F-F3ABD47D12FC",
+            "parentId": null,
+            "type": "gallery",
+            "name": "Customs",
+            "description": "",
+            "owner": {
+                "userId": 37957746,
+                "useridUuid": "3cf18d4e-b949-4cde-8d67-83223466b9d9",
+                "username": "CSCommunity",
+                "usericon": "https://a.deviantart.net/avatars-big/c/s/cscommunity.png?2",
+                "type": "group",
+                "isWatching": true,
+                "isNewDeviant": false
+            },
+            "commentCount": 0,
+            "size": 325,
+            "thumb": {
+                "deviationId": 846595430,
+                "type": "image",
+                "typeId": 1,
+                "printId": null,
+                "url": "https://www.deviantart.com/shemeiart/art/Secati-Gacha-Myth-Custom-Prize-From-The-Inside-846595430",
+                "title": "Secati Gacha Myth Custom Prize: From The Inside",
+                "isJournal": false,
+                "isVideo": false,
+                "isPurchasable": false,
+                "isFavouritable": true,
+                "publishedTime": "2020-06-24T15:28:21-0700",
+                "isTextEditable": false,
+                "legacyTextEditUrl": null,
+                "isShareable": true,
+                "isCommentable": true,
+                "isFavourited": false,
+                "isDeleted": false,
+                "isMature": false,
+                "isDownloadable": false,
+                "isAntisocial": false,
+                "isBlocked": false,
+                "isPublished": true,
+                "isDailyDeviation": false,
+                "hasPrivateComments": false,
+                "blockReasons": [],
+                "author": {
+                    "userId": 14259158,
+                    "useridUuid": "cd8915a1-d63f-4e4d-b9bf-2d27f8fe8ecb",
+                    "username": "ShemeiArt",
+                    "usericon": "https://a.deviantart.net/avatars-big/s/h/shemeiart.png",
+                    "type": "core_access",
+                    "isWatching": false,
+                    "isNewDeviant": false
+                },
+                "stats": {
+                    "comments": 0,
+                    "favourites": 81
+                },
+                "media": {
+                    "baseUri": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cd8915a1-d63f-4e4d-b9bf-2d27f8fe8ecb/de01h7q-ac2f80fd-866b-4d7e-b204-7c61fb97476d.png",
+                    "prettyName": "secati_gacha_myth_custom_prize__from_the_inside_by_shemeiart_de01h7q",
+                    "token": [
+                        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI4MyIsInBhdGgiOiJcL2ZcL2NkODkxNWExLWQ2M2YtNGU0ZC1iOWJmLTJkMjdmOGZlOGVjYlwvZGUwMWg3cS1hYzJmODBmZC04NjZiLTRkN2UtYjIwNC03YzYxZmI5NzQ3NmQucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.2nR5MH6rEMCCfloNWK5mosgssHs7_q0pjJeyKpbLmEE"
+                    ],
+                    "types": [
+                        {
+                            "t": "150",
+                            "r": 0,
+                            "c": "v1/fit/w_150,h_150,strp/<prettyName>-150.png",
+                            "h": 150,
+                            "w": 150,
+                            "o": true
+                        },
+                        {
+                            "t": "200H",
+                            "r": 0,
+                            "c": "v1/fill/w_200,h_200,strp/<prettyName>-200h.png",
+                            "h": 200,
+                            "w": 200,
+                            "o": true
+                        },
+                        {
+                            "t": "300W",
+                            "r": 0,
+                            "c": "v1/fit/w_300,h_900,strp/<prettyName>-300w.png",
+                            "h": 301,
+                            "w": 300,
+                            "o": true
+                        },
+                        {
+                            "t": "250T",
+                            "r": 0,
+                            "c": "v1/fill/w_250,h_250,strp/<prettyName>-250t.png",
+                            "h": 250,
+                            "w": 249,
+                            "o": true
+                        },
+                        {
+                            "t": "350T",
+                            "r": 0,
+                            "c": "v1/fill/w_349,h_350,strp/<prettyName>-350t.png",
+                            "h": 350,
+                            "w": 349,
+                            "o": true
+                        },
+                        {
+                            "t": "400T",
+                            "r": 0,
+                            "c": "v1/fill/w_399,h_400,strp/<prettyName>-400t.png",
+                            "h": 400,
+                            "w": 399,
+                            "o": true
+                        },
+                        {
+                            "t": "preview",
+                            "r": 0,
+                            "c": "v1/fill/w_893,h_895,strp/<prettyName>-pre.png",
+                            "h": 895,
+                            "w": 893,
+                            "o": true,
+                            "f": 3409122
+                        },
+                        {
+                            "t": "social_preview",
+                            "r": 0,
+                            "c": "v1/fill/w_893,h_895,strp/<prettyName>-pre.png",
+                            "h": 895,
+                            "w": 893,
+                            "o": true
+                        },
+                        {
+                            "t": "fullview",
+                            "r": 0,
+                            "c": "v1/fill/w_1280,h_1283,strp/<prettyName>-fullview.png",
+                            "h": 1283,
+                            "w": 1280,
+                            "o": true,
+                            "f": 3409122
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "folderId": 57213919,
+            "gallectionUuid": "D4E13915-E1F1-33F1-F355-A88FD86D1015",
+            "parentId": null,
+            "type": "gallery",
+            "name": "Adoptables",
+            "description": "",
+            "owner": {
+                "userId": 37957746,
+                "useridUuid": "3cf18d4e-b949-4cde-8d67-83223466b9d9",
+                "username": "CSCommunity",
+                "usericon": "https://a.deviantart.net/avatars-big/c/s/cscommunity.png?2",
+                "type": "group",
+                "isWatching": true,
+                "isNewDeviant": false
+            },
+            "commentCount": 0,
+            "size": 1249,
+            "thumb": {
+                "deviationId": 836072068,
+                "type": "image",
+                "typeId": 1,
+                "printId": null,
+                "url": "https://www.deviantart.com/traumlaterne/art/Sakura-Kiss-Starcorn-OPEN-836072068",
+                "title": "...Sakura Kiss...[Starcorn - OPEN]",
+                "isJournal": false,
+                "isVideo": false,
+                "isPurchasable": false,
+                "isFavouritable": true,
+                "publishedTime": "2020-04-01T13:13:41-0700",
+                "isTextEditable": false,
+                "legacyTextEditUrl": null,
+                "isShareable": true,
+                "isCommentable": true,
+                "isFavourited": false,
+                "isDeleted": false,
+                "isMature": false,
+                "isDownloadable": false,
+                "isAntisocial": false,
+                "isBlocked": false,
+                "isPublished": true,
+                "isDailyDeviation": false,
+                "hasPrivateComments": false,
+                "blockReasons": [],
+                "author": {
+                    "userId": 34507474,
+                    "useridUuid": "dbffc01a-08a2-4238-a73c-7c04eb4b0a12",
+                    "username": "Traumlaterne",
+                    "usericon": "https://a.deviantart.net/avatars-big/t/r/traumlaterne.gif?13",
+                    "type": "regular",
+                    "isWatching": true,
+                    "isNewDeviant": false
+                },
+                "stats": {
+                    "comments": 1,
+                    "favourites": 26
+                },
+                "media": {
+                    "baseUri": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/dbffc01a-08a2-4238-a73c-7c04eb4b0a12/ddtrxc4-0fc4966f-babf-4ea4-a795-8ec5e3010eeb.png",
+                    "prettyName": "___sakura_kiss____starcorn___open__by_traumlaterne_ddtrxc4",
+                    "token": [
+                        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTE3MiIsInBhdGgiOiJcL2ZcL2RiZmZjMDFhLTA4YTItNDIzOC1hNzNjLTdjMDRlYjRiMGExMlwvZGR0cnhjNC0wZmM0OTY2Zi1iYWJmLTRlYTQtYTc5NS04ZWM1ZTMwMTBlZWIucG5nIiwid2lkdGgiOiI8PTEwMDAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.tnKFusaO6SWmwifFmE7eZSGvuXV0g7tV8u71NeQkYTY",
+                        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2RiZmZjMDFhLTA4YTItNDIzOC1hNzNjLTdjMDRlYjRiMGExMlwvZGR0cnhjNC0wZmM0OTY2Zi1iYWJmLTRlYTQtYTc5NS04ZWM1ZTMwMTBlZWIucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.6GKZxmzGvQhBDltQ4vcMaKuwek6oV5Uo6Z5u_Vtu7vg"
+                    ],
+                    "types": [
+                        {
+                            "t": "150",
+                            "r": 0,
+                            "c": "v1/fit/w_150,h_150,strp/<prettyName>-150.png",
+                            "h": 150,
+                            "w": 128,
+                            "o": true
+                        },
+                        {
+                            "t": "200H",
+                            "r": 0,
+                            "c": "v1/fill/w_171,h_200,strp/<prettyName>-200h.png",
+                            "h": 200,
+                            "w": 171,
+                            "o": true
+                        },
+                        {
+                            "t": "300W",
+                            "r": 0,
+                            "c": "v1/fit/w_300,h_900,strp/<prettyName>-300w.png",
+                            "h": 352,
+                            "w": 300,
+                            "o": true
+                        },
+                        {
+                            "t": "250T",
+                            "r": 0,
+                            "c": "v1/fill/w_213,h_250,strp/<prettyName>-250t.png",
+                            "h": 250,
+                            "w": 213,
+                            "o": true
+                        },
+                        {
+                            "t": "350T",
+                            "r": 0,
+                            "c": "v1/fill/w_299,h_350,strp/<prettyName>-350t.png",
+                            "h": 350,
+                            "w": 299,
+                            "o": true
+                        },
+                        {
+                            "t": "400T",
+                            "r": 0,
+                            "c": "v1/fill/w_341,h_400,strp/<prettyName>-400t.png",
+                            "h": 400,
+                            "w": 341,
+                            "o": true
+                        },
+                        {
+                            "t": "preview",
+                            "r": 0,
+                            "c": "v1/fill/w_826,h_968,strp/<prettyName>-pre.png",
+                            "h": 968,
+                            "w": 826,
+                            "o": true,
+                            "f": 849206
+                        },
+                        {
+                            "t": "social_preview",
+                            "r": 0,
+                            "c": "v1/fill/w_826,h_968,strp/<prettyName>-pre.png",
+                            "h": 968,
+                            "w": 826,
+                            "o": true
+                        },
+                        {
+                            "t": "fullview",
+                            "r": 1,
+                            "h": 1172,
+                            "w": 1000,
+                            "o": true,
+                            "f": 849206
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "folderId": 57213923,
+            "gallectionUuid": "DBB45B52-AD6B-1CC3-5D9F-364844BDB195",
+            "parentId": null,
+            "type": "gallery",
+            "name": "DTA - OTA",
+            "description": "",
+            "owner": {
+                "userId": 37957746,
+                "useridUuid": "3cf18d4e-b949-4cde-8d67-83223466b9d9",
+                "username": "CSCommunity",
+                "usericon": "https://a.deviantart.net/avatars-big/c/s/cscommunity.png?2",
+                "type": "group",
+                "isWatching": true,
+                "isNewDeviant": false
+            },
+            "commentCount": 0,
+            "size": 252,
+            "thumb": {
+                "deviationId": 849947674,
+                "type": "image",
+                "typeId": 1,
+                "printId": null,
+                "url": "https://www.deviantart.com/elvenannie/art/Keerko-OTA-OPEN-4-6-849947674",
+                "title": "Keerko OTA [OPEN 4/6]",
+                "isJournal": false,
+                "isVideo": false,
+                "isPurchasable": false,
+                "isFavouritable": true,
+                "publishedTime": "2020-07-26T00:59:38-0700",
+                "isTextEditable": false,
+                "legacyTextEditUrl": null,
+                "isShareable": true,
+                "isCommentable": true,
+                "isFavourited": false,
+                "isDeleted": false,
+                "isMature": false,
+                "isDownloadable": false,
+                "isAntisocial": false,
+                "isBlocked": false,
+                "isPublished": true,
+                "isDailyDeviation": false,
+                "hasPrivateComments": false,
+                "blockReasons": [],
+                "author": {
+                    "userId": 36399979,
+                    "useridUuid": "2414de6a-ef88-41ca-abf3-919ccf5ce48a",
+                    "username": "ElvenAnnie",
+                    "usericon": "https://a.deviantart.net/avatars-big/e/l/elvenannie.gif?12",
+                    "type": "regular",
+                    "isWatching": false,
+                    "isNewDeviant": false
+                },
+                "stats": {
+                    "comments": 11,
+                    "favourites": 4
+                },
+                "media": {
+                    "baseUri": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2414de6a-ef88-41ca-abf3-919ccf5ce48a/de21btm-cebd5d10-443c-4ac3-8c9d-ad132029db1d.png",
+                    "prettyName": "keerko_ota__open_4_6__by_elvenannie_de21btm",
+                    "token": [
+                        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzY5IiwicGF0aCI6IlwvZlwvMjQxNGRlNmEtZWY4OC00MWNhLWFiZjMtOTE5Y2NmNWNlNDhhXC9kZTIxYnRtLWNlYmQ1ZDEwLTQ0M2MtNGFjMy04YzlkLWFkMTMyMDI5ZGIxZC5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.MQA0rpLMZXP_59OV1p0nxTDOGaOlOvwL0575rMGuol0"
+                    ],
+                    "types": [
+                        {
+                            "t": "150",
+                            "r": 0,
+                            "c": "v1/fit/w_150,h_150,q_70,strp/<prettyName>-150.jpg",
+                            "h": 90,
+                            "w": 150
+                        },
+                        {
+                            "t": "200H",
+                            "r": 0,
+                            "c": "v1/fill/w_300,h_180,q_70,strp/<prettyName>-200h.jpg",
+                            "h": 180,
+                            "w": 300
+                        },
+                        {
+                            "t": "300W",
+                            "r": 0,
+                            "c": "v1/fit/w_300,h_769,q_70,strp/<prettyName>-300w.jpg",
+                            "h": 180,
+                            "w": 300
+                        },
+                        {
+                            "t": "250T",
+                            "r": 0,
+                            "c": "v1/fill/w_416,h_250,q_70,strp/<prettyName>-250t.jpg",
+                            "h": 250,
+                            "w": 416
+                        },
+                        {
+                            "t": "350T",
+                            "r": 0,
+                            "c": "v1/fill/w_583,h_350,q_70,strp/<prettyName>-350t.jpg",
+                            "h": 350,
+                            "w": 583
+                        },
+                        {
+                            "t": "400T",
+                            "r": 0,
+                            "c": "v1/fill/w_666,h_400,q_70,strp/<prettyName>-400t.jpg",
+                            "h": 400,
+                            "w": 666
+                        },
+                        {
+                            "t": "preview",
+                            "r": 0,
+                            "c": "v1/fill/w_1153,h_693,q_70,strp/<prettyName>-pre.jpg",
+                            "h": 693,
+                            "w": 1153,
+                            "f": 43920940
+                        },
+                        {
+                            "t": "social_preview",
+                            "r": 0,
+                            "c": "v1/fill/w_1153,h_693,q_70,strp/<prettyName>-pre.jpg",
+                            "h": 693,
+                            "w": 1153
+                        },
+                        {
+                            "t": "fullview",
+                            "r": 0,
+                            "c": "v1/fill/w_1280,h_769,q_80,strp/<prettyName>-fullview.jpg",
+                            "h": 769,
+                            "w": 1280,
+                            "f": 43920940
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "folderId": 62375749,
+            "gallectionUuid": "DB74BAE0-AB8B-13E1-8F3F-D27A3EB229D7",
+            "parentId": null,
+            "type": "gallery",
+            "name": "Events",
+            "description": "",
+            "owner": {
+                "userId": 37957746,
+                "useridUuid": "3cf18d4e-b949-4cde-8d67-83223466b9d9",
+                "username": "CSCommunity",
+                "usericon": "https://a.deviantart.net/avatars-big/c/s/cscommunity.png?2",
+                "type": "group",
+                "isWatching": true,
+                "isNewDeviant": false
+            },
+            "commentCount": 0,
+            "size": 77,
+            "thumb": {
+                "deviationId": 833907945,
+                "type": "journal",
+                "typeId": 5,
+                "printId": null,
+                "url": "https://www.deviantart.com/dracooties/journal/CLOSED-Pangon-Panorama-Free-MYO-Event-833907945",
+                "title": "[CLOSED] Pangon Panorama Free MYO Event",
+                "isJournal": true,
+                "isVideo": false,
+                "isPurchasable": false,
+                "isFavouritable": true,
+                "publishedTime": "2020-03-15T17:00:49-0700",
+                "isTextEditable": false,
+                "legacyTextEditUrl": "https://sta.sh/writer#833907945",
+                "coverImage": {
+                    "deviationId": 4107497812816408,
+                    "type": "image",
+                    "typeId": 1,
+                    "printId": null,
+                    "url": "https://sta.sh/014fzig1asyg",
+                    "title": "Myo Banner",
+                    "isJournal": false,
+                    "isVideo": false,
+                    "isPurchasable": false,
+                    "isFavouritable": false,
+                    "publishedTime": "2020-03-15T00:11:38-0700",
+                    "isTextEditable": false,
+                    "legacyTextEditUrl": null,
+                    "isShareable": true,
+                    "isCommentable": true,
+                    "isFavourited": false,
+                    "isDeleted": false,
+                    "isMature": false,
+                    "isDownloadable": true,
+                    "isAntisocial": false,
+                    "isBlocked": false,
+                    "isPublished": false,
+                    "isDailyDeviation": false,
+                    "hasPrivateComments": false,
+                    "blockReasons": [],
+                    "author": {
+                        "userId": 21339541,
+                        "useridUuid": "b1c18477-a6e3-4d63-a936-b7117e8a23c3",
+                        "username": "dracooties",
+                        "usericon": "https://a.deviantart.net/avatars-big/d/r/dracooties.png?2",
+                        "type": "regular",
+                        "isWatching": false,
+                        "isNewDeviant": false
+                    },
+                    "stats": {
+                        "comments": 0,
+                        "favourites": 0
+                    },
+                    "media": {
+                        "baseUri": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b1c18477-a6e3-4d63-a936-b7117e8a23c3/ddsfn31-75875af9-d51e-4337-9739-ecbed7e6f532.png",
+                        "prettyName": "myo_banner_by_dracooties_ddsfn31",
+                        "token": [
+                            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTUwIiwicGF0aCI6IlwvZlwvYjFjMTg0NzctYTZlMy00ZDYzLWE5MzYtYjcxMTdlOGEyM2MzXC9kZHNmbjMxLTc1ODc1YWY5LWQ1MWUtNDMzNy05NzM5LWVjYmVkN2U2ZjUzMi5wbmciLCJ3aWR0aCI6Ijw9MTAwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.pTmR-nAMMjpo9jQprZWVg2jddO5ZNwNefGJ52cyCIcU",
+                            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2IxYzE4NDc3LWE2ZTMtNGQ2My1hOTM2LWI3MTE3ZThhMjNjM1wvZGRzZm4zMS03NTg3NWFmOS1kNTFlLTQzMzctOTczOS1lY2JlZDdlNmY1MzIucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0._1AJNGu9STPVj46MfuyrfEmQCycYEJmvjvw_XqpzpNk"
+                        ],
+                        "types": [
+                            {
+                                "t": "150",
+                                "r": 0,
+                                "c": "v1/fit/w_150,h_150,strp/<prettyName>-150.png",
+                                "h": 83,
+                                "w": 150,
+                                "o": true
+                            },
+                            {
+                                "t": "200H",
+                                "r": 0,
+                                "c": "v1/fill/w_300,h_165,strp/<prettyName>-200h.png",
+                                "h": 165,
+                                "w": 300,
+                                "o": true
+                            },
+                            {
+                                "t": "300W",
+                                "r": 0,
+                                "c": "v1/fit/w_300,h_550,strp/<prettyName>-300w.png",
+                                "h": 165,
+                                "w": 300,
+                                "o": true
+                            },
+                            {
+                                "t": "250T",
+                                "r": 0,
+                                "c": "v1/fill/w_455,h_250,strp/<prettyName>-250t.png",
+                                "h": 250,
+                                "w": 455,
+                                "o": true
+                            },
+                            {
+                                "t": "350T",
+                                "r": 0,
+                                "c": "v1/fill/w_636,h_350,strp/<prettyName>-350t.png",
+                                "h": 350,
+                                "w": 636,
+                                "o": true
+                            },
+                            {
+                                "t": "400T",
+                                "r": 0,
+                                "c": "v1/fill/w_727,h_400,strp/<prettyName>-400t.png",
+                                "h": 400,
+                                "w": 727,
+                                "o": true
+                            },
+                            {
+                                "t": "preview",
+                                "r": 0,
+                                "c": "v1/fill/w_1000,h_550,strp/<prettyName>-fullview.png",
+                                "h": 550,
+                                "w": 1000,
+                                "o": true,
+                                "f": 409420
+                            },
+                            {
+                                "t": "social_preview",
+                                "r": 0,
+                                "c": "v1/fill/w_1000,h_550,strp/<prettyName>-fullview.png",
+                                "h": 550,
+                                "w": 1000,
+                                "o": true
+                            },
+                            {
+                                "t": "fullview",
+                                "r": 1,
+                                "h": 550,
+                                "w": 1000,
+                                "o": true,
+                                "f": 409420
+                            }
+                        ]
+                    }
+                },
+                "isShareable": true,
+                "isCommentable": true,
+                "isFavourited": false,
+                "isDeleted": false,
+                "isMature": false,
+                "isDownloadable": false,
+                "isAntisocial": false,
+                "isBlocked": false,
+                "isPublished": true,
+                "isDailyDeviation": false,
+                "hasPrivateComments": false,
+                "blockReasons": [],
+                "author": {
+                    "userId": 21339541,
+                    "useridUuid": "b1c18477-a6e3-4d63-a936-b7117e8a23c3",
+                    "username": "dracooties",
+                    "usericon": "https://a.deviantart.net/avatars-big/d/r/dracooties.png?2",
+                    "type": "regular",
+                    "isWatching": false,
+                    "isNewDeviant": false
+                },
+                "stats": {
+                    "comments": 5,
+                    "favourites": 5
+                },
+                "media": {
+                    "types": []
+                },
+                "textContent": {
+                    "excerpt": "It's finally here!\n\nPlease view this journal for full details of the event! 8D\n\nA countdown can be viewed here: https://www.timeanddate.com/countdown/generic?iso=20200419T235959&amp;p0=%3A&amp;ud=1&amp;font=cursive&amp;csz=1",
+                    "html": {
+                        "type": "writer",
+                        "features": ""
+                    }
+                }
+            }
+        },
+        {
+            "folderId": 57260936,
+            "gallectionUuid": "CBDF5C8A-655C-A80A-81A8-021EC35BFF26",
+            "parentId": null,
+            "type": "gallery",
+            "name": "Pixel art",
+            "description": "",
+            "owner": {
+                "userId": 37957746,
+                "useridUuid": "3cf18d4e-b949-4cde-8d67-83223466b9d9",
+                "username": "CSCommunity",
+                "usericon": "https://a.deviantart.net/avatars-big/c/s/cscommunity.png?2",
+                "type": "group",
+                "isWatching": true,
+                "isNewDeviant": false
+            },
+            "commentCount": 0,
+            "size": 382,
+            "thumb": {
+                "deviationId": 843000471,
+                "type": "image",
+                "typeId": 1,
+                "printId": null,
+                "url": "https://www.deviantart.com/fucal/art/Raunen-Trade-843000471",
+                "title": "Raunen - Trade",
+                "isJournal": false,
+                "isVideo": false,
+                "isPurchasable": false,
+                "isFavouritable": true,
+                "publishedTime": "2020-05-23T10:10:05-0700",
+                "isTextEditable": false,
+                "legacyTextEditUrl": null,
+                "isShareable": true,
+                "isCommentable": true,
+                "isFavourited": false,
+                "isDeleted": false,
+                "isMature": false,
+                "isDownloadable": false,
+                "isAntisocial": false,
+                "isBlocked": false,
+                "isPublished": true,
+                "isDailyDeviation": false,
+                "hasPrivateComments": false,
+                "blockReasons": [],
+                "author": {
+                    "userId": 22210482,
+                    "useridUuid": "3f0d74db-6ea9-4e26-8778-17bccafe5827",
+                    "username": "Fucal",
+                    "usericon": "https://a.deviantart.net/avatars-big/f/u/fucal.png?6",
+                    "type": "regular",
+                    "isWatching": false,
+                    "isNewDeviant": false
+                },
+                "stats": {
+                    "comments": 7,
+                    "favourites": 34
+                },
+                "media": {
+                    "baseUri": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/3f0d74db-6ea9-4e26-8778-17bccafe5827/ddxwfbr-31c9265f-c07d-40b8-8d66-b0ed04325c77.png",
+                    "prettyName": "raunen___trade_by_fucal_ddxwfbr",
+                    "token": [
+                        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MjAwIiwicGF0aCI6IlwvZlwvM2YwZDc0ZGItNmVhOS00ZTI2LTg3NzgtMTdiY2NhZmU1ODI3XC9kZHh3ZmJyLTMxYzkyNjVmLWMwN2QtNDBiOC04ZDY2LWIwZWQwNDMyNWM3Ny5wbmciLCJ3aWR0aCI6Ijw9NDAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.zdiUkUUmpqxjACvrHpQTxqiVcK5eZGlr4tRgkjy_Dyk",
+                        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzNmMGQ3NGRiLTZlYTktNGUyNi04Nzc4LTE3YmNjYWZlNTgyN1wvZGR4d2Zici0zMWM5MjY1Zi1jMDdkLTQwYjgtOGQ2Ni1iMGVkMDQzMjVjNzcucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.e4McXm6iHl881dCJB9eBzUVtxPuRDhcmWop5lBQ9zs0"
+                    ],
+                    "types": [
+                        {
+                            "t": "150",
+                            "r": 0,
+                            "c": "v1/fit/w_150,h_150,strp/<prettyName>-150.png",
+                            "h": 75,
+                            "w": 150,
+                            "o": true
+                        },
+                        {
+                            "t": "200H",
+                            "r": 0,
+                            "c": "v1/fill/w_300,h_150,strp/<prettyName>-200h.png",
+                            "h": 150,
+                            "w": 300,
+                            "o": true
+                        },
+                        {
+                            "t": "300W",
+                            "r": 0,
+                            "c": "v1/fit/w_300,h_200,strp/<prettyName>-300w.png",
+                            "h": 150,
+                            "w": 300,
+                            "o": true
+                        },
+                        {
+                            "t": "250T",
+                            "r": 0,
+                            "c": "v1/fill/w_400,h_200,strp/<prettyName>-fullview.png",
+                            "h": 200,
+                            "w": 400,
+                            "o": true
+                        },
+                        {
+                            "t": "350T",
+                            "r": 0,
+                            "c": "v1/fill/w_400,h_200,strp/<prettyName>-fullview.png",
+                            "h": 200,
+                            "w": 400,
+                            "o": true
+                        },
+                        {
+                            "t": "400T",
+                            "r": 0,
+                            "c": "v1/fill/w_400,h_200,strp/<prettyName>-fullview.png",
+                            "h": 200,
+                            "w": 400,
+                            "o": true
+                        },
+                        {
+                            "t": "preview",
+                            "r": 0,
+                            "c": "v1/fill/w_400,h_200,strp/<prettyName>-fullview.png",
+                            "h": 200,
+                            "w": 400,
+                            "o": true,
+                            "f": 43950
+                        },
+                        {
+                            "t": "social_preview",
+                            "r": 0,
+                            "c": "v1/fill/w_400,h_200,strp/<prettyName>-fullview.png",
+                            "h": 200,
+                            "w": 400,
+                            "o": true
+                        },
+                        {
+                            "t": "fullview",
+                            "r": 1,
+                            "h": 200,
+                            "w": 400,
+                            "o": true,
+                            "f": 43950
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "folderId": 57213933,
+            "gallectionUuid": "8800415E-1F5C-2690-11DC-178A4946261D",
+            "parentId": null,
+            "type": "gallery",
+            "name": "Other - Art",
+            "description": "",
+            "owner": {
+                "userId": 37957746,
+                "useridUuid": "3cf18d4e-b949-4cde-8d67-83223466b9d9",
+                "username": "CSCommunity",
+                "usericon": "https://a.deviantart.net/avatars-big/c/s/cscommunity.png?2",
+                "type": "group",
+                "isWatching": true,
+                "isNewDeviant": false
+            },
+            "commentCount": 0,
+            "size": 2738,
+            "thumb": {
+                "deviationId": 854940047,
+                "type": "image",
+                "typeId": 1,
+                "printId": null,
+                "url": "https://www.deviantart.com/fucal/art/Mission-1-Storyteller-854940047",
+                "title": "Mission 1 - Storyteller",
+                "isJournal": false,
+                "isVideo": false,
+                "isPurchasable": false,
+                "isFavouritable": true,
+                "publishedTime": "2020-09-12T05:33:29-0700",
+                "isTextEditable": false,
+                "legacyTextEditUrl": null,
+                "isShareable": true,
+                "isCommentable": true,
+                "isFavourited": false,
+                "isDeleted": false,
+                "isMature": false,
+                "isDownloadable": false,
+                "isAntisocial": false,
+                "isBlocked": false,
+                "isPublished": true,
+                "isDailyDeviation": false,
+                "hasPrivateComments": false,
+                "blockReasons": [],
+                "author": {
+                    "userId": 22210482,
+                    "useridUuid": "3f0d74db-6ea9-4e26-8778-17bccafe5827",
+                    "username": "Fucal",
+                    "usericon": "https://a.deviantart.net/avatars-big/f/u/fucal.png?6",
+                    "type": "regular",
+                    "isWatching": false,
+                    "isNewDeviant": false
+                },
+                "stats": {
+                    "comments": 0,
+                    "favourites": 33
+                },
+                "media": {
+                    "baseUri": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/3f0d74db-6ea9-4e26-8778-17bccafe5827/de50byn-a749f3e3-58e9-41ce-8192-04226467c150.png",
+                    "prettyName": "mission_1___storyteller_by_fucal_de50byn",
+                    "token": [
+                        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NjgzIiwicGF0aCI6IlwvZlwvM2YwZDc0ZGItNmVhOS00ZTI2LTg3NzgtMTdiY2NhZmU1ODI3XC9kZTUwYnluLWE3NDlmM2UzLTU4ZTktNDFjZS04MTkyLTA0MjI2NDY3YzE1MC5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.n5wf-cHmp-81cR8pcaUUc3bmp95OtbmXE_vhaFeHcaA"
+                    ],
+                    "types": [
+                        {
+                            "t": "150",
+                            "r": 0,
+                            "c": "v1/fit/w_150,h_150,strp/<prettyName>-150.png",
+                            "h": 100,
+                            "w": 150,
+                            "o": true
+                        },
+                        {
+                            "t": "200H",
+                            "r": 0,
+                            "c": "v1/fill/w_300,h_200,strp/<prettyName>-200h.png",
+                            "h": 200,
+                            "w": 300,
+                            "o": true
+                        },
+                        {
+                            "t": "300W",
+                            "r": 0,
+                            "c": "v1/fit/w_300,h_683,strp/<prettyName>-300w.png",
+                            "h": 200,
+                            "w": 300,
+                            "o": true
+                        },
+                        {
+                            "t": "250T",
+                            "r": 0,
+                            "c": "v1/fill/w_375,h_250,strp/<prettyName>-250t.png",
+                            "h": 250,
+                            "w": 375,
+                            "o": true
+                        },
+                        {
+                            "t": "350T",
+                            "r": 0,
+                            "c": "v1/fill/w_525,h_350,strp/<prettyName>-350t.png",
+                            "h": 350,
+                            "w": 525,
+                            "o": true
+                        },
+                        {
+                            "t": "400T",
+                            "r": 0,
+                            "c": "v1/fill/w_600,h_400,strp/<prettyName>-400t.png",
+                            "h": 400,
+                            "w": 600,
+                            "o": true
+                        },
+                        {
+                            "t": "preview",
+                            "r": 0,
+                            "c": "v1/fill/w_1024,h_683,strp/<prettyName>-fullview.png",
+                            "h": 683,
+                            "w": 1024,
+                            "o": true,
+                            "f": 788519
+                        },
+                        {
+                            "t": "social_preview",
+                            "r": 0,
+                            "c": "v1/fill/w_1024,h_683,strp/<prettyName>-fullview.png",
+                            "h": 683,
+                            "w": 1024,
+                            "o": true
+                        },
+                        {
+                            "t": "fullview",
+                            "r": 0,
+                            "c": "v1/fill/w_1024,h_683,strp/<prettyName>-fullview.png",
+                            "h": 683,
+                            "w": 1024,
+                            "o": true,
+                            "f": 788519
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "folderId": 57213931,
+            "gallectionUuid": "592022BD-8C83-6A12-DF85-72D20A9968C3",
+            "parentId": null,
+            "type": "gallery",
+            "name": "References",
+            "description": "",
+            "owner": {
+                "userId": 37957746,
+                "useridUuid": "3cf18d4e-b949-4cde-8d67-83223466b9d9",
+                "username": "CSCommunity",
+                "usericon": "https://a.deviantart.net/avatars-big/c/s/cscommunity.png?2",
+                "type": "group",
+                "isWatching": true,
+                "isNewDeviant": false
+            },
+            "commentCount": 0,
+            "size": 231,
+            "thumb": {
+                "deviationId": 841485580,
+                "type": "image",
+                "typeId": 1,
+                "printId": null,
+                "url": "https://www.deviantart.com/arix72/art/Keegan-poltergeist-MYO-reference-sheet-841485580",
+                "title": "Keegan [poltergeist MYO]: reference sheet",
+                "isJournal": false,
+                "isVideo": false,
+                "isPurchasable": false,
+                "isFavouritable": true,
+                "publishedTime": "2020-05-12T00:30:29-0700",
+                "isTextEditable": false,
+                "legacyTextEditUrl": null,
+                "isShareable": true,
+                "isCommentable": true,
+                "isFavourited": false,
+                "isDeleted": false,
+                "isMature": false,
+                "isDownloadable": false,
+                "isAntisocial": false,
+                "isBlocked": false,
+                "isPublished": true,
+                "isDailyDeviation": false,
+                "hasPrivateComments": false,
+                "blockReasons": [],
+                "author": {
+                    "userId": 46242668,
+                    "useridUuid": "6b4b5d22-d43d-41b9-aba7-66ad87c1763f",
+                    "username": "AriX72",
+                    "usericon": "https://a.deviantart.net/avatars-big/a/r/arix72.gif?8",
+                    "type": "regular",
+                    "isWatching": false,
+                    "isNewDeviant": false
+                },
+                "stats": {
+                    "comments": 9,
+                    "favourites": 96
+                },
+                "media": {
+                    "baseUri": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/6b4b5d22-d43d-41b9-aba7-66ad87c1763f/ddwzyfg-ba218263-9c83-40ee-ad7d-e6f17c0f535a.png",
+                    "prettyName": "keegan__poltergeist_myo___reference_sheet_by_arix72_ddwzyfg",
+                    "token": [
+                        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTUzNiIsInBhdGgiOiJcL2ZcLzZiNGI1ZDIyLWQ0M2QtNDFiOS1hYmE3LTY2YWQ4N2MxNzYzZlwvZGR3enlmZy1iYTIxODI2My05YzgzLTQwZWUtYWQ3ZC1lNmYxN2MwZjUzNWEucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.Acz1qOWGqZVT6B-ECAX2kyopCkhtXto2gDRM4uzsAi0"
+                    ],
+                    "types": [
+                        {
+                            "t": "150",
+                            "r": 0,
+                            "c": "v1/fit/w_150,h_150,strp/<prettyName>-150.png",
+                            "h": 150,
+                            "w": 125,
+                            "o": true
+                        },
+                        {
+                            "t": "200H",
+                            "r": 0,
+                            "c": "v1/fill/w_167,h_200,strp/<prettyName>-200h.png",
+                            "h": 200,
+                            "w": 167,
+                            "o": true
+                        },
+                        {
+                            "t": "300W",
+                            "r": 0,
+                            "c": "v1/fit/w_300,h_900,strp/<prettyName>-300w.png",
+                            "h": 360,
+                            "w": 300,
+                            "o": true
+                        },
+                        {
+                            "t": "250T",
+                            "r": 0,
+                            "c": "v1/fill/w_208,h_250,strp/<prettyName>-250t.png",
+                            "h": 250,
+                            "w": 208,
+                            "o": true
+                        },
+                        {
+                            "t": "350T",
+                            "r": 0,
+                            "c": "v1/fill/w_292,h_350,strp/<prettyName>-350t.png",
+                            "h": 350,
+                            "w": 292,
+                            "o": true
+                        },
+                        {
+                            "t": "400T",
+                            "r": 0,
+                            "c": "v1/fill/w_333,h_400,strp/<prettyName>-400t.png",
+                            "h": 400,
+                            "w": 333,
+                            "o": true
+                        },
+                        {
+                            "t": "preview",
+                            "r": 0,
+                            "c": "v1/fill/w_816,h_979,strp/<prettyName>-pre.png",
+                            "h": 979,
+                            "w": 816,
+                            "o": true,
+                            "f": 4541861
+                        },
+                        {
+                            "t": "social_preview",
+                            "r": 0,
+                            "c": "v1/fill/w_816,h_979,strp/<prettyName>-pre.png",
+                            "h": 979,
+                            "w": 816,
+                            "o": true
+                        },
+                        {
+                            "t": "fullview",
+                            "r": 0,
+                            "c": "v1/fill/w_1280,h_1536,strp/<prettyName>-fullview.png",
+                            "h": 1536,
+                            "w": 1280,
+                            "o": true,
+                            "f": 4541861
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "folderId": 57241258,
+            "gallectionUuid": "C4974140-9895-FAE6-1478-A91CCF0FEFF5",
+            "parentId": null,
+            "type": "gallery",
+            "name": "YCH",
+            "description": "",
+            "owner": {
+                "userId": 37957746,
+                "useridUuid": "3cf18d4e-b949-4cde-8d67-83223466b9d9",
+                "username": "CSCommunity",
+                "usericon": "https://a.deviantart.net/avatars-big/c/s/cscommunity.png?2",
+                "type": "group",
+                "isWatching": true,
+                "isNewDeviant": false
+            },
+            "commentCount": 0,
+            "size": 657,
+            "thumb": {
+                "deviationId": 845687888,
+                "type": "image",
+                "typeId": 1,
+                "printId": null,
+                "url": "https://www.deviantart.com/sqdpxl/art/SOLD-20-EXCLUSIVE-P2U-scaredy-esk-845687888",
+                "title": "(SOLD) $20 EXCLUSIVE P2U - scaredy esk",
+                "isJournal": false,
+                "isVideo": false,
+                "isPurchasable": false,
+                "isFavouritable": true,
+                "publishedTime": "2020-06-16T09:18:37-0700",
+                "isTextEditable": false,
+                "legacyTextEditUrl": null,
+                "isShareable": true,
+                "isCommentable": true,
+                "isFavourited": false,
+                "isDeleted": false,
+                "isMature": false,
+                "isDownloadable": false,
+                "isAntisocial": false,
+                "isBlocked": false,
+                "isPublished": true,
+                "isDailyDeviation": false,
+                "hasPrivateComments": false,
+                "blockReasons": [],
+                "author": {
+                    "userId": 38607183,
+                    "useridUuid": "b7521c59-9c6d-4e12-8627-6411b1388bfb",
+                    "username": "SqdPxl",
+                    "usericon": "https://a.deviantart.net/avatars-big/s/q/sqdpxl.gif?13",
+                    "type": "core_access",
+                    "isWatching": false,
+                    "isNewDeviant": false
+                },
+                "stats": {
+                    "comments": 4,
+                    "favourites": 63
+                },
+                "media": {
+                    "baseUri": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/b7521c59-9c6d-4e12-8627-6411b1388bfb/ddzi0y8-e76e1f7f-da74-4cbc-99ca-fc07e5b723c2.gif",
+                    "token": [
+                        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2I3NTIxYzU5LTljNmQtNGUxMi04NjI3LTY0MTFiMTM4OGJmYlwvZGR6aTB5OC02Zjc3ZDBlNy1hMGMxLTQzNmUtODA3Ny0xNzVmOTEwZmM3YjUuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.BuHAB1bjn5qQBE6IlNRCQX-TkIdLM0zWnsKLONHr5nk"
+                    ],
+                    "types": [
+                        {
+                            "t": "150",
+                            "r": -1,
+                            "h": 150,
+                            "w": 143,
+                            "o": true
+                        },
+                        {
+                            "t": "200H",
+                            "r": -1,
+                            "h": 150,
+                            "w": 143,
+                            "o": true
+                        },
+                        {
+                            "t": "300W",
+                            "r": -1,
+                            "h": 150,
+                            "w": 143,
+                            "o": true
+                        },
+                        {
+                            "t": "250T",
+                            "r": -1,
+                            "h": 150,
+                            "w": 143,
+                            "o": true
+                        },
+                        {
+                            "t": "350T",
+                            "r": -1,
+                            "h": 150,
+                            "w": 143,
+                            "o": true
+                        },
+                        {
+                            "t": "400T",
+                            "r": -1,
+                            "h": 150,
+                            "w": 143,
+                            "o": true
+                        },
+                        {
+                            "t": "preview",
+                            "r": -1,
+                            "h": 150,
+                            "w": 143,
+                            "o": true,
+                            "f": 3252
+                        },
+                        {
+                            "t": "social_preview",
+                            "r": -1,
+                            "h": 150,
+                            "w": 143,
+                            "o": true
+                        },
+                        {
+                            "t": "fullview",
+                            "r": -1,
+                            "h": 150,
+                            "w": 143,
+                            "o": true,
+                            "f": 3252
+                        },
+                        {
+                            "t": "gif",
+                            "r": 0,
+                            "h": 211,
+                            "w": 143,
+                            "o": true,
+                            "f": 3709,
+                            "b": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b7521c59-9c6d-4e12-8627-6411b1388bfb/ddzi0y8-6f77d0e7-a0c1-436e-8077-175f910fc7b5.gif"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "folderId": 57213927,
+            "gallectionUuid": "5539190F-46F8-E55B-3D59-FB904ECBFB58",
+            "parentId": null,
+            "type": "gallery",
+            "name": "Raffles",
+            "description": "",
+            "owner": {
+                "userId": 37957746,
+                "useridUuid": "3cf18d4e-b949-4cde-8d67-83223466b9d9",
+                "username": "CSCommunity",
+                "usericon": "https://a.deviantart.net/avatars-big/c/s/cscommunity.png?2",
+                "type": "group",
+                "isWatching": true,
+                "isNewDeviant": false
+            },
+            "commentCount": 0,
+            "size": 212,
+            "thumb": null
+        },
+        {
+            "folderId": 57700825,
+            "gallectionUuid": "B9A691EA-A794-AE68-49A8-FD20DC7CC0FD",
+            "parentId": null,
+            "type": "gallery",
+            "name": "Trading - Buying - Selling Journals",
+            "description": "",
+            "owner": {
+                "userId": 37957746,
+                "useridUuid": "3cf18d4e-b949-4cde-8d67-83223466b9d9",
+                "username": "CSCommunity",
+                "usericon": "https://a.deviantart.net/avatars-big/c/s/cscommunity.png?2",
+                "type": "group",
+                "isWatching": true,
+                "isNewDeviant": false
+            },
+            "commentCount": 0,
+            "size": 2036,
+            "thumb": {
+                "deviationId": 855695008,
+                "type": "journal",
+                "typeId": 5,
+                "printId": null,
+                "url": "https://www.deviantart.com/vane-belladonna/journal/TH-PURGE-HQ-OCs-open-855695008",
+                "title": "TH PURGE (HQ OCs) [open]",
+                "isJournal": true,
+                "isVideo": false,
+                "isPurchasable": false,
+                "isFavouritable": true,
+                "publishedTime": "2020-09-20T05:14:48-0700",
+                "isTextEditable": true,
+                "legacyTextEditUrl": null,
+                "coverImage": {
+                    "deviationId": 4654450678650784,
+                    "type": "image",
+                    "typeId": 1,
+                    "printId": null,
+                    "url": "https://sta.sh/019tv54fpokg",
+                    "title": "Screenshot 2020-09-20 200614",
+                    "isJournal": false,
+                    "isVideo": false,
+                    "isPurchasable": false,
+                    "isFavouritable": false,
+                    "publishedTime": "2020-09-20T05:07:31-0700",
+                    "isTextEditable": false,
+                    "legacyTextEditUrl": null,
+                    "isShareable": true,
+                    "isCommentable": true,
+                    "isFavourited": false,
+                    "isDeleted": false,
+                    "isMature": false,
+                    "isDownloadable": true,
+                    "isAntisocial": false,
+                    "isBlocked": false,
+                    "isPublished": false,
+                    "isDailyDeviation": false,
+                    "hasPrivateComments": false,
+                    "blockReasons": [],
+                    "author": {
+                        "userId": 31191968,
+                        "useridUuid": "189d1ab7-61e4-492c-8e5d-f2b933e44169",
+                        "username": "vane-belladonna",
+                        "usericon": "https://a.deviantart.net/avatars-big/v/a/vane-belladonna.gif?14",
+                        "type": "regular",
+                        "isWatching": false,
+                        "isNewDeviant": false
+                    },
+                    "stats": {
+                        "comments": 0,
+                        "favourites": 0
+                    },
+                    "media": {
+                        "baseUri": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/189d1ab7-61e4-492c-8e5d-f2b933e44169/de5gi7w-613558c1-e8b2-4110-abeb-2fb911497b12.png",
+                        "prettyName": "screenshot_2020_09_20_200614_by_vane_belladonna_de5gi7w",
+                        "token": [
+                            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NjcyIiwicGF0aCI6IlwvZlwvMTg5ZDFhYjctNjFlNC00OTJjLThlNWQtZjJiOTMzZTQ0MTY5XC9kZTVnaTd3LTYxMzU1OGMxLWU4YjItNDExMC1hYmViLTJmYjkxMTQ5N2IxMi5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.NhsoGTnJu4MO2FRAnOhcih3iQt3EP6_VhvnaF6waLwc"
+                        ],
+                        "types": [
+                            {
+                                "t": "150",
+                                "r": 0,
+                                "c": "v1/fit/w_150,h_150,q_70,strp/<prettyName>-150.jpg",
+                                "h": 79,
+                                "w": 150
+                            },
+                            {
+                                "t": "200H",
+                                "r": 0,
+                                "c": "v1/fill/w_300,h_157,q_70,strp/<prettyName>-200h.jpg",
+                                "h": 158,
+                                "w": 300
+                            },
+                            {
+                                "t": "300W",
+                                "r": 0,
+                                "c": "v1/fit/w_300,h_672,q_70,strp/<prettyName>-300w.jpg",
+                                "h": 158,
+                                "w": 300
+                            },
+                            {
+                                "t": "250T",
+                                "r": 0,
+                                "c": "v1/fill/w_476,h_250,q_70,strp/<prettyName>-250t.jpg",
+                                "h": 250,
+                                "w": 476
+                            },
+                            {
+                                "t": "350T",
+                                "r": 0,
+                                "c": "v1/fill/w_667,h_350,q_70,strp/<prettyName>-350t.jpg",
+                                "h": 350,
+                                "w": 667
+                            },
+                            {
+                                "t": "400T",
+                                "r": 0,
+                                "c": "v1/fill/w_762,h_400,q_70,strp/<prettyName>-400t.jpg",
+                                "h": 400,
+                                "w": 762
+                            },
+                            {
+                                "t": "preview",
+                                "r": 0,
+                                "c": "v1/fill/w_1234,h_648,q_70,strp/<prettyName>-pre.jpg",
+                                "h": 648,
+                                "w": 1234,
+                                "f": 976367
+                            },
+                            {
+                                "t": "social_preview",
+                                "r": 0,
+                                "c": "v1/fill/w_1234,h_648,q_70,strp/<prettyName>-pre.jpg",
+                                "h": 648,
+                                "w": 1234
+                            },
+                            {
+                                "t": "fullview",
+                                "r": 0,
+                                "c": "v1/fill/w_1280,h_672,q_80,strp/<prettyName>-fullview.jpg",
+                                "h": 672,
+                                "w": 1280,
+                                "f": 976367
+                            }
+                        ]
+                    }
+                },
+                "isShareable": true,
+                "isCommentable": true,
+                "isFavourited": false,
+                "isDeleted": false,
+                "isMature": false,
+                "isDownloadable": false,
+                "isAntisocial": false,
+                "isBlocked": false,
+                "isPublished": true,
+                "isDailyDeviation": false,
+                "hasPrivateComments": false,
+                "blockReasons": [],
+                "author": {
+                    "userId": 31191968,
+                    "useridUuid": "189d1ab7-61e4-492c-8e5d-f2b933e44169",
+                    "username": "vane-belladonna",
+                    "usericon": "https://a.deviantart.net/avatars-big/v/a/vane-belladonna.gif?14",
+                    "type": "regular",
+                    "isWatching": false,
+                    "isNewDeviant": false
+                },
+                "stats": {
+                    "comments": 0,
+                    "favourites": 0
+                },
+                "media": {
+                    "types": []
+                },
+                "textContent": {
+                    "excerpt": ">>Purging this whole folder",
+                    "html": {
+                        "type": "draft",
+                        "features": [
+                            "THIS IS A STRING FYI",
+                            {
+                                "type": "IS_EMPTY_FEATURE",
+                                "data": {
+                                    "isEmpty": false
+                                }
+                            },
+                            {
+                                "type": "WORD_COUNT_FEATURE",
+                                "data": {
+                                    "words": 4,
+                                    "chars": 27
+                                }
+                            },
+                            {
+                                "type": "MEDIA_COUNT_FEATURE",
+                                "data": {
+                                    "emotes": 0,
+                                    "images": 0,
+                                    "mentions": 0,
+                                    "video": 0
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "folderId": 57213922,
+            "gallectionUuid": "2EF829CD-7B5E-7AE8-FCA8-BD528CDB241C",
+            "parentId": null,
+            "type": "gallery",
+            "name": "Journals",
+            "description": "",
+            "owner": {
+                "userId": 37957746,
+                "useridUuid": "3cf18d4e-b949-4cde-8d67-83223466b9d9",
+                "username": "CSCommunity",
+                "usericon": "https://a.deviantart.net/avatars-big/c/s/cscommunity.png?2",
+                "type": "group",
+                "isWatching": true,
+                "isNewDeviant": false
+            },
+            "commentCount": 0,
+            "size": 460,
+            "thumb": {
+                "deviationId": 855463686,
+                "type": "journal",
+                "typeId": 5,
+                "printId": null,
+                "url": "https://www.deviantart.com/tropicalprimate/journal/Purging-most-characters-CS-HQ-ocs-incl-OPEN-855463686",
+                "title": "Purging most characters (CS, HQ ocs incl.) OPEN",
+                "isJournal": true,
+                "isVideo": false,
+                "isPurchasable": false,
+                "isFavouritable": true,
+                "publishedTime": "2020-09-17T16:10:06-0700",
+                "isTextEditable": true,
+                "legacyTextEditUrl": null,
+                "isShareable": true,
+                "isCommentable": true,
+                "isFavourited": false,
+                "isDeleted": false,
+                "isMature": false,
+                "isDownloadable": false,
+                "isAntisocial": false,
+                "isBlocked": false,
+                "isPublished": true,
+                "isDailyDeviation": false,
+                "hasPrivateComments": false,
+                "blockReasons": [],
+                "author": {
+                    "userId": 20550426,
+                    "useridUuid": "cd9f2323-0e1a-4f44-b323-96926e0497d7",
+                    "username": "TropicalPrimate",
+                    "usericon": "https://a.deviantart.net/avatars-big/t/r/tropicalprimate.gif?9",
+                    "type": "regular",
+                    "isWatching": false,
+                    "isNewDeviant": false
+                },
+                "stats": {
+                    "comments": 8,
+                    "favourites": 1
+                },
+                "media": {
+                    "types": []
+                },
+                "textContent": {
+                    "excerpt": "Information copy and pasted from toyhouse!  Included in this link are several closed species characters, including  - Mantibab  - Leoloko/Flower Critter  - Birdfolk/Akriri  - Waterdog  - Jackyls  - Popsters - Ploof-Pouches/Ploochers  I will include the masterlist entries at the bottom of this journal  (Forgive me it looks like dA journals don't have thumbnails anymore?)   SEE WHO I'M PURGING IN THIS LINK! DO NOT GO OUTSIDE OF THIS TAG. https://toyhou.se/TropicalPrimate/characters/tags:1/tagged:purge - I am experiencing a lot of disconnect with my characters, and looking to get rid of most of them. Those with a price in their name can be sold for that amount, please do not offer less! I am looking for the exact amounts I paid for. Closed species characters have their masterlist entries linked on their pages, when available. - I'm also okay with trades!! Right now I am looking for Waterdogs / Watercats / Big Watercats Possibly Fumi Dragons, Birdfolk or Crederia species Big Cat",
+                    "html": {
+                        "type": "draft",
+                        "features": [
+                            {
+                                "type": "IS_EMPTY_FEATURE",
+                                "data": {
+                                    "isEmpty": false
+                                }
+                            },
+                            {
+                                "type": "WORD_COUNT_FEATURE",
+                                "data": {
+                                    "words": 165,
+                                    "chars": 989
+                                }
+                            },
+                            {
+                                "type": "MEDIA_COUNT_FEATURE",
+                                "data": {
+                                    "emotes": 0,
+                                    "images": 16,
+                                    "mentions": 0,
+                                    "video": 0
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    ]
+}

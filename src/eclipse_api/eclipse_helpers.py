@@ -16,11 +16,7 @@ def get_csrf(deviation_url, cookies):
     Returns:
         string: CSRF validation token.
     """
-    start_time = time.time()
-    print("requests.get for get_csrf")
     page = requests.get(deviation_url, cookies=cookies)
-    sleep_delay(start_time)
-
     soup = BeautifulSoup(page.text, 'html.parser')
     return soup.find("input", {"name":"validate_token"})["value"]
 

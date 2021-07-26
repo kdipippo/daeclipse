@@ -34,9 +34,6 @@ class DeviantArtEclipseAPI:
         """Prints information about a subset (~10) of groups the user is a member of."""
         # limit at most has to be 24.
         # groups_url = f"{self.base_uri}/groups"
-        username = "Pepper-Wood"
-        offset = "15"
-        limit = "24"
         moduleid = "1761969747" # Static value that DeviantArt uses to tie this to the "Get Members" block.
         groups_url = f"https://www.deviantart.com/_napi/da-user-profile/api/module/groups/members?username={username}&moduleid={moduleid}&offset={offset}&limit={limit}"
 
@@ -87,14 +84,21 @@ class DeviantArtEclipseAPI:
             "csrf_token": csrf_token
         })
 
-        start_time = time.time()
-        print("requests.post for add_deviation_to_group")
         response = requests.post(group_add_url, cookies=self.cookies, headers=headers, data=data)
-        sleep_delay(start_time)
 
-        print(response.status_code)
+        # {'success': True, 'needsVote': True, 'deviationGroupCount': 1}
+        # {'error': 'invalid_request', 'errorDescription': 'Validation failed', 'errorDetails': 'The target folder is over its size limit.', 'status': 'error'}
         rjson = json.loads(response.text)
-        print(json.dumps(rjson, indent=2))
+        if "success" in rjson:
+            if rjson["success"] == True:
+                if rjson["needsVote"]:
+                    return True, "Deviation added to folder and automatically approved"
+                else:
+                    return True, "Deviation submitted to folder and pending moderator approval"
+        if "error" in rjson:
+            return False, rjson["errorDetails"]
+        print(rjson)
+        return True, "idk what happened"
 
 def get_deviation_id(deviation_url):
     """Extract the deviation_id from the full deviantart image URL.
