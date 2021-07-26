@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 """This script generates a 50x50 animated gif either randomly or with provided
 color and image information via a json file."""
 

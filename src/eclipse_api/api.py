@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 """Class to handle making calls to the New DeviantArt API available for Eclipse."""
 
 import json

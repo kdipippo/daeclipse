@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 """Model to represent DeviantArt Eclipse Deviation."""
 
 from stats import EclipseStats

@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 """Class to handle the list of colors and images randomly generated for gif creation."""
 
 class SelectedAssets:
