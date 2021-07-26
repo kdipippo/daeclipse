@@ -5,8 +5,8 @@ import json
 import time
 import browser_cookie3
 import requests
-from .eclipse_helpers import get_csrf, sleep_delay
 
+from .models import EclipseFolder
 
 class DeviantArtEclipseAPI:
     """Class to handle making calls to the New DeviantArt API available for Eclipse."""
@@ -50,15 +50,17 @@ class DeviantArtEclipseAPI:
             group_id (int): ID number for the group on DeviantArt.
 
         Returns:
-            dict: Dictionary response from the API call.
+            EclipseFolder[]: A list of Eclipse Folder objects.
         """
         group_folders_url = f"{self.base_uri}/group_folders?groupid={group_id}&type=gallery"
         response = requests.get(group_folders_url, cookies=self.cookies, headers={'referer': deviation_url})
 
-        if response.status_code == 200:
-            return json.loads(response.text)
-        print(f"ERROR!! Status code in get_group_folders was {response.status_code}")
-        return dict()
+        # {'error': 'unauthorized', 'errorDescription': 'Not authorized', 'status': 'error'}
+        if 'error' in folder_data:
+            return []
+        folder_data = json.loads(response.text)
+        folders = [EclipseFolder(d) for d in folder_data['results']]
+        return folders
 
     def add_deviation_to_group(self, group_id, folder_id, deviation_url):
         """Adds the provided deviation to the specified group's folder; prints status and text.
@@ -108,3 +110,18 @@ def get_deviation_id(deviation_url):
     """
     url_parts = deviation_url.split("-")
     return url_parts[-1]
+
+def get_csrf(deviation_url, cookies):
+    """Parses the HTML of the deviation to get the csrf token in the page. It's stored as the
+    value of a hidden input with name 'validate_token'.
+
+    Args:
+        deviation_url (string): deviation URL, i.e. https://da.com/art/Art-12345.
+        cookie (http.cookiejar.CookieJar): .deviantart.com Cookie Jar.
+
+    Returns:
+        string: CSRF validation token.
+    """
+    page = requests.get(deviation_url, cookies=cookies)
+    soup = BeautifulSoup(page.text, 'html.parser')
+    return soup.find("input", {"name":"validate_token"})["value"]

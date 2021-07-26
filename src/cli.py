@@ -3,123 +3,81 @@
 
 # standard imports
 import cli_ui
-import fire
-import os
-import sys
+from pick import pick
+import typer
 
 # local package imports
 import eclipse_api
-import eclipse_groups
 import gif_generator
-from update_groups_listing import update_groups_listing, get_percent
 
-class DeviantArtCLI:
-    def get_folder_categories(self) -> None:
-        """Displays the list of categories."""
-        groups_listing = eclipse_groups.Groups()
-        categories = groups_listing.get_categories()
-        for category in categories:
-            print(category)
+app = typer.Typer(help="DeviantArt Eclipse CLI")
 
-    def populate_empty_folder_categories(self):
-        """Pass-through for go_through_empty_categories()."""
-        groups_listing = eclipse_groups.Groups()
-        groups_listing.go_through_empty_categories()
+@app.command()
+def gif_preset():
+    """Generate an animated icon gif based on a stored preset."""
+    presets = gif_generator.get_presets()
+    selected_preset = cli_ui.ask_choice("Select which option to generate", choices=presets, sort=False)
+    gif_filename = gif_generator.create_gif_preset(selected_preset)
+    cli_ui.info("Generated pixel icon created at", gif_filename)
 
-    def call_create_gif(self):
-        """Generate an animated icon gif and open the result as a preview HTML page in the browser."""
-        presets = gif_generator.get_presets()
-        selected_preset = cli_ui.ask_choice("Select which option to generate", choices=presets, sort=False)
-        if selected_preset == "Random":
-            gif_filename = gif_generator.create_gif()
-        else:
-            gif_filename = gif_generator.create_gif(selected_preset)
-        cli_ui.info("Generated pixel icon created at", gif_filename)
+@app.command()
+def gif_random():
+    """Generate an animated icon gif and open the result as a preview HTML page in the browser."""
+    gif_filename = gif_generator.create_gif_random()
+    cli_ui.info("Generated pixel icon created at", gif_filename)
 
-    def get_category_selection(self, categories):
-        # TODO - this will break since it's multiple selection
-        # BETTER IDEA - pull from user's list of groups and just go one-by-one to submit to groups
-        # Even though that's not automated, it can be iterated on later
-        return
-        """Displays a popup with all possible folder categories to prompt user for appropriate folders.
+@app.command()
+def add_art_to_groups():
+    """Automatically sends out group submission requests based on a user-provided deviation URL and
+    a set of folder categories."""
+    typer.echo("Please ensure that the deviation is open in Eclipse in Chrome before continuing.")
+    art_url = cli_ui.ask_string("Paste deviation URL:")
+    eclipse = eclipse_api.Eclipse()
+    offset = 0
+    while True:
+        groups_result = eclipse.get_groups("Pepper-Wood", offset)
+        offset = groups_result['nextOffset']
+        group_names = [group['username'] for group in groups_result['results']]
+        group_names.sort()
 
-        Args:
-            categories (list(string)): List of folder category names.
+        title = "Select which groups to add your artwork into (press SPACE to mark, ENTER to continue): "
+        selected_groups = pick(group_names, title, multiselect=True)
 
-        Returns:
-            dict(string:boolean): Folder categories marked as True or False, i.e. { 'pixel': True }
-        """
-        checkbox_layout = []
-        checkbox_row = []
-        for i in enumerate(categories):
-            if i % 5 == 4:
-                checkbox_layout.append(checkbox_row)
-                checkbox_row = []
-            checkbox_row.append(sg.Checkbox(categories[i], key=categories[i]))
-        checkbox_layout.append(checkbox_row)
-        checkbox_layout.append([sg.Button('SUBMIT'), sg.Button('EXIT')])
-        checkbox_window = sg.Window("heyo", checkbox_layout)
-        while True:
-            checkbox_event, checkbox_values = checkbox_window.Read()
-            if checkbox_event in (None, 'EXIT'):
-                checkbox_window.Close()
-                return dict()
-            if checkbox_event == 'SUBMIT':
-                checkbox_window.Close()
-                print("==== SELECTED ====")
-                for checkbox_key in checkbox_values.keys():
-                    if checkbox_values[checkbox_key]:
-                        print(f"- {checkbox_key}")
-                print("==================")
-                return checkbox_values
+        if len(selected_groups) > 0:
+            for selected_group in selected_groups:
+                # ('group name', index)
+                selected_group_name = selected_group[0]
+                selected_group_index = selected_group[1]
+                folders_result = eclipse.get_group_folders(groups_result['results'][selected_group_index]['userId'], deviation_url)
+                if len(folders_result) == 0:
+                    cli_ui.error(cli_ui.cross, f"{selected_group_name} | | No folders returned for group")
+                else:
+                    folder_names = [folder.name for folder in folders_result]
+                    title = f"Select which folder in '{selected_group_name}' to add your artwork into (ENTER to continue): "
+                    selected_folder = pick(folder_names, title, multiselect=False)
+                    selected_folder_name = selected_folder[0]
+                    selected_folder_index = selected_folder[1]
+                    folder_go = folders_result[selected_folder_index]
+                    folder_status, folder_message = eclipse.add_deviation_to_group(folder_go.owner.userId, folder_go.folderId, deviation_url)
+                    if folder_status:
+                        cli_ui.info(cli_ui.check, f"{selected_group_name} | {selected_folder_name} | {folder_message}")
+                    else:
+                        cli_ui.error(cli_ui.cross, f"{selected_group_name} | {selected_folder_name} | {folder_message}")
 
-    def add_art_to_groups(self):
-        """Automatically sends out group submission requests based on a user-provided deviation URL and
-        a set of folder categories."""
-        print("Please ensure that the deviation is open in Eclipse in Chrome before continuing.")
-        art_url = input("Paste deviation URL: ")
-        groups_listing = eclipse_groups.Groups()
+        if not groups_result['hasMore']:
+            return
 
-        categories = groups_listing.get_categories()
-        checkbox_values = get_category_selection(categories)
-        submission_folders = groups_listing.get_submission_folders(checkbox_values)
-        cont = input("Do you want to move forward with the submission process? (Yes/No): ")
-        if cont == "Yes":
-            eclipse = eclipse_api.Eclipse()
-            count = 0
-            for folder in submission_folders:
-                print(f"{get_percent(count, len(submission_folders))}% Done - Submitting to Group " +
-                    f"{folder['group_id']}, Folder {folder['folder_id']}")
-                eclipse.add_deviation_to_group(folder["group_id"], folder["folder_id"], art_url)
-                count += 1
-        elif cont == "No":
-            print("Stopping action.")
-
-    def list(self):
-        actions = [
-            {
-                "func": "call_create_gif",
-                "desc": "Generate icon"
-            },
-            {
-                "func": "update_groups_listing",
-                "desc": "Add new groups"
-            },
-            {
-                "func": "get_folder_categories",
-                "desc": "Get folder categories"
-            },
-            {
-                "func": "populate_empty_folder_categories",
-                "desc": "Populate empty folder categories"
-            },
-            {
-                "func": "add_art_to_groups",
-                "desc": "Submit art to groups"
-            }
-        ]
-        for action in actions:
-            cli_ui.info_1(cli_ui.bold, action['func'].ljust(35), cli_ui.reset, action['desc'])
+@app.command()
+def list():
+    actions = [
+        ("gif-preset", "Generate pixel icon with fixed assets."),
+        ("gif-random", "Generate pixel icon with randomized assets."),
+        ("add-art-to-groups", "Submit DeviantArt deviation to groups."),
+    ]
+    cli_ui.info("Commands:")
+    for action in actions:
+        cli_ui.info_1(cli_ui.bold, action[0].ljust(35), cli_ui.reset, action[1])
+    cli_ui.info()
 
 if __name__ == "__main__":
-    fire.Fire(DeviantArtCLI)
+    app()
