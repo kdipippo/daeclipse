@@ -1,4 +1,8 @@
 beautifulsoup4==4.9.0
 browser-cookie3==0.10.2
+cli-ui==0.14.1
+pick==1.0.0
 Pillow==7.0.0
 requests==2.23.0
+typer==0.3.2
+PyYAML==5.4.1
