@@ -1,23 +1,40 @@
+#!/usr/bin/env python
+"""Model to represent DeviantArt Eclipse User."""
+
 class EclipseUser:
-    def __init__(self, d):
-        self.userId = None
-        self.useridUuid = None
+    """Model to represent DeviantArt Eclipse User."""
+
+    def __init__(self, input_dict = None):
+        self.user_id = None
+        self.userid_uuid = None
         self.username = None
         self.usericon = None
         self.type = None
-        self.isWatching = None
-        self.isNewDeviant = None
-        if d is not None and type(d) is dict:
-            self.from_dict(d)
+        self.is_watching = None
+        self.is_new_deviant = None
+        if input_dict is not None and isinstance(input_dict, dict):
+            self.from_dict(input_dict)
 
     def __repr__(self):
-        return self.userId
-    
-    def from_dict(self, d):
-        if 'userId' in d: self.userId = d['userId']
-        if 'useridUuid' in d: self.useridUuid = d['useridUuid']
-        if 'username' in d: self.username = d['username']
-        if 'usericon' in d: self.usericon = d['usericon']
-        if 'type' in d: self.type = d['type']
-        if 'isWatching' in d: self.isWatching = d['isWatching']
-        if 'isNewDeviant' in d: self.isNewDeviant = d['isNewDeviant']
+        return self.user_id
+
+    def from_dict(self, input_dict):
+        """Convert input_dict values to class attributes.
+
+        Args:
+            input_dict (dict): Dict containing EclipseUser fields.
+        """
+        if 'userId' in input_dict:
+            self.user_id = input_dict['userId']
+        if 'useridUuid' in input_dict:
+            self.userid_uuid = input_dict['useridUuid']
+        if 'username' in input_dict:
+            self.username = input_dict['username']
+        if 'usericon' in input_dict:
+            self.usericon = input_dict['usericon']
+        if 'type' in input_dict:
+            self.type = input_dict['type']
+        if 'isWatching' in input_dict:
+            self.is_watching = input_dict['isWatching']
+        if 'isNewDeviant' in input_dict:
+            self.is_new_deviant = input_dict['isNewDeviant']

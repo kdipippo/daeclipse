@@ -1,10 +1,22 @@
+#!/usr/bin/env python
+"""Model to represent DeviantArt Eclipse Deviation Stats."""
+
 class EclipseStats:
-    def __init__(self, d = None):
+    """Model to represent DeviantArt Eclipse Deviation Stats."""
+
+    def __init__(self, input_dict = None):
         self.comments = None
         self.favourites = None
-        if d is not None and type(d) is dict:
-            self.from_dict(d)
+        if input_dict is not None and isinstance(input_dict, dict):
+            self.from_dict(input_dict)
 
-    def from_dict(self, d):
-        if 'comments' in d: self.comments = d['comments']
-        if 'favourites' in d: self.favourites = d['favourites']
+    def from_dict(self, input_dict):
+        """Convert input_dict values to class attributes.
+
+        Args:
+            input_dict (dict): Dict containing EclipseStats fields.
+        """
+        if 'comments' in input_dict:
+            self.comments = input_dict['comments']
+        if 'favourites' in input_dict:
+            self.favourites = input_dict['favourites']

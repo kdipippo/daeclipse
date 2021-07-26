@@ -7,8 +7,9 @@ import json
 import random
 import pathlib
 from PIL import Image
-from gif_generator.selected_assets_class import SelectedAssets
 import yaml
+
+from gif_generator.selected_assets_class import SelectedAssets
 
 # Used for the background to be erased when the image is made transparent.
 # Set to a muted green color that does not coincide with the pixel art palette.
@@ -262,7 +263,15 @@ def get_random_asset_list(assets_json):
             assets.add_image(image_type, selected_num)
     return assets
 
-def get_preset_asset_list(assets_json, preset):
+def get_preset_asset_list(preset):
+    """Convert preset dict to SelectedAssets object.
+
+    Args:
+        preset (dict): Dict containing colors and images specification.
+
+    Returns:
+        SelectedAssets: SelectedAssets object.
+    """
     assets = SelectedAssets()
     assets.colors = preset['colors']
     assets.images = preset['images']
@@ -276,28 +285,38 @@ def get_json(assets, current_time):
         current_time (string): Full current time string, i.e. '2020-03-16_12:02:08AM'.
     """
     json_filename = f"{OUTPUT_FILE_PREFIX}/output/{current_time}.json"
-    json_file = open(json_filename, "w")
-    json_file.write(json.dumps(assets.get_json(), indent=2))
-    json_file.close()
+    with open(json_filename, "w") as json_file:
+        json_file.write(json.dumps(assets.get_json(), indent=2))
 
 def load_assets():
-    return yaml.safe_load(open(f"{pathlib.Path(__file__).parent.absolute()}/assets.yaml"))
+    """Return the contents of assets.yaml as a dict.
+
+    Returns:
+        dict: assets.yaml contents.
+    """
+    with open(f"{pathlib.Path(__file__).parent.absolute()}/assets.yaml") as yaml_file:
+        return yaml.safe_load(yaml_file)
 
 def get_presets():
+    """Return the list of preset names.
+
+    Returns:
+        string[]: List of preset names stored in assets.yaml.
+    """
     assets_yaml = load_assets()
     presets = list(assets_yaml['presets'].keys())
     return presets
 
 def create_gif_preset(preset_name):
-    """TBD - Generates a gif icon along with its config json into the outputs/ folder.
+    """Generate an animated pixel icon gif based on a stored preset.
 
     Returns:
-        string: full path to the gif result.
+        string: Full path to the gif result.
     """
     assets_yaml = load_assets()
 
     preset = assets_yaml['presets'][preset_name]
-    gif_assets = get_preset_asset_list(assets_yaml, preset)
+    gif_assets = get_preset_asset_list(preset)
     gif_assets.store_json(assets_yaml)
 
     current_time = datetime.today().strftime("%Y-%m-%d_%I:%M:%S%p")
@@ -306,10 +325,10 @@ def create_gif_preset(preset_name):
     return f"{OUTPUT_FILE_PREFIX}/output/{current_time}.gif"
 
 def create_gif_random():
-    """TBD - Generates a gif icon along with its config json into the outputs/ folder.
+    """Generate an animated pixel icon gif with randomized assets.
 
     Returns:
-        string: full path to the gif result.
+        string: Full path to the gif result.
     """
     assets_yaml = load_assets()
 
