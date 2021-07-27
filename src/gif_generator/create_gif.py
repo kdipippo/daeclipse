@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 """This script generates a 50x50 animated gif either randomly or with provided
 color and image information via a json file."""
 
@@ -7,6 +6,8 @@ import json
 import random
 import pathlib
 from PIL import Image
+import yaml
+
 from gif_generator.selected_assets_class import SelectedAssets
 
 # Used for the background to be erased when the image is made transparent.
@@ -17,6 +18,7 @@ TRANSPARENT_COLOR = (255, 255, 255, 0)
 
 IMAGE_FILE_PREFIX = pathlib.Path(__file__).parent.absolute()
 OUTPUT_FILE_PREFIX = pathlib.Path(__file__).parent.parent.parent.absolute()
+
 
 def bob_down(frame_num):
     """Returns whether the sprite is bobbing down, false if bobbing up.
@@ -30,6 +32,7 @@ def bob_down(frame_num):
     if frame_num % 4 == 1 or frame_num % 4 == 2:
         return False
     return True
+
 
 def translate_image(image, direction, pixels):
     """Return a translated image.
@@ -51,22 +54,33 @@ def translate_image(image, direction, pixels):
         trans_matrix[5] += pixels
     elif direction == "down":
         trans_matrix[5] -= pixels
-    return image.transform(image.size, Image.AFFINE, tuple(trans_matrix), fillcolor=DEFAULT_COLOR)
+    return image.transform(
+        image.size,
+        Image.AFFINE,
+        tuple(trans_matrix),
+        fillcolor=DEFAULT_COLOR,
+    )
+
 
 def get_filename(image_type, asset_name):
     """Returns path to the given image asset.
 
     Args:
         image_type (string): Type of image, i.e. 'hairfront', 'eyes'.
-        asset_name (string): Asset number, sometimes with position letter, i.e. '00', '00A'.
+        asset_name (string): Asset name, may have position letter, i.e. '00A'.
 
     Returns:
         string: Path to image asset.
     """
-    return f"{IMAGE_FILE_PREFIX}/images/{image_type}/{image_type}{asset_name}.png"
+    return '{0}/images/{1}/{1}{2}.png'.format(
+        IMAGE_FILE_PREFIX,
+        image_type,
+        asset_name,
+    )
+
 
 def get_custom_asset(image_type, asset_name, frame_num):
-    """Get the Image object for the current custom asset. The second frame is manually created.
+    """Get the Image object for a custom asset.
 
     Args:
         image_type (string): Type of image, i.e. 'hairfront', 'eyes'.
@@ -76,14 +90,17 @@ def get_custom_asset(image_type, asset_name, frame_num):
     Returns:
         Image: Requested Image object.
     """
-    asset_letter = "A"
+    asset_letter = 'A'
     if bob_down(frame_num):
-        asset_letter = "B"
-    return Image.open(get_filename(image_type, f"{asset_name}{asset_letter}"))
+        asset_letter = 'B'
+    return Image.open(get_filename(image_type, '{0}{1}'.format(
+        asset_name,
+        asset_letter,
+    )))
+
 
 def get_2frame_asset(image_type, asset_name, frame_num):
-    """Get the Image object for the current 2-frame asset. The second frame is generated rather
-    than manually created, as with a custom asset.
+    """Get Image object for a 2-frame asset.
 
     Args:
         image_type (string): Type of image, i.e. 'hairfront', 'eyes'.
@@ -98,26 +115,28 @@ def get_2frame_asset(image_type, asset_name, frame_num):
         return translate_image(image, 'down', 1)
     return image
 
+
 def get_rgba_from_hex(hex_string):
-    """Converts hex color string to rgba color tuple.
+    """Convert hex color string to rgba color tuple.
 
     Args:
-        hex_string (string): hex color string, i.e. 79ede2
+        hex_string (string): hex color string, i.e. 79ede2.
 
     Returns:
-        tuple: 4-entry tuple of ints representing rgba, i.e. (121, 237, 226, 255)
+        tuple: 4-entry int tuple representing rgba, i.e. (121, 237, 226, 255).
     """
     rgb = list(int(hex_string[i:i+2], 16) for i in (0, 2, 4))
     rgb.append(255)
     return tuple(rgb)
 
+
 def update_palette(before_img, before_colors, after_colors):
-    """Recolor a given image with an array of 'before' colors to an array of 'after'.
+    """Recolor given image with array of 'before' colors to array of 'after'.
 
     Args:
         before_img (Image): Image object with mode 'RGBA' to be recolored.
-        before_colors (list(tuple)): RGBA colors that will be recolored, i.e. [(0, 0, 0, 255)]
-        after_colors (list(tuples)): RGBA colors to be used for recoloring, i.e. [(1, 1, 1, 255)]
+        before_colors (list(tuple)): RGBA colors that will be recolored.
+        after_colors (list(tuples)): RGBA colors to be used for recoloring.
 
     Returns:
         Image: Recolored Image object.
@@ -136,9 +155,9 @@ def update_palette(before_img, before_colors, after_colors):
                 after_pixel_map[i, j] = before_pixel_map[i, j]
     return after_img
 
+
 def make_transparent(img) -> Image:
-    """Return the image with a transparent background. Transparency is based on what is left as
-    the DEFAULT_COLOR from the original Image creation.
+    """Return image with a transparent background.
 
     Args:
         img (Image): Image object.
@@ -148,14 +167,15 @@ def make_transparent(img) -> Image:
     """
     return update_palette(img, [DEFAULT_COLOR], [TRANSPARENT_COLOR])
 
+
 def change_color(img, color_dict, default_color, new_color):
     """Recolor an image with a provided palette of colors.
 
     Args:
         img (Image): Image object.
-        color_dict (dict): Dictionary that maps palette name to a string of hex colors.
-        default_color (string): Default palette name for the asset, i.e. 'pink'.
-        new_color (string): Desired palette name to recolor the asset, i.e. 'orange'.
+        color_dict (dict): Dict that maps palette name to string of hex colors.
+        default_color (string): Before palette name for asset, i.e. 'pink'.
+        new_color (string): After palette name to recolor asset, i.e. 'orange'.
 
     Returns:
         Image: Recolored Image object.
@@ -166,6 +186,7 @@ def change_color(img, color_dict, default_color, new_color):
     before_rgba = list(map(get_rgba_from_hex, before_hexes.split(",")))
     after_rgba = list(map(get_rgba_from_hex, after_hexes.split(",")))
     return update_palette(img, before_rgba, after_rgba)
+
 
 def get_frame(frame_num, assets):
     """Assemble a single frame of the gif.
@@ -187,7 +208,7 @@ def get_frame(frame_num, assets):
             continue
         asset_name = assets.images[image_type]
 
-        # Handling 'eyes' animation: get the correct letter based on blinking position.
+        # 'Eyes' animation: get the frame letter based on blinking position.
         if image_type == "eyes":
             if frame_num in [25, 29]:
                 asset_name += "B"
@@ -204,32 +225,39 @@ def get_frame(frame_num, assets):
             image_layer = get_custom_asset(image_type, asset_name, frame_num)
 
         if 'recolor' in image_info:
-            for recolor_type in image_info['recolor']:
-                # variables are suffering
-                color_dict = assets.json['colorHexes'][recolor_type]['options']
-                default_color = assets.json['colorHexes'][recolor_type]['default']
-                new_color = assets.colors[recolor_type]
-                image_layer = change_color(image_layer, color_dict, default_color, new_color)
+            for recolor in image_info['recolor']:
+                color_dict = assets.json['colorHexes'][recolor]['options']
+                default_color = assets.json['colorHexes'][recolor]['default']
+                new_color = assets.colors[recolor]
+                image_layer = change_color(
+                    image_layer,
+                    color_dict,
+                    default_color,
+                    new_color,
+                )
         frame.paste(image_layer, (0, 0), image_layer)
 
     frame = translate_image(frame, 'left', 5)
     frame = make_transparent(frame)
-    watermark = Image.open(f"{IMAGE_FILE_PREFIX}/images/watermark.png")
+    watermark = Image.open(
+        '{0}/images/watermark.png'.format(IMAGE_FILE_PREFIX)
+    )
     frame.paste(watermark, (0, 0), watermark)
     return frame
 
+
 def get_gif(assets, current_time):
-    """Assemble a list of frames, string them together, and save the gif to output/.
+    """Assemble and combine list of frames and save gif to output/.
 
     Args:
         assets (SelectedAssets): SelectedAssets object.
-        current_time (string): Full current time string, i.e. '2020-03-16_12:02:08AM'.
+        current_time (string): Current time, i.e. '2020-03-16_12:02:08AM'.
     """
     frames = []
     for i in range(32):
         frames.append(get_frame(i, assets))
     frames[0].save(
-        f"{OUTPUT_FILE_PREFIX}/output/{current_time}.gif",
+        '{0}/output/{1}.gif'.format(OUTPUT_FILE_PREFIX, current_time),
         format='GIF',
         append_images=frames[1:],
         save_all=True,
@@ -239,8 +267,9 @@ def get_gif(assets, current_time):
         disposal=2
     )
 
+
 def get_random_asset_list(assets_json):
-    """Randomize and return the list of colors and components for the generated gif.
+    """Randomize and return the list of colors and components.
 
     Args:
         assets_json (dict): Parsed assets.json file as a dictionary.
@@ -251,53 +280,102 @@ def get_random_asset_list(assets_json):
     assets = SelectedAssets()
     color_types = list(assets_json['colorHexes'].keys())
     for color_type in color_types:
-        color_options = list(assets_json['colorHexes'][color_type]['options'].keys())
-        assets.add_color(color_type, random.choice(color_options))
+        assets.add_color(color_type, random.choice(
+            list(assets_json['colorHexes'][color_type]['options'].keys())
+        ))
     image_types = list(assets_json['imageTypes'].keys())
     for image_type in image_types:
         coin_toss = random.random()
         if coin_toss < assets_json['imageTypes'][image_type]['probability']:
-            selected_num = random.randint(0, assets_json['imageTypes'][image_type]['count']-1)
+            selected_num = random.randint(
+                0,
+                assets_json['imageTypes'][image_type]['count']-1
+            )
             assets.add_image(image_type, selected_num)
     return assets
 
+
+def get_preset_asset_list(preset):
+    """Convert preset dict to SelectedAssets object.
+
+    Args:
+        preset (dict): Dict containing colors and images specification.
+
+    Returns:
+        SelectedAssets: SelectedAssets object.
+    """
+    assets = SelectedAssets()
+    assets.colors = preset['colors']
+    assets.images = preset['images']
+    return assets
+
+
 def get_json(assets, current_time):
-    """Creates a json file with the generated asset settings along with the same-named gif.
+    """Create a json file with the generated asset settings.
 
     Args:
         assets (SelectedAssets): SelectedAssets object.
-        current_time (string): Full current time string, i.e. '2020-03-16_12:02:08AM'.
+        current_time (string): Current time, i.e. '2020-03-16_12:02:08AM'.
     """
-    json_filename = f"{OUTPUT_FILE_PREFIX}/output/{current_time}.json"
-    json_file = open(json_filename, "w")
-    json_file.write(json.dumps(assets.get_json(), indent=2))
-    json_file.close()
+    filename = '{0}/output/{1}.json'.format(OUTPUT_FILE_PREFIX, current_time)
+    with open(filename, 'w') as json_file:
+        json_file.write(json.dumps(assets.get_json(), indent=2))
 
-def create_gif():
-    """Generates a gif icon along with its config json into the outputs/ folder.
+
+def load_assets():
+    """Return the contents of assets.yaml as a dict.
 
     Returns:
-        string: full path to the gif result.
+        dict: assets.yaml contents.
     """
-    assets_filename = f'{pathlib.Path(__file__).parent.absolute()}/assets.json'
-    with open(assets_filename, 'r') as assets_file:
-        assets_json = json.load(assets_file)
+    yaml_path = '{0}/assets.yaml'.format(
+        pathlib.Path(__file__).parent.absolute()
+    )
+    with open(yaml_path) as yaml_file:
+        return yaml.safe_load(yaml_file)
 
-    result = input("Do you want to use a preset instead of randomly generating? (Yes/No): ")
-    gif_assets = get_random_asset_list(assets_json)
-    gif_assets.store_json(assets_json)
-    if result == "Yes":
-        preset_filename = input("[FILE INPUT] Please select the preset json file to use")
-        if preset_filename is not None:
-            with open(preset_filename, 'r') as preset_file:
-                preset_json = json.load(preset_file)
-            gif_assets.debug_override(preset_json)
 
-    gif_assets.debug()
+def get_presets():
+    """Return the list of preset names.
+
+    Returns:
+        string[]: List of preset names stored in assets.yaml.
+    """
+    assets_yaml = load_assets()
+    presets = list(assets_yaml['presets'].keys())
+    return presets
+
+
+def create_gif_preset(preset_name):
+    """Generate an animated pixel icon gif based on a stored preset.
+
+    Returns:
+        string: Full path to the gif result.
+    """
+    assets_yaml = load_assets()
+
+    preset = assets_yaml['presets'][preset_name]
+    gif_assets = get_preset_asset_list(preset)
+    gif_assets.store_json(assets_yaml)
+
     current_time = datetime.today().strftime("%Y-%m-%d_%I:%M:%S%p")
     get_gif(gif_assets, current_time)
     get_json(gif_assets, current_time)
-    return f"{OUTPUT_FILE_PREFIX}/output/{current_time}.gif"
+    return '{0}/output/{1}.gif'.format(OUTPUT_FILE_PREFIX, current_time)
 
-if __name__ == "__main__":
-    create_gif()
+
+def create_gif_random():
+    """Generate an animated pixel icon gif with randomized assets.
+
+    Returns:
+        string: Full path to the gif result.
+    """
+    assets_yaml = load_assets()
+
+    gif_assets = get_random_asset_list(assets_yaml)
+    gif_assets.store_json(assets_yaml)
+
+    current_time = datetime.today().strftime("%Y-%m-%d_%I:%M:%S%p")
+    get_gif(gif_assets, current_time)
+    get_json(gif_assets, current_time)
+    return '{0}/output/{1}.gif'.format(OUTPUT_FILE_PREFIX, current_time)
