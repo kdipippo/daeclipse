@@ -34,7 +34,7 @@ def gif_random():
 
 @app.command()
 def add_art_to_groups(
-    save: bool = typer.Option(False, help="Save outcome of API calls to local file."),
+    save: bool = typer.Option(False, help="Save results to local file."),
 ):
     """Submit DeviantArt deviation to groups."""
     typer.echo(' '.join([
@@ -167,7 +167,11 @@ def handle_selected_group(eclipse, group_name, group_id, deviation_url):
             deviation_url,
         )
     except RuntimeError as add_art_rerror:
-        return False, format_msg(group_name, picked_name, '❌ ' + str(add_art_rerror))
+        return False, format_msg(
+            group_name,
+            picked_name,
+            '❌ ' + str(add_art_rerror),
+        )
 
     return True, format_msg(group_name, picked_name, message)
 

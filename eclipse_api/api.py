@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 
 from eclipse_api.models.folder import EclipseFolder
 
+
 class DeviantArtEclipseAPI:
     """Class to handle making calls to the DeviantArt Eclipse API."""
 
