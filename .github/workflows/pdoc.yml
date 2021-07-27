@@ -17,7 +17,7 @@ jobs:
       - name: Install pdoc
         run: pip install pdoc
       - name: Run pdoc
-        run: pdoc ./docs eclipse_api
+        run: pdoc eclipse_api/ --output-directory docs/
       - name: Open docs update PR
         uses: peter-evans/create-pull-request@v2
         with:
