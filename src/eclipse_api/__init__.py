@@ -1,3 +1,5 @@
 """eclipse_api __init__.py"""
 
-from .api import DeviantArtEclipseAPI as Eclipse
+__author__ = 'Pepper-Wood'
+from eclipse_api.api import DeviantArtEclipseAPI as Eclipse
+from eclipse_api.models.folder import EclipseFolder

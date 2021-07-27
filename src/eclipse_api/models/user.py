@@ -1,9 +1,10 @@
 """Model to represent DeviantArt Eclipse User."""
 
+
 class EclipseUser:
     """Model to represent DeviantArt Eclipse User."""
 
-    def __init__(self, input_dict = None):
+    def __init__(self, input_dict=None):
         self.user_id = None
         self.userid_uuid = None
         self.username = None
@@ -23,6 +24,8 @@ class EclipseUser:
         Args:
             input_dict (dict): Dict containing EclipseUser fields.
         """
+        if input_dict is None:
+            return
         if 'userId' in input_dict:
             self.user_id = input_dict['userId']
         if 'useridUuid' in input_dict:

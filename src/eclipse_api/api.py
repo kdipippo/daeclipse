@@ -1,12 +1,11 @@
 """Class to handle making calls to the DeviantArt Eclipse API."""
 
 import json
-
 import browser_cookie3
 import requests
 from bs4 import BeautifulSoup
-from models import EclipseFolder
 
+from eclipse_api.models.folder import EclipseFolder
 
 class DeviantArtEclipseAPI:
     """Class to handle making calls to the DeviantArt Eclipse API."""
@@ -61,7 +60,7 @@ class DeviantArtEclipseAPI:
 
     def get_group_folders(self, group_id, deviation_url):
         """Returns folder information for the provided group_id ONLY, if
-         cookies belong to a member of the group.
+        cookies belong to a member of the group.
 
         Args:
             group_id (int): Group ID.
@@ -87,8 +86,7 @@ class DeviantArtEclipseAPI:
         folder_data = json.loads(response.text)
         if 'error' in folder_data:
             raise RuntimeError(folder_data['errorDetails'])
-        folders = [EclipseFolder(d) for d in folder_data['results']]
-        return folders
+        return [EclipseFolder(d) for d in folder_data['results']]
 
     def add_deviation_to_group(self, group_id, folder_id, deviation_url):
         """Submit deviation to the specified folder in group.
@@ -134,8 +132,9 @@ class DeviantArtEclipseAPI:
         if 'error' in rjson:
             raise RuntimeError(rjson['errorDetails'])
         if rjson['needsVote']:
-            return 'Deviation added to folder and automatically approved'
-        return 'Deviation submitted to folder and pending moderator approval'
+            return '✅ Deviation added to folder and automatically approved'
+        return '⌛ Deviation submitted to folder and pending mod approval'
+
 
 def get_deviation_id(deviation_url):
     """Extract the deviation_id from the full deviantart image URL.
@@ -146,9 +145,9 @@ def get_deviation_id(deviation_url):
     url_parts = deviation_url.split('-')
     return url_parts[-1]
 
+
 def get_csrf(deviation_url, cookies):
-    """Scrape deviation page to retrieve CSRF token stored as hidden input with
-    name 'validate_token'.
+    """Scrape deviation page for CSRF token.
 
     Args:
         deviation_url (string): Deviation URL.
@@ -159,7 +158,8 @@ def get_csrf(deviation_url, cookies):
     """
     page = requests.get(deviation_url, cookies=cookies)
     soup = BeautifulSoup(page.text, 'html.parser')
-    return soup.find('input', {'name':'validate_token'})['value']
+    return soup.find('input', {'name': 'validate_token'})['value']
+
 
 def query_string(query_dict):
     """Convert a dictionary into a query string URI.
@@ -170,6 +170,8 @@ def query_string(query_dict):
     Returns:
         string: Query string, i.e. ?query1=value&query2=value.
     """
-    queries = [f"{key}={query_dict[key]}" for key in query_dict.keys()]
+    queries = [
+        '{0}={1}'.format(key, query_dict[key]) for key in query_dict.keys()
+    ]
     queries_string = "&".join(queries)
     return "?" + queries_string

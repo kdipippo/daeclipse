@@ -1,6 +1,7 @@
 """Main file for building the app into a GUI."""
 
 import cli_ui
+import re
 import typer
 from pick import pick
 
@@ -33,12 +34,17 @@ def gif_random():
 @app.command()
 def add_art_to_groups():  # noqa: WPS210
     """Submit DeviantArt deviation to groups."""
-    da_username = cli_ui.ask_string('Enter DeviantArt username:')
-    typer.echo(''.join([
+    typer.echo(' '.join([
         'Please ensure that the deviation is open in Eclipse in Chrome',
         'before continuing.',
     ]))
     deviation_url = cli_ui.ask_string('Paste deviation URL:')
+    try:
+        da_username = get_username_from_url(deviation_url)
+    except RuntimeError as username_rerror:
+        cli_ui.error(str(username_rerror))
+        return
+
     eclipse = eclipse_api.Eclipse()
     offset = 0
     while True:
@@ -46,10 +52,10 @@ def add_art_to_groups():  # noqa: WPS210
         offset = groups['nextOffset']
 
         selected_groups = pick(
-            [group['username'] for group in groups['results']].sort(key=str.lower), # TODO - this will be fixed by using models instead.
-            ''.join([
+            get_group_names(groups['results']),
+            ' '.join([
                 'Select which groups to submit your art (press SPACE to mark,',
-                ' ENTER to continue): ',
+                'ENTER to continue): ',
             ]),
             multiselect=True,
         )
@@ -64,11 +70,56 @@ def add_art_to_groups():  # noqa: WPS210
             if status:
                 cli_ui.info(cli_ui.check, message)
             else:
-                cli_ui.error(cli_ui.cross, message)
+                cli_ui.info(cli_ui.cross, message)
 
         if not groups['hasMore']:
             return
 
+
+def get_username_from_url(deviation_url):
+    """Regex parse deviation URL to retrieve username.
+
+    Args:
+        deviation_url (string): Deviation URL.
+
+    Raises:
+        RuntimeError: If username is not present in URL string.
+
+    Returns:
+        string: DeviantArt username.
+    """
+    username = re.search('deviantart.com/(.+?)/art/', deviation_url)
+    if username:
+        return username.group(1)
+    raise RuntimeError('DeviantArt username not found in URL.')
+
+
+def get_group_names(groups):
+    """Return list of group names from list of dicts.
+
+    Args:
+        groups (dict[]): List of dicts containing group information.
+
+    Returns:
+        string[]: List of group names.
+    """
+    group_names = [group['username'] for group in groups]
+    group_names.sort(key=str.lower)
+    return group_names
+
+
+def get_folder_names(folders):
+    """Return list of folder names from list of EclipseFolder objects.
+
+    Args:
+        folders (EclipseFolder[]): List of EclipseFolder objects.
+
+    Returns:
+        string[]: List of folder names.
+    """
+    folder_names = [folder.name for folder in folders]
+    folder_names.sort(key=str.lower)
+    return folder_names
 
 def handle_selected_group(eclipse, group_name, group_id, deviation_url):
     """Submit DeviantArt deviation to group and return response.
@@ -91,9 +142,9 @@ def handle_selected_group(eclipse, group_name, group_id, deviation_url):
         return False, format_msg(group_name, '', 'No folders returned')
 
     picked_name, picked_index = pick(
-        [folder.name for folder in folders_result].sort(key=str.lower),
-        ''.join([
-            'Select which folder in "{0}" to add your artwork into ',
+        get_folder_names(folders_result),
+        ' '.join([
+            'Select which folder in "{0}" to add your artwork into',
             '(ENTER to continue): ',
         ]).format(group_name),
         multiselect=False,
@@ -122,7 +173,11 @@ def format_msg(group_name, folder_name, message):
     Returns:
         string: Formatted status message containing all arguments.
     """
-    return '{0} | {1} | {2}'.format(group_name, folder_name, message)
+    return '{0} {1} {2}'.format(
+        group_name.ljust(25),  # Max-length of username is 20 characters.
+        folder_name[:24].ljust(25),
+        message,
+    )
 
 
 if __name__ == '__main__':

@@ -1,12 +1,13 @@
 """Model to represent DeviantArt Eclipse Deviation."""
 
-from stats import EclipseStats
-from user import EclipseUser
+from .stats import EclipseStats
+from .user import EclipseUser
+
 
 class EclipseDeviation:
     """Model to represent DeviantArt Eclipse Deviation."""
 
-    def __init__(self, input_dict = None):
+    def __init__(self, input_dict=None):
         self.deviation_id = None
         self.type = None
         self.type_id = None
@@ -47,6 +48,8 @@ class EclipseDeviation:
         Args:
             input_dict (dict): Dict containing EclipseDeviation fields.
         """
+        if input_dict is None:
+            return
         if 'deviationId' in input_dict:
             self.deviation_id = input_dict['deviationId']
         if 'type' in input_dict:

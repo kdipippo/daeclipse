@@ -1,12 +1,13 @@
 """Model to represent DeviantArt Eclipse Group Folder."""
 
-from deviation import EclipseDeviation
-from user import EclipseUser
+from .deviation import EclipseDeviation
+from .user import EclipseUser
+
 
 class EclipseFolder:
     """Model to represent DeviantArt Eclipse Group Folder."""
 
-    def __init__(self, input_dict = None):
+    def __init__(self, input_dict=None):
         self.folder_id = None
         self.gallection_uuid = None
         self.parent_id = None
@@ -31,6 +32,8 @@ class EclipseFolder:
         Args:
             input_dict (dict): Dict containing EclipseFolder fields.
         """
+        if input_dict is None:
+            return
         if 'folderId' in input_dict:
             self.folder_id = input_dict['folderId']
         if 'gallectionUuid' in input_dict:
