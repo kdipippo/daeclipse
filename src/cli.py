@@ -1,6 +1,7 @@
 """Main file for building the app into a GUI."""
 
 import cli_ui
+import datetime
 import re
 import typer
 from pick import pick
@@ -32,13 +33,18 @@ def gif_random():
 
 
 @app.command()
-def add_art_to_groups():  # noqa: WPS210
+def add_art_to_groups(
+    save: bool = typer.Option(False, help="Save outcome of API calls to local file."),
+):
     """Submit DeviantArt deviation to groups."""
     typer.echo(' '.join([
         'Please ensure that the deviation is open in Eclipse in Chrome',
         'before continuing.',
     ]))
     deviation_url = cli_ui.ask_string('Paste deviation URL:')
+
+    curr_time = datetime.datetime.now()
+
     try:
         da_username = get_username_from_url(deviation_url)
     except RuntimeError as username_rerror:
@@ -68,9 +74,12 @@ def add_art_to_groups():  # noqa: WPS210
                 deviation_url,
             )
             if status:
-                cli_ui.info(cli_ui.check, message)
+                cli_ui.info(message)
             else:
-                cli_ui.info(cli_ui.cross, message)
+                cli_ui.info(cli_ui.red, message, cli_ui.reset)
+            if save:
+                with open('eclipse_{0}.txt'.format(curr_time), 'a') as sfile:
+                    sfile.write("{0}\n".format(message))
 
         if not groups['hasMore']:
             return
@@ -121,6 +130,7 @@ def get_folder_names(folders):
     folder_names.sort(key=str.lower)
     return folder_names
 
+
 def handle_selected_group(eclipse, group_name, group_id, deviation_url):
     """Submit DeviantArt deviation to group and return response.
 
@@ -157,7 +167,7 @@ def handle_selected_group(eclipse, group_name, group_id, deviation_url):
             deviation_url,
         )
     except RuntimeError as add_art_rerror:
-        return False, format_msg(group_name, picked_name, str(add_art_rerror))
+        return False, format_msg(group_name, picked_name, '❌ ' + str(add_art_rerror))
 
     return True, format_msg(group_name, picked_name, message)
 
