@@ -1,12 +1,12 @@
-"""This script generates a 50x50 animated gif either randomly or with provided
-color and image information via a json file."""
+"""Generate a 50x50 animated pixel gif, either randomly or based on presets."""
 
-from datetime import datetime
 import json
-import random
 import pathlib
-from PIL import Image
+import random
+from datetime import datetime
+
 import yaml
+from PIL import Image
 
 from gif_generator.selected_assets_class import SelectedAssets
 
@@ -19,9 +19,14 @@ TRANSPARENT_COLOR = (255, 255, 255, 0)
 IMAGE_FILE_PREFIX = pathlib.Path(__file__).parent.absolute()
 OUTPUT_FILE_PREFIX = pathlib.Path(__file__).parent.parent.absolute()
 
+FRAMES_TOTAL = 32
+EYES_CLOSING_FRAMES = (25, 29)
+EYES_NEARLY_CLOSED_FRAMES = (26, 28)
+EYES_CLOSED_FRAMES = (27)
+
 
 def bob_down(frame_num):
-    """Returns whether the sprite is bobbing down, false if bobbing up.
+    """Return true if sprite is bobbing down.
 
     Args:
         frame_num (int): Current frame number.
@@ -29,9 +34,7 @@ def bob_down(frame_num):
     Returns:
         boolean: True if sprite is bobbing down, false if bobbing up.
     """
-    if frame_num % 4 == 1 or frame_num % 4 == 2:
-        return False
-    return True
+    return frame_num % 4 != 1 and frame_num % 4 != 2
 
 
 def translate_image(image, direction, pixels):
@@ -46,13 +49,13 @@ def translate_image(image, direction, pixels):
         Image: Translated Image object.
     """
     trans_matrix = [1, 0, 0, 0, 1, 0]
-    if direction == "left":
+    if direction == 'left':
         trans_matrix[2] += pixels
-    elif direction == "right":
+    elif direction == 'right':
         trans_matrix[2] -= pixels
-    elif direction == "up":
+    elif direction == 'up':
         trans_matrix[5] += pixels
-    elif direction == "down":
+    elif direction == 'down':
         trans_matrix[5] -= pixels
     return image.transform(
         image.size,
@@ -63,7 +66,7 @@ def translate_image(image, direction, pixels):
 
 
 def get_filename(image_type, asset_name):
-    """Returns path to the given image asset.
+    """Return path to the given image asset.
 
     Args:
         image_type (string): Type of image, i.e. 'hairfront', 'eyes'.
@@ -125,7 +128,7 @@ def get_rgba_from_hex(hex_string):
     Returns:
         tuple: 4-entry int tuple representing rgba, i.e. (121, 237, 226, 255).
     """
-    rgb = list(int(hex_string[i:i+2], 16) for i in (0, 2, 4))
+    rgb = [int(hex_string[index:index+2], 16) for index in (0, 2, 4)]
     rgb.append(255)
     return tuple(rgb)
 
@@ -141,18 +144,18 @@ def update_palette(before_img, before_colors, after_colors):
     Returns:
         Image: Recolored Image object.
     """
-    before_pixel_map = before_img.load()
+    before_pixelmap = before_img.load()
 
     after_img = Image.new('RGBA', before_img.size)
-    after_pixel_map = after_img.load()
-    for i in range(after_img.size[0]):
-        for j in range(after_img.size[1]):
-            curr_color = before_pixel_map[i, j]
+    after_pixelmap = after_img.load()
+    for width in range(after_img.size[0]):
+        for height in range(after_img.size[1]):
+            curr_color = before_pixelmap[width, height]
             if curr_color in before_colors:
                 after_index = before_colors.index(curr_color)
-                after_pixel_map[i, j] = after_colors[after_index]
+                after_pixelmap[width, height] = after_colors[after_index]
             else:
-                after_pixel_map[i, j] = before_pixel_map[i, j]
+                after_pixelmap[width, height] = before_pixelmap[width, height]
     return after_img
 
 
@@ -183,8 +186,8 @@ def change_color(img, color_dict, default_color, new_color):
     img = img.convert('RGBA')
     before_hexes = color_dict[default_color]
     after_hexes = color_dict[new_color]
-    before_rgba = list(map(get_rgba_from_hex, before_hexes.split(",")))
-    after_rgba = list(map(get_rgba_from_hex, after_hexes.split(",")))
+    before_rgba = list(map(get_rgba_from_hex, before_hexes.split(',')))
+    after_rgba = list(map(get_rgba_from_hex, after_hexes.split(',')))
     return update_palette(img, before_rgba, after_rgba)
 
 
@@ -208,24 +211,19 @@ def get_frame(frame_num, assets):
             continue
         asset_name = assets.images[image_type]
 
-        # 'Eyes' animation: get the frame letter based on blinking position.
-        if image_type == "eyes":
-            if frame_num in [25, 29]:
-                asset_name += "B"
-            elif frame_num in [26, 28]:
-                asset_name += "C"
-            elif frame_num == 27:
-                asset_name += "D"
-            else:
-                asset_name += "A"
+        if image_type == 'eyes':
+            '{0}{1}'.format(
+                asset_name,
+                suffix_blinking_frame(frame_num, asset_name),
+            )
 
-        if image_info['type'] == "2frame":
+        if image_info['type'] == '2frame':
             image_layer = get_2frame_asset(image_type, asset_name, frame_num)
-        elif image_info['type'] == "custom":
+        elif image_info['type'] == 'custom':
             image_layer = get_custom_asset(image_type, asset_name, frame_num)
 
         if 'recolor' in image_info:
-            for recolor in image_info['recolor']:
+            for recolor in image_info.get('recolor'):
                 color_dict = assets.json['colorHexes'][recolor]['options']
                 default_color = assets.json['colorHexes'][recolor]['default']
                 new_color = assets.colors[recolor]
@@ -240,13 +238,32 @@ def get_frame(frame_num, assets):
     frame = translate_image(frame, 'left', 5)
     frame = make_transparent(frame)
     watermark = Image.open(
-        '{0}/images/watermark.png'.format(IMAGE_FILE_PREFIX)
+        '{0}/images/watermark.png'.format(IMAGE_FILE_PREFIX),
     )
     frame.paste(watermark, (0, 0), watermark)
     return frame
 
 
-def get_gif(assets, current_time):
+def suffix_blinking_frame(frame_num, asset_name):
+    """Get the frame letter based on blinking position.
+
+    Args:
+        frame_num ([type]): [description]
+        asset_name ([type]): [description]
+
+    Returns:
+        string: eye frame suffix for given frame number.
+    """
+    if frame_num in EYES_CLOSING_FRAMES:
+        return 'B'  # Suffix for frame with eyes closing.
+    if frame_num in EYES_NEARLY_CLOSED_FRAMES:
+        return 'C'  # Suffix for frame with eyes nearly closed.
+    if frame_num in EYES_CLOSED_FRAMES:
+        return 'D'  # Suffix for frame with eyes closed.
+    return 'A'  # Suffix for frame with eyes open.
+
+
+def save_gif(assets, current_time):
     """Assemble and combine list of frames and save gif.
 
     Args:
@@ -254,8 +271,8 @@ def get_gif(assets, current_time):
         current_time (string): Current time, i.e. '2020-03-16_12:02:08AM'.
     """
     frames = []
-    for i in range(32):
-        frames.append(get_frame(i, assets))
+    for frame_num in range(FRAMES_TOTAL):
+        frames.append(get_frame(frame_num, assets))
     frames[0].save(
         '{0}/{1}.gif'.format(OUTPUT_FILE_PREFIX, current_time),
         format='GIF',
@@ -264,7 +281,7 @@ def get_gif(assets, current_time):
         duration=100,
         loop=0,
         transparency=0,
-        disposal=2
+        disposal=2,
     )
 
 
@@ -280,16 +297,16 @@ def get_random_asset_list(assets_json):
     assets = SelectedAssets()
     color_types = list(assets_json['colorHexes'].keys())
     for color_type in color_types:
-        assets.add_color(color_type, random.choice(
-            list(assets_json['colorHexes'][color_type]['options'].keys())
+        assets.add_color(color_type, random.choice(  # noqa: S311
+            list(assets_json['colorHexes'][color_type]['options'].keys()),
         ))
     image_types = list(assets_json['imageTypes'].keys())
     for image_type in image_types:
-        coin_toss = random.random()
+        coin_toss = random.random()  # noqa: S311
         if coin_toss < assets_json['imageTypes'][image_type]['probability']:
-            selected_num = random.randint(
+            selected_num = random.randint(  # noqa: S311
                 0,
-                assets_json['imageTypes'][image_type]['count']-1
+                assets_json['imageTypes'][image_type]['count'] - 1,
             )
             assets.add_image(image_type, selected_num)
     return assets
@@ -310,7 +327,7 @@ def get_preset_asset_list(preset):
     return assets
 
 
-def get_json(assets, current_time):
+def save_json(assets, current_time):
     """Create a json file with the generated asset settings.
 
     Args:
@@ -319,7 +336,7 @@ def get_json(assets, current_time):
     """
     filename = '{0}/{1}.json'.format(OUTPUT_FILE_PREFIX, current_time)
     with open(filename, 'w') as json_file:
-        json_file.write(json.dumps(assets.get_json(), indent=2))
+        json_file.write(json.dumps(assets.as_json(), indent=2))
 
 
 def load_assets():
@@ -329,7 +346,7 @@ def load_assets():
         dict: assets.yaml contents.
     """
     yaml_path = '{0}/assets.yaml'.format(
-        pathlib.Path(__file__).parent.absolute()
+        pathlib.Path(__file__).parent.absolute(),
     )
     with open(yaml_path) as yaml_file:
         return yaml.safe_load(yaml_file)
@@ -349,8 +366,11 @@ def get_presets():
 def create_gif_preset(preset_name):
     """Generate an animated pixel icon gif based on a stored preset.
 
+    Args:
+        preset_name (string): Preset name.
+
     Returns:
-        string: Full path to the gif result.
+        string: Full path to gif result.
     """
     assets_yaml = load_assets()
 
@@ -358,9 +378,9 @@ def create_gif_preset(preset_name):
     gif_assets = get_preset_asset_list(preset)
     gif_assets.store_json(assets_yaml)
 
-    current_time = datetime.today().strftime("%Y-%m-%d_%I:%M:%S%p")
-    get_gif(gif_assets, current_time)
-    get_json(gif_assets, current_time)
+    current_time = datetime.today().strftime('%Y-%m-%d_%I:%M:%S%p')
+    save_gif(gif_assets, current_time)
+    save_json(gif_assets, current_time)
     return '{0}/{1}.gif'.format(OUTPUT_FILE_PREFIX, current_time)
 
 
@@ -368,14 +388,14 @@ def create_gif_random():
     """Generate an animated pixel icon gif with randomized assets.
 
     Returns:
-        string: Full path to the gif result.
+        string: Full path to gif result.
     """
     assets_yaml = load_assets()
 
     gif_assets = get_random_asset_list(assets_yaml)
     gif_assets.store_json(assets_yaml)
 
-    current_time = datetime.today().strftime("%Y-%m-%d_%I:%M:%S%p")
-    get_gif(gif_assets, current_time)
-    get_json(gif_assets, current_time)
+    current_time = datetime.today().strftime('%Y-%m-%d_%I:%M:%S%p')
+    save_gif(gif_assets, current_time)
+    save_json(gif_assets, current_time)
     return '{0}/{1}.gif'.format(OUTPUT_FILE_PREFIX, current_time)

@@ -1,0 +1,10 @@
+name: wemake-python-styleguide
+
+on: [ push ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: wemake-python-styleguide
+      uses: wemake-services/wemake-python-styleguide@0.15.3

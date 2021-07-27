@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "daeclipse"
+version = "0.1.0"
+description = "A Python library for DeviantArt Eclipse functionality"
+authors = ["Kathryn DiPippo <dipippo.k@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+beautifulsoup4 = "^4.9.3"
+browser-cookie3 = "^0.12.1"
+cli-ui = "^0.14.1"
+pick = "^1.0.0"
+Pillow = "^8.3.1"
+requests = "^2.26.0"
+typer = "^0.3.2"
+PyYAML = "^5.4.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+wemake-python-styleguide = "^0.15.3"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

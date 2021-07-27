@@ -17,7 +17,7 @@ jobs:
       - name: Install pdoc
         run: pip install pdoc
       - name: Run pdoc
-        run: pdoc eclipse_api/ --output-directory docs/
+        run: pdoc daeclipse/ --output-directory docs/
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:

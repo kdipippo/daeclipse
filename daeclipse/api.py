@@ -1,32 +1,26 @@
 """Class to handle making calls to the DeviantArt Eclipse API."""
 
 import json
+
 import browser_cookie3
 import requests
 from bs4 import BeautifulSoup
 
-from eclipse_api.models.folder import EclipseFolder
+from daeclipse.models.folder import EclipseFolder
+from daeclipse.models.gruser import EclipseGruser
 
 
-class DeviantArtEclipseAPI:
+class Eclipse(object):
     """Class to handle making calls to the DeviantArt Eclipse API."""
 
-    base_uri = "https://www.deviantart.com/_napi"
+    base_uri = 'https://www.deviantart.com/_napi'
 
     def __init__(self):
         """Initialize API by fetching Chrome's DeviantArt-related cookies."""
         self.cookies = browser_cookie3.chrome(domain_name='.deviantart.com')
 
-    def get_cookies(self):
-        """Return the logged-in DeviantArt user's cookies.
-
-        Returns:
-            http.cookiejar.CookieJar: .deviantart.com Cookie Jar.
-        """
-        return self.cookies
-
     def get_groups(self, username, offset, limit=24):
-        """Return a subset of the user's joined DeviantArt groups.
+        """Return a paginated call for the user's joined DeviantArt groups.
 
         Args:
             username (string): DeviantArt username of user.
@@ -34,7 +28,10 @@ class DeviantArtEclipseAPI:
             limit (int, optional): Limit of results to return. Defaults to 24.
 
         Returns:
-            dict: Raw API response from API call.
+            EclipseGruser[]: List of Eclipse group objects.
+            bool: If there are more results.
+            int: Next offset to query for more paginated results.
+            int: Total number of groups user is a member of.
 
         Raises:
             ValueError: If `limit` is greater than 24.
@@ -57,20 +54,18 @@ class DeviantArtEclipseAPI:
         response = requests.get(groups_url, cookies=self.cookies)
 
         rjson = json.loads(response.text)
-        return rjson
+        groups = [EclipseGruser(group) for group in rjson['results']]
+        return groups, rjson['hasMore'], rjson['nextOffset'], rjson['total']
 
     def get_group_folders(self, group_id, deviation_url):
-        """Returns folder information for the provided group_id ONLY, if
-        cookies belong to a member of the group.
+        """Return folders for group, if user is member of group.
 
         Args:
             group_id (int): Group ID.
+            deviation_url (string): Deviation URL.
 
         Returns:
             EclipseFolder[]: List of EclipseFolder objects.
-
-        Raises:
-            RuntimeError: If API call returns an error payload.
         """
         group_folders_url = ''.join([
             self.base_uri,
@@ -86,8 +81,8 @@ class DeviantArtEclipseAPI:
 
         folder_data = json.loads(response.text)
         if 'error' in folder_data:
-            raise RuntimeError(folder_data['errorDetails'])
-        return [EclipseFolder(d) for d in folder_data['results']]
+            raise_error(folder_data)
+        return [EclipseFolder(folder) for folder in folder_data['results']]
 
     def add_deviation_to_group(self, group_id, folder_id, deviation_url):
         """Submit deviation to the specified folder in group.
@@ -99,39 +94,33 @@ class DeviantArtEclipseAPI:
 
         Returns:
             string: Success message of result.
-
-        Raises:
-            RuntimeError: If API call returns an error payload.
         """
-        csrf_token = get_csrf(deviation_url, self.cookies)
-        deviation_id = get_deviation_id(deviation_url)
-
         group_add_url = ''.join([
             self.base_uri,
             '/shared_api/deviation/group_add',
         ])
         headers = {
             'accept': 'application/json, text/plain, */*',
-            'content-type': 'application/json;charset=UTF-8'
+            'content-type': 'application/json;charset=UTF-8',
         }
-        data = json.dumps({
+        payload = json.dumps({
             'groupid': group_id,
             'type': 'gallery',
             'folderid': folder_id,
-            'deviationid': deviation_id,
-            'csrf_token': csrf_token,
+            'deviationid': get_deviation_id(deviation_url),
+            'csrf_token': get_csrf(deviation_url, self.cookies),
         })
 
         response = requests.post(
             group_add_url,
             cookies=self.cookies,
             headers=headers,
-            data=data,
+            data=payload,
         )
 
         rjson = json.loads(response.text)
         if 'error' in rjson:
-            raise RuntimeError(rjson['errorDetails'])
+            raise_error(rjson)
         if rjson['needsVote']:
             return '✅ Deviation added to folder and automatically approved'
         return '⌛ Deviation submitted to folder and pending mod approval'
@@ -142,6 +131,9 @@ def get_deviation_id(deviation_url):
 
     Args:
         deviation_url (string): Deviation URL.
+
+    Returns:
+        string: Deviation ID.
     """
     url_parts = deviation_url.split('-')
     return url_parts[-1]
@@ -152,7 +144,7 @@ def get_csrf(deviation_url, cookies):
 
     Args:
         deviation_url (string): Deviation URL.
-        cookie (http.cookiejar.CookieJar): .deviantart.com Cookie Jar.
+        cookies (http.cookiejar.CookieJar): .deviantart.com Cookie Jar.
 
     Returns:
         string: CSRF validation token.
@@ -174,5 +166,21 @@ def query_string(query_dict):
     queries = [
         '{0}={1}'.format(key, query_dict[key]) for key in query_dict.keys()
     ]
-    queries_string = "&".join(queries)
-    return "?" + queries_string
+    queries_string = '&'.join(queries)
+    return '?{0}'.format(queries_string)
+
+
+def raise_error(error_response):
+    """Throw RuntimeError with appropriate error message.
+
+    Args:
+        error_response (dict): Raw API error response.
+
+    Raises:
+        RuntimeError: Error with message from error_response payload.
+    """
+    if 'errorDetails' in error_response:
+        raise RuntimeError(error_response.get('errorDetails'))
+    if 'errorDescription' in error_response:
+        raise RuntimeError(error_response.get('errorDescription'))
+    raise RuntimeError(str(error_response))

@@ -65,7 +65,7 @@
             <div class="codehilite"><pre><span></span><span class="sd">&quot;&quot;&quot;Model to represent DeviantArt Eclipse Group Folder.&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">.deviation</span> <span class="kn">import</span> <span class="n">EclipseDeviation</span>
-<span class="kn">from</span> <span class="nn">.user</span> <span class="kn">import</span> <span class="n">EclipseUser</span>
+<span class="kn">from</span> <span class="nn">.user</span> <span class="kn">import</span> <span class="n">EclipseGruser</span>
 
 
 <span class="k">class</span> <span class="nc">EclipseFolder</span><span class="p">:</span>
@@ -111,7 +111,7 @@
         <span class="k">if</span> <span class="s1">&#39;description&#39;</span> <span class="ow">in</span> <span class="n">input_dict</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">input_dict</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span>
         <span class="k">if</span> <span class="s1">&#39;owner&#39;</span> <span class="ow">in</span> <span class="n">input_dict</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">owner</span> <span class="o">=</span> <span class="n">EclipseUser</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">owner</span> <span class="o">=</span> <span class="n">EclipseGruser</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">input_dict</span><span class="p">[</span><span class="s1">&#39;owner&#39;</span><span class="p">])</span>
         <span class="k">if</span> <span class="s1">&#39;commentCount&#39;</span> <span class="ow">in</span> <span class="n">input_dict</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">comment_count</span> <span class="o">=</span> <span class="n">input_dict</span><span class="p">[</span><span class="s1">&#39;commentCount&#39;</span><span class="p">]</span>
@@ -183,7 +183,7 @@
         <span class="k">if</span> <span class="s1">&#39;description&#39;</span> <span class="ow">in</span> <span class="n">input_dict</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">input_dict</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span>
         <span class="k">if</span> <span class="s1">&#39;owner&#39;</span> <span class="ow">in</span> <span class="n">input_dict</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">owner</span> <span class="o">=</span> <span class="n">EclipseUser</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">owner</span> <span class="o">=</span> <span class="n">EclipseGruser</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">input_dict</span><span class="p">[</span><span class="s1">&#39;owner&#39;</span><span class="p">])</span>
         <span class="k">if</span> <span class="s1">&#39;commentCount&#39;</span> <span class="ow">in</span> <span class="n">input_dict</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">comment_count</span> <span class="o">=</span> <span class="n">input_dict</span><span class="p">[</span><span class="s1">&#39;commentCount&#39;</span><span class="p">]</span>
@@ -266,7 +266,7 @@
         <span class="k">if</span> <span class="s1">&#39;description&#39;</span> <span class="ow">in</span> <span class="n">input_dict</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">input_dict</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span>
         <span class="k">if</span> <span class="s1">&#39;owner&#39;</span> <span class="ow">in</span> <span class="n">input_dict</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">owner</span> <span class="o">=</span> <span class="n">EclipseUser</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">owner</span> <span class="o">=</span> <span class="n">EclipseGruser</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">input_dict</span><span class="p">[</span><span class="s1">&#39;owner&#39;</span><span class="p">])</span>
         <span class="k">if</span> <span class="s1">&#39;commentCount&#39;</span> <span class="ow">in</span> <span class="n">input_dict</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">comment_count</span> <span class="o">=</span> <span class="n">input_dict</span><span class="p">[</span><span class="s1">&#39;commentCount&#39;</span><span class="p">]</span>

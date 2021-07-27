@@ -1,12 +1,14 @@
 """Class to handle list of colors and images gif creation."""
 
 
-class SelectedAssets:
+class SelectedAssets(object):
     """Class to handle list of colors and images gif creation."""
 
-    colors = {}
-    images = {}
-    json = None
+    def __init__(self):
+        """Initialize SelectedAssets class."""
+        self.colors = {}
+        self.images = {}
+        self.json = None
 
     def add_color(self, color_type, selected_type):
         """Assign the selected palette to the component to recolor.
@@ -24,7 +26,7 @@ class SelectedAssets:
             image_type (string): Image layer being added, i.e. 'hairbackshort'.
             image_num (string): Asset number for the image layer, i.e. '00A'.
         """
-        self.images[image_type] = "{:02d}".format(image_num)
+        self.images[image_type] = '{0:02d}'.format(image_num)
 
     def store_json(self, assets_json):
         """Store the full, parsed assets.json file for reference.
@@ -43,7 +45,7 @@ class SelectedAssets:
         self.colors = override['colors']
         self.images = override['images']
 
-    def get_json(self):
+    def as_json(self):
         """Return the colors and images dicts as one combined dict.
 
         Returns:
@@ -51,16 +53,16 @@ class SelectedAssets:
         """
         return {
             'colors': self.colors,
-            'images': self.images
+            'images': self.images,
         }
 
     def get_sorted_layers(self):
-        """Returns list of type layers in lowest to highest 'order' value.
+        """Return list of type layers in lowest to highest 'order' value.
 
         Returns:
             list(string): List of image type layers.
         """
         return sorted(
             self.json['imageTypes'].items(),
-            key=lambda x: x[1]['order'],
+            key=lambda image_type: image_type[1]['order'],
         )

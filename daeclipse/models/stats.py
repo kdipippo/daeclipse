@@ -1,10 +1,15 @@
 """Model to represent DeviantArt Eclipse Deviation Stats."""
 
 
-class EclipseStats:
+class EclipseStats(object):
     """Model to represent DeviantArt Eclipse Deviation Stats."""
 
     def __init__(self, input_dict=None):
+        """Initialize EclipseStats.
+
+        Args:
+            input_dict (dict, optional): Dict of EclipseStats class attrs.
+        """
         self.comments = None
         self.favourites = None
         if input_dict is not None and isinstance(input_dict, dict):
@@ -18,7 +23,5 @@ class EclipseStats:
         """
         if input_dict is None:
             return
-        if 'comments' in input_dict:
-            self.comments = input_dict['comments']
-        if 'favourites' in input_dict:
-            self.favourites = input_dict['favourites']
+        self.comments = input_dict.get('comments')
+        self.favourites = input_dict.get('favourites')

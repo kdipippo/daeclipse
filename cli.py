@@ -1,13 +1,16 @@
 """Main file for building the app into a GUI."""
 
-import cli_ui
 import datetime
 import re
+
+import cli_ui
 import typer
 from pick import pick
 
-import eclipse_api
+import daeclipse
 import gif_generator
+
+COLUMN_WIDTH = 25
 
 app = typer.Typer(help='DeviantArt Eclipse CLI')
 
@@ -33,10 +36,17 @@ def gif_random():
 
 
 @app.command()
-def add_art_to_groups(
-    save: bool = typer.Option(False, help="Save results to local file."),
+def add_art_to_groups(  # noqa: WPS210
+    save: bool = typer.Option(  # noqa: B008, WPS404
+        False,  # noqa: WPS425
+        help='Save results to local file.',
+    ),
 ):
-    """Submit DeviantArt deviation to groups."""
+    """Submit DeviantArt deviation to groups.
+
+    Args:
+        save (bool): --save to save to local file. Defaults to False.
+    """
     typer.echo(' '.join([
         'Please ensure that the deviation is open in Eclipse in Chrome',
         'before continuing.',
@@ -51,14 +61,17 @@ def add_art_to_groups(
         cli_ui.error(str(username_rerror))
         return
 
-    eclipse = eclipse_api.Eclipse()
+    eclipse = daeclipse.Eclipse()
     offset = 0
     while True:
-        groups = eclipse.get_groups(da_username, offset)
-        offset = groups['nextOffset']
+        groups, has_more, offset, total = eclipse.get_groups(
+            da_username,
+            offset,
+        )
+        groups.sort(key=lambda group: group.username.lower())
 
         selected_groups = pick(
-            get_group_names(groups['results']),
+            [group.username for group in groups],
             ' '.join([
                 'Select which groups to submit your art (press SPACE to mark,',
                 'ENTER to continue): ',
@@ -69,8 +82,7 @@ def add_art_to_groups(
         for selected_group in selected_groups:
             status, message = handle_selected_group(
                 eclipse,
-                selected_group[0],
-                groups['results'][selected_group[1]]['userId'],
+                groups[selected_group[1]],
                 deviation_url,
             )
             if status:
@@ -79,9 +91,9 @@ def add_art_to_groups(
                 cli_ui.info(cli_ui.red, message, cli_ui.reset)
             if save:
                 with open('eclipse_{0}.txt'.format(curr_time), 'a') as sfile:
-                    sfile.write("{0}\n".format(message))
+                    sfile.write('{0}\n'.format(message))
 
-        if not groups['hasMore']:
+        if not has_more:
             return
 
 
@@ -103,60 +115,36 @@ def get_username_from_url(deviation_url):
     raise RuntimeError('DeviantArt username not found in URL.')
 
 
-def get_group_names(groups):
-    """Return list of group names from list of dicts.
-
-    Args:
-        groups (dict[]): List of dicts containing group information.
-
-    Returns:
-        string[]: List of group names.
-    """
-    group_names = [group['username'] for group in groups]
-    group_names.sort(key=str.lower)
-    return group_names
-
-
-def get_folder_names(folders):
-    """Return list of folder names from list of EclipseFolder objects.
-
-    Args:
-        folders (EclipseFolder[]): List of EclipseFolder objects.
-
-    Returns:
-        string[]: List of folder names.
-    """
-    folder_names = [folder.name for folder in folders]
-    folder_names.sort(key=str.lower)
-    return folder_names
-
-
-def handle_selected_group(eclipse, group_name, group_id, deviation_url):
+def handle_selected_group(eclipse, group, deviation_url):
     """Submit DeviantArt deviation to group and return response.
 
     Args:
         eclipse (Eclipse): Eclipse API class instance.
-        group_name (string): Group name.
-        group_id (int): Group ID.
+        group (EclipseGruser): EclipseGruser object representing group.
         deviation_url (string): Deviation URL.
 
     Returns:
         boolean, string: success status and result message.
     """
     try:
-        folders_result = eclipse.get_group_folders(group_id, deviation_url)
+        folders_result = eclipse.get_group_folders(
+            group.user_id,
+            deviation_url,
+        )
     except RuntimeError as folders_rerror:
-        return False, format_msg(group_name, '', str(folders_rerror))
+        return False, format_msg(group.username, '', str(folders_rerror))
 
     if not folders_result:
-        return False, format_msg(group_name, '', 'No folders returned')
+        return False, format_msg(group.username, '', 'No folders returned')
+
+    folders_result.sort(key=lambda folder: folder.name.lower())
 
     picked_name, picked_index = pick(
-        get_folder_names(folders_result),
+        [folder.name for folder in folders_result],
         ' '.join([
             'Select which folder in "{0}" to add your artwork into',
             '(ENTER to continue): ',
-        ]).format(group_name),
+        ]).format(group.username),
         multiselect=False,
     )
     folder = folders_result[picked_index]
@@ -168,12 +156,12 @@ def handle_selected_group(eclipse, group_name, group_id, deviation_url):
         )
     except RuntimeError as add_art_rerror:
         return False, format_msg(
-            group_name,
+            group.username,
             picked_name,
-            '❌ ' + str(add_art_rerror),
+            '❌ {0}'.format(str(add_art_rerror)),
         )
 
-    return True, format_msg(group_name, picked_name, message)
+    return True, format_msg(group.username, picked_name, message)
 
 
 def format_msg(group_name, folder_name, message):
@@ -188,8 +176,8 @@ def format_msg(group_name, folder_name, message):
         string: Formatted status message containing all arguments.
     """
     return '{0} {1} {2}'.format(
-        group_name.ljust(25),  # Max-length of username is 20 characters.
-        folder_name[:24].ljust(25),
+        group_name.ljust(COLUMN_WIDTH),  # Max-length of username is 20 chars.
+        folder_name[:(COLUMN_WIDTH - 1)].ljust(COLUMN_WIDTH),
         message,
     )
 

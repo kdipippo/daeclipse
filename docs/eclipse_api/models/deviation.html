@@ -65,7 +65,7 @@
             <div class="codehilite"><pre><span></span><span class="sd">&quot;&quot;&quot;Model to represent DeviantArt Eclipse Deviation.&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">.stats</span> <span class="kn">import</span> <span class="n">EclipseStats</span>
-<span class="kn">from</span> <span class="nn">.user</span> <span class="kn">import</span> <span class="n">EclipseUser</span>
+<span class="kn">from</span> <span class="nn">.user</span> <span class="kn">import</span> <span class="n">EclipseGruser</span>
 
 
 <span class="k">class</span> <span class="nc">EclipseDeviation</span><span class="p">:</span>
@@ -165,7 +165,7 @@
         <span class="k">if</span> <span class="s1">&#39;blockReasons&#39;</span> <span class="ow">in</span> <span class="n">input_dict</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">block_reasons</span> <span class="o">=</span> <span class="n">input_dict</span><span class="p">[</span><span class="s1">&#39;blockReasons&#39;</span><span class="p">]</span>
         <span class="k">if</span> <span class="s1">&#39;author&#39;</span> <span class="ow">in</span> <span class="n">input_dict</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="n">EclipseUser</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="n">EclipseGruser</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">input_dict</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">])</span>
         <span class="k">if</span> <span class="s1">&#39;stats&#39;</span> <span class="ow">in</span> <span class="n">input_dict</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="n">EclipseStats</span><span class="p">()</span>
@@ -285,7 +285,7 @@
         <span class="k">if</span> <span class="s1">&#39;blockReasons&#39;</span> <span class="ow">in</span> <span class="n">input_dict</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">block_reasons</span> <span class="o">=</span> <span class="n">input_dict</span><span class="p">[</span><span class="s1">&#39;blockReasons&#39;</span><span class="p">]</span>
         <span class="k">if</span> <span class="s1">&#39;author&#39;</span> <span class="ow">in</span> <span class="n">input_dict</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="n">EclipseUser</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="n">EclipseGruser</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">input_dict</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">])</span>
         <span class="k">if</span> <span class="s1">&#39;stats&#39;</span> <span class="ow">in</span> <span class="n">input_dict</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="n">EclipseStats</span><span class="p">()</span>
@@ -416,7 +416,7 @@
         <span class="k">if</span> <span class="s1">&#39;blockReasons&#39;</span> <span class="ow">in</span> <span class="n">input_dict</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">block_reasons</span> <span class="o">=</span> <span class="n">input_dict</span><span class="p">[</span><span class="s1">&#39;blockReasons&#39;</span><span class="p">]</span>
         <span class="k">if</span> <span class="s1">&#39;author&#39;</span> <span class="ow">in</span> <span class="n">input_dict</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="n">EclipseUser</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="n">EclipseGruser</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">input_dict</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">])</span>
         <span class="k">if</span> <span class="s1">&#39;stats&#39;</span> <span class="ow">in</span> <span class="n">input_dict</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="n">EclipseStats</span><span class="p">()</span>
