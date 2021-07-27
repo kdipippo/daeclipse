@@ -18,7 +18,8 @@ jobs:
         run: pip install pdoc
       - name: Run pdoc
         run: pdoc eclipse_api/ --output-directory docs/
-      - name: Open docs update PR
-        uses: peter-evans/create-pull-request@v2
+      - name: Commit & Push changes
+        uses: actions-js/push@master
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
