@@ -17,7 +17,7 @@ DEFAULT_COLOR = (83, 106, 89, 255)
 TRANSPARENT_COLOR = (255, 255, 255, 0)
 
 IMAGE_FILE_PREFIX = pathlib.Path(__file__).parent.absolute()
-OUTPUT_FILE_PREFIX = pathlib.Path(__file__).parent.parent.parent.absolute()
+OUTPUT_FILE_PREFIX = pathlib.Path(__file__).parent.parent.absolute()
 
 
 def bob_down(frame_num):
@@ -247,7 +247,7 @@ def get_frame(frame_num, assets):
 
 
 def get_gif(assets, current_time):
-    """Assemble and combine list of frames and save gif to output/.
+    """Assemble and combine list of frames and save gif.
 
     Args:
         assets (SelectedAssets): SelectedAssets object.
@@ -257,7 +257,7 @@ def get_gif(assets, current_time):
     for i in range(32):
         frames.append(get_frame(i, assets))
     frames[0].save(
-        '{0}/output/{1}.gif'.format(OUTPUT_FILE_PREFIX, current_time),
+        '{0}/{1}.gif'.format(OUTPUT_FILE_PREFIX, current_time),
         format='GIF',
         append_images=frames[1:],
         save_all=True,
@@ -317,7 +317,7 @@ def get_json(assets, current_time):
         assets (SelectedAssets): SelectedAssets object.
         current_time (string): Current time, i.e. '2020-03-16_12:02:08AM'.
     """
-    filename = '{0}/output/{1}.json'.format(OUTPUT_FILE_PREFIX, current_time)
+    filename = '{0}/{1}.json'.format(OUTPUT_FILE_PREFIX, current_time)
     with open(filename, 'w') as json_file:
         json_file.write(json.dumps(assets.get_json(), indent=2))
 
@@ -361,7 +361,7 @@ def create_gif_preset(preset_name):
     current_time = datetime.today().strftime("%Y-%m-%d_%I:%M:%S%p")
     get_gif(gif_assets, current_time)
     get_json(gif_assets, current_time)
-    return '{0}/output/{1}.gif'.format(OUTPUT_FILE_PREFIX, current_time)
+    return '{0}/{1}.gif'.format(OUTPUT_FILE_PREFIX, current_time)
 
 
 def create_gif_random():
@@ -378,4 +378,4 @@ def create_gif_random():
     current_time = datetime.today().strftime("%Y-%m-%d_%I:%M:%S%p")
     get_gif(gif_assets, current_time)
     get_json(gif_assets, current_time)
-    return '{0}/output/{1}.gif'.format(OUTPUT_FILE_PREFIX, current_time)
+    return '{0}/{1}.gif'.format(OUTPUT_FILE_PREFIX, current_time)
