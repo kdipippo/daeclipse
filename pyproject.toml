@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "daeclipse"
-version = "0.0.1"
+version = "0.0.2"
 description = "A Python library for DeviantArt Eclipse functionality"
 authors = ["Kathryn DiPippo <dipippo.k@gmail.com>"]
 
@@ -23,7 +23,6 @@ PyYAML = "^5.4.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
-wemake-python-styleguide = "^0.15.3"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
