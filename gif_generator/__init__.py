@@ -1,1 +1,1 @@
-"""gif_generator __init__.py"""
+"""gif_generator __init__.py."""

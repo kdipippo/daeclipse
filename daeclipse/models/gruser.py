@@ -1,8 +1,8 @@
-"""Model to represent DeviantArt Eclipse User or Group."""
+"""Model to represent DeviantArt Eclipse Group or User."""
 
 
 class EclipseGruser(object):  # noqa: WPS230
-    """Model to represent DeviantArt Eclipse User or Group."""
+    """Model to represent DeviantArt Eclipse Group or User."""
 
     def __init__(self, input_dict=None):
         """Initialize EclipseGruser.

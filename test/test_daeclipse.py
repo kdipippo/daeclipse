@@ -1,5 +1,8 @@
-from daeclipse2 import __version__
+"""Test to cover daeclipse library."""
+
+from daeclipse import __version__
 
 
 def test_version():
-    assert __version__ == '0.1.0'
+    """Test daeclipse library version."""
+    assert __version__ == '0.0.1'
