@@ -28,10 +28,7 @@ class Eclipse(object):
             limit (int, optional): Limit of results to return. Defaults to 24.
 
         Returns:
-            EclipseGruser[]: List of Eclipse group objects.
-            bool: If there are more results.
-            int: Next offset to query for more paginated results.
-            int: Total number of groups user is a member of.
+            EclipseGroupsList: EclipseGroupsList instance.
 
         Raises:
             ValueError: If `limit` is greater than 24.
@@ -54,8 +51,7 @@ class Eclipse(object):
         response = requests.get(groups_url, cookies=self.cookies)
 
         rjson = json.loads(response.text)
-        groups = [EclipseGruser(group) for group in rjson['results']]
-        return groups, rjson['hasMore'], rjson['nextOffset'], rjson['total']
+        return EclipseGroupsList(rjson)
 
     def get_group_folders(self, group_id, deviation_url):
         """Return folders for group, if user is member of group.
@@ -83,6 +79,37 @@ class Eclipse(object):
         if 'error' in folder_data:
             raise_error(folder_data)
         return [EclipseFolder(folder) for folder in folder_data['results']]
+
+    def get_deviation_tags(self, deviation_url, deviation_username):
+        """Get list of tags for the provided deviation_id.
+
+        Args:
+            deviation_url (string): Deviation URL.
+            deviation_username (string): Username for the deviation's artist.
+
+        Returns:
+            string[]: List of tags.
+        """
+        queries = {
+            'deviationid': get_deviation_id(deviation_url),
+            'username': deviation_username,
+            'type': 'art',
+            'include_session': 'false',
+        }
+        extended_fetch_url = ''.join([
+            self.base_uri,
+            '/shared_api/deviation/extended_fetch',
+            query_string(queries),
+        ])
+        response = requests.get(extended_fetch_url, cookies=self.cookies)
+        rjson = json.loads(response.text)
+        deviation_extended = EclipseDeviationExtended(rjson)
+        # tags_objects is a list of objects containing "name" and "url" attributes.
+        tags_objects = rjson['deviation']['extended'].get('tags')
+        if not tags_objects:
+            # "tags" doesn't exist on result payload
+            return []
+        return [tag['name'] for tag in rjson['deviation']['extended']['tags']]
 
     def add_deviation_to_group(self, group_id, folder_id, deviation_url):
         """Submit deviation to the specified folder in group.

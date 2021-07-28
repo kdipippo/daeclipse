@@ -41,6 +41,7 @@ class EclipseDeviation(object):  # noqa: WPS230
         self.author = None
         self.stats = None
         self.media = None
+        self.extended = None
         if input_dict is not None and isinstance(input_dict, dict):
             self.from_dict(input_dict)
 
@@ -85,11 +86,45 @@ class EclipseDeviation(object):  # noqa: WPS230
         self.is_daily_deviation = input_dict.get('isDailyDeviation')
         self.has_private_comments = input_dict.get('hasPrivateComments')
         self.block_reasons = input_dict.get('blockReasons')
-
-        self.author = EclipseGruser()
-        self.author.from_dict(input_dict.get('author'))
-
-        self.stats = EclipseStats()
-        self.stats.from_dict(input_dict.get('stats'))
-
+        self.author = EclipseGruser(input_dict.get('author'))
+        self.stats = EclipseStats(input_dict.get('stats'))
         self.media = input_dict.get('media')
+
+class Extended(object):
+    def __init__(self):
+        self.deviation_uuid = input_dict.get('deviationUuid')
+        self.can_user_add_to_group = input_dict.get('canUserAddToGroup')
+        self.groupListUrl = input_dict.get('groupListUrl')
+        self.description = input_dict.get('description')
+        self.originalFile = FileSpecs(input_dict.get('originalFile'))
+        self.license = input_dict.get('license')
+        self.download = FileSpecs(input_dict.get('download'))
+        self.related_streams = RelatedStreams(input_dict.get('relatedStreams'))
+        self.stats = ExtendedStats(input_dict.get('stats'))
+        self.report_url = input_dict.get('reportUrl')
+
+
+def FileSpecs(object):
+    def __init__(self):
+        self.type = input_dict.get('type')
+        self.width = input_dict.get('width')
+        self.height = input_dict.get('height')
+        self.filesize = input_dict.get('filesize')
+
+def RelatedStreams(object):
+    def __init__(self):
+        self.gallery = None
+        self.recommended = None
+        self.collections = None
+    def from_dict(self):
+        # TODO BACK HERE
+        self.gallery = [EclipseDeviation(group) for group in input_dict.get('gallery')]
+
+def ExtendedStats(object):
+    def __init__(self):
+        self.views = None
+        self.today = None
+        self.shares = None
+        self.downloads = None
+        self.groups = None
+

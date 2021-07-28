@@ -1,4 +1,4 @@
-from daeclipse import dAEclipse
+import daeclipse
 import deviantart
 import json
 
@@ -7,6 +7,9 @@ def get_deviation_id(deviation_url):
 
     Args:
         deviation_url (string): deviation URL, i.e. https://da.com/art/Art-12345.
+    
+    Returns:
+        string: Deviation ID.
     """
     url_parts = deviation_url.split("-")
     return url_parts[-1]
@@ -14,9 +17,8 @@ def get_deviation_id(deviation_url):
 
 eclipse = dAEclipse()
 
-da = deviantart.Api("7748", "c9befe05e64214e5bf02ff33f68d68a9");
+da = deviantart.Api("YOUR_CLIENT_ID", "YOUR_CLIENT_SECRET");
 popular = da.browse(endpoint="popular", limit=100)
-# "popular" returns the exact same results as "hot"
 deviations = popular['results']
 popular_tags = {}
 for deviation in deviations:
@@ -28,5 +30,5 @@ for deviation in deviations:
         else:
             popular_tags[tag] += 1
 
-with open("popular_tags2.json", "w") as outfile: 
+with open("popular_tags.json", "w") as outfile: 
     json.dump(popular_tags, outfile)

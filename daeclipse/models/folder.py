@@ -50,15 +50,9 @@ class EclipseFolder(object):  # noqa: WPS230
         self.type = input_dict.get('type')
         self.name = input_dict.get('name')
         self.description = input_dict.get('description')
-
-        self.owner = EclipseGruser()
-        self.owner.from_dict(input_dict.get('owner'))
-
+        self.owner = EclipseGruser(input_dict.get('owner'))
         self.comment_count = input_dict.get('commentCount')
         self.size = input_dict.get('size')
-
-        self.thumb = EclipseDeviation()
-        self.thumb.from_dict(input_dict.get('thumb'))
-
+        self.thumb = EclipseDeviation(input_dict.get('thumb'))
         self.has_sub_folders = input_dict.get('hasSubfolders')
         self.total_item_count = input_dict.get('totalItemCount')
