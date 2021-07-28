@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "daeclipse"
-version = "0.0.3"
+version = "0.0.4"
 description = "A Python library for DeviantArt Eclipse functionality"
 authors = ["Kathryn DiPippo <dipippo.k@gmail.com>"]
 
