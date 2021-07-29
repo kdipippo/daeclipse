@@ -10,6 +10,7 @@ class EclipseDeviationFileSpecs(object):
         Args:
             input_dict (dict, optional): Dict of EclipseDeviationFileSpecs class attrs.
         """
+        self.url = None
         self.type = None
         self.width = None
         self.height = None
@@ -25,6 +26,7 @@ class EclipseDeviationFileSpecs(object):
         """
         if input_dict is None:
             return
+        self.url = input_dict.get('url')
         self.type = input_dict.get('type')
         self.width = input_dict.get('width')
         self.height = input_dict.get('height')

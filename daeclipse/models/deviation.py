@@ -1,8 +1,9 @@
 """Model to represent DeviantArt Eclipse Deviation."""
 
+from daeclipse.models.deviationextendedcontent import EclipseDeviationExtendedContent
+from daeclipse.models.deviationmedia import EclipseDeviationMedia
 from daeclipse.models.gruser import EclipseGruser
 from daeclipse.models.stats import EclipseStats
-from daeclipse.models.deviationextendedcontent import EclipseDeviationExtendedContent
 
 
 class EclipseDeviation(object):  # noqa: WPS230
@@ -89,7 +90,7 @@ class EclipseDeviation(object):  # noqa: WPS230
         self.block_reasons = input_dict.get('blockReasons')
         self.author = EclipseGruser(input_dict.get('author'))
         self.stats = EclipseStats(input_dict.get('stats'))
-        self.media = input_dict.get('media')
+        self.media = EclipseDeviationMedia(input_dict.get('media'))
         self.extended = EclipseDeviationExtendedContent(input_dict.get('extended'))
 
     def get_tag_names(self):

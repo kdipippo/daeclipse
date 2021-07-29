@@ -1,0 +1,32 @@
+type: object
+required:
+- userId
+- useridUuid
+- username
+- usericon
+- type
+- isWatching
+- isNewDeviant
+properties:
+  userId:
+    type: integer
+    example: 12345678
+  useridUuid:
+    type: string
+    format: uuid
+    example: aac62b19-76e2-4af0-a943-13d9a1dc2092s
+  username:
+    type: string
+    maxLength: 20
+    example: ExampleUsername
+  usericon:
+    example: https://a.deviantart.net/avatars-big/m/o/exampleusername.jpg?4
+  "type":
+    type: string
+    example: "regular"
+  isWatching:
+    type: boolean
+    example: false
+  isNewDeviant:
+    type: boolean
+    example: true

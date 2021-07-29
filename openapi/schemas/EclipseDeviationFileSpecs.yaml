@@ -1,0 +1,20 @@
+type: object
+required:
+- comments
+- favourites
+properties:
+  url:
+    type: string
+    example: "https://www.deviantart.com/download/886561941/denu3kl-280bcd78-b8fc-4c60-911a-1ca732a2b7a9.jpg?token=feb6d33bc5adba90f6392cc85c64598f52fbb648&ts=1627488080"
+  'type':
+    type: string
+    enum: ["original"]
+  width:
+    type: integer
+    example: 2480
+  height:
+    type: integer
+    example: 2480
+  filesize:
+    type: integer
+    example: 123456789

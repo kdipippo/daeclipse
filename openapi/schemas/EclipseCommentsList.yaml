@@ -1,0 +1,44 @@
+type: object
+required:
+- hasMore
+- hasLess
+- nextOffset
+- cursor
+- prevCursor
+- total
+- canPostComment
+- commentableTypeid
+- commentableItemid
+- thread
+properties:
+  hasMore:
+    type: boolean
+    example: false
+  hasLess:
+    type: boolean
+    example: false
+  nextOffset:
+    type: [integer, 'null']
+    example: 24
+  cursor:
+    type: [string, 'null']
+    example: 4913988710+
+  prevCursor:
+    type: [string, 'null']
+    example: 4913988710+
+  total:
+    type: integer
+    example: T57
+  canPostComment:
+    type: boolean
+    example: true
+  commentableTypeid:
+    type: integer
+    example: 1
+  commentableItemid:
+    type: integer
+    example: 123456789
+  thread:
+    type: array
+    items:
+      $ref: "./EclipseComment.yaml"

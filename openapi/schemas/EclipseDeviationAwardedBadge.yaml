@@ -1,0 +1,43 @@
+type: object
+required:
+- id
+- typeId
+- name
+- title
+- baseTitle
+- description
+- stackCount
+- images
+properties:
+  id:
+    type: 
+    example: 123456789
+  typeId:
+    type: 
+    example: 65
+  name:
+    type: 
+    example: "diamond"
+  title:
+    type: 
+    example: "Diamond"
+  baseTitle:
+    type: 
+    example: "Diamond"
+  description:
+    type: 
+    example: "It's the highest of honors to be awarded an exclusive Diamond badge!"
+  stackCount:
+    type: 
+    example: 1
+  images:
+    type: array
+    items:
+      type: object
+      properties:
+        imageUrl:
+          type: string
+          example: "https://st.deviantart.net/badges/diamond.svg?2"
+        className:
+          type: string
+          example: ""

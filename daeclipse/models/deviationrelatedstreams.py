@@ -1,6 +1,7 @@
 """Model to represent DeviantArt Eclipse Deviation Related Streams."""
 
 import daeclipse.models.deviation
+from daeclipse.models.collection import EclipseCollection
 
 
 class EclipseDeviationRelatedStreams(object):
@@ -30,3 +31,5 @@ class EclipseDeviationRelatedStreams(object):
             self.gallery = [daeclipse.models.deviation.EclipseDeviation(group) for group in input_dict.get('gallery')]
         if input_dict.get('recommended') is not None:
             self.recommended = [daeclipse.models.deviation.EclipseDeviation(group) for group in input_dict.get('recommended')]
+        if input_dict.get('collections') is not None:
+            self.collections = [EclipseCollection(group) for group in input_dict.get('collections')]

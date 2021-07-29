@@ -1,0 +1,120 @@
+type: object
+required:
+- commentId
+- typeId
+- itemId
+- parentId
+- posted
+- edited
+- replies
+- isOwner
+- isViolation
+- isAdminHidden
+- isHidden
+- isLocked
+- isSpam
+- isPrivate
+- isAnnotation
+- isDeleted
+- isPeekable
+- isAuthor
+- isAuthorHighlighted
+- isAdminMode
+- isFeatured
+- isReportable
+- isLiked
+- likes
+- hidden
+- textContent
+- signature
+- authorInfo
+- user
+- legacyTextEditUrl
+properties:
+  commentId:
+    type: integer
+    example: 1234567890
+  typeId:
+    type: integer
+    example: 1
+  itemId:
+    type: integer
+    example: 12345678
+  parentId:
+    type: [integer, 'null']
+    example: 12345678
+  posted:
+    type: string
+    format: date-time
+    example: 2021-05-18T12:23:01-0700
+  edited:
+    type: [string, 'null']
+    format: date-time
+    example: 2021-05-18T12:23:01-0700
+  replies:
+    type: integer
+    example: 0
+  isOwner:
+    type: boolean
+    example: false
+  isViolation:
+    type: boolean
+    example: false
+  isAdminHidden:
+    type: boolean
+    example: false
+  isHidden:
+    type: boolean
+    example: false
+  isLocked:
+    type: boolean
+    example: false
+  isSpam:
+    type: boolean
+    example: false
+  isPrivate:
+    type: boolean
+    example: false
+  isAnnotation:
+    type: boolean
+    example: false
+  isDeleted:
+    type: boolean
+    example: false
+  isPeekable:
+    type: boolean
+    example: false
+  isAuthor:
+    type: boolean
+    example: false
+  isAuthorHighlighted:
+    type: boolean
+    example: false
+  isAdminMode:
+    type: boolean
+    example: false
+  isFeatured:
+    type: boolean
+    example: false
+  isReportable:
+    type: boolean
+    example: false
+  isLiked:
+    type: boolean
+    example: false
+  likes:
+    type: integer
+    example: 0
+  hidden:
+    type: 'null'
+  textContent:
+    $ref: "./EclipseCommentContent.yaml"
+  signature:
+    type: 'null'
+  authorInfo:
+    type: [string, 'null']
+    example: Hobbyist Traditional Artist
+  user:
+    $ref: "./EclipseGruser.yaml"
+  legacyTextEditUrl:
+    type: 'null'

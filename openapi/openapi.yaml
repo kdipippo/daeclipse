@@ -1,0 +1,44 @@
+openapi: "3.1.0"
+info:
+  version: 1.0.0
+  title: DeviantArt Eclipse
+  description: Unofficial documentation for the internal DeviantArt Eclipse API endpoints.
+servers:
+  - url: https://www.deviantart.com/_napi/shared_api
+paths:
+  /deviation/extended_fetch:
+    get:
+      tags:
+      - "Deviations"
+      summary: "Get extended information for a Deviation."
+      description: ""
+      operationId: "getDeviationExtended"
+      consumes:
+      - "application/json"
+      parameters:
+        - name: "deviationid"
+          in: "query"
+          description: "Deviation ID to fetch."
+          required: true
+          type: "number"
+        - name: "username"
+          in: "query"
+          description: "Deviation's artist username."
+          required: true
+          type: "string"
+        - name: "type"
+          in: "query"
+          description: "Type of extended information to fetch."
+          required: true
+          type: "string"
+          enum: ["art"]
+        - name: "include_session"
+          in: "query"
+          description: "TBD" #TODOO!!!!!!!
+          required: true
+          type: boolean
+      responses:
+        "200":
+          description: "Successfully fetched extended deviation information."
+          schema:
+            $ref: "./schemas/DeviationExtended.yaml"
