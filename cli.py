@@ -126,6 +126,12 @@ def initialize_deviantart():
         dotenv.set_key(dotenv_file, "deviantart_client_secret", client_secret)
     return deviantart.Api(client_id, client_secret)
 
+@app.command()
+def get_tags():
+    eclipse = daeclipse.Eclipse()
+    deviation_url = cli_ui.ask_string('Paste deviation URL:   ')
+    tags = eclipse.get_deviation_tags(deviation_url)
+    cli_ui.info_1(tags)
 
 @app.command()
 def hot_tags():

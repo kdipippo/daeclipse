@@ -1,5 +1,7 @@
 """Model to represent DeviantArt Eclipse Groups List."""
 
+from daeclipse.models.gruser import EclipseGruser
+
 
 class EclipseGroupsList(object):
     """Model to represent DeviantArt Eclipse Groups List."""
@@ -28,4 +30,5 @@ class EclipseGroupsList(object):
         self.has_more = input_dict.get('hasMore')
         self.next_offset = input_dict.get('nextOffset')
         self.total = input_dict.get('total')
-        self.groups = [EclipseGruser(group) for group in input_dict.get('results')]
+        if input_dict.get('results') is not None:
+            self.groups = [EclipseGruser(group) for group in input_dict.get('results')]

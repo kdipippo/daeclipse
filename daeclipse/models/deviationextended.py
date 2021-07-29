@@ -1,6 +1,7 @@
 """Model to represent DeviantArt Eclipse Extended Deviation."""
 
 from daeclipse.models.deviation import EclipseDeviation
+from daeclipse.models.commentslist import EclipseCommentsList
 
 
 class EclipseDeviationExtended(object):

@@ -1,13 +1,14 @@
 """Class to handle making calls to the DeviantArt Eclipse API."""
 
 import json
+import re
 
 import browser_cookie3
 import requests
 from bs4 import BeautifulSoup
 
+from daeclipse.models.deviationextended import EclipseDeviationExtended
 from daeclipse.models.folder import EclipseFolder
-from daeclipse.models.gruser import EclipseGruser
 
 
 class Eclipse(object):
@@ -80,19 +81,18 @@ class Eclipse(object):
             raise_error(folder_data)
         return [EclipseFolder(folder) for folder in folder_data['results']]
 
-    def get_deviation_tags(self, deviation_url, deviation_username):
+    def get_deviation_tags(self, deviation_url):
         """Get list of tags for the provided deviation_id.
 
         Args:
             deviation_url (string): Deviation URL.
-            deviation_username (string): Username for the deviation's artist.
 
         Returns:
             string[]: List of tags.
         """
         queries = {
             'deviationid': get_deviation_id(deviation_url),
-            'username': deviation_username,
+            'username': get_username_from_url(deviation_url),
             'type': 'art',
             'include_session': 'false',
         }
@@ -104,12 +104,7 @@ class Eclipse(object):
         response = requests.get(extended_fetch_url, cookies=self.cookies)
         rjson = json.loads(response.text)
         deviation_extended = EclipseDeviationExtended(rjson)
-        # tags_objects is a list of objects containing "name" and "url" attributes.
-        tags_objects = rjson['deviation']['extended'].get('tags')
-        if not tags_objects:
-            # "tags" doesn't exist on result payload
-            return []
-        return [tag['name'] for tag in rjson['deviation']['extended']['tags']]
+        return deviation_extended.deviation.get_tag_names()
 
     def add_deviation_to_group(self, group_id, folder_id, deviation_url):
         """Submit deviation to the specified folder in group.
@@ -164,6 +159,24 @@ def get_deviation_id(deviation_url):
     """
     url_parts = deviation_url.split('-')
     return url_parts[-1]
+
+
+def get_username_from_url(deviation_url):
+    """Regex parse deviation URL to retrieve username.
+
+    Args:
+        deviation_url (string): Deviation URL.
+
+    Raises:
+        RuntimeError: If username is not present in URL string.
+
+    Returns:
+        string: DeviantArt username.
+    """
+    username = re.search('deviantart.com/(.+?)/art/', deviation_url)
+    if username:
+        return username.group(1)
+    raise RuntimeError('DeviantArt username not found in URL.')
 
 
 def get_csrf(deviation_url, cookies):

@@ -1,5 +1,8 @@
 """Model to represent DeviantArt Eclipse Comments."""
 
+from daeclipse.models.commentcontent import EclipseCommentContent
+from daeclipse.models.gruser import EclipseGruser
+
 
 class EclipseComment(object):
     """Model to represent DeviantArt Eclipse Comments."""
@@ -81,27 +84,3 @@ class EclipseComment(object):
         self.author_info = input_dict.get('authorInfo')
         self.user = EclipseGruser(input_dict.get('user'))
         self.legacy_text_edit_url = input_dict.get('legacyTextEditUrl')
-
-
-class EclipseCommentContent(object):
-    """Model to represent DeviantArt Eclipse Comment Content."""
-
-    def __init__(self, input_dict=None):
-        """Initialize EclipseCommentContent.
-
-        Args:
-            input_dict (dict, optional): Dict of EclipseCommentContent class attrs.
-        """
-        self.excerpt = None
-        self.html = None
-
-    def from_dict(self, input_dict):
-        """Convert input_dict values to class attributes.
-
-        Args:
-            input_dict (dict): Dict containing EclipseCommentContent fields.
-        """
-        if input_dict is None:
-            return
-        self.excerpt = input_dict.get('excerpt')
-        self.html = input_dict.get('html')

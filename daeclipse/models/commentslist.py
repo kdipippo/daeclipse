@@ -1,5 +1,7 @@
 """Model to represent DeviantArt Eclipse Comments List."""
 
+from daeclipse.models.comment import EclipseComment
+
 
 class EclipseCommentsList(object):
     """Model to represent DeviantArt Eclipse Comments List."""
@@ -40,4 +42,5 @@ class EclipseCommentsList(object):
         self.can_post_comment = input_dict.get('canPostComment')
         self.commentable_typeid = input_dict.get('commentableTypeid')
         self.commentable_itemid = input_dict.get('commentableItemid')
-        self.thread = [EclipseComment(comment_dict) for comment_dict in input_dict.get('thread')]
+        if input_dict.get('thread') is not None:
+            self.thread = [EclipseComment(comment_dict) for comment_dict in input_dict.get('thread')]
