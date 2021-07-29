@@ -117,38 +117,41 @@ def initialize_deviantart():
 
     if client_id is None:
         cli_ui.error("Missing deviantart_client_id")
-        client_id = cli_ui.ask_string('Enter your dA client ID:')
+        client_id = cli_ui.ask_password('Enter your dA client ID:')
         dotenv.set_key(dotenv_file, "deviantart_client_id", client_id)
 
     if client_secret is None:
         cli_ui.error("Missing deviantart_client_secret")
-        client_secret = cli_ui.ask_string('Enter your dA client secret:')
+        client_secret = cli_ui.ask_password('Enter your dA client secret:')
         dotenv.set_key(dotenv_file, "deviantart_client_secret", client_secret)
     return deviantart.Api(client_id, client_secret)
 
 @app.command()
 def get_tags():
+    """Return list of tags for given deviation."""
     eclipse = daeclipse.Eclipse()
     deviation_url = cli_ui.ask_string('Paste deviation URL:   ')
     tags = eclipse.get_deviation_tags(deviation_url)
     cli_ui.info_1(tags)
 
 @app.command()
-def hot_tags():
-    """Return top 10 tags on the 100 hotest deviations."""
+def hot_tags(
+    save: bool = typer.Option(  # noqa: B008, WPS404
+        False,  # noqa: WPS425
+        help='Save results to local file.',
+    ),
+):
+    """Return top 10 tags on the 100 hottest deviations."""
     eclipse = daeclipse.Eclipse()  # Internal Eclipse API wrapper.
     da = initialize_deviantart()  # Public API wrapper.
     popular_count = 100
     popular = da.browse(endpoint='popular', limit=popular_count)
     deviations = popular['results']
     popular_tags = {}
-    bar = Bar('Parsing 100 hotest deviations', max=popular_count)
+    bar = Bar('Parsing 100 hottest deviations', max=popular_count)
     for deviation in deviations:
         bar.next()
-        tags = eclipse.get_deviation_tags(
-            deviation.url,
-            deviation.author.username
-        )
+        tags = eclipse.get_deviation_tags(deviation.url)
         for tag in tags:
             if tag not in popular_tags:
                 popular_tags[tag] = 1
@@ -159,8 +162,9 @@ def hot_tags():
     top_10_tags = popular_tags[0:10]
     tag_table = [[(cli_ui.bold, i[0]), (cli_ui.green, i[1])] for i in top_10_tags]
     cli_ui.info_table(tag_table, headers=['tag', 'count'])
-    with open("popular_tags.json", "w") as outfile: 
-        json.dump(popular_tags, outfile)
+    if save:
+        with open("popular_tags.json", "w") as outfile: 
+            json.dump(popular_tags, outfile)
 
 
 def get_username_from_url(deviation_url):

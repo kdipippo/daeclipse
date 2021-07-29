@@ -95,4 +95,6 @@ class EclipseDeviation(object):  # noqa: WPS230
     def get_tag_names(self):
         if self.extended is None:
             return []
+        if self.extended.tags is None:
+            return []
         return [tag.name for tag in self.extended.tags]
