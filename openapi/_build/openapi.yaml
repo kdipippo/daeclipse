@@ -5,8 +5,14 @@ info:
   description: Unofficial documentation for the internal DeviantArt Eclipse API
   license:
     name: MIT
+  contact:
+    name: 'Kathryn DiPippo (for spec updates, not API feature updates)'
+    url: 'https://kathryndipippo.com'
+    email: dipippo.k@gmail.com
 servers:
   - url: 'https://www.deviantart.com/_napi/shared_api'
+tags:
+  - name: Deviations
 paths:
   /deviation/extended_fetch:
     get:
@@ -14,26 +20,12 @@ paths:
       operationId: getExtendedDeviationByID
       description: Extended information for a specific Deviation.
       tags:
-        - deviations
+        - Deviations
       parameters:
-        - name: deviationid
-          in: query
-          required: true
-          type: number
-        - name: username
-          in: query
-          required: true
-          type: string
-        - name: type
-          in: query
-          required: true
-          type: string
-          enum:
-            - art
-        - name: include_session
-          in: query
-          required: true
-          type: boolean
+        - $ref: '#/components/parameters/deviationId'
+        - $ref: '#/components/parameters/username'
+        - $ref: '#/components/parameters/extendedFetchType'
+        - $ref: '#/components/parameters/extendedFetchIncludeSession'
       responses:
         '200':
           description: Successfully fetched extended deviation information.
@@ -64,14 +56,40 @@ components:
       description: The id of the pet to retrieve
       schema:
         type: string
-    limit:
-      name: limit
+    deviationId:
+      name: deviation
       in: query
-      description: How many items to return at one time (max 100)
-      required: false
+      description: Deviation ID.
+      required: true
       schema:
         type: integer
-        format: int32
+        example: 123456789
+    extendedFetchIncludeSession:
+      name: include_session
+      in: query
+      description: 'Include session, always true.'
+      required: true
+      schema:
+        type: boolean
+        example: true
+    extendedFetchType:
+      name: type
+      in: query
+      description: 'Extended fetch type, always art.'
+      required: true
+      schema:
+        type: string
+        enum:
+          - art
+    username:
+      name: username
+      in: query
+      description: DeviantArt username.
+      required: true
+      schema:
+        type: string
+        maxLength: 20
+        example: ExampleUsername
   schemas:
     EclipseCollection:
       type: object
@@ -114,9 +132,8 @@ components:
           format: uuid
           example: 15A01024-5565-4736-AB66-E3E5DB890868
         parentId:
-          type:
-            - integer
-            - 'null'
+          type: integer
+          nullable: true
           example: 34567890
         type:
           type: string
@@ -136,8 +153,8 @@ components:
           type: integer
           example: 227
         thumb:
-          anyOf:
-            - 'null'
+          nullable: true
+          allOf:
             - $ref: '#/components/schemas/EclipseDeviation'
     EclipseComment:
       type: object
@@ -183,18 +200,16 @@ components:
           type: integer
           example: 12345678
         parentId:
-          type:
-            - integer
-            - 'null'
+          type: integer
+          nullable: true
           example: 12345678
         posted:
           type: string
           format: date-time
           example: '2021-05-18T12:23:01-0700'
         edited:
-          type:
-            - string
-            - 'null'
+          type: string
+          nullable: true
           format: date-time
           example: '2021-05-18T12:23:01-0700'
         replies:
@@ -252,20 +267,22 @@ components:
           type: integer
           example: 0
         hidden:
-          type: 'null'
+          type: integer
+          nullable: true
         textContent:
           $ref: '#/components/schemas/EclipseCommentContent'
         signature:
-          type: 'null'
+          type: string
+          nullable: true
         authorInfo:
-          type:
-            - string
-            - 'null'
+          type: string
+          nullable: true
           example: Hobbyist Traditional Artist
         user:
           $ref: '#/components/schemas/EclipseGruser'
         legacyTextEditUrl:
-          type: 'null'
+          type: string
+          nullable: true
     EclipseCommentContent:
       type: object
       required:
@@ -273,7 +290,7 @@ components:
         - html
       properties:
         excerpt:
-          type: integer
+          type: string
           example: |
             Great...:) http://itscash.cf/
         html:
@@ -309,23 +326,18 @@ components:
           type: boolean
           example: false
         nextOffset:
-          type:
-            - integer
-            - 'null'
+          type: integer
+          nullable: true
           example: 24
         cursor:
-          type:
-            - string
-            - 'null'
           example: 4913988710+
         prevCursor:
-          type:
-            - string
-            - 'null'
+          type: string
+          nullable: true
           example: 4913988710+
         total:
           type: integer
-          example: T57
+          example: 57
         canPostComment:
           type: boolean
           example: true
@@ -381,9 +393,8 @@ components:
           type: integer
           example: 1
         printId:
-          type:
-            - integer
-            - 'null'
+          type: integer
+          nullable: true
           example: 2
         url:
           type: string
@@ -411,9 +422,8 @@ components:
           type: boolean
           example: false
         legacyTextEditUrl:
-          type:
-            - string
-            - 'null'
+          type: string
+          nullable: true
           example: unknown
         isShareable:
           type: boolean
@@ -472,25 +482,25 @@ components:
         - images
       properties:
         id:
-          type: null
+          type: integer
           example: 123456789
         typeId:
-          type: null
+          type: integer
           example: 65
         name:
-          type: null
+          type: string
           example: diamond
         title:
-          type: null
+          type: string
           example: Diamond
         baseTitle:
-          type: null
+          type: string
           example: Diamond
         description:
-          type: null
+          type: string
           example: It's the highest of honors to be awarded an exclusive Diamond badge!
         stackCount:
-          type: null
+          type: integer
           example: 1
         images:
           type: array
@@ -555,7 +565,7 @@ components:
         stats:
           $ref: '#/components/schemas/EclipseDeviationExtendedStats'
         reportUrl:
-          type: TBD
+          type: string
           example: 'https://www.deviantart.com/deviation/report/112233445?is_modal=true'
         awardedBadges:
           type: array
@@ -711,7 +721,7 @@ components:
         useridUuid:
           type: string
           format: uuid
-          example: aac62b19-76e2-4af0-a943-13d9a1dc2092s
+          example: 43d8f41c-cdd8-41d2-9878-11e0f77ea0a3
         username:
           type: string
           maxLength: 20

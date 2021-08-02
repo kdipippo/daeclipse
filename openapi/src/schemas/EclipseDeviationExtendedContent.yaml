@@ -47,7 +47,7 @@ properties:
   stats:
     $ref: "./EclipseDeviationExtendedStats.yaml"
   reportUrl:
-    type: TBD
+    type: string
     example: "https://www.deviantart.com/deviation/report/112233445?is_modal=true"
   awardedBadges:
     type: array

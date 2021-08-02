@@ -14,7 +14,7 @@ properties:
   useridUuid:
     type: string
     format: uuid
-    example: aac62b19-76e2-4af0-a943-13d9a1dc2092s
+    example: 43d8f41c-cdd8-41d2-9878-11e0f77ea0a3
   username:
     type: string
     maxLength: 20

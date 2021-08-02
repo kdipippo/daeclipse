@@ -10,25 +10,25 @@ required:
 - images
 properties:
   id:
-    type: 
+    type: integer
     example: 123456789
   typeId:
-    type: 
+    type: integer
     example: 65
   name:
-    type: 
+    type: string
     example: "diamond"
   title:
-    type: 
+    type: string
     example: "Diamond"
   baseTitle:
-    type: 
+    type: string
     example: "Diamond"
   description:
-    type: 
+    type: string
     example: "It's the highest of honors to be awarded an exclusive Diamond badge!"
   stackCount:
-    type: 
+    type: integer
     example: 1
   images:
     type: array

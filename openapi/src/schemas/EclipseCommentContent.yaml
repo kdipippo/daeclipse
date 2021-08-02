@@ -4,7 +4,7 @@ required:
 - html
 properties:
   excerpt:
-    type: integer
+    type: string
     example: "Great...:) http://itscash.cf/\n"
   html:
     type: object

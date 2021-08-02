@@ -3,25 +3,13 @@ get:
   operationId: getExtendedDeviationByID
   description: Extended information for a specific Deviation.
   tags:
-    - deviations
+    - Deviations
+
   parameters:
-    - name: "deviationid"
-      in: "query"
-      required: true
-      type: "number"
-    - name: "username"
-      in: "query"
-      required: true
-      type: "string"
-    - name: "type"
-      in: "query"
-      required: true
-      type: "string"
-      enum: ["art"]
-    - name: "include_session"
-      in: "query"
-      required: true
-      type: boolean
+    - $ref: "../../parameters/query/deviationId.yaml"
+    - $ref: "../../parameters/query/username.yaml"
+    - $ref: "../../parameters/query/extendedFetchType.yaml"
+    - $ref: "../../parameters/query/extendedFetchIncludeSession.yaml"
   responses:
     '200':
       description: Successfully fetched extended deviation information.

@@ -39,7 +39,8 @@ properties:
     type: integer
     example: 1
   printId:
-    type: [integer, 'null']
+    type: integer
+    nullable: true
     example: 2
   url:
     type: string
@@ -67,7 +68,8 @@ properties:
     type: boolean
     example: false
   legacyTextEditUrl:
-    type: [string, 'null']
+    type: string
+    nullable: true
     example: "unknown"
   isShareable:
     type: boolean

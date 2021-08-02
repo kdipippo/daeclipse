@@ -1,0 +1,7 @@
+name: include_session
+in: query
+description: Include session, always true.
+required: true
+schema:
+  type: boolean
+  example: true

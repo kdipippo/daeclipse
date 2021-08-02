@@ -41,14 +41,16 @@ properties:
     type: integer
     example: 12345678
   parentId:
-    type: [integer, 'null']
+    type: integer
+    nullable: true
     example: 12345678
   posted:
     type: string
     format: date-time
     example: 2021-05-18T12:23:01-0700
   edited:
-    type: [string, 'null']
+    type: string
+    nullable: true
     format: date-time
     example: 2021-05-18T12:23:01-0700
   replies:
@@ -106,15 +108,19 @@ properties:
     type: integer
     example: 0
   hidden:
-    type: 'null'
+    type: integer
+    nullable: true
   textContent:
     $ref: "./EclipseCommentContent.yaml"
   signature:
-    type: 'null'
+    type: string
+    nullable: true
   authorInfo:
-    type: [string, 'null']
+    type: string
+    nullable: true
     example: Hobbyist Traditional Artist
   user:
     $ref: "./EclipseGruser.yaml"
   legacyTextEditUrl:
-    type: 'null'
+    type: string
+    nullable: true

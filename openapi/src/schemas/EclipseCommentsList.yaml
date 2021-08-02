@@ -18,17 +18,18 @@ properties:
     type: boolean
     example: false
   nextOffset:
-    type: [integer, 'null']
+    type: integer
+    nullable: true
     example: 24
   cursor:
-    type: [string, 'null']
     example: 4913988710+
   prevCursor:
-    type: [string, 'null']
+    type: string
+    nullable: true
     example: 4913988710+
   total:
     type: integer
-    example: T57
+    example: 57
   canPostComment:
     type: boolean
     example: true
