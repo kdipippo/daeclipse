@@ -1,0 +1,13 @@
+type: object
+required:
+- deviation
+- viewMode
+- comments
+properties:
+  deviation:
+    $ref: "./EclipseDeviation.yaml"
+  viewMode:
+    type: string
+    example: regular
+  comments:
+    $ref: "./EclipseCommentsList.yaml"

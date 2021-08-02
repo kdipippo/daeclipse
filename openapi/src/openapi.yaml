@@ -1,0 +1,19 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: DeviantArt Eclipse
+  description: Unofficial documentation for the internal DeviantArt Eclipse API
+  license:
+    name: MIT
+servers:
+  - url: https://www.deviantart.com/_napi/shared_api
+paths:
+  /deviation/extended_fetch:
+    $ref: "./resources/deviation/extended_fetch.yaml"
+components:
+  parameters:
+    $ref: "./parameters/_index.yaml"
+  schemas:
+    $ref: "./schemas/_index.yaml"
+  responses:
+    $ref: "./responses/_index.yaml"
