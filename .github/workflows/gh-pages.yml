@@ -10,19 +10,32 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
+
       - name: PDOC - Setup Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
           architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
       - name: PDOC - Install Poetry
-        uses: snok/install-poetry@v1
-      - name: PDOC - Install dependencies
-        run: poetry install --no-interaction --no-root
-      - name: PDOC - Install libraries
-        run: poetry install --no-interaction
+        uses: dschep/install-poetry-action@v1.2
+      - name: PDOC - Cache Poetry virtualenv
+        uses: actions/cache@v1
+        id: cache
+        with:
+          path: ~/.virtualenvs
+          key: poetry-${{ hashFiles('**/poetry.lock') }}
+          restore-keys: |
+            poetry-${{ hashFiles('**/poetry.lock') }}
+      - name: PDOC - Set Poetry config
+        run: |
+          poetry config settings.virtualenvs.in-project false
+          poetry config settings.virtualenvs.path ~/.virtualenvs
+      - name: PDOC - Install Dependencies
+        run: poetry install
+        if: steps.cache.outputs.cache-hit != 'true'
       - name: PDOC - Build pdoc HTML
         run: pdoc daeclipse/ --output-directory _build/python/
+
       - name: OPENAPI - Setup Node
         uses: actions/setup-node@v1
         with:
@@ -32,6 +45,7 @@ jobs:
           npm ci
           npm run build
           npm run html
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:

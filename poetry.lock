@@ -2,7 +2,7 @@
 name = "astunparse"
 version = "1.6.3"
 description = "An AST unparser for Python"
-category = "main"
+category = "dev"
 optional = false
 python-versions = "*"
 
@@ -189,7 +189,7 @@ trio = ["trio", "async-generator"]
 name = "jinja2"
 version = "3.0.1"
 description = "A very fast and expressive template engine."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6"
 
@@ -234,7 +234,7 @@ tests = ["pytest (!=3.3.0)", "psutil", "pytest-cov"]
 name = "markupsafe"
 version = "2.0.1"
 description = "Safely add untrusted strings to HTML/XML markup."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6"
 
@@ -261,7 +261,7 @@ python-versions = "*"
 name = "pdoc"
 version = "7.2.0"
 description = "API Documentation for Python Projects"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 
@@ -343,7 +343,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 name = "pygments"
 version = "2.9.0"
 description = "Pygments is a syntax highlighting package written in Python."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.5"
 
@@ -438,7 +438,7 @@ jeepney = ">=0.6"
 name = "six"
 version = "1.16.0"
 description = "Python 2 and 3 compatibility utilities"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
 
@@ -538,7 +538,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7,<4.0.0"
-content-hash = "23d4ce7ccbbd882cb59f32144140271cfe467cb66b231c06fa50278cd14af00e"
+content-hash = "a9e65635aea6f54128196b5b6dc1ac48b7277f81a6d52241aaf47df85f2d8104"
 
 [metadata.files]
 astunparse = [
