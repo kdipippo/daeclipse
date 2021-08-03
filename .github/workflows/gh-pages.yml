@@ -5,11 +5,14 @@ on:
     branches: [main]
 
 jobs:
-  python-html:
+  gh-pages:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
+      #----------------------------------------------
+      #      Generate Python HTML documentation      
+      #----------------------------------------------
       - name: Set up python
         uses: actions/setup-python@v2
         with:
@@ -35,10 +38,9 @@ jobs:
         run: poetry run mkdocs build --site-dir _build/
       - name: Build PDoc python/ HTML
         run: poetry run pdoc daeclipse/ --output-directory _build/python/
-
-  node-html:
-    runs-on: ubuntu-latest
-    steps:
+      #----------------------------------------------
+      #       Generate Node HTML documentation       
+      #----------------------------------------------
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
@@ -48,11 +50,9 @@ jobs:
           npm ci
           npm run build
           npm run html
-
-  gh-release:
-    needs: [python-html, node-html]
-    runs-on: ubuntu-latest
-    steps:
+      #----------------------------------------------
+      #            Deploy to Github Pages            
+      #----------------------------------------------
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
