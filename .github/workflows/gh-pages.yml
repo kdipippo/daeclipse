@@ -47,7 +47,7 @@ jobs:
         run: poetry install --no-interaction
 
       - name: PDOC - Build pdoc HTML
-        run: pdoc daeclipse/ --output-directory _build/python/
+        run: poetry run pdoc daeclipse/ --output-directory _build/python/
 
       - name: OPENAPI - Setup Node
         uses: actions/setup-node@v1
