@@ -23,7 +23,7 @@ app = typer.Typer(help='DeviantArt Eclipse CLI')
 
 @app.command()
 def gif_preset():
-    """Generate an animated pixel icon gif based on a stored preset."""
+    """Generate pixel icon gif based on a stored preset."""
     presets = gif_generator.get_presets()
     selected_preset = cli_ui.ask_choice(
         'Select which option to generate',
@@ -36,7 +36,7 @@ def gif_preset():
 
 @app.command()
 def gif_random():
-    """Generate an animated pixel icon gif with randomized assets."""
+    """Generate pixel icon gif with randomized assets."""
     gif_filename = gif_generator.create_gif_random()
     cli_ui.info('Generated pixel icon created at', gif_filename)
 

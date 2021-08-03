@@ -1,7 +1,7 @@
 """Model to represent DeviantArt Eclipse Collections."""
 
 from daeclipse.models.collectioninfo import EclipseCollectionInfo
-from daeclipse.models.deviation import EclipseDeviation
+import daeclipse.models.deviation
 from daeclipse.models.gruser import EclipseGruser
 
 
@@ -30,6 +30,6 @@ class EclipseCollection(object):
             return
         self.collection = EclipseCollectionInfo(input_dict.get('collection'))
         if input_dict.get('deviations') is not None:
-            self.deviations = [EclipseDeviation(deviation) for deviation in input_dict.get('deviations')]
+            self.deviations = [daeclipse.models.deviation.EclipseDeviation(deviation) for deviation in input_dict.get('deviations')]
         if input_dict.get('groups') is not None:
             self.groups = [EclipseGruser(group) for group in input_dict.get('groups')]

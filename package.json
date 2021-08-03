@@ -4,12 +4,11 @@
   "description": "Multi-file boilerplate for Open API Specification.",
   "main": "index.js",
   "scripts": {
-    "build": "swagger-cli bundle spec/openapi.yaml --outfile _build/openapi.yaml --type yaml",
-    "test": "npm run build && spectral lint _build/openapi.yaml",
-    "preview": "npm run build && redoc-cli serve _build/openapi.yaml --options.onlyRequiredInSamples",
-    "html": "npm run build && redoc-cli bundle _build/openapi.yaml  --output _build/index.html --options.onlyRequiredInSamples",
-    "clean": "rm -r _build",
-    "deploy": "./ci/deploy.sh"
+    "build": "swagger-cli bundle spec/openapi.yaml --outfile _build/api/openapi.yaml --type yaml",
+    "test": "npm run build && spectral lint _build/api/openapi.yaml",
+    "preview": "npm run build && redoc-cli serve _build/api/openapi.yaml --options.onlyRequiredInSamples",
+    "html": "npm run build && redoc-cli bundle _build/api/openapi.yaml  --output _build/api/index.html --options.onlyRequiredInSamples",
+    "clean": "rm -r _build"
   },
   "repository": {
     "type": "git",

@@ -2,22 +2,34 @@ name: build
 
 on:
   push:
-    branches: [master]
+    branches: [main]
 
 jobs:
   gh-release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: PDOC - Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+          architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+      - name: PDOC - Install pdoc
+        run: pip install pdoc
+      - name: PDOC - Build pdoc HTML
+        run: pdoc daeclipse/ --output-directory _build/python/
+      - name: OPENAPI - Setup Node
+        uses: actions/setup-node@v1
         with:
           node-version: '12.x'
-      - name: Build
+      - name: OPENAPI - Build OpenAPI HTML
         run: |
           npm ci
           npm run build
           npm run html
-      - name: Deploy to GitHub Pages
-        run : npm run deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: _build # The folder the action should deploy.

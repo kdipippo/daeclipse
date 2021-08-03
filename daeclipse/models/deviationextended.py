@@ -1,6 +1,6 @@
 """Model to represent DeviantArt Eclipse Extended Deviation."""
 
-from daeclipse.models.deviation import EclipseDeviation
+import daeclipse.models.deviation
 from daeclipse.models.commentslist import EclipseCommentsList
 
 
@@ -27,6 +27,6 @@ class EclipseDeviationExtended(object):
         """
         if input_dict is None:
             return
-        self.deviation = EclipseDeviation(input_dict.get('deviation'))
+        self.deviation = daeclipse.models.deviation.EclipseDeviation(input_dict.get('deviation'))
         self.view_mode = input_dict.get('viewMode')
         self.comments = EclipseCommentsList(input_dict.get('comments'))

@@ -364,7 +364,7 @@ def get_presets():
 
 
 def create_gif_preset(preset_name):
-    """Generate an animated pixel icon gif based on a stored preset.
+    """Generate pixel icon gif based on a stored preset.
 
     Args:
         preset_name (string): Preset name.
@@ -385,7 +385,7 @@ def create_gif_preset(preset_name):
 
 
 def create_gif_random():
-    """Generate an animated pixel icon gif with randomized assets.
+    """Generate pixel icon gif with randomized assets.
 
     Returns:
         string: Full path to gif result.

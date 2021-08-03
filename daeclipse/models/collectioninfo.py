@@ -1,6 +1,6 @@
 """Model to represent DeviantArt Eclipse Collection Info."""
 
-from daeclipse.models.deviation import EclipseDeviation
+import daeclipse.models.deviation
 from daeclipse.models.gruser import EclipseGruser
 
 
@@ -43,4 +43,4 @@ class EclipseCollectionInfo(object):
         self.owner = EclipseGruser(input_dict.get('owner'))
         self.comment_count = input_dict.get('commentCount')
         self.size = input_dict.get('size')
-        self.thumb = EclipseDeviation(input_dict.get('folderId'))
+        self.thumb = daeclipse.models.deviation.EclipseDeviation(input_dict.get('folderId'))

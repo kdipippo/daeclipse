@@ -1,6 +1,6 @@
 """Model to represent DeviantArt Eclipse Group Folder."""
 
-from daeclipse.models.deviation import EclipseDeviation
+import daeclipse.models.deviation
 from daeclipse.models.gruser import EclipseGruser
 
 
@@ -53,6 +53,6 @@ class EclipseFolder(object):  # noqa: WPS230
         self.owner = EclipseGruser(input_dict.get('owner'))
         self.comment_count = input_dict.get('commentCount')
         self.size = input_dict.get('size')
-        self.thumb = EclipseDeviation(input_dict.get('thumb'))
+        self.thumb = daeclipse.models.deviation.EclipseDeviation(input_dict.get('thumb'))
         self.has_sub_folders = input_dict.get('hasSubfolders')
         self.total_item_count = input_dict.get('totalItemCount')
