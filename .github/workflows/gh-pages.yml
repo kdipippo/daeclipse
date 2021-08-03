@@ -35,7 +35,7 @@ jobs:
         run: poetry install --no-interaction
 
       - name: Build MkDocs root HTML
-        run: poetry run mkdocs build --site-dir _build/
+        run: poetry run mkdocs build
       - name: Build PDoc python/ HTML
         run: poetry run pdoc daeclipse/ --output-directory _build/python/
       #----------------------------------------------
