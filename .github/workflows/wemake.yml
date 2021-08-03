@@ -1,6 +1,6 @@
-name: wemake-python-styleguide
+name: Lint Python with Wemake
 
-on: [ push ]
+on: [push]
 
 jobs:
   build:

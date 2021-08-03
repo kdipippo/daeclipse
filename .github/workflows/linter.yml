@@ -1,6 +1,6 @@
-name: Run Spectral on Pull Requests
+name: Lint OpenAPI Spec with Spectral
 
-on: [pull_request]
+on: [push]
 
 jobs:
   build:
