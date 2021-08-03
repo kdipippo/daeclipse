@@ -1,0 +1,14 @@
+in: body
+name: body
+description: Body for deleting deviation or journal.
+required: true
+schema:
+  type: object"
+  properties:
+    csrf_token:
+      type: string
+      description: CSRF Token
+      example: "AbCdEfGhIjKlMnOp.QrStUv.WxYzAbCdEfGhIjKlMnOpAbCd_EfGhIjKlMnOpQrStUv"
+    deviationid:
+      type: integer
+      example: 123456789

@@ -1,0 +1,16 @@
+post:
+  summary: Delete a deviation or journal.
+  operationId: deleteDeviationOrJournal
+  description: Delete a deviation or journal.
+  consumes:
+  - "application/json"
+  - "text/plain"
+  - "*/*"
+  tags:
+    - Deviations
+    - Journals
+  parameters:
+    - $ref: "../../parameters/body/deleteDeviationOrJournalBody.yaml"
+  responses:
+    '200':
+      description: Successfully fetched extended deviation information.

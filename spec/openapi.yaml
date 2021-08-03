@@ -16,6 +16,10 @@ tags:
 paths:
   /deviation/extended_fetch:
     $ref: "./resources/deviation/extended_fetch.yaml"
+  /deviation/delete:
+    $ref: "./resources/deviation/delete.yaml"
+  /journal/create:
+    $ref: "./resources/journal/create.yaml"
 components:
   parameters:
     $ref: "./parameters/_index.yaml"
