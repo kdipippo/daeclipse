@@ -1,0 +1,7 @@
+name: deviation
+in: query
+description: Deviation ID.
+required: true
+schema:
+  type: integer
+  example: 123456789

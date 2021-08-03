@@ -1,0 +1,13 @@
+# path
+petId:
+  $ref: './path/petId.yaml'
+
+# query
+deviationId:
+  $ref: './query/deviationId.yaml'
+extendedFetchIncludeSession:
+  $ref: './query/extendedFetchIncludeSession.yaml'
+extendedFetchType:
+  $ref: './query/extendedFetchType.yaml'
+username:
+  $ref: './query/username.yaml'

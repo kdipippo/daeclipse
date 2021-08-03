@@ -2,3 +2,6 @@
 .idea/
 __pycache__/
 venv/
+.env
+_build/openapi.yaml
+node_modules/

@@ -1,0 +1,21 @@
+get:
+  summary: Get extended information for a Deviation.
+  operationId: getExtendedDeviationByID
+  description: Extended information for a specific Deviation.
+  tags:
+    - Deviations
+
+  parameters:
+    - $ref: "../../parameters/query/deviationId.yaml"
+    - $ref: "../../parameters/query/username.yaml"
+    - $ref: "../../parameters/query/extendedFetchType.yaml"
+    - $ref: "../../parameters/query/extendedFetchIncludeSession.yaml"
+  responses:
+    '200':
+      description: Successfully fetched extended deviation information.
+      content:
+        application/json:
+          schema:
+            $ref: "../../schemas/EclipseDeviationExtended.yaml"
+    default:
+      $ref: "../../responses/UnexpectedError.yaml"

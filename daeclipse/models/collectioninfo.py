@@ -1,17 +1,17 @@
-"""Model to represent DeviantArt Eclipse Group Folder."""
+"""Model to represent DeviantArt Eclipse Collection Info."""
 
 from daeclipse.models.deviation import EclipseDeviation
 from daeclipse.models.gruser import EclipseGruser
 
 
-class EclipseFolder(object):  # noqa: WPS230
-    """Model to represent DeviantArt Eclipse Group Folder."""
+class EclipseCollectionInfo(object):
+    """Model to represent DeviantArt Eclipse Deviation Info."""
 
     def __init__(self, input_dict=None):
-        """Initialize EclipseFolder.
+        """Initialize EclipseCollectionInfo.
 
         Args:
-            input_dict (dict, optional): Dict of EclipseFolder class attrs.
+            input_dict (dict, optional): Dict of EclipseCollectionInfo class attrs.
         """
         self.folder_id = None
         self.gallection_uuid = None
@@ -23,24 +23,14 @@ class EclipseFolder(object):  # noqa: WPS230
         self.comment_count = None
         self.size = None
         self.thumb = None
-        self.has_sub_folders = None
-        self.total_item_count = None
         if input_dict is not None and isinstance(input_dict, dict):
             self.from_dict(input_dict)
-
-    def __repr__(self):
-        """Representation of EclipseFolder.
-
-        Returns:
-            string: EclipseFolder representation.
-        """
-        return self.folder_id
 
     def from_dict(self, input_dict):
         """Convert input_dict values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing EclipseFolder fields.
+            input_dict (dict): Dict containing EclipseCollectionInfo fields.
         """
         if input_dict is None:
             return
@@ -53,6 +43,4 @@ class EclipseFolder(object):  # noqa: WPS230
         self.owner = EclipseGruser(input_dict.get('owner'))
         self.comment_count = input_dict.get('commentCount')
         self.size = input_dict.get('size')
-        self.thumb = EclipseDeviation(input_dict.get('thumb'))
-        self.has_sub_folders = input_dict.get('hasSubfolders')
-        self.total_item_count = input_dict.get('totalItemCount')
+        self.thumb = EclipseDeviation(input_dict.get('folderId'))

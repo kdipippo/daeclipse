@@ -1,0 +1,7 @@
+name: type
+in: query
+description: Extended fetch type, always art.
+required: true
+schema:
+  type: string
+  enum: ["art"]

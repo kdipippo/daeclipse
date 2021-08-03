@@ -1,5 +1,7 @@
 # dAEclipse
-`daeclipse` is a Python library for DeviantArt Eclipse functionality.
+![PyPI](https://img.shields.io/pypi/v/daeclipse) ![PyPI - Downloads](https://img.shields.io/pypi/dm/daeclipse)
+
+[daeclipse](https://pypi.org/project/daeclipse/) is a Python library for DeviantArt Eclipse functionality.
 
 This repo also contains a handy CLI to expose and test `daeclipse` capabilities.
 
@@ -61,4 +63,5 @@ The implementation in this library relies on the DeviantArt NAPI. As such, funct
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. Please make sure to update tests as appropriate.
 
 ## License
+![PyPI - License](https://img.shields.io/pypi/l/daeclipse)
 [MIT](https://github.com/Pepper-Wood/daeclipse/blob/main/LICENSE)

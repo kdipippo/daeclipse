@@ -1,0 +1,23 @@
+type: object
+required:
+- views
+- today
+- shares
+- downloads
+- groups
+properties:
+  views:
+    type: integer
+    example: 175039
+  today:
+    type: integer
+    example: 1
+  shares:
+    type: integer
+    example: 0
+  downloads:
+    type: integer
+    example: 183
+  groups:
+    type: integer
+    example: 0

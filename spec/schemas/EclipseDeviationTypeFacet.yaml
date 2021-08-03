@@ -1,0 +1,15 @@
+type: object
+required:
+- linkTo
+- urlFragment
+- displayNameEn
+properties:
+  linkTo:
+    type: string
+    example: "https://www.deviantart.com/deviations/visual-art/"
+  urlFragment:
+    type: string
+    example: "visual-art"
+  displayNameEn:
+    type: string
+    example: "Visual Art"

@@ -1,5 +1,7 @@
 """Model to represent DeviantArt Eclipse Deviation."""
 
+from daeclipse.models.deviationextendedcontent import EclipseDeviationExtendedContent
+from daeclipse.models.deviationmedia import EclipseDeviationMedia
 from daeclipse.models.gruser import EclipseGruser
 from daeclipse.models.stats import EclipseStats
 
@@ -41,6 +43,7 @@ class EclipseDeviation(object):  # noqa: WPS230
         self.author = None
         self.stats = None
         self.media = None
+        self.extended = None
         if input_dict is not None and isinstance(input_dict, dict):
             self.from_dict(input_dict)
 
@@ -85,11 +88,14 @@ class EclipseDeviation(object):  # noqa: WPS230
         self.is_daily_deviation = input_dict.get('isDailyDeviation')
         self.has_private_comments = input_dict.get('hasPrivateComments')
         self.block_reasons = input_dict.get('blockReasons')
+        self.author = EclipseGruser(input_dict.get('author'))
+        self.stats = EclipseStats(input_dict.get('stats'))
+        self.media = EclipseDeviationMedia(input_dict.get('media'))
+        self.extended = EclipseDeviationExtendedContent(input_dict.get('extended'))
 
-        self.author = EclipseGruser()
-        self.author.from_dict(input_dict.get('author'))
-
-        self.stats = EclipseStats()
-        self.stats.from_dict(input_dict.get('stats'))
-
-        self.media = input_dict.get('media')
+    def get_tag_names(self):
+        if self.extended is None:
+            return []
+        if self.extended.tags is None:
+            return []
+        return [tag.name for tag in self.extended.tags]

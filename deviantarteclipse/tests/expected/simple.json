@@ -1,0 +1,30 @@
+{
+    "blocks": [
+        {
+            "key": "foo",
+            "text": "This is an example journal main content.",
+            "type": "unstyled",
+            "depth": 0,
+            "inlineStyleRanges": [
+                {
+                    "offset": 11,
+                    "length": 7,
+                    "style": "BOLD"
+                },
+                {
+                    "offset": 19,
+                    "length": 7,
+                    "style": "ITALIC"
+                },
+                {
+                    "offset": 27,
+                    "length": 4,
+                    "style": "UNDERLINE"
+                }
+            ],
+            "entityRanges": [],
+            "data": {}
+        }
+    ],
+    "entityMap": {}
+}

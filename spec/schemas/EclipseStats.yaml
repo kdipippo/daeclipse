@@ -1,0 +1,11 @@
+type: object
+required:
+- comments
+- favourites
+properties:
+  comments:
+    type: integer
+    example: 18
+  favourites:
+    type: integer
+    example: 2063

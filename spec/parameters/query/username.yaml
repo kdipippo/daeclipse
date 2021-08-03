@@ -1,0 +1,8 @@
+name: username
+in: query
+description: DeviantArt username.
+required: true
+schema:
+  type: string
+  maxLength: 20
+  example: ExampleUsername
