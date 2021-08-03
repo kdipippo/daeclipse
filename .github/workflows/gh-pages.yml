@@ -19,6 +19,8 @@ jobs:
         uses: snok/install-poetry@v1
       - name: PDOC - Install dependencies
         run: poetry install --no-interaction
+      - name: PDOC - Install pdoc
+        run: pip install pdoc
       - name: PDOC - Build pdoc HTML
         run: pdoc daeclipse/ --output-directory _build/python/
       - name: OPENAPI - Setup Node
