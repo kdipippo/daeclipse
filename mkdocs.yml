@@ -1,0 +1,10 @@
+site_name: dAEclipse
+site_url: https://www.kathryndipippo.com/daeclipse
+repo_url: https://github.com/Pepper-Wood/daeclipse/
+nav:
+  - Home: index.md
+  - About: about.md
+  - 'Python Package Reference': https://www.kathryndipippo.com/daeclipse/python
+  - 'API Reference': https://www.kathryndipippo.com/daeclipse/api
+theme: mkdocs
+

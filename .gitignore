@@ -3,5 +3,5 @@
 __pycache__/
 venv/
 .env
-_build/openapi.yaml
+_build/
 node_modules/

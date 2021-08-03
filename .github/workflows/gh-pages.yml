@@ -5,60 +5,54 @@ on:
     branches: [main]
 
 jobs:
-  gh-release:
+  python-html:
     runs-on: ubuntu-latest
     steps:
-      #----------------------------------------------
-      #       check-out repo and set-up python     
-      #----------------------------------------------
       - name: Check out repository
         uses: actions/checkout@v2
       - name: Set up python
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
-      #----------------------------------------------
-      #  -----  install & configure poetry  -----      
-      #----------------------------------------------
       - name: Install Poetry
         uses: snok/install-poetry@v1
         with:
           virtualenvs-create: true
           virtualenvs-in-project: true
-      #----------------------------------------------
-      #       load cached venv if cache exists      
-      #----------------------------------------------
       - name: Load cached venv
         id: cached-poetry-dependencies
         uses: actions/cache@v2
         with:
           path: .venv
           key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
-      #----------------------------------------------
-      # install dependencies if cache does not exist 
-      #----------------------------------------------
       - name: Install dependencies
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-interaction --no-root
-      #----------------------------------------------
-      # install your root project, if required 
-      #----------------------------------------------      
       - name: Install library
         run: poetry install --no-interaction
 
-      - name: PDOC - Build pdoc HTML
+      - name: Build MkDocs root HTML
+        run: poetry run mkdocs build --site-dir _build/
+      - name: Build PDoc python/ HTML
         run: poetry run pdoc daeclipse/ --output-directory _build/python/
 
-      - name: OPENAPI - Setup Node
+  node-html:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node
         uses: actions/setup-node@v1
         with:
           node-version: '12.x'
-      - name: OPENAPI - Build OpenAPI HTML
+      - name: Build ReDoc api/ HTML
         run: |
           npm ci
           npm run build
           npm run html
 
+  gh-release:
+    needs: [python-html, node-html]
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
