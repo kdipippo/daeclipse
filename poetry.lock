@@ -83,7 +83,7 @@ unicode_backport = ["unicodedata2"]
 
 [[package]]
 name = "cli-ui"
-version = "0.14.1"
+version = "0.15.0"
 description = "Build Nice User Interfaces In The Terminal"
 category = "main"
 optional = false
@@ -472,7 +472,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.6.2,<4.0.0"
-content-hash = "e5af6eceb3f5a25e02606fbb7491b1a5670cf3805179a31388768170ecb01e24"
+content-hash = "0d86f0e85fa4e45d9cff8c27b99ab8fbeadcf21ee9588a842a013cf806f94d45"
 
 [metadata.files]
 atomicwrites = [
@@ -547,8 +547,8 @@ charset-normalizer = [
     {file = "charset_normalizer-2.0.3-py3-none-any.whl", hash = "sha256:88fce3fa5b1a84fdcb3f603d889f723d1dd89b26059d0123ca435570e848d5e1"},
 ]
 cli-ui = [
-    {file = "cli-ui-0.14.1.tar.gz", hash = "sha256:52ec5b9bebcae86356053376c761a14ea5adb55d7bee071dad485766839a3428"},
-    {file = "cli_ui-0.14.1-py3-none-any.whl", hash = "sha256:52ca24d73516880e02a0289e52693b2fcf9c58317e046f9f092176978854c31b"},
+    {file = "cli-ui-0.15.0.tar.gz", hash = "sha256:137ae4f1f936cdb4297ce0ce0e0426d5b50c5617691b0e576e45faed7f2d7732"},
+    {file = "cli_ui-0.15.0-py3-none-any.whl", hash = "sha256:83367964cf15e3379c81dfbd64b5d1855f983c427d9a79c3c41287722d3e087d"},
 ]
 click = [
     {file = "click-7.1.2-py2.py3-none-any.whl", hash = "sha256:dacca89f4bfadd5de3d7489b7c8a566eee0d3676333fbb50030263894c38c0dc"},
