@@ -1,0 +1,27 @@
+post:
+  tags:
+  - Groups
+  summary: Add deviation to a specified group and folder.
+  description: Add deviation to a specified group and folder.
+  operationId: addDeviationToGroup
+  consumes:
+  - "application/json"
+  - "text/plain"
+  - "*/*"
+  parameters:
+  - $ref: "../../parameters/body/addDeviationToGroupBody.yaml"
+  responses:
+    '200':
+      description: Successfully added Deviation to group in selected folder.
+      schema:
+        type: object
+        properties:
+          success:
+            type: boolean
+            example: true
+          needsVote:
+            type: boolean
+            example: false
+          deviationGroupCount:
+            type: integer
+            example: 1

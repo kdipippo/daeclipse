@@ -1,0 +1,15 @@
+in: "body"
+name: "body"
+description: ""
+required: true
+schema:
+  type: "object"
+  properties:
+    csrf_token:
+      type: "string"
+      description: "CSRF token"
+      example: "AbCdEfGhIjKlMnOp.QrStUv.WxYzAbCdEfGhIjKlMnOpAbCd_EfGhIjKlMnOpQrStUv"
+    statusid:
+      type: integerd
+      description: Status ID.
+      example: 1111222233334444

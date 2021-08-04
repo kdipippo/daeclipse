@@ -1,0 +1,40 @@
+type: "object"
+properties:
+  folderId:
+    type: integer
+    example: 12345678
+  gallectionUuid:
+    type: string
+    format: uuid
+    example: "A1B2C3E4-F5G6-H7I8-J9K0-L1M2N3O4P5Q6"
+  parentId:
+    type: integer
+    example: null
+  'type':
+    type: string
+    description: "The category the group folders belong to."
+    enum: ["gallery", "collection"]
+    example: "gallery"
+  name:
+    type: string
+    example: "Featured"
+  description:
+    type: string
+    example: "Example folder description."
+  owner:
+    $ref: "./EclipseGruser.yaml"
+  commentCount:
+    type: integer
+    example: 0
+  size:
+    type: integer
+    example: 0
+  thumb:
+    type: string
+    example: null
+  hasSubFolders:
+    type: string
+    example: false
+  totalItemCount:
+    type: integer
+    example: 0

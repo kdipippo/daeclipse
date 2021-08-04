@@ -1,0 +1,21 @@
+in: "body"
+name: "body"
+description: ""
+required: true
+schema:
+  type: "object"
+  properties:
+    csrf_token:
+      type: "string"
+      description: "CSRF token"
+      example: "AbCdEfGhIjKlMnOp.QrStUv.WxYzAbCdEfGhIjKlMnOpAbCd_EfGhIjKlMnOpQrStUv"
+    deviationid:
+      example: 123456789
+    folderid:
+      example: 12345678
+    groupid:
+      example: 12345678
+    'type':
+      type: string
+      enum: ["gallery", "collection"]
+      example: "gallery"

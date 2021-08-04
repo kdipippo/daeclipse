@@ -1,0 +1,19 @@
+in: "body"
+name: "body"
+description: ""
+required: true
+schema:
+  type: "object"
+  properties:
+    csrf_token:
+      type: "string"
+      description: "CSRF token"
+      example: "AbCdEfGhIjKlMnOp.QrStUv.WxYzAbCdEfGhIjKlMnOpAbCd_EfGhIjKlMnOpQrStUv"
+    deviationid:
+      type: "integer"
+      description: "DeviationID of the created journal."
+      example: 1234567890123456
+    featured:
+      type: boolean
+      description: "Whether journal is featured."
+      example: false

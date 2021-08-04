@@ -1,0 +1,13 @@
+post:
+  summary: Update a journal.
+  description: Update a journal.
+  operationId: updateJournal
+  consumes:
+  - "application/json"
+  tags:
+  - Journals
+  parameters:
+  - $ref: "../../../parameters/body/updateJournalBody.yaml"
+  responses:
+    '200':
+      description: Journal successfully updated.

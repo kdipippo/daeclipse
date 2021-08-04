@@ -3,10 +3,10 @@ post:
   operationId: deleteDeviationOrJournal
   description: Delete a deviation or journal.
   tags:
-    - Deviations
-    - Journals
+  - Deviations
+  - Journals
   parameters:
-    - $ref: "../../parameters/body/createJournalBody.yaml"
+  - $ref: "../../parameters/body/createJournalBody.yaml"
   responses:
     '200':
       description: Journal successfully created.

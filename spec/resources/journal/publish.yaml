@@ -1,0 +1,15 @@
+post:
+  tags:
+  - Journals
+  summary: Publish a created journal.
+  description: Publish a created journal.
+  operationId: publishJournal
+  consumes:
+  - "application/json"
+  - "text/plain"
+  - "*/*"
+  parameters:
+  - $ref: "../../parameters/body/publishJournalBody.yaml"
+  responses:
+    "200":
+      description: Journal successfully published.

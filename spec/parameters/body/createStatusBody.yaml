@@ -1,0 +1,15 @@
+in: "body"
+name: "body"
+description: ""
+required: true
+schema:
+  type: "object"
+  properties:
+    csrf_token:
+      type: "string"
+      description: "CSRF token"
+      example: "AbCdEfGhIjKlMnOp.QrStUv.WxYzAbCdEfGhIjKlMnOpAbCd_EfGhIjKlMnOpQrStUv"
+    editorRaw:
+      type: "string"
+      description: "Status message text with formatting information, stored as a string of a json object. See EditorRaw definition for object pre-stringify."
+      example: "{\"blocks\":[{\"key\":\"foo\",\"text\":\"This is an example status message with all basic formatting options.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":11,\"length\":7,\"style\":\"UNDERLINE\"},{\"offset\":39,\"length\":3,\"style\":\"BOLD\"},{\"offset\":49,\"length\":10,\"style\":\"ITALIC\"}],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}"

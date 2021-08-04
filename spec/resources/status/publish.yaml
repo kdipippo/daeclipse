@@ -1,0 +1,15 @@
+post:
+  tags:
+  - "Statuses"
+  summary: "Publish a status"
+  description: ""
+  operationId: "publish"
+  consumes:
+  - "application/json"
+  - "text/plain"
+  - "*/*"
+  parameters:
+  - $ref: "../../parameters/body/publishStatusBody.yaml"
+  responses:
+    "200":
+      description: Status message successfully published.

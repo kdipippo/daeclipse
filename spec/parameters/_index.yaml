@@ -1,3 +1,11 @@
+# body
+createJournalBody:
+  $ref: './body/createJournalBody.yaml'
+deleteDeviationOrJournalBody:
+  $ref: './body/deleteDeviationOrJournalBody.yaml'
+updateJournalBody:
+  $ref: './body/updateJournalBody.yaml'
+
 # path
 petId:
   $ref: './path/petId.yaml'
@@ -9,5 +17,7 @@ extendedFetchIncludeSession:
   $ref: './query/extendedFetchIncludeSession.yaml'
 extendedFetchType:
   $ref: './query/extendedFetchType.yaml'
+limit:
+  $ref: './query/limit.yaml'
 username:
   $ref: './query/username.yaml'

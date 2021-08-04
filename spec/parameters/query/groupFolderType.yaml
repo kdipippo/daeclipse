@@ -1,0 +1,6 @@
+name: "type"
+in: "query"
+description: Type of folder to return, either 'gallery' folders or 'favorites' folders.
+required: true
+type: "string"
+enum: ["gallery", "collection"]

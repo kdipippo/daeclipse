@@ -1,0 +1,15 @@
+post:
+  tags:
+  - "Statuses"
+  summary: "Create a status"
+  description: ""
+  operationId: "createStatus"
+  consumes:
+  - "application/json"
+  - "text/plain"
+  - "*/*"
+  parameters:
+  - $ref: "../../parameters/body/createStatusBody.yaml"
+  responses:
+    "200":
+      description: Status message successfully created.

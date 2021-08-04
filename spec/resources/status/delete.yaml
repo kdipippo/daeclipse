@@ -1,0 +1,15 @@
+post:
+  tags:
+  - "Statuses"
+  summary: "Delete a status"
+  description: ""
+  operationId: "deleteStatus"
+  consumes:
+  - "application/json"
+  - "text/plain"
+  - "*/*"
+  parameters:
+  - $ref: "../../parameters/body/deleteStatusBody.yaml"
+  responses:
+    "200":
+      description: "Status message successfully deleted."

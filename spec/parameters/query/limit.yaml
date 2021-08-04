@@ -1,0 +1,5 @@
+name: limit
+in: query
+description: The number of groups to return.
+required: true
+type: number

@@ -20,6 +20,22 @@ paths:
     $ref: "./resources/deviation/delete.yaml"
   /journal/create:
     $ref: "./resources/journal/create.yaml"
+  /journal/update/content:
+    $ref: "./resources/journal/update/content.yaml"
+  /journal/publish:
+    $ref: "./resources/journal/publish.yaml"
+  /deviation/groups:
+    $ref: "./resources/deviation/groups.yaml"
+  /deviation/group_folders:
+    $ref: "./resources/deviation/group_folders.yaml"
+  /deviation/group_add:
+    $ref: "./resources/deviation/group_add.yaml"
+  /status/create:
+    $ref: "./resources/status/create.yaml"
+  /status/publish:
+    $ref: "./resources/status/publish.yaml"
+  /status/delete:
+    $ref: "./resources/status/delete.yaml"
 components:
   parameters:
     $ref: "./parameters/_index.yaml"
