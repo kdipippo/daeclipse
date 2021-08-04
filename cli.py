@@ -167,6 +167,16 @@ def hot_tags(
             json.dump(popular_tags, outfile)
 
 
+@app.command()
+def testing():
+    """TESTING - going to try creating a status via the CLI."""
+    eclipse = daeclipse.Eclipse()
+    deviation_url = "https://www.deviantart.com/pepper-wood/art/Gawr-Gura-gif-868331085"
+    content = "This is a test status generated via a Python script."
+    tags = eclipse.create_status(deviation_url, content)
+    cli_ui.info_1(tags)
+
+
 def get_username_from_url(deviation_url):
     """Regex parse deviation URL to retrieve username.
 

@@ -6,6 +6,7 @@ import re
 import browser_cookie3
 import requests
 from bs4 import BeautifulSoup
+from html_to_draftjs import html_to_draftjs
 
 from daeclipse.models.deviationextended import EclipseDeviationExtended
 from daeclipse.models.folder import EclipseFolder
@@ -147,6 +148,29 @@ class Eclipse(object):
             return '✅ Deviation added to folder and automatically approved'
         return '⌛ Deviation submitted to folder and pending mod approval'
 
+    def create_status(self, deviation_url, html_content):
+        # this still requires deviation_url just to extract a csrf token for the API call
+        # maybe this instead just fetches whatever deviantart window is open???????
+        group_add_url = ''.join([
+            self.base_uri,
+            '/shared_api/status/create',
+        ])
+        headers = {
+            'accept': 'application/json, text/plain, */*',
+            'content-type': 'application/json;charset=UTF-8',
+        }
+        payload = json.dumps({
+            'csrf_token': get_csrf(deviation_url, self.cookies),
+            'editorRaw': html_to_draftjs(html_content)
+        })
+
+        response = requests.post(
+            group_add_url,
+            cookies=self.cookies,
+            headers=headers,
+            data=payload,
+        )
+        # NOTE: response will be empty except for status code, need to check status code I guess.
 
 def get_deviation_id(deviation_url):
     """Extract the deviation_id from the full deviantart image URL.
