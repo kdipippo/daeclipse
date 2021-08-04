@@ -1,5 +1,5 @@
-name: include_session
 in: query
+name: include_session
 description: Include session, always true.
 required: true
 schema:

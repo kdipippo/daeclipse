@@ -1,7 +1,3 @@
-# path
-petId:
-  $ref: './path/petId.yaml'
-
 # query
 deviationId:
   $ref: './query/deviationId.yaml'
@@ -9,5 +5,11 @@ extendedFetchIncludeSession:
   $ref: './query/extendedFetchIncludeSession.yaml'
 extendedFetchType:
   $ref: './query/extendedFetchType.yaml'
+groupFolderType:
+  $ref: './query/groupFolderType.yaml'
+groupId:
+  $ref: './query/groupId.yaml'
+limit:
+  $ref: './query/limit.yaml'
 username:
   $ref: './query/username.yaml'

@@ -1,0 +1,31 @@
+post:
+  tags:
+  - Statuses
+  summary: Delete a status.
+  description: Delete a status.
+  operationId: deleteStatus
+  requestBody:
+    description: Body for deleting a status.
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            csrf_token:
+              type: string
+              description: CSRF Token
+              example: "AbCdEfGhIjKlMnOp.QrStUv.WxYzAbCdEfGhIjKlMnOpAbCd_EfGhIjKlMnOpQrStUv"
+            statusid:
+              type: integer
+              format: int64
+              description: Status message ID
+              example: 12345678
+            userid:
+              type: integer
+              format: int64
+              description: DeviantArt User ID
+              example: 12345678
+  responses:
+    '200':
+      description: Status message successfully deleted.

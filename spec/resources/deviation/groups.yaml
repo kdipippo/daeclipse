@@ -1,0 +1,15 @@
+get:
+  tags:
+  - Groups
+  summary: Get a list of groups associated with the logged-in user.
+  description: Get a list of groups associated with the logged-in user.
+  operationId: getGroups
+  parameters:
+    - $ref: "../../parameters/query/limit.yaml"
+  responses:
+    "200":
+      description: Successfully fetched a list of DeviantArt groups.
+      content:
+        application/json:
+          schema:
+            $ref: "../../schemas/EclipseGroups.yaml"

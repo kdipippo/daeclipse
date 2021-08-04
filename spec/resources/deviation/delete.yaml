@@ -1,0 +1,25 @@
+post:
+  summary: Delete a deviation or journal.
+  operationId: deleteDeviationOrJournal
+  description: Delete a deviation or journal.
+  tags:
+    - Deviations
+    - Journals
+  requestBody:
+    description: Body for deleting deviation or journal.
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            csrf_token:
+              type: string
+              description: CSRF Token
+              example: "AbCdEfGhIjKlMnOp.QrStUv.WxYzAbCdEfGhIjKlMnOpAbCd_EfGhIjKlMnOpQrStUv"
+            deviationid:
+              type: integer
+              example: 123456789
+  responses:
+    '200':
+      description: Successfully fetched extended deviation information.

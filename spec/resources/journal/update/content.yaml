@@ -1,0 +1,29 @@
+post:
+  summary: Update a journal.
+  description: Update a journal.
+  operationId: updateJournal
+  tags:
+  - Journals
+  requestBody:
+    description: Body for updating a journal.
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            csrf_token:
+              type: string
+              description: "CSRF token"
+              example: "AbCdEfGhIjKlMnOp.QrStUv.WxYzAbCdEfGhIjKlMnOpAbCd_EfGhIjKlMnOpQrStUv"
+            editorRaw:
+              type: string
+              description: Journal body as stringified draft-js payload.
+              example: "{\"blocks\":[{\"key\":\"foo\",\"text\":\"This is an example journal main content.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":11,\"length\":7,\"style\":\"BOLD\"},{\"offset\":19,\"length\":7,\"style\":\"ITALIC\"},{\"offset\":27,\"length\":4,\"style\":\"UNDERLINE\"}],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}"
+            title:
+              type: string
+              description: "Journal title"
+              example: "This is an example title."
+  responses:
+    '200':
+      description: Journal successfully updated.

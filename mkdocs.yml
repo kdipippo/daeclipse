@@ -56,5 +56,6 @@ site_dir: _build
 nav:
   - Home: index.md
   - About: about.md
+  - Development: development.md
   - 'Python Package Reference': https://www.kathryndipippo.com/daeclipse/python
   - 'API Reference': https://www.kathryndipippo.com/daeclipse/api

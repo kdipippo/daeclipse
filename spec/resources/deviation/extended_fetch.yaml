@@ -17,5 +17,3 @@ get:
         application/json:
           schema:
             $ref: "../../schemas/EclipseDeviationExtended.yaml"
-    default:
-      $ref: "../../responses/UnexpectedError.yaml"

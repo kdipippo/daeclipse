@@ -1,0 +1,7 @@
+in: query
+name: groupid
+description: Group ID to query for folder list.
+required: true
+schema:
+  type: number
+

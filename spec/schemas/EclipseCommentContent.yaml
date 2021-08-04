@@ -14,6 +14,7 @@ properties:
         example: draft
       markup:
         type: string
+        description: Comment content as stringified draft-js payload.
         example: "{\"blocks\":[{\"key\":\"foo\",\"text\":\"Great...:) http://itscash.cf/\\n\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[{\"offset\":8,\"length\":3,\"key\":0},{\"offset\":11,\"length\":18,\"key\":1}],\"data\":{}}],\"entityMap\":{\"0\":{\"type\":\"DA_OFF_EMOTE\",\"mutability\":\"IMMUTABLE\",\"data\":{\"emote\":\":) \"}},\"1\":{\"type\":\"LINK\",\"mutability\":\"MUTABLE\",\"data\":{\"url\":\"http://itscash.cf/\"}}}}"
       features:
         type: string

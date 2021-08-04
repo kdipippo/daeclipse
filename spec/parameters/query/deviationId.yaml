@@ -1,5 +1,5 @@
-name: deviation
 in: query
+name: deviation
 description: Deviation ID.
 required: true
 schema:

@@ -1,0 +1,16 @@
+get:
+  tags:
+  - Groups
+  summary: Get the list of folders associated with a group.
+  description: Get the list of folders associated with a group.
+  operationId: getGroupFolders
+  parameters:
+    - $ref: "../../parameters/query/groupId.yaml"
+    - $ref: "../../parameters/query/groupFolderType.yaml"
+  responses:
+    "200":
+      description: Successfully fetched the list of folders for the DeviantArt group.
+      content:
+        application/json:
+          schema:
+            $ref: "../../schemas/EclipseGroupFolders.yaml"
