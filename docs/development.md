@@ -27,7 +27,7 @@ Code for all of the above follows the [wemake-python-styleguide](https://github.
 `pdoc` is used for automated Python documentation generation. All documentation is generated on the `main` branch into a `build/python/` folder, which is then deployed to the `gh-pages` branch via the GitHub Actions workflow [gh-pages.yml](https://github.com/Pepper-Wood/daeclipse/blob/main/.github/workflows/gh-pages.yml).
 
 ### Publishing
-The GitHub Actions workflow [pypi.yml](https://github.com/Pepper-Wood/daeclipse/blob/main/.github/workflows/pypi.yml) uses `JRubics/poetry-publish` to publish the `daeclipse` folder contents to pypi.org.
+The GitHub Actions workflow [pypi.yml](https://github.com/Pepper-Wood/daeclipse/blob/main/.github/workflows/pypi.yml) uses `JRubics/poetry-publish` to publish the `daeclipse` folder contents to pypi.org. Releases are published after a release is tagged on GitHub, formatted as `v*.*.*`.
 
 ## OpenAPI Spec Development
 
