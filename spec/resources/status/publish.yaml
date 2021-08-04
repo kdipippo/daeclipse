@@ -1,15 +1,25 @@
 post:
   tags:
-  - "Statuses"
-  summary: "Publish a status"
-  description: ""
-  operationId: "publish"
-  consumes:
-  - "application/json"
-  - "text/plain"
-  - "*/*"
-  parameters:
-  - $ref: "../../parameters/body/publishStatusBody.yaml"
+  - Statuses
+  summary: Publish a status.
+  description: Publish a status.
+  operationId: publishStatus
+  requestBody:
+    description: Body for deleting deviation or journal.
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            csrf_token:
+              type: string
+              description: CSRF token
+              example: "AbCdEfGhIjKlMnOp.QrStUv.WxYzAbCdEfGhIjKlMnOpAbCd_EfGhIjKlMnOpQrStUv"
+            statusid:
+              type: integer
+              description: Status ID.
+              example: 1111222233334444
   responses:
     "200":
       description: Status message successfully published.

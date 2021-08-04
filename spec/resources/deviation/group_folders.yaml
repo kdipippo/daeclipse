@@ -4,10 +4,6 @@ get:
   summary: Get the list of folders associated with a group.
   description: Get the list of folders associated with a group.
   operationId: getGroupFolders
-  consumes:
-  - "application/json"
-  - "text/plain"
-  - "*/*"
   parameters:
     - $ref: "../../parameters/query/groupId.yaml"
     - $ref: "../../parameters/query/groupFolderType.yaml"

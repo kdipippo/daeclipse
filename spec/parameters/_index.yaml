@@ -1,21 +1,3 @@
-# body
-addDeviationToGroupBody:
-  $ref: './body/addDeviationToGroupBody.yaml'
-createJournalBody:
-  $ref: './body/createJournalBody.yaml'
-createStatusBody:
-  $ref: './body/createStatusBody.yaml'
-deleteDeviationOrJournalBody:
-  $ref: './body/deleteDeviationOrJournalBody.yaml'
-deleteStatusBody:
-  $ref: './body/deleteStatusBody.yaml'
-publishJournalBody:
-  $ref: './body/publishJournalBody.yaml'
-publishStatusBody:
-  $ref: './body/publishStatusBody.yaml'
-updateJournalBody:
-  $ref: './body/updateJournalBody.yaml'
-
 # query
 deviationId:
   $ref: './query/deviationId.yaml'

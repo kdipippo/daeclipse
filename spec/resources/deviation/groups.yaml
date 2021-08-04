@@ -4,10 +4,6 @@ get:
   summary: Get a list of groups associated with the logged-in user.
   description: Get a list of groups associated with the logged-in user.
   operationId: getGroups
-  consumes:
-  - "application/json"
-  - "text/plain"
-  - "*/*"
   parameters:
     - $ref: "../../parameters/query/limit.yaml"
   responses:

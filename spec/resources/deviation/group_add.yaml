@@ -4,24 +4,42 @@ post:
   summary: Add deviation to a specified group and folder.
   description: Add deviation to a specified group and folder.
   operationId: addDeviationToGroup
-  consumes:
-  - "application/json"
-  - "text/plain"
-  - "*/*"
-  parameters:
-  - $ref: "../../parameters/body/addDeviationToGroupBody.yaml"
+  requestBody:
+    description: Body for adding deviiation to a specified group and folder.
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            csrf_token:
+              type: "string"
+              description: "CSRF token"
+              example: "AbCdEfGhIjKlMnOp.QrStUv.WxYzAbCdEfGhIjKlMnOpAbCd_EfGhIjKlMnOpQrStUv"
+            deviationid:
+              example: 123456789
+            folderid:
+              example: 12345678
+            groupid:
+              example: 12345678
+            'type':
+              type: string
+              enum: ["gallery", "collection"]
+              example: "gallery"
   responses:
     '200':
       description: Successfully added Deviation to group in selected folder.
-      schema:
-        type: object
-        properties:
-          success:
-            type: boolean
-            example: true
-          needsVote:
-            type: boolean
-            example: false
-          deviationGroupCount:
-            type: integer
-            example: 1
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: true
+              needsVote:
+                type: boolean
+                example: false
+              deviationGroupCount:
+                type: integer
+                example: 1

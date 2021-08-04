@@ -1,5 +1,5 @@
-name: username
 in: query
+name: username
 description: DeviantArt username.
 required: true
 schema:

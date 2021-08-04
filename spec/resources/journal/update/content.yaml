@@ -2,12 +2,28 @@ post:
   summary: Update a journal.
   description: Update a journal.
   operationId: updateJournal
-  consumes:
-  - "application/json"
   tags:
   - Journals
-  parameters:
-  - $ref: "../../../parameters/body/updateJournalBody.yaml"
+  requestBody:
+    description: Body for updating a journal.
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            csrf_token:
+              type: string
+              description: "CSRF token"
+              example: "AbCdEfGhIjKlMnOp.QrStUv.WxYzAbCdEfGhIjKlMnOpAbCd_EfGhIjKlMnOpQrStUv"
+            editorRaw:
+              type: string
+              description: "Journal body text with formatting information, stored as a string of a json object. See EditorRaw definition for object pre-stringify."
+              example: "{\"blocks\":[{\"key\":\"foo\",\"text\":\"This is an example journal main content.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":11,\"length\":7,\"style\":\"BOLD\"},{\"offset\":19,\"length\":7,\"style\":\"ITALIC\"},{\"offset\":27,\"length\":4,\"style\":\"UNDERLINE\"}],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}"
+            title:
+              type: string
+              description: "Journal title"
+              example: "This is an example title."
   responses:
     '200':
       description: Journal successfully updated.

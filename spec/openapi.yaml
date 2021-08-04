@@ -13,6 +13,13 @@ servers:
   - url: https://www.deviantart.com/_napi/shared_api
 tags:
 - name: Deviations
+  description: Operations relating to artwork posts, Deviations.
+- name: Groups
+  description: Operations relating to DeviantArt Groups.
+- name: Journals
+  description: Operations relating to blog posts, Journals.
+- name: Statuses
+  description: Operations relating to tweet-like posts, Statuses.
 paths:
   /deviation/extended_fetch:
     $ref: "./resources/deviation/extended_fetch.yaml"

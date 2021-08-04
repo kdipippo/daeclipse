@@ -1,6 +1,7 @@
-name: "type"
-in: "query"
+in: query
+name: type
 description: Type of folder to return, either 'gallery' folders or 'favorites' folders.
 required: true
-type: "string"
-enum: ["gallery", "collection"]
+schema:
+  type: string
+  enum: ["gallery", "collection"]
