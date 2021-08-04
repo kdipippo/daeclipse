@@ -1,14 +1,20 @@
 # body
+addDeviationToGroupBody:
+  $ref: './body/addDeviationToGroupBody.yaml'
 createJournalBody:
   $ref: './body/createJournalBody.yaml'
+createStatusBody:
+  $ref: './body/createStatusBody.yaml'
 deleteDeviationOrJournalBody:
   $ref: './body/deleteDeviationOrJournalBody.yaml'
+deleteStatusBody:
+  $ref: './body/deleteStatusBody.yaml'
+publishJournalBody:
+  $ref: './body/publishJournalBody.yaml'
+publishStatusBody:
+  $ref: './body/publishStatusBody.yaml'
 updateJournalBody:
   $ref: './body/updateJournalBody.yaml'
-
-# path
-petId:
-  $ref: './path/petId.yaml'
 
 # query
 deviationId:
@@ -17,6 +23,10 @@ extendedFetchIncludeSession:
   $ref: './query/extendedFetchIncludeSession.yaml'
 extendedFetchType:
   $ref: './query/extendedFetchType.yaml'
+groupFolderType:
+  $ref: './query/groupFolderType.yaml'
+groupId:
+  $ref: './query/groupId.yaml'
 limit:
   $ref: './query/limit.yaml'
 username:
