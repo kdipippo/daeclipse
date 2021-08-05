@@ -168,13 +168,20 @@ def hot_tags(
 
 
 @app.command()
-def testing():
-    """TESTING - going to try creating a status via the CLI."""
+def post_status():
+    """Post a DeviantArt status."""
     eclipse = daeclipse.Eclipse()
-    deviation_url = "https://www.deviantart.com/lialia-gzzz/art/Set-Price-Chibi-Adopt-2-5-6-887833839"
-    content = "This is a <b>test status</b> generated via a <i>Python script</i>."
-    tags = eclipse.create_status(deviation_url, content)
-    cli_ui.info_1(tags)
+    cli_ui.info_1("The API requires a deviation URL to extract an authorization token.")
+    # deviation_url = cli_ui.ask_string('Paste deviation URL: ')
+    deviation_url = "https://www.deviantart.com/pepper-wood/art/Gawr-Gura-gif-868331085"
+    # content = cli_ui.ask_string('Enter HTML-formatted status text: ')
+    content = "This is a <b>generated</b> status sent via a <i>Python CLI</i>, WOO!!!"
+
+    try:
+        result = eclipse.post_status(deviation_url, content)
+        cli_ui.info(result)
+    except RuntimeError as status_error:
+        cli_ui.error(str(status_error))
 
 
 def get_username_from_url(deviation_url):

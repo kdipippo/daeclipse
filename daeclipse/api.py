@@ -149,9 +149,17 @@ class Eclipse(object):
             return '✅ Deviation added to folder and automatically approved'
         return '⌛ Deviation submitted to folder and pending mod approval'
 
-    def create_status(self, deviation_url, html_content):
-        # this still requires deviation_url just to extract a csrf token for the API call
-        # maybe this instead just fetches whatever deviantart window is open???????
+    def post_status(self, deviation_url, html_content):
+        """Create a status to sta.sh and publish from sta.sh to DeviantArt.
+
+        Args:
+            deviation_url (string): Deviation URL, just for CSRF purposes.
+            html_content (string): Text content of message in HTML-format.
+
+        Returns:
+            string: Success message of result.
+        """
+        # POST /status/create creates a sta.sh post from the provided payload.
         create_status_url = ''.join([
             self.base_uri,
             '/shared_api/status/create',
@@ -159,6 +167,8 @@ class Eclipse(object):
         headers = {
             'accept': 'application/json, text/plain, */*',
             'content-type': 'application/json;charset=UTF-8',
+            'origin': 'https://www.deviantart.com',
+            'referer': deviation_url,
         }
         csrf_token = get_csrf(deviation_url, self.cookies)
         payload = json.dumps({
@@ -172,27 +182,34 @@ class Eclipse(object):
             data=payload,
         )
         rjson = json.loads(response.text)
-        if rjson.get('deviation') and rjson['deviation'].get('deviationId'):
-            # going to just hack this forward, even though it's dirty. Next step is to run the call to publish this sta.sh journal.
-            publish_status_url = ''.join([
-                self.base_uri,
-                '/shared_api/status/publish',
-            ])
-            headers = {
-                'accept': 'application/json, text/plain, */*',
-                'content-type': 'application/json;charset=UTF-8',
-            }
-            payload = json.dumps({
-                'csrf_token': csrf_token,
-                'statusid': rjson['deviation'].get('deviationId')
-            })
-            response = requests.post(
-                publish_status_url,
-                cookies=self.cookies,
-                headers=headers,
-                data=payload,
-            )
-            print(response.text)
+        if not rjson.get('deviation') or 'error' in rjson:
+            print(response.status_code)
+            raise_error(rjson)
+
+        # POST /status/publish moves the status from sta.sh to DeviantArt.
+        publish_status_url = ''.join([
+            self.base_uri,
+            '/shared_api/status/publish',
+        ])
+        headers = {
+            'accept': 'application/json, text/plain, */*',
+            'content-type': 'application/json;charset=UTF-8',
+        }
+        # statusid is the sta.sh ID, not the production DeviantArt status ID.
+        payload = json.dumps({
+            'csrf_token': csrf_token,
+            'statusid': rjson['deviation'].get('deviationId')
+        })
+        response = requests.post(
+            publish_status_url,
+            cookies=self.cookies,
+            headers=headers,
+            data=payload,
+        )
+        rjson = json.loads(response.text)
+        if not rjson.get('deviation') or 'error' in rjson:
+            raise_error(rjson)
+        return '✅ Status created: {0}'.format(rjson['deviation'].get('url'))
 
 
 def get_deviation_id(deviation_url):
@@ -235,10 +252,27 @@ def get_csrf(deviation_url, cookies):
 
     Returns:
         string: CSRF validation token.
+
+    Raises:
+        RuntimeError: Unable to retrieve CSRF token from provided URL.
     """
     page = requests.get(deviation_url, cookies=cookies)
     soup = BeautifulSoup(page.text, 'html.parser')
-    return soup.find('input', {'name': 'validate_token'})['value']
+
+    # Check if CSRF is stored in <input type="hidden" name="validate_token" value="CSRF" />.
+    token_element = soup.find('input', {'name': 'validate_token'})
+    if token_element is not None:
+        return token_element.get('value')
+
+    # Check if window.__CSRF_TOKEN__ = 'CSRF'; snippet is present.
+    window_csrf_regex = r"window.__CSRF_TOKEN__ = '(.*)';"
+    text = soup.find_all(text=re.compile(window_csrf_regex))
+    if len(text) > 0:
+        csrf_element = re.search(window_csrf_regex, text[0])
+        if csrf_element is not None:
+            return csrf_element.group(1)
+
+    raise RuntimeError("Unable to retrieve CSRF token from provided URL.")
 
 
 def query_string(query_dict):
