@@ -28,4 +28,4 @@ post:
               example: 12345678
   responses:
     '200':
-      description: Status message successfully deleted.
+      $ref : "../../responses/StatusDeleteSuccess.yaml"

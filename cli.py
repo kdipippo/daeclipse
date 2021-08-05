@@ -171,8 +171,8 @@ def hot_tags(
 def testing():
     """TESTING - going to try creating a status via the CLI."""
     eclipse = daeclipse.Eclipse()
-    deviation_url = "https://www.deviantart.com/pepper-wood/art/Gawr-Gura-gif-868331085"
-    content = "This is a test status generated via a Python script."
+    deviation_url = "https://www.deviantart.com/lialia-gzzz/art/Set-Price-Chibi-Adopt-2-5-6-887833839"
+    content = "This is a <b>test status</b> generated via a <i>Python script</i>."
     tags = eclipse.create_status(deviation_url, content)
     cli_ui.info_1(tags)
 

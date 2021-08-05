@@ -22,4 +22,10 @@ post:
               example: 1111222233334444
   responses:
     "200":
-      description: Status message successfully published.
+      description: Status message response.
+      content:
+        application/json:
+          schema:
+            oneOf:
+            - $ref: "../../schemas/CreateOrPublishStatusSuccess.yaml"
+            - $ref: "../../schemas/ErrorInvalidCSRF.yaml"

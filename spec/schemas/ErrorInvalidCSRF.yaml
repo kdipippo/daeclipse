@@ -1,0 +1,23 @@
+# CSRF token is invalid.
+type: object
+required:
+- error
+- errorDescription
+- errorDetails
+- status
+properties:
+  error:
+    type: string
+    example: invalid_request
+  errorDescription:
+    type: string
+    example: Invalid or expired form submission
+  errorDetails:
+    type: object
+    properties:
+      csrf:
+        type: string
+        example: invalid
+  status:
+    type: string
+    example: error

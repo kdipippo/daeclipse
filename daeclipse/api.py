@@ -151,7 +151,7 @@ class Eclipse(object):
     def create_status(self, deviation_url, html_content):
         # this still requires deviation_url just to extract a csrf token for the API call
         # maybe this instead just fetches whatever deviantart window is open???????
-        group_add_url = ''.join([
+        create_status_url = ''.join([
             self.base_uri,
             '/shared_api/status/create',
         ])
@@ -159,18 +159,40 @@ class Eclipse(object):
             'accept': 'application/json, text/plain, */*',
             'content-type': 'application/json;charset=UTF-8',
         }
+        csrf_token = get_csrf(deviation_url, self.cookies)
         payload = json.dumps({
-            'csrf_token': get_csrf(deviation_url, self.cookies),
-            'editorRaw': html_to_draftjs(html_content)
+            'csrf_token': csrf_token,
+            'editorRaw': json.dumps(html_to_draftjs(html_content))
         })
-
         response = requests.post(
-            group_add_url,
+            create_status_url,
             cookies=self.cookies,
             headers=headers,
             data=payload,
         )
-        # NOTE: response will be empty except for status code, need to check status code I guess.
+        rjson = json.loads(response.text)
+        if rjson.get('deviation') and rjson['deviation'].get('deviationId'):
+            # going to just hack this forward, even though it's dirty. Next step is to run the call to publish this sta.sh journal.
+            publish_status_url = ''.join([
+                self.base_uri,
+                '/shared_api/status/publish',
+            ])
+            headers = {
+                'accept': 'application/json, text/plain, */*',
+                'content-type': 'application/json;charset=UTF-8',
+            }
+            payload = json.dumps({
+                'csrf_token': csrf_token,
+                'statusid': rjson['deviation'].get('deviationId')
+            })
+            response = requests.post(
+                publish_status_url,
+                cookies=self.cookies,
+                headers=headers,
+                data=payload,
+            )
+            print(response.text)
+
 
 def get_deviation_id(deviation_url):
     """Extract the deviation_id from the full deviantart image URL.

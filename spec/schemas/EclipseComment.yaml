@@ -111,7 +111,7 @@ properties:
     type: integer
     nullable: true
   textContent:
-    $ref: "./EclipseCommentContent.yaml"
+    $ref: "./EclipseTextContent.yaml"
   signature:
     type: string
     nullable: true

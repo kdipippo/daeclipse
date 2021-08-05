@@ -1,8 +1,5 @@
 type: object
 required:
-- baseUri
-- prettyName
-- token
 - types
 properties:
   baseUri:

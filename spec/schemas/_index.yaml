@@ -1,11 +1,11 @@
+CreateOrPublishStatusSuccess:
+  $ref: "./CreateOrPublishStatusSuccess.yaml"
 EclipseCollection:
   $ref: "./EclipseCollection.yaml"
 EclipseCollectionInfo:
   $ref: "./EclipseCollectionInfo.yaml"
 EclipseComment:
   $ref: "./EclipseComment.yaml"
-EclipseCommentContent:
-  $ref: "./EclipseCommentContent.yaml"
 EclipseCommentsList:
   $ref: "./EclipseCommentsList.yaml"
 EclipseDeviation:
@@ -30,3 +30,7 @@ EclipseGruser:
   $ref: "./EclipseGruser.yaml"
 EclipseStats:
   $ref: "./EclipseStats.yaml"
+EclipseTextContent:
+  $ref: "./EclipseTextContent.yaml"
+ErrorInvalidCSRF:
+  $ref: "./ErrorInvalidCSRF.yaml"

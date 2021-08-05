@@ -28,18 +28,4 @@ post:
               example: "gallery"
   responses:
     '200':
-      description: Successfully added Deviation to group in selected folder.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              success:
-                type: boolean
-                example: true
-              needsVote:
-                type: boolean
-                example: false
-              deviationGroupCount:
-                type: integer
-                example: 1
+      $ref : "../../responses/GroupAddSuccess.yaml"
