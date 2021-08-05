@@ -10,6 +10,7 @@ from html_to_draftjs import html_to_draftjs
 
 from daeclipse.models.deviationextended import EclipseDeviationExtended
 from daeclipse.models.folder import EclipseFolder
+from daeclipse.models.groupslist import EclipseGroupsList
 
 
 class Eclipse(object):
