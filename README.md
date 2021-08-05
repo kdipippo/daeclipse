@@ -28,6 +28,7 @@ Commands:
   gif-preset         Generate pixel icon gif based on a stored preset.
   gif-random         Generate pixel icon gif with randomized assets.
   hot-tags           Return top 10 tags on the 100 hottest deviations.
+  post-status        Post a DeviantArt status.
 ```
 
 ## Installation
