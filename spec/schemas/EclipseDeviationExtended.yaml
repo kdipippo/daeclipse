@@ -5,7 +5,14 @@ required:
 - comments
 properties:
   deviation:
-    $ref: "./EclipseDeviation.yaml"
+    allOf:
+    - $ref: "./EclipseDeviation.yaml"
+    - type: object
+      required:
+      - extended
+      properties:
+        extended:
+          $ref: "./EclipseDeviationExtendedContent.yaml"
   viewMode:
     type: string
     example: regular

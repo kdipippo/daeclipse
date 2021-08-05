@@ -30,6 +30,8 @@ EclipseGruser:
   $ref: "./EclipseGruser.yaml"
 EclipseStats:
   $ref: "./EclipseStats.yaml"
+EclipseStatus:
+  $ref: "./EclipseStatus.yaml"
 EclipseTextContent:
   $ref: "./EclipseTextContent.yaml"
 ErrorInvalidCSRF:

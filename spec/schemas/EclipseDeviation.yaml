@@ -113,8 +113,3 @@ properties:
     $ref: "./EclipseStats.yaml"
   media:
     $ref: "./EclipseDeviationMedia.yaml"
-  textContent:
-    $ref: "./EclipseTextContent.yaml"
-  extended:
-    $ref: "./EclipseDeviationExtendedContent.yaml"
-

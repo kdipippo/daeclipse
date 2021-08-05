@@ -1,0 +1,8 @@
+allOf:
+- $ref: "./EclipseDeviation.yaml"
+- type: object
+  required:
+  - textContent
+  properties:
+    textContent:
+      $ref: "./EclipseTextContent.yaml"

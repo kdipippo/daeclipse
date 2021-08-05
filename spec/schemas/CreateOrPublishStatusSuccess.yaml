@@ -5,4 +5,4 @@ required:
 - deviation
 properties:
   deviation:
-    $ref: "../schemas/EclipseDeviation.yaml"
+    $ref: "../schemas/EclipseStatus.yaml"
