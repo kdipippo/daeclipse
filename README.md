@@ -24,7 +24,7 @@ Options:
 
 Commands:
   add-art-to-groups  Submit DeviantArt deviation to groups.
-  get-tags           Return list of tags for given deviation.
+  show-tags          Return list of tags for given deviation.
   gif-preset         Generate pixel icon gif based on a stored preset.
   gif-random         Generate pixel icon gif with randomized assets.
   hot-tags           Return top 10 tags on the 100 hottest deviations.

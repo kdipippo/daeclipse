@@ -14,8 +14,8 @@ class SelectedAssets(object):
         """Assign the selected palette to the component to recolor.
 
         Args:
-            color_type (string): Component the recolor applies to, i.e. 'hair'.
-            selected_type (string): Palette to recolor to, i.e. 'blonde'.
+            color_type (str): Component the recolor applies to, i.e. 'hair'.
+            selected_type (str): Palette to recolor to, i.e. 'blonde'.
         """
         self.colors[color_type] = selected_type
 
@@ -23,8 +23,8 @@ class SelectedAssets(object):
         """Assign selected image type to image num when gif parts are layered.
 
         Args:
-            image_type (string): Image layer being added, i.e. 'hairbackshort'.
-            image_num (string): Asset number for the image layer, i.e. '00A'.
+            image_type (str): Image layer being added, i.e. 'hairbackshort'.
+            image_num (str): Asset number for the image layer, i.e. '00A'.
         """
         self.images[image_type] = '{0:02d}'.format(image_num)
 
@@ -60,7 +60,7 @@ class SelectedAssets(object):
         """Return list of type layers in lowest to highest 'order' value.
 
         Returns:
-            list(string): List of image type layers.
+            list (str): List of image type layers.
         """
         return sorted(
             self.json['imageTypes'].items(),

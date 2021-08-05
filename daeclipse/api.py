@@ -26,7 +26,7 @@ class Eclipse(object):
         """Return a paginated call for the user's joined DeviantArt groups.
 
         Args:
-            username (string): DeviantArt username of user.
+            username (str): DeviantArt username of user.
             offset (int): Offset to start with API call.
             limit (int, optional): Limit of results to return. Defaults to 24.
 
@@ -45,15 +45,15 @@ class Eclipse(object):
             'offset': offset,
             'limit': limit,
         }
-        groups_url = ''.join([
-            self.base_uri,
-            '/da-user-profile/api/module/groups/members',
-            query_string(queries),
-        ])
-
-        response = requests.get(groups_url, cookies=self.cookies)
-
-        rjson = json.loads(response.text)
+        response = requests.get(
+            ''.join([
+                self.base_uri,
+                '/da-user-profile/api/module/groups/members',
+                query_string(queries),
+            ]),
+            cookies=self.cookies,
+        )
+        rjson = validate_response_succeeds(response)
         return EclipseGroupsList(rjson)
 
     def get_group_folders(self, group_id, deviation_url):
@@ -61,33 +61,30 @@ class Eclipse(object):
 
         Args:
             group_id (int): Group ID.
-            deviation_url (string): Deviation URL.
+            deviation_url (str): Deviation URL.
 
         Returns:
             EclipseFolder[]: List of EclipseFolder objects.
         """
-        group_folders_url = ''.join([
-            self.base_uri,
-            '/shared_api/deviation/group_folders',
-            query_string({'groupid': group_id, 'type': 'gallery'}),
-        ])
         headers = {'referer': deviation_url}
         response = requests.get(
-            group_folders_url,
+            ''.join([
+                self.base_uri,
+                '/shared_api/deviation/group_folders',
+                query_string({'groupid': group_id, 'type': 'gallery'}),
+            ]),
             cookies=self.cookies,
             headers=headers,
         )
 
-        folder_data = json.loads(response.text)
-        if 'error' in folder_data:
-            raise_error(folder_data)
+        folder_data = validate_response_succeeds(response)
         return [EclipseFolder(folder) for folder in folder_data['results']]
 
     def get_deviation_tags(self, deviation_url):
         """Get list of tags for the provided deviation_id.
 
         Args:
-            deviation_url (string): Deviation URL.
+            deviation_url (str): Deviation URL.
 
         Returns:
             string[]: List of tags.
@@ -104,7 +101,7 @@ class Eclipse(object):
             query_string(queries),
         ])
         response = requests.get(extended_fetch_url, cookies=self.cookies)
-        rjson = json.loads(response.text)
+        rjson = validate_response_succeeds(response)
         deviation_extended = EclipseDeviationExtended(rjson)
         return deviation_extended.deviation.get_tag_names()
 
@@ -114,7 +111,7 @@ class Eclipse(object):
         Args:
             group_id (int): Group ID.
             folder_id (int): Folder ID.
-            deviation_url (string): Deviation URL.
+            deviation_url (str): Deviation URL.
 
         Returns:
             string: Success message of result.
@@ -142,9 +139,7 @@ class Eclipse(object):
             data=payload,
         )
 
-        rjson = json.loads(response.text)
-        if 'error' in rjson:
-            raise_error(rjson)
+        rjson = validate_response_succeeds(response)
         if rjson['needsVote']:
             return '✅ Deviation added to folder and automatically approved'
         return '⌛ Deviation submitted to folder and pending mod approval'
@@ -153,17 +148,12 @@ class Eclipse(object):
         """Create a status to sta.sh and publish from sta.sh to DeviantArt.
 
         Args:
-            deviation_url (string): Deviation URL, just for CSRF purposes.
-            html_content (string): Text content of message in HTML-format.
+            deviation_url (str): Deviation URL, just for CSRF purposes.
+            html_content (str): Text content of message in HTML-format.
 
         Returns:
             string: Success message of result.
         """
-        # POST /status/create creates a sta.sh post from the provided payload.
-        create_status_url = ''.join([
-            self.base_uri,
-            '/shared_api/status/create',
-        ])
         headers = {
             'accept': 'application/json, text/plain, */*',
             'content-type': 'application/json;charset=UTF-8',
@@ -173,42 +163,36 @@ class Eclipse(object):
         csrf_token = get_csrf(deviation_url, self.cookies)
         payload = json.dumps({
             'csrf_token': csrf_token,
-            'editorRaw': json.dumps(html_to_draftjs(html_content))
+            'editorRaw': json.dumps(html_to_draftjs(html_content)),
         })
+        # POST /status/create creates a sta.sh post from the provided payload.
         response = requests.post(
-            create_status_url,
+            ''.join([
+                self.base_uri,
+                '/shared_api/status/create',
+            ]),
             cookies=self.cookies,
             headers=headers,
             data=payload,
         )
-        rjson = json.loads(response.text)
-        if not rjson.get('deviation') or 'error' in rjson:
-            print(response.status_code)
-            raise_error(rjson)
+        rjson = validate_response_succeeds(response)
 
-        # POST /status/publish moves the status from sta.sh to DeviantArt.
-        publish_status_url = ''.join([
-            self.base_uri,
-            '/shared_api/status/publish',
-        ])
-        headers = {
-            'accept': 'application/json, text/plain, */*',
-            'content-type': 'application/json;charset=UTF-8',
-        }
         # statusid is the sta.sh ID, not the production DeviantArt status ID.
         payload = json.dumps({
             'csrf_token': csrf_token,
-            'statusid': rjson['deviation'].get('deviationId')
+            'statusid': rjson['deviation'].get('deviationId'),
         })
+        # POST /status/publish moves the status from sta.sh to DeviantArt.
         response = requests.post(
-            publish_status_url,
+            ''.join([
+                self.base_uri,
+                '/shared_api/status/publish',
+            ]),
             cookies=self.cookies,
             headers=headers,
             data=payload,
         )
-        rjson = json.loads(response.text)
-        if not rjson.get('deviation') or 'error' in rjson:
-            raise_error(rjson)
+        rjson = validate_response_succeeds(response)
         return '✅ Status created: {0}'.format(rjson['deviation'].get('url'))
 
 
@@ -216,7 +200,7 @@ def get_deviation_id(deviation_url):
     """Extract the deviation_id from the full deviantart image URL.
 
     Args:
-        deviation_url (string): Deviation URL.
+        deviation_url (str): Deviation URL.
 
     Returns:
         string: Deviation ID.
@@ -229,7 +213,7 @@ def get_username_from_url(deviation_url):
     """Regex parse deviation URL to retrieve username.
 
     Args:
-        deviation_url (string): Deviation URL.
+        deviation_url (str): Deviation URL.
 
     Raises:
         RuntimeError: If username is not present in URL string.
@@ -247,7 +231,7 @@ def get_csrf(deviation_url, cookies):
     """Scrape deviation page for CSRF token.
 
     Args:
-        deviation_url (string): Deviation URL.
+        deviation_url (str): Deviation URL.
         cookies (http.cookiejar.CookieJar): .deviantart.com Cookie Jar.
 
     Returns:
@@ -259,20 +243,20 @@ def get_csrf(deviation_url, cookies):
     page = requests.get(deviation_url, cookies=cookies)
     soup = BeautifulSoup(page.text, 'html.parser')
 
-    # Check if CSRF is stored in <input type="hidden" name="validate_token" value="CSRF" />.
-    token_element = soup.find('input', {'name': 'validate_token'})
-    if token_element is not None:
-        return token_element.get('value')
+    # Check for <input type="hidden" name="validate_token" value="CSRF" />.
+    csrf_element = soup.find('input', {'name': 'validate_token'})
+    if csrf_element is not None:
+        return csrf_element.get('value')
 
-    # Check if window.__CSRF_TOKEN__ = 'CSRF'; snippet is present.
-    window_csrf_regex = r"window.__CSRF_TOKEN__ = '(.*)';"
+    # Check for window.__CSRF_TOKEN__ = 'CSRF';.
+    window_csrf_regex = "window.__CSRF_TOKEN__ = '(.*)';"
     text = soup.find_all(text=re.compile(window_csrf_regex))
-    if len(text) > 0:
+    if text:
         csrf_element = re.search(window_csrf_regex, text[0])
         if csrf_element is not None:
             return csrf_element.group(1)
 
-    raise RuntimeError("Unable to retrieve CSRF token from provided URL.")
+    raise RuntimeError('Unable to retrieve CSRF token from provided URL.')
 
 
 def query_string(query_dict):
@@ -289,6 +273,21 @@ def query_string(query_dict):
     ]
     queries_string = '&'.join(queries)
     return '?{0}'.format(queries_string)
+
+
+def validate_response_succeeds(response):
+    """Check if response returned error, otherwise return dictified response.
+
+    Args:
+        response (Response): Response object.
+
+    Returns:
+        dict: JSON response as dictionary.
+    """
+    response_dict = json.loads(response.text)
+    if 'error' in response_dict:
+        raise_error(response_dict)
+    return response_dict
 
 
 def raise_error(error_response):

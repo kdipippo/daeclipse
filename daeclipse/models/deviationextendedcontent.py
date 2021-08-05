@@ -1,11 +1,13 @@
 """Model to represent DeviantArt Eclipse Deviation Extended Content."""
 
+from daeclipse.models.deviationawardedbadge import EclipseDeviationAwardedBadge
+from daeclipse.models.deviationextendedstats import \
+    EclipseDeviationExtendedStats
 from daeclipse.models.deviationfilespecs import EclipseDeviationFileSpecs
-from daeclipse.models.deviationrelatedstreams import EclipseDeviationRelatedStreams
-from daeclipse.models.deviationextendedstats import EclipseDeviationExtendedStats
+from daeclipse.models.deviationrelatedstreams import \
+    EclipseDeviationRelatedStreams
 from daeclipse.models.deviationtag import EclipseDeviationTag
 from daeclipse.models.deviationtypefacet import EclipseDeviationTypeFacet
-from daeclipse.models.deviationawardedbadge import EclipseDeviationAwardedBadge
 
 
 class EclipseDeviationExtendedContent(object):

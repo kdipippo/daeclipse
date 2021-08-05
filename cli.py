@@ -1,19 +1,19 @@
 """Main file for building the app into a GUI."""
 
 import datetime
+import json
+import os
 import re
+from pathlib import Path
 
 import cli_ui
+import deviantart
 import dotenv
-import json
 import typer
-import os
-from pathlib import Path
 from pick import pick
 from progress.bar import Bar
 
 import daeclipse
-import deviantart
 import gif_generator
 
 COLUMN_WIDTH = 25
@@ -51,7 +51,7 @@ def add_art_to_groups(  # noqa: WPS210
     """Submit DeviantArt deviation to groups.
 
     Args:
-        save (bool): --save to save to local file. Defaults to False.
+        save (bool): --save to save to local file, defaults to False.
     """
     typer.echo(' '.join([
         'Please ensure that the deviation is open in Eclipse in Chrome',
@@ -102,9 +102,14 @@ def add_art_to_groups(  # noqa: WPS210
 
 
 def initialize_deviantart():
+    """Initialize public API DeviantArt client. Collect creds if no .env found.
+
+    Returns:
+        deviantart.Api: deviantart.Api class instance.
+    """
     dotenv_file = dotenv.find_dotenv()
     if dotenv_file == '':
-        cli_ui.error(".env file not found. Creating a blank one now.")
+        cli_ui.error('.env file not found. Creating a blank one now.')
         Path('.env').touch()
         dotenv_file = dotenv.find_dotenv()
     dotenv.load_dotenv(dotenv_file)
@@ -113,26 +118,44 @@ def initialize_deviantart():
     client_secret = os.getenv('deviantart_client_secret')
 
     if client_id is None or client_secret is None:
-        cli_ui.info_1("Retrieve public API credentials at", cli_ui.underline, cli_ui.bold, "https://www.deviantart.com/developers/apps", cli_ui.reset)
+        cli_ui.info_1(
+            'Retrieve public API credentials at',
+            cli_ui.underline,
+            cli_ui.bold,
+            'https://www.deviantart.com/developers/apps',
+            cli_ui.reset,
+        )
 
     if client_id is None:
-        cli_ui.error("Missing deviantart_client_id")
+        cli_ui.error('Missing deviantart_client_id')
         client_id = cli_ui.ask_password('Enter your dA client ID:')
-        dotenv.set_key(dotenv_file, "deviantart_client_id", client_id)
+        dotenv.set_key(dotenv_file, 'deviantart_client_id', client_id)
 
     if client_secret is None:
-        cli_ui.error("Missing deviantart_client_secret")
+        cli_ui.error('Missing deviantart_client_secret')
         client_secret = cli_ui.ask_password('Enter your dA client secret:')
-        dotenv.set_key(dotenv_file, "deviantart_client_secret", client_secret)
+        dotenv.set_key(dotenv_file, 'deviantart_client_secret', client_secret)
     return deviantart.Api(client_id, client_secret)
 
+
 @app.command()
-def get_tags():
-    """Return list of tags for given deviation."""
+def show_tags(
+    deviation_url: str = typer.Option(  # noqa: B008, WPS404
+        '',  # noqa: WPS425
+        help='Deviation URL to retrieve tags from.',
+    ),
+):
+    """Return list of tags for given deviation.
+
+    Args:
+        deviation_url (str): --deviation_url to specify deviation URL.
+    """
     eclipse = daeclipse.Eclipse()
-    deviation_url = cli_ui.ask_string('Paste deviation URL:   ')
+    if not deviation_url:
+        deviation_url = cli_ui.ask_string('Paste deviation URL: ')
     tags = eclipse.get_deviation_tags(deviation_url)
     cli_ui.info_1(tags)
+
 
 @app.command()
 def hot_tags(
@@ -140,30 +163,46 @@ def hot_tags(
         False,  # noqa: WPS425
         help='Save results to local file.',
     ),
+    count: int = typer.Option(  # noqa: B008, WPS404
+        10,  # noqa: WPS425
+        help='Number of top tags to return.',
+    ),
 ):
-    """Return top 10 tags on the 100 hottest deviations."""
+    """Return top tags on the 100 hottest deviations.
+
+    Args:
+        save (bool): --save to save to local file, defaults to False.
+        count (int): --count to specity number of tag results, defaults to 10.
+    """
     eclipse = daeclipse.Eclipse()  # Internal Eclipse API wrapper.
     da = initialize_deviantart()  # Public API wrapper.
+
     popular_count = 100
     popular = da.browse(endpoint='popular', limit=popular_count)
-    deviations = popular['results']
+    deviations = popular.get('results')
     popular_tags = {}
-    bar = Bar('Parsing 100 hottest deviations', max=popular_count)
+    progressbar = Bar('Parsing 100 hottest deviations', max=popular_count)
     for deviation in deviations:
-        bar.next()
-        tags = eclipse.get_deviation_tags(deviation.url)
-        for tag in tags:
-            if tag not in popular_tags:
-                popular_tags[tag] = 1
+        progressbar.next()
+        art_tags = eclipse.get_deviation_tags(deviation.url)
+        for art_tag in art_tags:
+            if art_tag not in popular_tags:
+                popular_tags[art_tag] = 1
             else:
-                popular_tags[tag] += 1
+                popular_tags[art_tag] += 1
     cli_ui.info()
-    popular_tags = sorted(popular_tags.items(), key=lambda x: x[1], reverse=True)
-    top_10_tags = popular_tags[0:10]
-    tag_table = [[(cli_ui.bold, i[0]), (cli_ui.green, i[1])] for i in top_10_tags]
+    popular_tags = sorted(
+        popular_tags.items(),
+        key=lambda tag: tag[1],
+        reverse=True,
+    )
+    top_tags = popular_tags[:count]
+    tag_table = [
+        [(cli_ui.bold, tag[0]), (cli_ui.green, tag[1])] for tag in top_tags
+    ]
     cli_ui.info_table(tag_table, headers=['tag', 'count'])
     if save:
-        with open("popular_tags.json", "w") as outfile: 
+        with open('popular_tags.json', 'w') as outfile:
             json.dump(popular_tags, outfile)
 
 
@@ -171,24 +210,29 @@ def hot_tags(
 def post_status():
     """Post a DeviantArt status."""
     eclipse = daeclipse.Eclipse()
-    cli_ui.info_1("The API requires a deviation URL to extract an authorization token.")
-    # deviation_url = cli_ui.ask_string('Paste deviation URL: ')
-    deviation_url = "https://www.deviantart.com/pepper-wood/art/Gawr-Gura-gif-868331085"
-    # content = cli_ui.ask_string('Enter HTML-formatted status text: ')
-    content = "This is a <b>generated</b> status sent via a <i>Python CLI</i>, WOO!!!"
+    cli_ui.info_1('Deviation URL is required for CSRF token authorization.')
+    deviation_url = cli_ui.ask_string('Paste deviation URL: ')
+    status_content = cli_ui.ask_string('Enter HTML-formatted status text: ')
+
+    # -------------------------------------------------------------------------
+    #            TODO - just storing this here for testing purposes.
+    # -------------------------------------------------------------------------
+    deviation_url = 'https://www.deviantart.com/pepper-wood/art/Gawr-Gura-gif-868331085'  # noqa: E501
+    status_content = 'This is a <b>generated</b> status sent via a <i>Python CLI</i>, WOO!!!'  # noqa: E501
+    # -------------------------------------------------------------------------
 
     try:
-        result = eclipse.post_status(deviation_url, content)
-        cli_ui.info(result)
+        status_result = eclipse.post_status(deviation_url, status_content)
     except RuntimeError as status_error:
         cli_ui.error(str(status_error))
+    cli_ui.info(status_result)
 
 
 def get_username_from_url(deviation_url):
     """Regex parse deviation URL to retrieve username.
 
     Args:
-        deviation_url (string): Deviation URL.
+        deviation_url (str): Deviation URL.
 
     Raises:
         RuntimeError: If username is not present in URL string.
@@ -208,7 +252,7 @@ def handle_selected_group(eclipse, group, deviation_url):
     Args:
         eclipse (Eclipse): Eclipse API class instance.
         group (EclipseGruser): EclipseGruser object representing group.
-        deviation_url (string): Deviation URL.
+        deviation_url (str): Deviation URL.
 
     Returns:
         boolean, string: success status and result message.
@@ -255,9 +299,9 @@ def format_msg(group_name, folder_name, message):
     """Return formatted status message for CLI output.
 
     Args:
-        group_name (string): Group name.
-        folder_name (string): Folder name.
-        message (string): Status message.
+        group_name (str): Group name.
+        folder_name (str): Folder name.
+        message (str): Status message.
 
     Returns:
         string: Formatted status message containing all arguments.

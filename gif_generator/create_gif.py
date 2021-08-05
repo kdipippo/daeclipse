@@ -42,7 +42,7 @@ def translate_image(image, direction, pixels):
 
     Args:
         image (Image): Image object.
-        direction (string): "left", "right", "up", or "down".
+        direction (str): "left", "right", "up", or "down".
         pixels (int): Number of pixels to translate.
 
     Returns:
@@ -69,8 +69,8 @@ def get_filename(image_type, asset_name):
     """Return path to the given image asset.
 
     Args:
-        image_type (string): Type of image, i.e. 'hairfront', 'eyes'.
-        asset_name (string): Asset name, may have position letter, i.e. '00A'.
+        image_type (str): Type of image, i.e. 'hairfront', 'eyes'.
+        asset_name (str): Asset name, may have position letter, i.e. '00A'.
 
     Returns:
         string: Path to image asset.
@@ -86,8 +86,8 @@ def get_custom_asset(image_type, asset_name, frame_num):
     """Get the Image object for a custom asset.
 
     Args:
-        image_type (string): Type of image, i.e. 'hairfront', 'eyes'.
-        asset_name (string): Asset number, i.e. '00'.
+        image_type (str): Type of image, i.e. 'hairfront', 'eyes'.
+        asset_name (str): Asset number, i.e. '00'.
         frame_num (int): Current frame number.
 
     Returns:
@@ -106,8 +106,8 @@ def get_2frame_asset(image_type, asset_name, frame_num):
     """Get Image object for a 2-frame asset.
 
     Args:
-        image_type (string): Type of image, i.e. 'hairfront', 'eyes'.
-        asset_name (string): Asset number, i.e. '00'.
+        image_type (str): Type of image, i.e. 'hairfront', 'eyes'.
+        asset_name (str): Asset number, i.e. '00'.
         frame_num (int): Current frame number.
 
     Returns:
@@ -123,7 +123,7 @@ def get_rgba_from_hex(hex_string):
     """Convert hex color string to rgba color tuple.
 
     Args:
-        hex_string (string): hex color string, i.e. 79ede2.
+        hex_string (str): hex color string, i.e. 79ede2.
 
     Returns:
         tuple: 4-entry int tuple representing rgba, i.e. (121, 237, 226, 255).
@@ -177,8 +177,8 @@ def change_color(img, color_dict, default_color, new_color):
     Args:
         img (Image): Image object.
         color_dict (dict): Dict that maps palette name to string of hex colors.
-        default_color (string): Before palette name for asset, i.e. 'pink'.
-        new_color (string): After palette name to recolor asset, i.e. 'orange'.
+        default_color (str): Before palette name for asset, i.e. 'pink'.
+        new_color (str): After palette name to recolor asset, i.e. 'orange'.
 
     Returns:
         Image: Recolored Image object.
@@ -268,7 +268,7 @@ def save_gif(assets, current_time):
 
     Args:
         assets (SelectedAssets): SelectedAssets object.
-        current_time (string): Current time, i.e. '2020-03-16_12:02:08AM'.
+        current_time (str): Current time, i.e. '2020-03-16_12:02:08AM'.
     """
     frames = []
     for frame_num in range(FRAMES_TOTAL):
@@ -332,7 +332,7 @@ def save_json(assets, current_time):
 
     Args:
         assets (SelectedAssets): SelectedAssets object.
-        current_time (string): Current time, i.e. '2020-03-16_12:02:08AM'.
+        current_time (str): Current time, i.e. '2020-03-16_12:02:08AM'.
     """
     filename = '{0}/{1}.json'.format(OUTPUT_FILE_PREFIX, current_time)
     with open(filename, 'w') as json_file:
@@ -367,7 +367,7 @@ def create_gif_preset(preset_name):
     """Generate pixel icon gif based on a stored preset.
 
     Args:
-        preset_name (string): Preset name.
+        preset_name (str): Preset name.
 
     Returns:
         string: Full path to gif result.

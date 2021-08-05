@@ -1,7 +1,7 @@
 """Model to represent DeviantArt Eclipse Collections."""
 
-from daeclipse.models.collectioninfo import EclipseCollectionInfo
 import daeclipse.models.deviation
+from daeclipse.models.collectioninfo import EclipseCollectionInfo
 from daeclipse.models.gruser import EclipseGruser
 
 
