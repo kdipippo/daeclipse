@@ -119,7 +119,7 @@ def initialize_deviantart():
 
     if client_id is None or client_secret is None:
         cli_ui.info_1(
-            'Retrieve public API credentials at',
+            'Obtain public API credentials at',
             cli_ui.underline,
             cli_ui.bold,
             'https://www.deviantart.com/developers/apps',
