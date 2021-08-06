@@ -2,59 +2,60 @@ name: Build GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches:
+    - main
 
 jobs:
   gh-pages:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
-      #----------------------------------------------
-      #      Generate Python HTML documentation      
-      #----------------------------------------------
-      - name: Set up python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.9
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
-        with:
-          virtualenvs-create: true
-          virtualenvs-in-project: true
-      - name: Load cached venv
-        id: cached-poetry-dependencies
-        uses: actions/cache@v2
-        with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
-      - name: Install dependencies
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install --no-interaction --no-root
-      - name: Install library
-        run: poetry install --no-interaction
+    - name: Check out repository
+      uses: actions/checkout@v2
+    #----------------------------------------------
+    #      Generate Python HTML documentation      
+    #----------------------------------------------
+    - name: Set up python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install Poetry
+      uses: snok/install-poetry@v1
+      with:
+        virtualenvs-create: true
+        virtualenvs-in-project: true
+    - name: Load cached venv
+      id: cached-poetry-dependencies
+      uses: actions/cache@v2
+      with:
+        path: .venv
+        key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+    - name: Install dependencies
+      if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+      run: poetry install --no-interaction --no-root
+    - name: Install library
+      run: poetry install --no-interaction
 
-      - name: Build MkDocs root HTML
-        run: poetry run mkdocs build
-      - name: Build PDoc python/ HTML
-        run: poetry run pdoc daeclipse/ --output-directory _build/python/
-      #----------------------------------------------
-      #       Generate Node HTML documentation       
-      #----------------------------------------------
-      - name: Setup Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-      - name: Build ReDoc api/ HTML
-        run: |
-          npm ci
-          npm run build
-          npm run html
-      #----------------------------------------------
-      #            Deploy to Github Pages            
-      #----------------------------------------------
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.4
-        with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: _build # The folder the action should deploy.
+    - name: Build MkDocs root HTML
+      run: poetry run mkdocs build
+    - name: Build PDoc python/ HTML
+      run: poetry run pdoc daeclipse/ --output-directory _build/python/
+    #----------------------------------------------
+    #       Generate Node HTML documentation       
+    #----------------------------------------------
+    - name: Setup Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - name: Build ReDoc api/ HTML
+      run: |
+        npm ci
+        npm run build
+        npm run html
+    #----------------------------------------------
+    #            Deploy to Github Pages            
+    #----------------------------------------------
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@4.1.4
+      with:
+        branch: gh-pages # The branch the action should deploy to.
+        folder: _build # The folder the action should deploy.
