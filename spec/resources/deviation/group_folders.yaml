@@ -13,4 +13,4 @@ get:
       content:
         application/json:
           schema:
-            $ref: "../../schemas/EclipseGroupFolders.yaml"
+            $ref: "../../schemas/GroupFolders.yaml"

@@ -12,4 +12,4 @@ get:
       content:
         application/json:
           schema:
-            $ref: "../../schemas/EclipseGroups.yaml"
+            $ref: "../../schemas/Groups.yaml"
