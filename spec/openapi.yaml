@@ -2,7 +2,7 @@ openapi: "3.0.0"
 info:
   version: 1.0.0
   title: DeviantArt Eclipse
-  description: Unofficial documentation for the internal DeviantArt Eclipse API
+  description: Unofficial OpenAPI Specification for the DeviantArt Eclipse API.
   license:
     name: MIT
   contact:

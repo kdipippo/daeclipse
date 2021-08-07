@@ -1,14 +1,16 @@
 """Model to represent DeviantArt Eclipse Group or User."""
 
+from daeclipse.models.model import Model
 
-class EclipseGruser(object):  # noqa: WPS230
+
+class Gruser(Model):
     """Model to represent DeviantArt Eclipse Group or User."""
 
-    def __init__(self, input_dict=None):
-        """Initialize EclipseGruser.
+    def __init__(self, attrs=None):
+        """Initialize Gruser.
 
         Args:
-            input_dict (dict, optional): Dict of EclipseGruser class attrs.
+            attrs (dict, optional): Dict of model attributes.
         """
         self.user_id = None
         self.userid_uuid = None
@@ -17,29 +19,27 @@ class EclipseGruser(object):  # noqa: WPS230
         self.type = None
         self.is_watching = None
         self.is_new_deviant = None
-        if input_dict is not None and isinstance(input_dict, dict):
-            self.from_dict(input_dict)
+        super().__init__(attrs)
 
     def __repr__(self):
-        """Representation of EclipseGruser.
+        """Representation of Gruser.
 
         Returns:
-            string: EclipseGruser representation.
+            string: Gruser representation.
         """
         return self.user_id
 
-    def from_dict(self, input_dict):
-        """Convert input_dict values to class attributes.
+    def from_dict(self, attrs):
+        """Convert attrs values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing EclipseGruser fields.
+            attrs (dict): Dict containing Gruser fields.
         """
-        if input_dict is None:
-            return
-        self.user_id = input_dict.get('userId')
-        self.userid_uuid = input_dict.get('useridUuid')
-        self.username = input_dict.get('username')
-        self.usericon = input_dict.get('usericon')
-        self.type = input_dict.get('type')
-        self.is_watching = input_dict.get('isWatching')
-        self.is_new_deviant = input_dict.get('isNewDeviant')
+        super().from_dict(attrs)
+        self.user_id = attrs.get('userId')
+        self.userid_uuid = attrs.get('useridUuid')
+        self.username = attrs.get('username')
+        self.usericon = attrs.get('usericon')
+        self.type = attrs.get('type')
+        self.is_watching = attrs.get('isWatching')
+        self.is_new_deviant = attrs.get('isNewDeviant')

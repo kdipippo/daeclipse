@@ -1,27 +1,27 @@
 """Model to represent DeviantArt Eclipse Deviation Tags."""
 
+from daeclipse.models.model import Model
 
-class EclipseDeviationTag(object):
+
+class DeviationTag(Model):
     """Model to represent DeviantArt Eclipse Deviation Tags."""
 
-    def __init__(self, input_dict=None):
-        """Initialize EclipseDeviationTag.
+    def __init__(self, attrs=None):
+        """Initialize DeviationTag.
 
         Args:
-            input_dict (dict, optional): Dict of EclipseDeviationTag class attrs.
+            attrs (dict, optional): Dict of model attributes.
         """
         self.name = None
         self.url = None
-        if input_dict is not None and isinstance(input_dict, dict):
-            self.from_dict(input_dict)
+        super().__init__(attrs)
 
-    def from_dict(self, input_dict):
-        """Convert input_dict values to class attributes.
+    def from_dict(self, attrs):
+        """Convert attrs values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing EclipseDeviationTag fields.
+            attrs (dict): Dict containing DeviationTag fields.
         """
-        if input_dict is None:
-            return
-        self.name = input_dict.get('name')
-        self.url = input_dict.get('url')
+        super().from_dict(attrs)
+        self.name = attrs.get('name')
+        self.url = attrs.get('url')

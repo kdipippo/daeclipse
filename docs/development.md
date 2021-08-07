@@ -21,7 +21,13 @@ poetry install
 There are no tests for any of the above written code yet.
 
 ### Linting
-Code for all of the above follows the [wemake-python-styleguide](https://github.com/wemake-services/wemake-python-styleguide) guidelines. This is also automatically checked via the GitHub Actions workflow [wemake.yml](https://github.com/Pepper-Wood/daeclipse/blob/main/.github/workflows/wemake.yml).
+Code for all of the above follows the [wemake-python-styleguide](https://github.com/wemake-services/wemake-python-styleguide) guidelines. This is also automatically checked via the GitHub Actions workflow [linter-python.yml](https://github.com/Pepper-Wood/daeclipse/blob/main/.github/workflows/linter-python.yml).
+
+Linting can be run locally via the below command at root, although the local linter is more restrictive than the GitHug Actiions linter:
+
+```
+flake8
+```
 
 ### Documentation
 `pdoc` is used for automated Python documentation generation. All documentation is generated on the `main` branch into a `build/python/` folder, which is then deployed to the `gh-pages` branch via the GitHub Actions workflow [gh-pages.yml](https://github.com/Pepper-Wood/daeclipse/blob/main/.github/workflows/gh-pages.yml).
@@ -71,7 +77,7 @@ npm run html
 ```
 
 ### Linting
-Courtesy of the boilerplate repo, the OpenAPI Spec is linted using [Spectral](https://github.com/stoplightio/spectral). This is also automatically checked via the GitHub Actions workflow [linter.yml](https://github.com/Pepper-Wood/daeclipse/blob/main/.github/workflows/linter.yml).
+Courtesy of the boilerplate repo, the OpenAPI Spec is linted using [Spectral](https://github.com/stoplightio/spectral). This is also automatically checked via the GitHub Actions workflow [linter-openapi.yml](https://github.com/Pepper-Wood/daeclipse/blob/main/.github/workflows/linter-openapi.yml).
 
 ### Documentation
 `redoc` is used for automated OpenAPI documentation generation, courtesy of the boilerplate. All documentation is generated on the `main` branch into a `build/api/` folder, which is then deployed to the `gh-pages` branch via the GitHub Actions workflow [gh-pages.yml](https://github.com/Pepper-Wood/daeclipse/blob/main/.github/workflows/gh-pages.yml).

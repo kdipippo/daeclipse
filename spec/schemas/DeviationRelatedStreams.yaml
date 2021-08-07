@@ -1,0 +1,18 @@
+type: object
+required:
+- gallery
+- recommended
+- collections
+properties:
+  gallery:
+    type: array
+    items:
+      $ref: "./Deviation.yaml"
+  recommended:
+    type: array
+    items:
+      $ref: "./Deviation.yaml"
+  collections:
+    type: array
+    items:
+      $ref: "./Collection.yaml"

@@ -1,14 +1,16 @@
 """Model to represent DeviantArt Eclipse Deviation Awarded Badges."""
 
+from daeclipse.models.model import Model
 
-class EclipseDeviationAwardedBadge(object):
+
+class DeviationAwardedBadge(Model):
     """Model to represent DeviantArt Eclipse Deviation Awarded Badges."""
 
-    def __init__(self, input_dict=None):
-        """Initialize EclipseDeviationAwardedBadge.
+    def __init__(self, attrs=None):
+        """Initialize DeviationAwardedBadge.
 
         Args:
-            input_dict (dict, optional): Dict of EclipseDeviationAwardedBadge class attrs.
+            attrs (dict, optional): Dict of model attributes.
         """
         self.id = None
         self.type_id = None
@@ -18,22 +20,20 @@ class EclipseDeviationAwardedBadge(object):
         self.description = None
         self.stack_count = None
         self.images = None
-        if input_dict is not None and isinstance(input_dict, dict):
-            self.from_dict(input_dict)
+        super().__init__(attrs)
 
-    def from_dict(self, input_dict):
-        """Convert input_dict values to class attributes.
+    def from_dict(self, attrs):
+        """Convert attrs values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing EclipseDeviationAwardedBadge fields.
+            attrs (dict): Dict containing DeviationAwardedBadge fields.
         """
-        if input_dict is None:
-            return
-        self.id = input_dict.get('id')
-        self.type_id = input_dict.get('typeId')
-        self.name = input_dict.get('name')
-        self.title = input_dict.get('title')
-        self.base_title = input_dict.get('baseTitle')
-        self.description = input_dict.get('description')
-        self.stack_count = input_dict.get('stackCount')
-        self.images = input_dict.get('images')
+        super().from_dict(attrs)
+        self.id = attrs.get('id')
+        self.type_id = attrs.get('typeId')
+        self.name = attrs.get('name')
+        self.title = attrs.get('title')
+        self.base_title = attrs.get('baseTitle')
+        self.description = attrs.get('description')
+        self.stack_count = attrs.get('stackCount')
+        self.images = attrs.get('images')

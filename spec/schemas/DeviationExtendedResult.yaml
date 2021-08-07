@@ -1,0 +1,20 @@
+type: object
+required:
+- deviation
+- viewMode
+- comments
+properties:
+  deviation:
+    allOf:
+    - $ref: "./Deviation.yaml"
+    - type: object
+      required:
+      - extended
+      properties:
+        extended:
+          $ref: "./DeviationExtendedContent.yaml"
+  viewMode:
+    type: string
+    example: regular
+  comments:
+    $ref: "./CommentsList.yaml"

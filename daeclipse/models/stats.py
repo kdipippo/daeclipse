@@ -1,27 +1,27 @@
 """Model to represent DeviantArt Eclipse Deviation Stats."""
 
+from daeclipse.models.model import Model
 
-class EclipseStats(object):
+
+class Stats(Model):
     """Model to represent DeviantArt Eclipse Deviation Stats."""
 
-    def __init__(self, input_dict=None):
-        """Initialize EclipseStats.
+    def __init__(self, attrs=None):
+        """Initialize Stats.
 
         Args:
-            input_dict (dict, optional): Dict of EclipseStats class attrs.
+            attrs (dict, optional): Dict of model attributes.
         """
+        super().__init__(attrs)
         self.comments = None
         self.favourites = None
-        if input_dict is not None and isinstance(input_dict, dict):
-            self.from_dict(input_dict)
 
-    def from_dict(self, input_dict):
-        """Convert input_dict values to class attributes.
+    def from_dict(self, attrs):
+        """Convert attrs values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing EclipseStats fields.
+            attrs (dict): Dict containing Stats fields.
         """
-        if input_dict is None:
-            return
-        self.comments = input_dict.get('comments')
-        self.favourites = input_dict.get('favourites')
+        super().from_dict(attrs)
+        self.comments = attrs.get('comments')
+        self.favourites = attrs.get('favourites')

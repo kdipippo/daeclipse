@@ -1,32 +1,40 @@
-EclipseCollection:
-  $ref: "./EclipseCollection.yaml"
-EclipseCollectionInfo:
-  $ref: "./EclipseCollectionInfo.yaml"
-EclipseComment:
-  $ref: "./EclipseComment.yaml"
-EclipseCommentContent:
-  $ref: "./EclipseCommentContent.yaml"
-EclipseCommentsList:
-  $ref: "./EclipseCommentsList.yaml"
-EclipseDeviation:
-  $ref: "./EclipseDeviation.yaml"
-EclipseDeviationAwardedBadge:
-  $ref: "./EclipseDeviationAwardedBadge.yaml"
-EclipseDeviationExtendedContent:
-  $ref: "./EclipseDeviationExtendedContent.yaml"
-EclipseDeviationExtendedStats:
-  $ref: "./EclipseDeviationExtendedStats.yaml"
-EclipseDeviationFileSpecs:
-  $ref: "./EclipseDeviationFileSpecs.yaml"
-EclipseDeviationMedia:
-  $ref: "./EclipseDeviationMedia.yaml"
-EclipseDeviationRelatedStreams:
-  $ref: "./EclipseDeviationRelatedStreams.yaml"
-EclipseDeviationTag:
-  $ref: "./EclipseDeviationTag.yaml"
-EclipseDeviationTypeFacet:
-  $ref: "./EclipseDeviationTypeFacet.yaml"
-EclipseGruser:
-  $ref: "./EclipseGruser.yaml"
-EclipseStats:
-  $ref: "./EclipseStats.yaml"
+CreateOrPublishStatusSuccess:
+  $ref: "./CreateOrPublishStatusSuccess.yaml"
+Collection:
+  $ref: "./Collection.yaml"
+CollectionInfo:
+  $ref: "./CollectionInfo.yaml"
+Comment:
+  $ref: "./Comment.yaml"
+CommentsList:
+  $ref: "./CommentsList.yaml"
+Deviation:
+  $ref: "./Deviation.yaml"
+DeviationAwardedBadge:
+  $ref: "./DeviationAwardedBadge.yaml"
+DeviationExtendedContent:
+  $ref: "./DeviationExtendedContent.yaml"
+DeviationExtendedResult:
+  $ref: "./DeviationExtendedResult.yaml"
+DeviationExtendedStats:
+  $ref: "./DeviationExtendedStats.yaml"
+DeviationFileSpecs:
+  $ref: "./DeviationFileSpecs.yaml"
+DeviationMedia:
+  $ref: "./DeviationMedia.yaml"
+DeviationRelatedStreams:
+  $ref: "./DeviationRelatedStreams.yaml"
+DeviationTag:
+  $ref: "./DeviationTag.yaml"
+DeviationTypeFacet:
+  $ref: "./DeviationTypeFacet.yaml"
+Gruser:
+  $ref: "./Gruser.yaml"
+Stats:
+  $ref: "./Stats.yaml"
+Status:
+  $ref: "./Status.yaml"
+TextContent:
+  $ref: "./TextContent.yaml"
+ErrorInvalidCSRF:
+  $ref: "./ErrorInvalidCSRF.yaml"

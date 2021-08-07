@@ -1,0 +1,4 @@
+GroupAddSuccess:
+  $ref: './GroupAddSuccess.yaml'
+StatusDeleteSuccess:
+  $ref: './StatusDeleteSuccess.yaml'

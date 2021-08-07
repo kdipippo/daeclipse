@@ -1,9 +1,0 @@
-type: object
-properties:
-  results:
-    type: array
-    items:
-      $ref: "./EclipseGruser.yaml"
-  cursor:
-    type: string
-    example: "NTkwYWNhZDA9MTQmZDBhM2M5NDI9MTcxMTUyMzQtMjc4MTg1NzEtMjA5OTM2NzctMjE0ODI1NDQtMjE0MTEwNjQtMTQ3MTgyOTItMTgzOTY2OTktMjgyMTIwMzEtMTMxMTQ5NTEtMjU3NTAwMDM"

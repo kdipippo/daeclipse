@@ -1,31 +1,31 @@
 """Model to represent DeviantArt Eclipse Deviation Media."""
 
+from daeclipse.models.model import Model
 
-class EclipseDeviationMedia(object):
+
+class DeviationMedia(Model):
     """Model to represent DeviantArt Eclipse Deviation Media."""
 
-    def __init__(self, input_dict=None):
-        """Initialize EclipseDeviationMedia.
+    def __init__(self, attrs=None):
+        """Initialize DeviationMedia.
 
         Args:
-            input_dict (dict, optional): Dict of EclipseDeviationMedia class attrs.
+            attrs (dict, optional): Dict of model attributes.
         """
         self.base_uri = None
         self.pretty_name = None
         self.token = None
         self.types = None
-        if input_dict is not None and isinstance(input_dict, dict):
-            self.from_dict(input_dict)
+        super().__init__(attrs)
 
-    def from_dict(self, input_dict):
-        """Convert input_dict values to class attributes.
+    def from_dict(self, attrs):
+        """Convert attrs values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing EclipseDeviationMedia fields.
+            attrs (dict): Dict containing DeviationMedia fields.
         """
-        if input_dict is None:
-            return
-        self.base_uri = input_dict.get('baseUri')
-        self.pretty_name = input_dict.get('prettyName')
-        self.token = input_dict.get('token')
-        self.types = input_dict.get('types')
+        super().from_dict(attrs)
+        self.base_uri = attrs.get('baseUri')
+        self.pretty_name = attrs.get('prettyName')
+        self.token = attrs.get('token')
+        self.types = attrs.get('types')

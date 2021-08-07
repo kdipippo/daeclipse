@@ -1,29 +1,29 @@
 """Model to represent DeviantArt Eclipse Deviation Type Facet."""
 
+from daeclipse.models.model import Model
 
-class EclipseDeviationTypeFacet(object):
+
+class DeviationTypeFacet(Model):
     """Model to represent DeviantArt Eclipse Deviation Type Facet."""
 
-    def __init__(self, input_dict=None):
-        """Initialize EclipseDeviationTypeFacet.
+    def __init__(self, attrs=None):
+        """Initialize DeviationTypeFacet.
 
         Args:
-            input_dict (dict, optional): Dict of EclipseDeviationTypeFacet class attrs.
+            attrs (dict, optional): Dict of model attributes.
         """
         self.link_to = None
         self.url_fragment = None
         self.display_name_en = None
-        if input_dict is not None and isinstance(input_dict, dict):
-            self.from_dict(input_dict)
+        super().__init__(attrs)
 
-    def from_dict(self, input_dict):
-        """Convert input_dict values to class attributes.
+    def from_dict(self, attrs):
+        """Convert attrs values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing EclipseDeviationTypeFacet fields.
+            attrs (dict): Dict containing DeviationTypeFacet fields.
         """
-        if input_dict is None:
-            return
-        self.link_to = input_dict.get('linkTo')
-        self.url_fragment = input_dict.get('urlFragment')
-        self.display_name_en = input_dict.get('displayNameEn')
+        super().from_dict(attrs)
+        self.link_to = attrs.get('linkTo')
+        self.url_fragment = attrs.get('urlFragment')
+        self.display_name_en = attrs.get('displayNameEn')

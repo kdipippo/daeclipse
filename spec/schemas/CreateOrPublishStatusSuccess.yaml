@@ -1,0 +1,8 @@
+# If status/create, the status is created as a draft in sta.sh.
+# If status/publish, the sta.sh draft is converted to a public status.
+type: object
+required:
+- deviation
+properties:
+  deviation:
+    $ref: "../schemas/Status.yaml"

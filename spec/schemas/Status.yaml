@@ -1,0 +1,8 @@
+allOf:
+- $ref: "./Deviation.yaml"
+- type: object
+  required:
+  - textContent
+  properties:
+    textContent:
+      $ref: "./TextContent.yaml"

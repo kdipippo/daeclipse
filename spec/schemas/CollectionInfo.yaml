@@ -1,0 +1,45 @@
+type: object
+required:
+- folderId
+- gallectionUuid
+- parentId
+- type
+- name
+- description
+- owner
+- commentCount
+- size
+- thumb
+properties:
+  folderId:
+    type: integer
+    example: 23456789
+  gallectionUuid:
+    type: string
+    format: uuid
+    example: 15A01024-5565-4736-AB66-E3E5DB890868
+  parentId:
+    type: integer
+    nullable: true
+    example: 34567890
+  "type":
+    type: string
+    example: collection
+  name:
+    type: string
+    example: Example collection name"
+  description:
+    type: string
+    example: ""
+  owner:
+    $ref: "./Gruser.yaml"
+  commentCount:
+    type: integer
+    example: 0
+  size:
+    type: integer
+    example: 227
+  thumb:
+    nullable: true
+    allOf:
+    - $ref: "./Deviation.yaml"

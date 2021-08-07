@@ -1,33 +1,33 @@
 """Model to represent DeviantArt Eclipse Deviation File Specs."""
 
+from daeclipse.models.model import Model
 
-class EclipseDeviationFileSpecs(object):
+
+class DeviationFileSpecs(Model):
     """Model to represent DeviantArt Eclipse Deviation File Specs."""
 
-    def __init__(self, input_dict=None):
-        """Initialize EclipseDeviationFileSpecs.
+    def __init__(self, attrs=None):
+        """Initialize DeviationFileSpecs.
 
         Args:
-            input_dict (dict, optional): Dict of EclipseDeviationFileSpecs class attrs.
+            attrs (dict, optional): Dict of model attributes.
         """
         self.url = None
         self.type = None
         self.width = None
         self.height = None
         self.filesize = None
-        if input_dict is not None and isinstance(input_dict, dict):
-            self.from_dict(input_dict)
+        super().__init__(attrs)
 
-    def from_dict(self, input_dict):
-        """Convert input_dict values to class attributes.
+    def from_dict(self, attrs):
+        """Convert attrs values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing EclipseDeviationFileSpecs fields.
+            attrs (dict): Dict containing DeviationFileSpecs fields.
         """
-        if input_dict is None:
-            return
-        self.url = input_dict.get('url')
-        self.type = input_dict.get('type')
-        self.width = input_dict.get('width')
-        self.height = input_dict.get('height')
-        self.filesize = input_dict.get('filesize')
+        super().from_dict(attrs)
+        self.url = attrs.get('url')
+        self.type = attrs.get('type')
+        self.width = attrs.get('width')
+        self.height = attrs.get('height')
+        self.filesize = attrs.get('filesize')

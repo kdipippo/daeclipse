@@ -1,0 +1,55 @@
+type: object
+required:
+- deviationUuid
+- canUserAddToGroup
+- groupListUrl
+- description
+- originalFile
+- license
+- download
+- relatedStreams
+- stats
+- reportUrl
+- awardedBadges
+properties:
+  deviationUuid:
+    type: string
+    format: uuid
+    example: 656CC452-3566-455C-88FA-72E2CEF38EA2
+  canUserAddToGroup:
+    type: boolean
+    example: true
+  groupListUrl:
+    type: string
+    example: "https://www.deviantart.com/deviation/112233445/groups"
+  description:
+    type: string
+    example: "<div><p>Example description</p></div>"
+  originalFile:
+    $ref: "./DeviationFileSpecs.yaml"
+  tags:
+    type: array
+    items:
+      $ref: "./DeviationTag.yaml"
+  subjectTags:
+    type: array
+    items:
+      $ref: "./DeviationTag.yaml"
+  typeFacet:
+    $ref: "./DeviationTypeFacet.yaml"
+  license:
+    type: string
+    enum: ['none', 'by-nc-nd']
+  download:
+    $ref: "./DeviationFileSpecs.yaml"
+  relatedStreams:
+    $ref: "./DeviationRelatedStreams.yaml"
+  stats:
+    $ref: "./DeviationExtendedStats.yaml"
+  reportUrl:
+    type: string
+    example: "https://www.deviantart.com/deviation/report/112233445?is_modal=true"
+  awardedBadges:
+    type: array
+    items:
+      $ref: "./DeviationAwardedBadge.yaml"

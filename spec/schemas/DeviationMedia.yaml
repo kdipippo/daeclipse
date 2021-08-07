@@ -1,0 +1,35 @@
+type: object
+required:
+- types
+properties:
+  baseUri:
+    type: string
+    example: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/49402c4d-1fe3-4f6d-8144-2f58aee8d82d/denu3kl-280bcd78-b8fc-4c60-911a-1ca732a2b7a9.jpg"
+  prettyName:
+    type: string
+    example: "example_title_by_exampleusername_denu3kl"
+  token:
+    type: array
+    items:
+      type: string
+    example: ["eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiO"]
+  types:
+    type: array
+    items:
+      type: object
+      properties:
+        t:
+          type: string
+          example: "150"
+        r:
+          type: integer
+          example: 0
+        c:
+          type: string
+          example: "v1/fit/w_150,h_150,q_70,strp/<prettyName>-150.jpg"
+        h:
+          type: integer
+          example: 0
+        w:
+          type: integer
+          example: 0

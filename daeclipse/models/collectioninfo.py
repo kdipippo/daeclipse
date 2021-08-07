@@ -1,17 +1,18 @@
 """Model to represent DeviantArt Eclipse Collection Info."""
 
-import daeclipse.models.deviation
-from daeclipse.models.gruser import EclipseGruser
+from daeclipse.models.deviation import Deviation
+from daeclipse.models.gruser import Gruser
+from daeclipse.models.model import Model
 
 
-class EclipseCollectionInfo(object):
+class CollectionInfo(Model):
     """Model to represent DeviantArt Eclipse Deviation Info."""
 
-    def __init__(self, input_dict=None):
-        """Initialize EclipseCollectionInfo.
+    def __init__(self, attrs=None):
+        """Initialize CollectionInfo.
 
         Args:
-            input_dict (dict, optional): Dict of EclipseCollectionInfo class attrs.
+            attrs (dict, optional): Dict of model attributes.
         """
         self.folder_id = None
         self.gallection_uuid = None
@@ -23,24 +24,22 @@ class EclipseCollectionInfo(object):
         self.comment_count = None
         self.size = None
         self.thumb = None
-        if input_dict is not None and isinstance(input_dict, dict):
-            self.from_dict(input_dict)
+        super().__init__(attrs)
 
-    def from_dict(self, input_dict):
-        """Convert input_dict values to class attributes.
+    def from_dict(self, attrs):
+        """Convert attrs values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing EclipseCollectionInfo fields.
+            attrs (dict): Dict containing CollectionInfo fields.
         """
-        if input_dict is None:
-            return
-        self.folder_id = input_dict.get('folderId')
-        self.gallection_uuid = input_dict.get('gallectionUuid')
-        self.parent_id = input_dict.get('parentId')
-        self.type = input_dict.get('type')
-        self.name = input_dict.get('name')
-        self.description = input_dict.get('description')
-        self.owner = EclipseGruser(input_dict.get('owner'))
-        self.comment_count = input_dict.get('commentCount')
-        self.size = input_dict.get('size')
-        self.thumb = daeclipse.models.deviation.EclipseDeviation(input_dict.get('folderId'))
+        super().from_dict(attrs)
+        self.folder_id = attrs.get('folderId')
+        self.gallection_uuid = attrs.get('gallectionUuid')
+        self.parent_id = attrs.get('parentId')
+        self.type = attrs.get('type')
+        self.name = attrs.get('name')
+        self.description = attrs.get('description')
+        self.owner = Gruser(attrs.get('owner'))
+        self.comment_count = attrs.get('commentCount')
+        self.size = attrs.get('size')
+        self.thumb = Deviation(attrs.get('folderId'))

@@ -1,27 +1,27 @@
 """Model to represent DeviantArt Eclipse Comment Content."""
 
+from daeclipse.models.model import Model
 
-class EclipseCommentContent(object):
+
+class CommentContent(Model):
     """Model to represent DeviantArt Eclipse Comment Content."""
 
-    def __init__(self, input_dict=None):
-        """Initialize EclipseCommentContent.
+    def __init__(self, attrs=None):
+        """Initialize CommentContent.
 
         Args:
-            input_dict (dict, optional): Dict of EclipseCommentContent class attrs.
+            attrs (dict, optional): Dict of model attributes.
         """
         self.excerpt = None
         self.html = None
-        if input_dict is not None and isinstance(input_dict, dict):
-            self.from_dict(input_dict)
+        super().__init__(attrs)
 
-    def from_dict(self, input_dict):
-        """Convert input_dict values to class attributes.
+    def from_dict(self, attrs):
+        """Convert attrs values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing EclipseCommentContent fields.
+            attrs (dict): Dict containing CommentContent fields.
         """
-        if input_dict is None:
-            return
-        self.excerpt = input_dict.get('excerpt')
-        self.html = input_dict.get('html')
+        super().from_dict(attrs)
+        self.excerpt = attrs.get('excerpt')
+        self.html = attrs.get('html')

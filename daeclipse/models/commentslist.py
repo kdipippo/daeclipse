@@ -1,17 +1,19 @@
 """Model to represent DeviantArt Eclipse Comments List."""
 
-from daeclipse.models.comment import EclipseComment
+from daeclipse.models.comment import Comment
+from daeclipse.models.model import Model
 
 
-class EclipseCommentsList(object):
+class CommentsList(Model):
     """Model to represent DeviantArt Eclipse Comments List."""
 
-    def __init__(self, input_dict=None):
-        """Initialize EclipseCommentsList.
+    def __init__(self, attrs=None):
+        """Initialize CommentsList.
 
         Args:
-            input_dict (dict, optional): Dict of EclipseCommentsList class attrs.
+            attrs (dict, optional): Dict of model attributes.
         """
+        super().__init__(attrs)
         self.has_more = None
         self.has_less = None
         self.next_offset = None
@@ -22,25 +24,21 @@ class EclipseCommentsList(object):
         self.commentable_typeid = None
         self.commentable_itemid = None
         self.thread = None
-        if input_dict is not None and isinstance(input_dict, dict):
-            self.from_dict(input_dict)
 
-    def from_dict(self, input_dict):
-        """Convert input_dict values to class attributes.
+    def from_dict(self, attrs):
+        """Convert attrs values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing EclipseCommentsList fields.
+            attrs (dict): Dict containing CommentsList fields.
         """
-        if input_dict is None:
-            return
-        self.has_more = input_dict.get('hasMore')
-        self.has_less = input_dict.get('hasLess')
-        self.next_offset = input_dict.get('nextOffset')
-        self.cursor = input_dict.get('cursor')
-        self.prev_cursor = input_dict.get('prevCursor')
-        self.total = input_dict.get('total')
-        self.can_post_comment = input_dict.get('canPostComment')
-        self.commentable_typeid = input_dict.get('commentableTypeid')
-        self.commentable_itemid = input_dict.get('commentableItemid')
-        if input_dict.get('thread') is not None:
-            self.thread = [EclipseComment(comment_dict) for comment_dict in input_dict.get('thread')]
+        super().from_dict(attrs)
+        self.has_more = attrs.get('hasMore')
+        self.has_less = attrs.get('hasLess')
+        self.next_offset = attrs.get('nextOffset')
+        self.cursor = attrs.get('cursor')
+        self.prev_cursor = attrs.get('prevCursor')
+        self.total = attrs.get('total')
+        self.can_post_comment = attrs.get('canPostComment')
+        self.commentable_typeid = attrs.get('commentableTypeid')
+        self.commentable_itemid = attrs.get('commentableItemid')
+        self.thread = self.to_submodel(Comment, attrs.get('thread'))
