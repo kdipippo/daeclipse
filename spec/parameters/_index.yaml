@@ -11,5 +11,9 @@ groupId:
   $ref: './query/groupId.yaml'
 limit:
   $ref: './query/limit.yaml'
+moduleId:
+  $ref: './query/moduleId.yaml'
+offset:
+  $ref: './query/offset.yaml'
 username:
   $ref: './query/username.yaml'

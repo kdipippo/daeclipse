@@ -1,0 +1,6 @@
+type: object
+required:
+- deviation
+properties:
+  deviation:
+    $ref: "./Deviation.yaml"

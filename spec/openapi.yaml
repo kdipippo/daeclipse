@@ -10,7 +10,7 @@ info:
     url: https://kathryndipippo.com
     email: dipippo.k@gmail.com
 servers:
-  - url: https://www.deviantart.com/_napi/shared_api
+  - url: https://www.deviantart.com/_napi
 tags:
 - name: Deviations
   description: Operations relating to artwork posts, Deviations.
@@ -21,27 +21,29 @@ tags:
 - name: Statuses
   description: Operations relating to tweet-like posts, Statuses.
 paths:
-  /deviation/extended_fetch:
+  /da-user-profile/api/module/my_comments:
+    $ref: "./resources/module/my_comments.yaml"
+  /shared_api/deviation/extended_fetch:
     $ref: "./resources/deviation/extended_fetch.yaml"
-  /deviation/delete:
+  /shared_api/deviation/delete:
     $ref: "./resources/deviation/delete.yaml"
-  /journal/create:
+  /shared_api/journal/create:
     $ref: "./resources/journal/create.yaml"
-  /journal/update/content:
+  /shared_api/journal/update/content:
     $ref: "./resources/journal/update/content.yaml"
-  /journal/publish:
+  /shared_api/journal/publish:
     $ref: "./resources/journal/publish.yaml"
-  /deviation/groups:
+  /shared_api/deviation/groups:
     $ref: "./resources/deviation/groups.yaml"
-  /deviation/group_folders:
+  /shared_api/deviation/group_folders:
     $ref: "./resources/deviation/group_folders.yaml"
-  /deviation/group_add:
+  /shared_api/deviation/group_add:
     $ref: "./resources/deviation/group_add.yaml"
-  /status/create:
+  /shared_api/status/create:
     $ref: "./resources/status/create.yaml"
-  /status/publish:
+  /shared_api/status/publish:
     $ref: "./resources/status/publish.yaml"
-  /status/delete:
+  /shared_api/status/delete:
     $ref: "./resources/status/delete.yaml"
 components:
   parameters:

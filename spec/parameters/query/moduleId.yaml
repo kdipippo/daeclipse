@@ -1,0 +1,6 @@
+in: query
+name: moduleid
+description: DeviantArt user profile module ID.
+required: true
+schema:
+  type: number

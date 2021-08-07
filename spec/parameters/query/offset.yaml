@@ -1,0 +1,6 @@
+in: query
+name: offset
+description: Offset for paginated API call.
+required: true
+schema:
+  type: number

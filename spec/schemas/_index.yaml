@@ -28,6 +28,8 @@ DeviationTag:
   $ref: "./DeviationTag.yaml"
 DeviationTypeFacet:
   $ref: "./DeviationTypeFacet.yaml"
+ErrorInvalidCSRF:
+  $ref: "./ErrorInvalidCSRF.yaml"
 Gruser:
   $ref: "./Gruser.yaml"
 Stats:
@@ -36,5 +38,11 @@ Status:
   $ref: "./Status.yaml"
 TextContent:
   $ref: "./TextContent.yaml"
-ErrorInvalidCSRF:
-  $ref: "./ErrorInvalidCSRF.yaml"
+UserComment:
+  $ref: "./UserComment.yaml"
+UserCommentOnDeviation:
+  $ref: "./UserCommentOnDeviation.yaml"
+UserCommentOnProfile:
+  $ref: "./UserCommentOnProfile.yaml"
+UsersCommentsList:
+  $ref: "./UsersCommentsList.yaml"

@@ -1,0 +1,14 @@
+type: object
+required:
+- profile
+properties:
+  profile:
+    allOf:
+    - $ref: "./Gruser.yaml"
+    - type: object
+      required:
+      - isSubscribed
+      properties:
+        isSubscribed:
+          type: boolean
+          example: false
