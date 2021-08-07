@@ -32,7 +32,7 @@ properties:
     type: string
     example: ""
   owner:
-    $ref: "./EclipseGruser.yaml"
+    $ref: "./Gruser.yaml"
   commentCount:
     type: integer
     example: 0
@@ -42,4 +42,4 @@ properties:
   thumb:
     nullable: true
     allOf:
-    - $ref: "./EclipseDeviation.yaml"
+    - $ref: "./Deviation.yaml"

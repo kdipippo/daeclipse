@@ -1,14 +1,14 @@
 """Model to represent DeviantArt Eclipse Deviation Type Facet."""
 
 
-class EclipseDeviationTypeFacet(object):
+class DeviationTypeFacet(object):
     """Model to represent DeviantArt Eclipse Deviation Type Facet."""
 
     def __init__(self, input_dict=None):
-        """Initialize EclipseDeviationTypeFacet.
+        """Initialize DeviationTypeFacet.
 
         Args:
-            input_dict (dict, optional): Dict of EclipseDeviationTypeFacet class attrs.
+            input_dict (dict, optional): Dict of DeviationTypeFacet class attrs.
         """
         self.link_to = None
         self.url_fragment = None
@@ -20,7 +20,7 @@ class EclipseDeviationTypeFacet(object):
         """Convert input_dict values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing EclipseDeviationTypeFacet fields.
+            input_dict (dict): Dict containing DeviationTypeFacet fields.
         """
         if input_dict is None:
             return

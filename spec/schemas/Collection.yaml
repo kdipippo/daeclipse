@@ -7,12 +7,12 @@ properties:
   collection:
     type: array
     items:
-      $ref: "./EclipseCollectionInfo.yaml"
+      $ref: "./CollectionInfo.yaml"
   deviations:
     type: array
     items:
-      $ref: "./EclipseDeviation.yaml"
+      $ref: "./Deviation.yaml"
   groups:
     type: array
     items:
-      $ref: "./EclipseGruser.yaml"
+      $ref: "./Gruser.yaml"

@@ -1,14 +1,14 @@
 """Model to represent DeviantArt Eclipse Deviation Awarded Badges."""
 
 
-class EclipseDeviationAwardedBadge(object):
+class DeviationAwardedBadge(object):
     """Model to represent DeviantArt Eclipse Deviation Awarded Badges."""
 
     def __init__(self, input_dict=None):
-        """Initialize EclipseDeviationAwardedBadge.
+        """Initialize DeviationAwardedBadge.
 
         Args:
-            input_dict (dict, optional): Dict of EclipseDeviationAwardedBadge class attrs.
+            input_dict (dict, optional): Dict of DeviationAwardedBadge class attrs.
         """
         self.id = None
         self.type_id = None
@@ -25,7 +25,7 @@ class EclipseDeviationAwardedBadge(object):
         """Convert input_dict values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing EclipseDeviationAwardedBadge fields.
+            input_dict (dict): Dict containing DeviationAwardedBadge fields.
         """
         if input_dict is None:
             return

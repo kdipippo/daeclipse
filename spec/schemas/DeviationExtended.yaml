@@ -6,15 +6,15 @@ required:
 properties:
   deviation:
     allOf:
-    - $ref: "./EclipseDeviation.yaml"
+    - $ref: "./Deviation.yaml"
     - type: object
       required:
       - extended
       properties:
         extended:
-          $ref: "./EclipseDeviationExtendedContent.yaml"
+          $ref: "./DeviationExtendedContent.yaml"
   viewMode:
     type: string
     example: regular
   comments:
-    $ref: "./EclipseCommentsList.yaml"
+    $ref: "./CommentsList.yaml"

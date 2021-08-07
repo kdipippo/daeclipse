@@ -26,30 +26,30 @@ properties:
     type: string
     example: "<div><p>Example description</p></div>"
   originalFile:
-    $ref: "./EclipseDeviationFileSpecs.yaml"
+    $ref: "./DeviationFileSpecs.yaml"
   tags:
     type: array
     items:
-      $ref: "./EclipseDeviationTag.yaml"
+      $ref: "./DeviationTag.yaml"
   subjectTags:
     type: array
     items:
-      $ref: "./EclipseDeviationTag.yaml"
+      $ref: "./DeviationTag.yaml"
   typeFacet:
-    $ref: "./EclipseDeviationTypeFacet.yaml"
+    $ref: "./DeviationTypeFacet.yaml"
   license:
     type: string
     enum: ['none', 'by-nc-nd']
   download:
-    $ref: "./EclipseDeviationFileSpecs.yaml"
+    $ref: "./DeviationFileSpecs.yaml"
   relatedStreams:
-    $ref: "./EclipseDeviationRelatedStreams.yaml"
+    $ref: "./DeviationRelatedStreams.yaml"
   stats:
-    $ref: "./EclipseDeviationExtendedStats.yaml"
+    $ref: "./DeviationExtendedStats.yaml"
   reportUrl:
     type: string
     example: "https://www.deviantart.com/deviation/report/112233445?is_modal=true"
   awardedBadges:
     type: array
     items:
-      $ref: "./EclipseDeviationAwardedBadge.yaml"
+      $ref: "./DeviationAwardedBadge.yaml"

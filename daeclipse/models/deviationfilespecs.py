@@ -1,14 +1,14 @@
 """Model to represent DeviantArt Eclipse Deviation File Specs."""
 
 
-class EclipseDeviationFileSpecs(object):
+class DeviationFileSpecs(object):
     """Model to represent DeviantArt Eclipse Deviation File Specs."""
 
     def __init__(self, input_dict=None):
-        """Initialize EclipseDeviationFileSpecs.
+        """Initialize DeviationFileSpecs.
 
         Args:
-            input_dict (dict, optional): Dict of EclipseDeviationFileSpecs class attrs.
+            input_dict (dict, optional): Dict of DeviationFileSpecs class attrs.
         """
         self.url = None
         self.type = None
@@ -22,7 +22,7 @@ class EclipseDeviationFileSpecs(object):
         """Convert input_dict values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing EclipseDeviationFileSpecs fields.
+            input_dict (dict): Dict containing DeviationFileSpecs fields.
         """
         if input_dict is None:
             return

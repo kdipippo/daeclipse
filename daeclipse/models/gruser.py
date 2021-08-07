@@ -1,14 +1,14 @@
 """Model to represent DeviantArt Eclipse Group or User."""
 
 
-class EclipseGruser(object):  # noqa: WPS230
+class Gruser(object):  # noqa: WPS230
     """Model to represent DeviantArt Eclipse Group or User."""
 
     def __init__(self, input_dict=None):
-        """Initialize EclipseGruser.
+        """Initialize Gruser.
 
         Args:
-            input_dict (dict, optional): Dict of EclipseGruser class attrs.
+            input_dict (dict, optional): Dict of Gruser class attrs.
         """
         self.user_id = None
         self.userid_uuid = None
@@ -21,10 +21,10 @@ class EclipseGruser(object):  # noqa: WPS230
             self.from_dict(input_dict)
 
     def __repr__(self):
-        """Representation of EclipseGruser.
+        """Representation of Gruser.
 
         Returns:
-            string: EclipseGruser representation.
+            string: Gruser representation.
         """
         return self.user_id
 
@@ -32,7 +32,7 @@ class EclipseGruser(object):  # noqa: WPS230
         """Convert input_dict values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing EclipseGruser fields.
+            input_dict (dict): Dict containing Gruser fields.
         """
         if input_dict is None:
             return

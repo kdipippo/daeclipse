@@ -1,16 +1,16 @@
 """Model to represent DeviantArt Eclipse Comments List."""
 
-from daeclipse.models.comment import EclipseComment
+from daeclipse.models.comment import Comment
 
 
-class EclipseCommentsList(object):
+class CommentsList(object):
     """Model to represent DeviantArt Eclipse Comments List."""
 
     def __init__(self, input_dict=None):
-        """Initialize EclipseCommentsList.
+        """Initialize CommentsList.
 
         Args:
-            input_dict (dict, optional): Dict of EclipseCommentsList class attrs.
+            input_dict (dict, optional): Dict of CommentsList class attrs.
         """
         self.has_more = None
         self.has_less = None
@@ -29,7 +29,7 @@ class EclipseCommentsList(object):
         """Convert input_dict values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing EclipseCommentsList fields.
+            input_dict (dict): Dict containing CommentsList fields.
         """
         if input_dict is None:
             return
@@ -43,4 +43,4 @@ class EclipseCommentsList(object):
         self.commentable_typeid = input_dict.get('commentableTypeid')
         self.commentable_itemid = input_dict.get('commentableItemid')
         if input_dict.get('thread') is not None:
-            self.thread = [EclipseComment(comment_dict) for comment_dict in input_dict.get('thread')]
+            self.thread = [Comment(comment_dict) for comment_dict in input_dict.get('thread')]

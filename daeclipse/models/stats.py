@@ -1,14 +1,14 @@
 """Model to represent DeviantArt Eclipse Deviation Stats."""
 
 
-class EclipseStats(object):
+class Stats(object):
     """Model to represent DeviantArt Eclipse Deviation Stats."""
 
     def __init__(self, input_dict=None):
-        """Initialize EclipseStats.
+        """Initialize Stats.
 
         Args:
-            input_dict (dict, optional): Dict of EclipseStats class attrs.
+            input_dict (dict, optional): Dict of Stats class attrs.
         """
         self.comments = None
         self.favourites = None
@@ -19,7 +19,7 @@ class EclipseStats(object):
         """Convert input_dict values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing EclipseStats fields.
+            input_dict (dict): Dict containing Stats fields.
         """
         if input_dict is None:
             return

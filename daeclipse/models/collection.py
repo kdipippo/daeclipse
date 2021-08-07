@@ -1,18 +1,18 @@
 """Model to represent DeviantArt Eclipse Collections."""
 
 import daeclipse.models.deviation
-from daeclipse.models.collectioninfo import EclipseCollectionInfo
-from daeclipse.models.gruser import EclipseGruser
+from daeclipse.models.collectioninfo import CollectionInfo
+from daeclipse.models.gruser import Gruser
 
 
-class EclipseCollection(object):
+class Collection(object):
     """Model to represent DeviantArt Eclipse Collections."""
 
     def __init__(self, input_dict=None):
-        """Initialize EclipseCollection.
+        """Initialize Collection.
 
         Args:
-            input_dict (dict, optional): Dict of EclipseCollection class attrs.
+            input_dict (dict, optional): Dict of Collection class attrs.
         """
         self.collection = None
         self.deviations = None
@@ -24,12 +24,12 @@ class EclipseCollection(object):
         """Convert input_dict values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing EclipseCollection fields.
+            input_dict (dict): Dict containing Collection fields.
         """
         if input_dict is None:
             return
-        self.collection = EclipseCollectionInfo(input_dict.get('collection'))
+        self.collection = CollectionInfo(input_dict.get('collection'))
         if input_dict.get('deviations') is not None:
-            self.deviations = [daeclipse.models.deviation.EclipseDeviation(deviation) for deviation in input_dict.get('deviations')]
+            self.deviations = [daeclipse.models.deviation.Deviation(deviation) for deviation in input_dict.get('deviations')]
         if input_dict.get('groups') is not None:
-            self.groups = [EclipseGruser(group) for group in input_dict.get('groups')]
+            self.groups = [Gruser(group) for group in input_dict.get('groups')]

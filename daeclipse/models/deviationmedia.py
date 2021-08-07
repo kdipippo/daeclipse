@@ -1,14 +1,14 @@
 """Model to represent DeviantArt Eclipse Deviation Media."""
 
 
-class EclipseDeviationMedia(object):
+class DeviationMedia(object):
     """Model to represent DeviantArt Eclipse Deviation Media."""
 
     def __init__(self, input_dict=None):
-        """Initialize EclipseDeviationMedia.
+        """Initialize DeviationMedia.
 
         Args:
-            input_dict (dict, optional): Dict of EclipseDeviationMedia class attrs.
+            input_dict (dict, optional): Dict of DeviationMedia class attrs.
         """
         self.base_uri = None
         self.pretty_name = None
@@ -21,7 +21,7 @@ class EclipseDeviationMedia(object):
         """Convert input_dict values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing EclipseDeviationMedia fields.
+            input_dict (dict): Dict containing DeviationMedia fields.
         """
         if input_dict is None:
             return

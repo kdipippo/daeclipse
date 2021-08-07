@@ -215,7 +215,7 @@ def handle_selected_group(eclipse, group, deviation_url):
 
     Args:
         eclipse (Eclipse): Eclipse API class instance.
-        group (EclipseGruser): EclipseGruser object representing group.
+        group (Gruser): Gruser object representing group.
         deviation_url (str): Deviation URL.
 
     Returns:

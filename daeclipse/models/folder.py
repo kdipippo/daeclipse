@@ -1,17 +1,17 @@
 """Model to represent DeviantArt Eclipse Group Folder."""
 
 import daeclipse.models.deviation
-from daeclipse.models.gruser import EclipseGruser
+from daeclipse.models.gruser import Gruser
 
 
-class EclipseFolder(object):  # noqa: WPS230
+class Folder(object):  # noqa: WPS230
     """Model to represent DeviantArt Eclipse Group Folder."""
 
     def __init__(self, input_dict=None):
-        """Initialize EclipseFolder.
+        """Initialize Folder.
 
         Args:
-            input_dict (dict, optional): Dict of EclipseFolder class attrs.
+            input_dict (dict, optional): Dict of Folder class attrs.
         """
         self.folder_id = None
         self.gallection_uuid = None
@@ -29,10 +29,10 @@ class EclipseFolder(object):  # noqa: WPS230
             self.from_dict(input_dict)
 
     def __repr__(self):
-        """Representation of EclipseFolder.
+        """Representation of Folder.
 
         Returns:
-            string: EclipseFolder representation.
+            string: Folder representation.
         """
         return self.folder_id
 
@@ -40,7 +40,7 @@ class EclipseFolder(object):  # noqa: WPS230
         """Convert input_dict values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing EclipseFolder fields.
+            input_dict (dict): Dict containing Folder fields.
         """
         if input_dict is None:
             return
@@ -50,9 +50,9 @@ class EclipseFolder(object):  # noqa: WPS230
         self.type = input_dict.get('type')
         self.name = input_dict.get('name')
         self.description = input_dict.get('description')
-        self.owner = EclipseGruser(input_dict.get('owner'))
+        self.owner = Gruser(input_dict.get('owner'))
         self.comment_count = input_dict.get('commentCount')
         self.size = input_dict.get('size')
-        self.thumb = daeclipse.models.deviation.EclipseDeviation(input_dict.get('thumb'))
+        self.thumb = daeclipse.models.deviation.Deviation(input_dict.get('thumb'))
         self.has_sub_folders = input_dict.get('hasSubfolders')
         self.total_item_count = input_dict.get('totalItemCount')

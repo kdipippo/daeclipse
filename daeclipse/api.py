@@ -8,9 +8,9 @@ import requests
 from bs4 import BeautifulSoup
 from html_to_draftjs import html_to_draftjs
 
-from daeclipse.models.deviationextended import EclipseDeviationExtended
-from daeclipse.models.folder import EclipseFolder
-from daeclipse.models.groupslist import EclipseGroupsList
+from daeclipse.models.deviationextended import DeviationExtended
+from daeclipse.models.folder import Folder
+from daeclipse.models.groupslist import GroupsList
 
 
 class Eclipse(object):
@@ -31,7 +31,7 @@ class Eclipse(object):
             limit (int, optional): Limit of results to return. Defaults to 24.
 
         Returns:
-            EclipseGroupsList: EclipseGroupsList instance.
+            GroupsList: GroupsList instance.
 
         Raises:
             ValueError: If `limit` is greater than 24.
@@ -54,7 +54,7 @@ class Eclipse(object):
             cookies=self.cookies,
         )
         rjson = validate_response_succeeds(response)
-        return EclipseGroupsList(rjson)
+        return GroupsList(rjson)
 
     def get_group_folders(self, group_id, deviation_url):
         """Return folders for group, if user is member of group.
@@ -64,7 +64,7 @@ class Eclipse(object):
             deviation_url (str): Deviation URL.
 
         Returns:
-            EclipseFolder[]: List of EclipseFolder objects.
+            Folder[]: List of Folder objects.
         """
         headers = {'referer': deviation_url}
         response = requests.get(
@@ -78,7 +78,7 @@ class Eclipse(object):
         )
 
         folder_data = validate_response_succeeds(response)
-        return [EclipseFolder(folder) for folder in folder_data['results']]
+        return [Folder(folder) for folder in folder_data['results']]
 
     def get_deviation_tags(self, deviation_url):
         """Get list of tags for the provided deviation_id.
@@ -102,7 +102,7 @@ class Eclipse(object):
         ])
         response = requests.get(extended_fetch_url, cookies=self.cookies)
         rjson = validate_response_succeeds(response)
-        deviation_extended = EclipseDeviationExtended(rjson)
+        deviation_extended = DeviationExtended(rjson)
         return deviation_extended.deviation.get_tag_names()
 
     def add_deviation_to_group(self, group_id, folder_id, deviation_url):

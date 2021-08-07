@@ -1,16 +1,16 @@
 """Model to represent DeviantArt Eclipse Groups List."""
 
-from daeclipse.models.gruser import EclipseGruser
+from daeclipse.models.gruser import Gruser
 
 
-class EclipseGroupsList(object):
+class GroupsList(object):
     """Model to represent DeviantArt Eclipse Groups List."""
 
     def __init__(self, input_dict=None):
-        """Initialize EclipseGroupsList.
+        """Initialize GroupsList.
 
         Args:
-            input_dict (dict, optional): Dict of EclipseGroupsList class attrs.
+            input_dict (dict, optional): Dict of GroupsList class attrs.
         """
         self.has_more = None
         self.next_offset = None
@@ -23,7 +23,7 @@ class EclipseGroupsList(object):
         """Convert input_dict values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing EclipseStats fields.
+            input_dict (dict): Dict containing Stats fields.
         """
         if input_dict is None:
             return
@@ -31,4 +31,4 @@ class EclipseGroupsList(object):
         self.next_offset = input_dict.get('nextOffset')
         self.total = input_dict.get('total')
         if input_dict.get('results') is not None:
-            self.groups = [EclipseGruser(group) for group in input_dict.get('results')]
+            self.groups = [Gruser(group) for group in input_dict.get('results')]

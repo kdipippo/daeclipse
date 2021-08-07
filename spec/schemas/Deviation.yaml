@@ -110,8 +110,8 @@ properties:
       type: string
     example: []
   author:
-    $ref: "./EclipseGruser.yaml"
+    $ref: "./Gruser.yaml"
   stats:
-    $ref: "./EclipseStats.yaml"
+    $ref: "./Stats.yaml"
   media:
-    $ref: "./EclipseDeviationMedia.yaml"
+    $ref: "./DeviationMedia.yaml"

@@ -1,17 +1,17 @@
 """Model to represent DeviantArt Eclipse Collection Info."""
 
 import daeclipse.models.deviation
-from daeclipse.models.gruser import EclipseGruser
+from daeclipse.models.gruser import Gruser
 
 
-class EclipseCollectionInfo(object):
+class CollectionInfo(object):
     """Model to represent DeviantArt Eclipse Deviation Info."""
 
     def __init__(self, input_dict=None):
-        """Initialize EclipseCollectionInfo.
+        """Initialize CollectionInfo.
 
         Args:
-            input_dict (dict, optional): Dict of EclipseCollectionInfo class attrs.
+            input_dict (dict, optional): Dict of CollectionInfo class attrs.
         """
         self.folder_id = None
         self.gallection_uuid = None
@@ -30,7 +30,7 @@ class EclipseCollectionInfo(object):
         """Convert input_dict values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing EclipseCollectionInfo fields.
+            input_dict (dict): Dict containing CollectionInfo fields.
         """
         if input_dict is None:
             return
@@ -40,7 +40,7 @@ class EclipseCollectionInfo(object):
         self.type = input_dict.get('type')
         self.name = input_dict.get('name')
         self.description = input_dict.get('description')
-        self.owner = EclipseGruser(input_dict.get('owner'))
+        self.owner = Gruser(input_dict.get('owner'))
         self.comment_count = input_dict.get('commentCount')
         self.size = input_dict.get('size')
-        self.thumb = daeclipse.models.deviation.EclipseDeviation(input_dict.get('folderId'))
+        self.thumb = daeclipse.models.deviation.Deviation(input_dict.get('folderId'))

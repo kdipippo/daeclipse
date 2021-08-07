@@ -1,20 +1,19 @@
 """Model to represent DeviantArt Eclipse Deviation."""
 
-from daeclipse.models.deviationextendedcontent import \
-    EclipseDeviationExtendedContent
-from daeclipse.models.deviationmedia import EclipseDeviationMedia
-from daeclipse.models.gruser import EclipseGruser
-from daeclipse.models.stats import EclipseStats
+from daeclipse.models.deviationextendedcontent import DeviationExtendedContent
+from daeclipse.models.deviationmedia import DeviationMedia
+from daeclipse.models.gruser import Gruser
+from daeclipse.models.stats import Stats
 
 
-class EclipseDeviation(object):  # noqa: WPS230
+class Deviation(object):  # noqa: WPS230
     """Model to represent DeviantArt Eclipse Deviation."""
 
     def __init__(self, input_dict=None):
-        """Initialize EclipseDeviation.
+        """Initialize Deviation.
 
         Args:
-            input_dict (dict, optional): Dict of EclipseDeviation class attrs.
+            input_dict (dict, optional): Dict of Deviation class attrs.
         """
         self.deviation_id = None
         self.type = None
@@ -49,10 +48,10 @@ class EclipseDeviation(object):  # noqa: WPS230
             self.from_dict(input_dict)
 
     def __repr__(self):
-        """Representation of EclipseDeviation.
+        """Representation of Deviation.
 
         Returns:
-            string: EclipseDeviation representation.
+            string: Deviation representation.
         """
         return self.deviation_id
 
@@ -60,7 +59,7 @@ class EclipseDeviation(object):  # noqa: WPS230
         """Convert input_dict values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing EclipseDeviation fields.
+            input_dict (dict): Dict containing Deviation fields.
         """
         if input_dict is None:
             return
@@ -89,12 +88,17 @@ class EclipseDeviation(object):  # noqa: WPS230
         self.is_daily_deviation = input_dict.get('isDailyDeviation')
         self.has_private_comments = input_dict.get('hasPrivateComments')
         self.block_reasons = input_dict.get('blockReasons')
-        self.author = EclipseGruser(input_dict.get('author'))
-        self.stats = EclipseStats(input_dict.get('stats'))
-        self.media = EclipseDeviationMedia(input_dict.get('media'))
-        self.extended = EclipseDeviationExtendedContent(input_dict.get('extended'))
+        self.author = Gruser(input_dict.get('author'))
+        self.stats = Stats(input_dict.get('stats'))
+        self.media = DeviationMedia(input_dict.get('media'))
+        self.extended = DeviationExtendedContent(input_dict.get('extended'))
 
     def get_tag_names(self):
+        """Return list of tag names for extended Deviation object.
+
+        Returns:
+            str[]: List of tag names.
+        """
         if self.extended is None:
             return []
         if self.extended.tags is None:

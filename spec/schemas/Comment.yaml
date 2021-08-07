@@ -111,7 +111,7 @@ properties:
     type: integer
     nullable: true
   textContent:
-    $ref: "./EclipseTextContent.yaml"
+    $ref: "./TextContent.yaml"
   signature:
     type: string
     nullable: true
@@ -120,7 +120,7 @@ properties:
     nullable: true
     example: Hobbyist Traditional Artist
   user:
-    $ref: "./EclipseGruser.yaml"
+    $ref: "./Gruser.yaml"
   legacyTextEditUrl:
     type: string
     nullable: true

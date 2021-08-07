@@ -23,7 +23,7 @@ properties:
     type: string
     example: Example folder description.
   owner:
-    $ref: "./EclipseGruser.yaml"
+    $ref: "./Gruser.yaml"
   commentCount:
     type: integer
     example: 0

@@ -1,14 +1,14 @@
 """Model to represent DeviantArt Eclipse Comment Content."""
 
 
-class EclipseCommentContent(object):
+class CommentContent(object):
     """Model to represent DeviantArt Eclipse Comment Content."""
 
     def __init__(self, input_dict=None):
-        """Initialize EclipseCommentContent.
+        """Initialize CommentContent.
 
         Args:
-            input_dict (dict, optional): Dict of EclipseCommentContent class attrs.
+            input_dict (dict, optional): Dict of CommentContent class attrs.
         """
         self.excerpt = None
         self.html = None
@@ -19,7 +19,7 @@ class EclipseCommentContent(object):
         """Convert input_dict values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing EclipseCommentContent fields.
+            input_dict (dict): Dict containing CommentContent fields.
         """
         if input_dict is None:
             return

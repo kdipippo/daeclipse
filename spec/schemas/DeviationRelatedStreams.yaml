@@ -7,12 +7,12 @@ properties:
   gallery:
     type: array
     items:
-      $ref: "./EclipseDeviation.yaml"
+      $ref: "./Deviation.yaml"
   recommended:
     type: array
     items:
-      $ref: "./EclipseDeviation.yaml"
+      $ref: "./Deviation.yaml"
   collections:
     type: array
     items:
-      $ref: "./EclipseCollection.yaml"
+      $ref: "./Collection.yaml"

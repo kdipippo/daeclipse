@@ -1,14 +1,14 @@
 """Model to represent DeviantArt Eclipse Deviation Tags."""
 
 
-class EclipseDeviationTag(object):
+class DeviationTag(object):
     """Model to represent DeviantArt Eclipse Deviation Tags."""
 
     def __init__(self, input_dict=None):
-        """Initialize EclipseDeviationTag.
+        """Initialize DeviationTag.
 
         Args:
-            input_dict (dict, optional): Dict of EclipseDeviationTag class attrs.
+            input_dict (dict, optional): Dict of DeviationTag class attrs.
         """
         self.name = None
         self.url = None
@@ -19,7 +19,7 @@ class EclipseDeviationTag(object):
         """Convert input_dict values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing EclipseDeviationTag fields.
+            input_dict (dict): Dict containing DeviationTag fields.
         """
         if input_dict is None:
             return
