@@ -4,7 +4,6 @@ import datetime
 import json
 import os
 import re
-from pathlib import Path
 
 import cli_ui
 import deviantart
@@ -14,31 +13,10 @@ from pick import pick
 from progress.bar import Bar
 
 import daeclipse
-import gif_generator
 
 COLUMN_WIDTH = 25
 
 app = typer.Typer(help='DeviantArt Eclipse CLI')
-
-
-@app.command()
-def gif_preset():
-    """Generate pixel icon gif based on a stored preset."""
-    presets = gif_generator.get_presets()
-    selected_preset = cli_ui.ask_choice(
-        'Select which option to generate',
-        choices=presets,
-        sort=False,
-    )
-    gif_filename = gif_generator.create_gif_preset(selected_preset)
-    cli_ui.info('Generated pixel icon created at', gif_filename)
-
-
-@app.command()
-def gif_random():
-    """Generate pixel icon gif with randomized assets."""
-    gif_filename = gif_generator.create_gif_random()
-    cli_ui.info('Generated pixel icon created at', gif_filename)
 
 
 @app.command()
@@ -110,7 +88,8 @@ def initialize_deviantart():
     dotenv_file = dotenv.find_dotenv()
     if dotenv_file == '':
         cli_ui.error('.env file not found. Creating a blank one now.')
-        Path('.env').touch()
+        with open('.env', 'w'):
+            pass
         dotenv_file = dotenv.find_dotenv()
     dotenv.load_dotenv(dotenv_file)
 
@@ -213,13 +192,6 @@ def post_status():
     cli_ui.info_1('Deviation URL is required for CSRF token authorization.')
     deviation_url = cli_ui.ask_string('Paste deviation URL: ')
     status_content = cli_ui.ask_string('Enter HTML-formatted status text: ')
-
-    # -------------------------------------------------------------------------
-    #            TODO - just storing this here for testing purposes.
-    # -------------------------------------------------------------------------
-    deviation_url = 'https://www.deviantart.com/pepper-wood/art/Gawr-Gura-gif-868331085'  # noqa: E501
-    status_content = 'This is a <b>generated</b> status sent via a <i>Python CLI</i>, WOO!!!'  # noqa: E501
-    # -------------------------------------------------------------------------
 
     try:
         status_result = eclipse.post_status(deviation_url, status_content)
