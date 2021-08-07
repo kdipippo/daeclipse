@@ -1,7 +1,7 @@
-"""Main file for building the app into a GUI."""
+"""Main file for DeviantArt Eclipse CLI."""
 
+import collections
 import datetime
-import json
 import os
 import re
 
@@ -87,14 +87,14 @@ def initialize_deviantart():
     """
     dotenv_file = dotenv.find_dotenv()
     if dotenv_file == '':
-        cli_ui.error('.env file not found. Creating a blank one now.')
-        with open('.env', 'w'):
-            pass
-        dotenv_file = dotenv.find_dotenv()
-    dotenv.load_dotenv(dotenv_file)
-
-    client_id = os.getenv('deviantart_client_id')
-    client_secret = os.getenv('deviantart_client_secret')
+        cli_ui.error('.env file not found. Creating and populating one now.')
+        dotenv_file = '.env'
+        client_id = None
+        client_secret = None
+    else:
+        dotenv.load_dotenv(dotenv_file)
+        client_id = os.getenv('deviantart_client_id')
+        client_secret = os.getenv('deviantart_client_secret')
 
     if client_id is None or client_secret is None:
         cli_ui.info_1(
@@ -138,51 +138,43 @@ def show_tags(
 
 @app.command()
 def hot_tags(
-    save: bool = typer.Option(  # noqa: B008, WPS404
-        False,  # noqa: WPS425
-        help='Save results to local file.',
-    ),
-    count: int = typer.Option(  # noqa: B008, WPS404
+    tag_count: int = typer.Option(  # noqa: B008, WPS404
         10,  # noqa: WPS425
         help='Number of top tags to return.',
     ),
+    hot_count: int = typer.Option(  # noqa: B008, WPS404
+        100,  # noqa: WPS425
+        help='Number of hot deviations to process.',
+    ),
 ):
-    """Return top tags on the 100 hottest deviations.
+    """Return top tags on the hottest deviations.
 
     Args:
-        save (bool): --save to save to local file, defaults to False.
-        count (int): --count to specity number of tag results, defaults to 10.
+        tag_count (int): --tag-count for number of tag results.
+        hot_count (int): --hot-count for number of hot deviations to process.
     """
     eclipse = daeclipse.Eclipse()  # Internal Eclipse API wrapper.
-    da = initialize_deviantart()  # Public API wrapper.
 
-    popular_count = 100
-    popular = da.browse(endpoint='popular', limit=popular_count)
-    deviations = popular.get('results')
-    popular_tags = {}
-    progressbar = Bar('Parsing 100 hottest deviations', max=popular_count)
-    for deviation in deviations:
-        progressbar.next()
-        art_tags = eclipse.get_deviation_tags(deviation.url)
-        for art_tag in art_tags:
-            if art_tag not in popular_tags:
-                popular_tags[art_tag] = 1
-            else:
-                popular_tags[art_tag] += 1
-    cli_ui.info()
-    popular_tags = sorted(
-        popular_tags.items(),
-        key=lambda tag: tag[1],
-        reverse=True,
+    hottest_deviations = initialize_deviantart().browse(  # Public API wrapper.
+        endpoint='popular',  # Popular also returns hottest.
+        limit=hot_count,
+    ).get('results')
+    tags = []
+    progressbar = Bar(
+        'Parsing {0} hottest deviations'.format(hot_count),
+        max=hot_count,
     )
-    top_tags = popular_tags[:count]
-    tag_table = [
-        [(cli_ui.bold, tag[0]), (cli_ui.green, tag[1])] for tag in top_tags
-    ]
-    cli_ui.info_table(tag_table, headers=['tag', 'count'])
-    if save:
-        with open('popular_tags.json', 'w') as outfile:
-            json.dump(popular_tags, outfile)
+    for deviation in hottest_deviations:
+        progressbar.next()
+        tags.extend(eclipse.get_deviation_tags(deviation.url))
+    tags = collections.Counter(tags).most_common(tag_count)
+
+    cli_ui.info_table(
+        [
+            [(cli_ui.bold, tag[0]), (cli_ui.green, tag[1])] for tag in tags
+        ],
+        headers=['tag', 'count'],
+    )
 
 
 @app.command()
