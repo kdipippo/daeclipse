@@ -3,6 +3,9 @@
   "version": "0.0.4",
   "description": "Unofficial OpenAPI Specification for the DeviantArt Eclipse API.",
   "main": "index.js",
+  "engines": {
+    "node": "16.3.0"
+  },
   "scripts": {
     "build": "swagger-cli bundle spec/openapi.yaml --outfile _build/api/openapi.yaml --type yaml",
     "test": "npm run build && spectral lint _build/api/openapi.yaml",
