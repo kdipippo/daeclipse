@@ -1,32 +1,30 @@
-"""Model to represent DeviantArt Eclipse Groups List."""
+"""Model to represent DeviantArt Eclipse User's Comments List."""
 
-from daeclipse.models.gruser import Gruser
 from daeclipse.models.model import Model
+from daeclipse.models.usercomment import UserComment
 
 
-class GroupsList(Model):
-    """Model to represent DeviantArt Eclipse Groups List."""
+class UsersCommentsList(Model):
+    """Model to represent DeviantArt Eclipse User's Comments List."""
 
     def __init__(self, attrs=None):
-        """Initialize GroupsList.
+        """Initialize UsersCommentsList.
 
         Args:
             attrs (dict, optional): Dict of model attributes.
         """
         self.has_more = None
         self.next_offset = None
-        self.total = None
-        self.groups = None
+        self.comments = None
         super().__init__(attrs)
 
     def from_dict(self, attrs):
         """Convert attrs values to class attributes.
 
         Args:
-            attrs (dict): Dict containing Stats fields.
+            attrs (dict): Dict containing UsersCommentsList fields.
         """
         super().from_dict(attrs)
         self.has_more = attrs.get('hasMore')
         self.next_offset = attrs.get('nextOffset')
-        self.total = attrs.get('total')
-        self.groups = self.to_submodel_list(Gruser, attrs.get('results'))
+        self.comments = self.to_submodel_list(UserComment, attrs.get('results'))

@@ -22,7 +22,7 @@ class Model(object):
         if attrs is None:
             return
 
-    def to_submodel(self, submodel_class, submodel_attrs):
+    def to_submodel_list(self, submodel_class, submodel_attrs):
         """Return list of dictionaries as a list of specified objects.
 
         Args:

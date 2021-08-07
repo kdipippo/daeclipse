@@ -11,7 +11,7 @@ from html_to_draftjs import html_to_draftjs
 from daeclipse.models.deviationextendedresult import DeviationExtendedResult
 from daeclipse.models.folder import Folder
 from daeclipse.models.groupslist import GroupsList
-
+from daeclipse.models.userscommentslist import UsersCommentsList
 
 class Eclipse(object):
     """Class to handle making calls to the DeviantArt Eclipse API."""
@@ -194,6 +194,40 @@ class Eclipse(object):
         )
         rjson = validate_response_succeeds(response)
         return '✅ Status created: {0}'.format(rjson['deviation'].get('url'))
+
+    def get_user_comments(self, username, offset, limit=49):
+        """Return a paginated call for 5 of the user's recent comments.
+
+        Args:
+            username (str): DeviantArt username of user.
+            offset (int): Offset to start with API call.
+            limit (int, optional): Limit of results to return. Defaults to 49.
+
+        Returns:
+            UsersCommentsList: UsersCommentsList instance.
+
+        Raises:
+            ValueError: If `limit` is greater than 49.
+        """
+        if limit > 49:
+            raise ValueError('Limit must be equal to or below 49.')
+
+        queries = {
+            'username': username,
+            'moduleid': '1717358865',  # "Comments" block ID.
+            'offset': offset,
+            'limit': limit,
+        }
+        response = requests.get(
+            ''.join([
+                self.base_uri,
+                '/da-user-profile/api/module/my_comments',
+                query_string(queries),
+            ]),
+            cookies=self.cookies,
+        )
+        rjson = validate_response_succeeds(response)
+        return UsersCommentsList(rjson)
 
 
 def get_deviation_id(deviation_url):
