@@ -12,6 +12,8 @@ info:
 servers:
   - url: https://www.deviantart.com/_napi
 tags:
+- name: Comments
+  description: Operations relating to comments.
 - name: Deviations
   description: Operations relating to artwork posts, Deviations.
 - name: Groups
