@@ -3,8 +3,9 @@ max-line-complexity = 20
 max-module-members = 20
 per-file-ignores =
     test/*: S101
+    daeclipse/models/*: WPS230
 ignore =
-    # Ignore all 'flake8-bugbear' errors which are related to Python 2 
+    # Ignore all 'flake8-bugbear' errors, which are related to Python 2 
     B301
     B302
     B303
@@ -13,3 +14,12 @@ ignore =
     B306
     # Ignore 'Found `noqa` comments overuse'
     WPS402
+    # Ignore 'Found `__init__.py` module with logic'
+    WPS412
+exclude =
+    .git,
+    .github,
+    __pycache__,
+    docs,
+    node_modules,
+    spec

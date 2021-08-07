@@ -14,6 +14,8 @@ DeviationAwardedBadge:
   $ref: "./DeviationAwardedBadge.yaml"
 DeviationExtendedContent:
   $ref: "./DeviationExtendedContent.yaml"
+DeviationExtendedResult:
+  $ref: "./DeviationExtendedResult.yaml"
 DeviationExtendedStats:
   $ref: "./DeviationExtendedStats.yaml"
 DeviationFileSpecs:

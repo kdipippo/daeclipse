@@ -169,6 +169,7 @@ def hot_tags(
         tags.extend(eclipse.get_deviation_tags(deviation.url))
     tags = collections.Counter(tags).most_common(tag_count)
 
+    cli_ui.info()
     cli_ui.info_table(
         [
             [(cli_ui.bold, tag[0]), (cli_ui.green, tag[1])] for tag in tags

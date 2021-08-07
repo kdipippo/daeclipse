@@ -16,4 +16,4 @@ get:
       content:
         application/json:
           schema:
-            $ref: "../../schemas/DeviationExtended.yaml"
+            $ref: "../../schemas/DeviationExtendedResult.yaml"

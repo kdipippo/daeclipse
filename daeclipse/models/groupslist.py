@@ -1,34 +1,32 @@
 """Model to represent DeviantArt Eclipse Groups List."""
 
 from daeclipse.models.gruser import Gruser
+from daeclipse.models.model import Model
 
 
-class GroupsList(object):
+class GroupsList(Model):
     """Model to represent DeviantArt Eclipse Groups List."""
 
-    def __init__(self, input_dict=None):
+    def __init__(self, attrs=None):
         """Initialize GroupsList.
 
         Args:
-            input_dict (dict, optional): Dict of GroupsList class attrs.
+            attrs (dict, optional): Dict of model attributes.
         """
         self.has_more = None
         self.next_offset = None
         self.total = None
         self.groups = None
-        if input_dict is not None and isinstance(input_dict, dict):
-            self.from_dict(input_dict)
+        super().__init__(attrs)
 
-    def from_dict(self, input_dict):
-        """Convert input_dict values to class attributes.
+    def from_dict(self, attrs):
+        """Convert attrs values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing Stats fields.
+            attrs (dict): Dict containing Stats fields.
         """
-        if input_dict is None:
-            return
-        self.has_more = input_dict.get('hasMore')
-        self.next_offset = input_dict.get('nextOffset')
-        self.total = input_dict.get('total')
-        if input_dict.get('results') is not None:
-            self.groups = [Gruser(group) for group in input_dict.get('results')]
+        super().from_dict(attrs)
+        self.has_more = attrs.get('hasMore')
+        self.next_offset = attrs.get('nextOffset')
+        self.total = attrs.get('total')
+        self.groups = self.to_submodel(Gruser, attrs.get('results'))

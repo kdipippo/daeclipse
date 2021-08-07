@@ -6,16 +6,17 @@ from daeclipse.models.deviationfilespecs import DeviationFileSpecs
 from daeclipse.models.deviationrelatedstreams import DeviationRelatedStreams
 from daeclipse.models.deviationtag import DeviationTag
 from daeclipse.models.deviationtypefacet import DeviationTypeFacet
+from daeclipse.models.model import Model
 
 
-class DeviationExtendedContent(object):
+class DeviationExtendedContent(Model):
     """Model to represent DeviantArt Eclipse Deviation Extended Content."""
 
-    def __init__(self, input_dict=None):
+    def __init__(self, attrs=None):
         """Initialize DeviationExtendedContent.
 
         Args:
-            input_dict (dict, optional): Dict of DeviationExtendedContent class attrs.
+            attrs (dict, optional): Dict of model attributes.
         """
         self.deviation_uuid = None
         self.can_user_add_to_group = None
@@ -31,31 +32,34 @@ class DeviationExtendedContent(object):
         self.stats = None
         self.report_url = None
         self.awarded_badges = None
-        if input_dict is not None and isinstance(input_dict, dict):
-            self.from_dict(input_dict)
+        super().__init__(attrs)
 
-    def from_dict(self, input_dict):
-        """Convert input_dict values to class attributes.
+    def from_dict(self, attrs):
+        """Convert attrs values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing DeviationExtendedContent fields.
+            attrs (dict): Dict containing DeviationExtendedContent fields.
         """
-        if input_dict is None:
-            return
-        self.deviation_uuid = input_dict.get('deviationUuid')
-        self.can_user_add_to_group = input_dict.get('canUserAddToGroup')
-        self.group_list_url = input_dict.get('groupListUrl')
-        self.description = input_dict.get('description')
-        self.original_file = DeviationFileSpecs(input_dict.get('originalFile'))
-        if input_dict.get('tags') is not None:
-            self.tags = [DeviationTag(tag) for tag in input_dict.get('tags')]
-        if input_dict.get('subjectTags') is not None:
-            self.subject_tags = [DeviationTag(tag) for tag in input_dict.get('subjectTags')]
-        self.type_facet = DeviationTypeFacet(input_dict.get('typeFacet'))
-        self.license = input_dict.get('license')
-        self.download = DeviationFileSpecs(input_dict.get('download'))
-        self.related_streams = DeviationRelatedStreams(input_dict.get('relatedStreams'))
-        self.stats = DeviationExtendedStats(input_dict.get('stats'))
-        self.report_url = input_dict.get('reportUrl')
-        if input_dict.get('awardedBadges') is not None:
-            self.awarded_badges = [DeviationAwardedBadge(badge) for badge in input_dict.get('awardedBadges')]
+        super().from_dict(attrs)
+        self.deviation_uuid = attrs.get('deviationUuid')
+        self.can_user_add_to_group = attrs.get('canUserAddToGroup')
+        self.group_list_url = attrs.get('groupListUrl')
+        self.description = attrs.get('description')
+        self.original_file = DeviationFileSpecs(attrs.get('originalFile'))
+        self.tags = self.to_submodel(DeviationTag, attrs.get('tags'))
+        self.subject_tags = self.to_submodel(
+            DeviationTag,
+            attrs.get('subjectTags'),
+        )
+        self.type_facet = DeviationTypeFacet(attrs.get('typeFacet'))
+        self.license = attrs.get('license')
+        self.download = DeviationFileSpecs(attrs.get('download'))
+        self.related_streams = DeviationRelatedStreams(
+            attrs.get('relatedStreams'),
+        )
+        self.stats = DeviationExtendedStats(attrs.get('stats'))
+        self.report_url = attrs.get('reportUrl')
+        self.awarded_badges = self.to_submodel(
+            DeviationAwardedBadge,
+            attrs.get('awardedBadges'),
+        )

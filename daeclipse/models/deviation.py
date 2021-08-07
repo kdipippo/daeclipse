@@ -1,19 +1,19 @@
 """Model to represent DeviantArt Eclipse Deviation."""
 
-from daeclipse.models.deviationextendedcontent import DeviationExtendedContent
 from daeclipse.models.deviationmedia import DeviationMedia
 from daeclipse.models.gruser import Gruser
+from daeclipse.models.model import Model
 from daeclipse.models.stats import Stats
 
 
-class Deviation(object):  # noqa: WPS230
+class Deviation(Model):
     """Model to represent DeviantArt Eclipse Deviation."""
 
-    def __init__(self, input_dict=None):
+    def __init__(self, attrs=None):
         """Initialize Deviation.
 
         Args:
-            input_dict (dict, optional): Dict of Deviation class attrs.
+            attrs (dict, optional): Dict of model attributes.
         """
         self.deviation_id = None
         self.type = None
@@ -43,9 +43,7 @@ class Deviation(object):  # noqa: WPS230
         self.author = None
         self.stats = None
         self.media = None
-        self.extended = None
-        if input_dict is not None and isinstance(input_dict, dict):
-            self.from_dict(input_dict)
+        super().__init__(attrs)
 
     def __repr__(self):
         """Representation of Deviation.
@@ -55,52 +53,38 @@ class Deviation(object):  # noqa: WPS230
         """
         return self.deviation_id
 
-    def from_dict(self, input_dict):  # noqa: WPS231
-        """Convert input_dict values to class attributes.
+    def from_dict(self, attrs):  # noqa: WPS231
+        """Convert attrs values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing Deviation fields.
+            attrs (dict): Dict containing Deviation fields.
         """
-        if input_dict is None:
-            return
-        self.deviation_id = input_dict.get('deviationId')
-        self.type = input_dict.get('type')
-        self.type_id = input_dict.get('typeId')
-        self.print_id = input_dict.get('printId')
-        self.url = input_dict.get('url')
-        self.title = input_dict.get('title')
-        self.is_journal = input_dict.get('isJournal')
-        self.is_video = input_dict.get('isVideo')
-        self.is_purchasable = input_dict.get('isPurchasable')
-        self.is_favouritable = input_dict.get('isFavouritable')
-        self.published_time = input_dict.get('publishedTime')
-        self.is_text_editable = input_dict.get('isTextEditable')
-        self.legacy_text_edit_url = input_dict.get('legacyTextEditUrl')
-        self.is_shareable = input_dict.get('isShareable')
-        self.is_commentable = input_dict.get('isCommentable')
-        self.is_favourited = input_dict.get('isFavourited')
-        self.is_deleted = input_dict.get('isDeleted')
-        self.is_mature = input_dict.get('isMature')
-        self.is_downloadable = input_dict.get('isDownloadable')
-        self.is_antisocial = input_dict.get('isAntisocial')
-        self.is_blocked = input_dict.get('isBlocked')
-        self.is_published = input_dict.get('isPublished')
-        self.is_daily_deviation = input_dict.get('isDailyDeviation')
-        self.has_private_comments = input_dict.get('hasPrivateComments')
-        self.block_reasons = input_dict.get('blockReasons')
-        self.author = Gruser(input_dict.get('author'))
-        self.stats = Stats(input_dict.get('stats'))
-        self.media = DeviationMedia(input_dict.get('media'))
-        self.extended = DeviationExtendedContent(input_dict.get('extended'))
-
-    def get_tag_names(self):
-        """Return list of tag names for extended Deviation object.
-
-        Returns:
-            str[]: List of tag names.
-        """
-        if self.extended is None:
-            return []
-        if self.extended.tags is None:
-            return []
-        return [tag.name for tag in self.extended.tags]
+        super().from_dict(attrs)
+        self.deviation_id = attrs.get('deviationId')
+        self.type = attrs.get('type')
+        self.type_id = attrs.get('typeId')
+        self.print_id = attrs.get('printId')
+        self.url = attrs.get('url')
+        self.title = attrs.get('title')
+        self.is_journal = attrs.get('isJournal')
+        self.is_video = attrs.get('isVideo')
+        self.is_purchasable = attrs.get('isPurchasable')
+        self.is_favouritable = attrs.get('isFavouritable')
+        self.published_time = attrs.get('publishedTime')
+        self.is_text_editable = attrs.get('isTextEditable')
+        self.legacy_text_edit_url = attrs.get('legacyTextEditUrl')
+        self.is_shareable = attrs.get('isShareable')
+        self.is_commentable = attrs.get('isCommentable')
+        self.is_favourited = attrs.get('isFavourited')
+        self.is_deleted = attrs.get('isDeleted')
+        self.is_mature = attrs.get('isMature')
+        self.is_downloadable = attrs.get('isDownloadable')
+        self.is_antisocial = attrs.get('isAntisocial')
+        self.is_blocked = attrs.get('isBlocked')
+        self.is_published = attrs.get('isPublished')
+        self.is_daily_deviation = attrs.get('isDailyDeviation')
+        self.has_private_comments = attrs.get('hasPrivateComments')
+        self.block_reasons = attrs.get('blockReasons')
+        self.author = Gruser(attrs.get('author'))
+        self.stats = Stats(attrs.get('stats'))
+        self.media = DeviationMedia(attrs.get('media'))

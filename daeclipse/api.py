@@ -8,7 +8,7 @@ import requests
 from bs4 import BeautifulSoup
 from html_to_draftjs import html_to_draftjs
 
-from daeclipse.models.deviationextended import DeviationExtended
+from daeclipse.models.deviationextendedresult import DeviationExtendedResult
 from daeclipse.models.folder import Folder
 from daeclipse.models.groupslist import GroupsList
 
@@ -102,8 +102,8 @@ class Eclipse(object):
         ])
         response = requests.get(extended_fetch_url, cookies=self.cookies)
         rjson = validate_response_succeeds(response)
-        deviation_extended = DeviationExtended(rjson)
-        return deviation_extended.deviation.get_tag_names()
+        deviation_extended_result = DeviationExtendedResult(rjson)
+        return deviation_extended_result.deviation.get_tag_names()
 
     def add_deviation_to_group(self, group_id, folder_id, deviation_url):
         """Submit deviation to the specified folder in group.

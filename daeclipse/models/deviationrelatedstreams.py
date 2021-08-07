@@ -1,35 +1,37 @@
 """Model to represent DeviantArt Eclipse Deviation Related Streams."""
 
-import daeclipse.models.deviation
 from daeclipse.models.collection import Collection
+from daeclipse.models.deviation import Deviation
+from daeclipse.models.model import Model
 
 
-class DeviationRelatedStreams(object):
+class DeviationRelatedStreams(Model):
     """Model to represent DeviantArt Eclipse Related Streams."""
 
-    def __init__(self, input_dict=None):
+    def __init__(self, attrs=None):
         """Initialize DeviationRelatedStreams.
 
         Args:
-            input_dict (dict, optional): Dict of DeviationRelatedStreams class attrs.
+            attrs (dict, optional): Dict of model attributes.
         """
         self.gallery = None
         self.recommended = None
         self.collections = None
-        if input_dict is not None and isinstance(input_dict, dict):
-            self.from_dict(input_dict)
+        super().__init__(attrs)
 
-    def from_dict(self, input_dict):
-        """Convert input_dict values to class attributes.
+    def from_dict(self, attrs):
+        """Convert attrs values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing DeviationRelatedStreams fields.
+            attrs (dict): Dict containing DeviationRelatedStreams fields.
         """
-        if input_dict is None:
-            return
-        if input_dict.get('gallery') is not None:
-            self.gallery = [daeclipse.models.deviation.Deviation(group) for group in input_dict.get('gallery')]
-        if input_dict.get('recommended') is not None:
-            self.recommended = [daeclipse.models.deviation.Deviation(group) for group in input_dict.get('recommended')]
-        if input_dict.get('collections') is not None:
-            self.collections = [Collection(group) for group in input_dict.get('collections')]
+        super().from_dict(attrs)
+        self.gallery = self.to_submodel(Deviation, attrs.get('gallery'))
+        self.recommended = self.to_submodel(
+            Deviation,
+            attrs.get('recommended'),
+        )
+        self.collections = self.to_submodel(
+            Collection,
+            attrs.get('collections'),
+        )

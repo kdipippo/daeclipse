@@ -1,32 +1,38 @@
 """Model to represent DeviantArt Eclipse Extended Deviation."""
 
-import daeclipse.models.deviation
-from daeclipse.models.commentslist import CommentsList
+from daeclipse.models.deviation import Deviation
+from daeclipse.models.deviationextendedcontent import DeviationExtendedContent
 
 
-class DeviationExtended(object):
+class DeviationExtended(Deviation):
     """Model to represent DeviantArt Eclipse Extended Deviation."""
 
-    def __init__(self, input_dict=None):
+    def __init__(self, attrs=None):
         """Initialize DeviationExtended.
 
         Args:
-            input_dict (dict, optional): Dict of DeviationExtended class attrs.
+            attrs (dict, optional): Dict of model attributes.
         """
-        self.deviation = None
-        self.view_mode = None
-        self.comments = None
-        if input_dict is not None and isinstance(input_dict, dict):
-            self.from_dict(input_dict)
+        self.extended = None
+        super().__init__(attrs)
 
-    def from_dict(self, input_dict):
-        """Convert input_dict values to class attributes.
+    def from_dict(self, attrs):
+        """Convert attrs values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing Deviation fields.
+            attrs (dict): Dict containing Deviation fields.
         """
-        if input_dict is None:
-            return
-        self.deviation = daeclipse.models.deviation.Deviation(input_dict.get('deviation'))
-        self.view_mode = input_dict.get('viewMode')
-        self.comments = CommentsList(input_dict.get('comments'))
+        super().from_dict(attrs)
+        self.extended = DeviationExtendedContent(attrs.get('extended'))
+
+    def get_tag_names(self):
+        """Return list of tag names for extended Deviation object.
+
+        Returns:
+            str[]: List of tag names.
+        """
+        if self.extended is None:
+            return []
+        if self.extended.tags is None:
+            return []
+        return [tag.name for tag in self.extended.tags]

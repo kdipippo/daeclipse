@@ -2,16 +2,17 @@
 
 from daeclipse.models.commentcontent import CommentContent
 from daeclipse.models.gruser import Gruser
+from daeclipse.models.model import Model
 
 
-class Comment(object):
+class Comment(Model):
     """Model to represent DeviantArt Eclipse Comments."""
 
-    def __init__(self, input_dict=None):
+    def __init__(self, attrs=None):
         """Initialize Comment.
 
         Args:
-            input_dict (dict, optional): Dict of Comment class attrs.
+            attrs (dict, optional): Dict of model attributes.
         """
         self.comment_id = None
         self.type_id = None
@@ -43,44 +44,42 @@ class Comment(object):
         self.author_info = None
         self.user = None
         self.legacy_text_edit_url = None
-        if input_dict is not None and isinstance(input_dict, dict):
-            self.from_dict(input_dict)
+        super().__init__(attrs)
 
-    def from_dict(self, input_dict):
-        """Convert input_dict values to class attributes.
+    def from_dict(self, attrs):
+        """Convert attrs values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing Comment fields.
+            attrs (dict): Dict containing Comment fields.
         """
-        if input_dict is None:
-            return
-        self.comment_id = input_dict.get('commentId')
-        self.type_id = input_dict.get('typeId')
-        self.item_id = input_dict.get('itemId')
-        self.parent_id = input_dict.get('parentId')
-        self.posted = input_dict.get('posted')
-        self.edited = input_dict.get('edited')
-        self.replies = input_dict.get('replies')
-        self.is_owner = input_dict.get('isOwner')
-        self.is_violation = input_dict.get('isViolation')
-        self.is_admin_hidden = input_dict.get('isAdminHidden')
-        self.is_hidden = input_dict.get('isHidden')
-        self.is_locked = input_dict.get('isLocked')
-        self.is_spam = input_dict.get('isSpam')
-        self.is_private = input_dict.get('isPrivate')
-        self.is_annotation = input_dict.get('isAnnotation')
-        self.is_deleted = input_dict.get('isDeleted')
-        self.is_peekable = input_dict.get('isPeekable')
-        self.is_author = input_dict.get('isAuthor')
-        self.is_author_highlighted = input_dict.get('isAuthorHighlighted')
-        self.is_admin_mode = input_dict.get('isAdminMode')
-        self.is_featured = input_dict.get('isFeatured')
-        self.is_reportable = input_dict.get('isReportable')
-        self.is_liked = input_dict.get('isLiked')
-        self.likes = input_dict.get('likes')
-        self.hidden = input_dict.get('hidden')
-        self.text_content = CommentContent(input_dict.get('textContent'))
-        self.signature = input_dict.get('signature')
-        self.author_info = input_dict.get('authorInfo')
-        self.user = Gruser(input_dict.get('user'))
-        self.legacy_text_edit_url = input_dict.get('legacyTextEditUrl')
+        super().from_dict(attrs)
+        self.comment_id = attrs.get('commentId')
+        self.type_id = attrs.get('typeId')
+        self.item_id = attrs.get('itemId')
+        self.parent_id = attrs.get('parentId')
+        self.posted = attrs.get('posted')
+        self.edited = attrs.get('edited')
+        self.replies = attrs.get('replies')
+        self.is_owner = attrs.get('isOwner')
+        self.is_violation = attrs.get('isViolation')
+        self.is_admin_hidden = attrs.get('isAdminHidden')
+        self.is_hidden = attrs.get('isHidden')
+        self.is_locked = attrs.get('isLocked')
+        self.is_spam = attrs.get('isSpam')
+        self.is_private = attrs.get('isPrivate')
+        self.is_annotation = attrs.get('isAnnotation')
+        self.is_deleted = attrs.get('isDeleted')
+        self.is_peekable = attrs.get('isPeekable')
+        self.is_author = attrs.get('isAuthor')
+        self.is_author_highlighted = attrs.get('isAuthorHighlighted')
+        self.is_admin_mode = attrs.get('isAdminMode')
+        self.is_featured = attrs.get('isFeatured')
+        self.is_reportable = attrs.get('isReportable')
+        self.is_liked = attrs.get('isLiked')
+        self.likes = attrs.get('likes')
+        self.hidden = attrs.get('hidden')
+        self.text_content = CommentContent(attrs.get('textContent'))
+        self.signature = attrs.get('signature')
+        self.author_info = attrs.get('authorInfo')
+        self.user = Gruser(attrs.get('user'))
+        self.legacy_text_edit_url = attrs.get('legacyTextEditUrl')

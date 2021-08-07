@@ -1,17 +1,18 @@
 """Model to represent DeviantArt Eclipse Group Folder."""
 
-import daeclipse.models.deviation
+from daeclipse.models.deviation import Deviation
 from daeclipse.models.gruser import Gruser
+from daeclipse.models.model import Model
 
 
-class Folder(object):  # noqa: WPS230
+class Folder(Model):
     """Model to represent DeviantArt Eclipse Group Folder."""
 
-    def __init__(self, input_dict=None):
+    def __init__(self, attrs=None):
         """Initialize Folder.
 
         Args:
-            input_dict (dict, optional): Dict of Folder class attrs.
+            attrs (dict, optional): Dict of model attributes.
         """
         self.folder_id = None
         self.gallection_uuid = None
@@ -25,8 +26,7 @@ class Folder(object):  # noqa: WPS230
         self.thumb = None
         self.has_sub_folders = None
         self.total_item_count = None
-        if input_dict is not None and isinstance(input_dict, dict):
-            self.from_dict(input_dict)
+        super().__init__(attrs)
 
     def __repr__(self):
         """Representation of Folder.
@@ -36,23 +36,22 @@ class Folder(object):  # noqa: WPS230
         """
         return self.folder_id
 
-    def from_dict(self, input_dict):
-        """Convert input_dict values to class attributes.
+    def from_dict(self, attrs):
+        """Convert attrs values to class attributes.
 
         Args:
-            input_dict (dict): Dict containing Folder fields.
+            attrs (dict): Dict containing Folder fields.
         """
-        if input_dict is None:
-            return
-        self.folder_id = input_dict.get('folderId')
-        self.gallection_uuid = input_dict.get('gallectionUuid')
-        self.parent_id = input_dict.get('parentId')
-        self.type = input_dict.get('type')
-        self.name = input_dict.get('name')
-        self.description = input_dict.get('description')
-        self.owner = Gruser(input_dict.get('owner'))
-        self.comment_count = input_dict.get('commentCount')
-        self.size = input_dict.get('size')
-        self.thumb = daeclipse.models.deviation.Deviation(input_dict.get('thumb'))
-        self.has_sub_folders = input_dict.get('hasSubfolders')
-        self.total_item_count = input_dict.get('totalItemCount')
+        super().from_dict(attrs)
+        self.folder_id = attrs.get('folderId')
+        self.gallection_uuid = attrs.get('gallectionUuid')
+        self.parent_id = attrs.get('parentId')
+        self.type = attrs.get('type')
+        self.name = attrs.get('name')
+        self.description = attrs.get('description')
+        self.owner = Gruser(attrs.get('owner'))
+        self.comment_count = attrs.get('commentCount')
+        self.size = attrs.get('size')
+        self.thumb = Deviation(attrs.get('thumb'))
+        self.has_sub_folders = attrs.get('hasSubfolders')
+        self.total_item_count = attrs.get('totalItemCount')
