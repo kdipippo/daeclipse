@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   version: 1.0.0
   title: DeviantArt Eclipse
-  description: Unofficial documentation for the internal DeviantArt Eclipse API
+  description: Unofficial OpenAPI Specification for the DeviantArt Eclipse API.
   license:
     name: MIT
   contact:
@@ -13,6 +13,13 @@ servers:
   - url: 'https://www.deviantart.com/_napi/shared_api'
 tags:
   - name: Deviations
+    description: 'Operations relating to artwork posts, Deviations.'
+  - name: Groups
+    description: Operations relating to DeviantArt Groups.
+  - name: Journals
+    description: 'Operations relating to blog posts, Journals.'
+  - name: Statuses
+    description: 'Operations relating to tweet-like posts, Statuses.'
 paths:
   /deviation/extended_fetch:
     get:
@@ -32,58 +39,418 @@ paths:
           content:
             application/json:
               schema:
+                $ref: '#/components/schemas/DeviationExtendedResult'
+  /deviation/delete:
+    post:
+      summary: Delete a deviation or journal.
+      operationId: deleteDeviationOrJournal
+      description: Delete a deviation or journal.
+      tags:
+        - Deviations
+        - Journals
+      requestBody:
+        description: Body for deleting deviation or journal.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                csrf_token:
+                  type: string
+                  description: CSRF Token
+                  example: AbCdEfGhIjKlMnOp.QrStUv.WxYzAbCdEfGhIjKlMnOpAbCd_EfGhIjKlMnOpQrStUv
+                deviationid:
+                  type: integer
+                  example: 123456789
+      responses:
+        '200':
+          description: Successfully fetched extended deviation information.
+  /journal/create:
+    post:
+      summary: Create a journal.
+      operationId: createJournal
+      description: Create a journal.
+      tags:
+        - Journals
+      requestBody:
+        description: Body for creating a journal.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                csrf_token:
+                  type: string
+                  description: CSRF token
+                  example: AbCdEfGhIjKlMnOp.QrStUv.WxYzAbCdEfGhIjKlMnOpAbCd_EfGhIjKlMnOpQrStUv
+                editorRaw:
+                  type: string
+                  description: Journal body as stringified draft-js payload.
+                  example: '{"blocks":[{"key":"foo","text":"This is an example journal main content.","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":11,"length":7,"style":"BOLD"},{"offset":19,"length":7,"style":"ITALIC"},{"offset":27,"length":4,"style":"UNDERLINE"}],"entityRanges":[],"data":{}}],"entityMap":{}}'
+                title:
+                  type: string
+                  description: Journal title
+                  example: This is an example title.
+      responses:
+        '200':
+          description: Journal successfully created.
+  /journal/update/content:
+    post:
+      summary: Update a journal.
+      description: Update a journal.
+      operationId: updateJournal
+      tags:
+        - Journals
+      requestBody:
+        description: Body for updating a journal.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                csrf_token:
+                  type: string
+                  description: CSRF token
+                  example: AbCdEfGhIjKlMnOp.QrStUv.WxYzAbCdEfGhIjKlMnOpAbCd_EfGhIjKlMnOpQrStUv
+                editorRaw:
+                  type: string
+                  description: Journal body as stringified draft-js payload.
+                  example: '{"blocks":[{"key":"foo","text":"This is an example journal main content.","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":11,"length":7,"style":"BOLD"},{"offset":19,"length":7,"style":"ITALIC"},{"offset":27,"length":4,"style":"UNDERLINE"}],"entityRanges":[],"data":{}}],"entityMap":{}}'
+                title:
+                  type: string
+                  description: Journal title
+                  example: This is an example title.
+      responses:
+        '200':
+          description: Journal successfully updated.
+  /journal/publish:
+    post:
+      tags:
+        - Journals
+      summary: Publish a created journal.
+      description: Publish a created journal.
+      operationId: publishJournal
+      requestBody:
+        description: Body for deleting deviation or journal.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                csrf_token:
+                  type: string
+                  description: CSRF token
+                  example: AbCdEfGhIjKlMnOp.QrStUv.WxYzAbCdEfGhIjKlMnOpAbCd_EfGhIjKlMnOpQrStUv
+                deviationid:
+                  type: integer
+                  description: DeviationID of the created journal.
+                  example: 1234567890123456
+                featured:
+                  type: boolean
+                  description: Whether journal is featured.
+                  example: false
+      responses:
+        '200':
+          description: Journal successfully published.
+  /deviation/groups:
+    get:
+      tags:
+        - Groups
+      summary: Get a list of groups associated with the logged-in user.
+      description: Get a list of groups associated with the logged-in user.
+      operationId: getGroups
+      parameters:
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Successfully fetched a list of DeviantArt groups.
+          content:
+            application/json:
+              schema:
                 type: object
-                required:
-                  - deviation
-                  - viewMode
-                  - comments
                 properties:
-                  deviation:
-                    $ref: '#/components/schemas/EclipseDeviation'
-                  viewMode:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Gruser'
+                  cursor:
                     type: string
-                    example: regular
-                  comments:
-                    $ref: '#/components/schemas/EclipseCommentsList'
-        default:
-          $ref: '#/components/responses/UnexpectedError'
+                    example: NTkwYWNhZDA9MTQmZDBhM2M5NDI9MTcxMTUyMzQtMjc4MTg1NzEtMjA5OTM2NzctMjE0ODI1NDQtMjE0MTEwNjQtMTQ3MTgyOTItMTgzOTY2OTktMjgyMTIwMzEtMTMxMTQ5NTEtMjU3NTAwMDM
+  /deviation/group_folders:
+    get:
+      tags:
+        - Groups
+      summary: Get the list of folders associated with a group.
+      description: Get the list of folders associated with a group.
+      operationId: getGroupFolders
+      parameters:
+        - $ref: '#/components/parameters/groupId'
+        - $ref: '#/components/parameters/groupFolderType'
+      responses:
+        '200':
+          description: Successfully fetched the list of folders for the DeviantArt group.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        folderId:
+                          type: integer
+                          example: 12345678
+                        gallectionUuid:
+                          type: string
+                          format: uuid
+                          example: 15A01024-5565-4736-AB66-E3E5DB890868
+                        parentId:
+                          type: integer
+                          nullable: true
+                          example: null
+                        type:
+                          type: string
+                          description: The category the group folders belong to.
+                          enum:
+                            - gallery
+                            - collection
+                          example: gallery
+                        name:
+                          type: string
+                          example: Featured
+                        description:
+                          type: string
+                          example: Example folder description.
+                        owner:
+                          $ref: '#/components/schemas/Gruser'
+                        commentCount:
+                          type: integer
+                          example: 0
+                        size:
+                          type: integer
+                          example: 0
+                        thumb:
+                          type: string
+                          nullable: true
+                          example: null
+                        hasSubFolders:
+                          type: boolean
+                          example: false
+                        totalItemCount:
+                          type: integer
+                          example: 0
+  /deviation/group_add:
+    post:
+      tags:
+        - Groups
+      summary: Add deviation to a specified group and folder.
+      description: Add deviation to a specified group and folder.
+      operationId: addDeviationToGroup
+      requestBody:
+        description: Body for adding deviiation to a specified group and folder.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                csrf_token:
+                  type: string
+                  description: CSRF token
+                  example: AbCdEfGhIjKlMnOp.QrStUv.WxYzAbCdEfGhIjKlMnOpAbCd_EfGhIjKlMnOpQrStUv
+                deviationid:
+                  example: 123456789
+                folderid:
+                  example: 12345678
+                groupid:
+                  example: 12345678
+                type:
+                  type: string
+                  enum:
+                    - gallery
+                    - collection
+                  example: gallery
+      responses:
+        '200':
+          description: Successfully added Deviation to group in selected folder.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  needsVote:
+                    type: boolean
+                    example: false
+                  deviationGroupCount:
+                    type: integer
+                    example: 1
+  /status/create:
+    post:
+      summary: Create a status.
+      description: Create a status as a journal draft in sta.sh.
+      operationId: createStatus
+      tags:
+        - Statuses
+      requestBody:
+        description: Body for creating a status.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                csrf_token:
+                  type: string
+                  description: CSRF token
+                  example: AbCdEfGhIjKlMnOp.QrStUv.WxYzAbCdEfGhIjKlMnOpAbCd_EfGhIjKlMnOpQrStUv
+                editorRaw:
+                  type: string
+                  description: Status content as stringified draft-js payload.
+                  example: '{"blocks":[{"key":"foo","text":"This is an example status message with all basic formatting options.","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":11,"length":7,"style":"UNDERLINE"},{"offset":39,"length":3,"style":"BOLD"},{"offset":49,"length":10,"style":"ITALIC"}],"entityRanges":[],"data":{}}],"entityMap":{}}'
+      responses:
+        '200':
+          description: Status message response.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CreateOrPublishStatusSuccess'
+                  - $ref: '#/components/schemas/ErrorInvalidCSRF'
+  /status/publish:
+    post:
+      tags:
+        - Statuses
+      summary: Publish a status.
+      description: Publish a status.
+      operationId: publishStatus
+      requestBody:
+        description: Body for deleting deviation or journal.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                csrf_token:
+                  type: string
+                  description: CSRF token
+                  example: AbCdEfGhIjKlMnOp.QrStUv.WxYzAbCdEfGhIjKlMnOpAbCd_EfGhIjKlMnOpQrStUv
+                statusid:
+                  type: integer
+                  description: Status ID.
+                  example: 1111222233334444
+      responses:
+        '200':
+          description: Status message response.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/CreateOrPublishStatusSuccess'
+                  - $ref: '#/components/schemas/ErrorInvalidCSRF'
+  /status/delete:
+    post:
+      tags:
+        - Statuses
+      summary: Delete a status.
+      description: Delete a status.
+      operationId: deleteStatus
+      requestBody:
+        description: Body for deleting a status.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                csrf_token:
+                  type: string
+                  description: CSRF Token
+                  example: AbCdEfGhIjKlMnOp.QrStUv.WxYzAbCdEfGhIjKlMnOpAbCd_EfGhIjKlMnOpQrStUv
+                statusid:
+                  type: integer
+                  format: int64
+                  description: Status message ID
+                  example: 12345678
+                userid:
+                  type: integer
+                  format: int64
+                  description: DeviantArt User ID
+                  example: 12345678
+      responses:
+        '200':
+          description: Status message successfully deleted.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
 components:
   parameters:
-    petId:
-      name: petId
-      in: path
-      required: true
-      description: The id of the pet to retrieve
-      schema:
-        type: string
     deviationId:
-      name: deviation
       in: query
+      name: deviation
       description: Deviation ID.
       required: true
       schema:
         type: integer
         example: 123456789
     extendedFetchIncludeSession:
-      name: include_session
       in: query
+      name: include_session
       description: 'Include session, always true.'
       required: true
       schema:
         type: boolean
         example: true
     extendedFetchType:
-      name: type
       in: query
+      name: type
       description: 'Extended fetch type, always art.'
       required: true
       schema:
         type: string
         enum:
           - art
-    username:
-      name: username
+    groupFolderType:
       in: query
+      name: type
+      description: 'Type of folder to return, either ''gallery'' folders or ''favorites'' folders.'
+      required: true
+      schema:
+        type: string
+        enum:
+          - gallery
+          - collection
+    groupId:
+      in: query
+      name: groupid
+      description: Group ID to query for folder list.
+      required: true
+      schema:
+        type: number
+    limit:
+      in: query
+      name: limit
+      description: The number of groups to return.
+      required: true
+      schema:
+        type: number
+    username:
+      in: query
+      name: username
       description: DeviantArt username.
       required: true
       schema:
@@ -91,7 +458,14 @@ components:
         maxLength: 20
         example: ExampleUsername
   schemas:
-    EclipseCollection:
+    CreateOrPublishStatusSuccess:
+      type: object
+      required:
+        - deviation
+      properties:
+        deviation:
+          $ref: '#/components/schemas/Status'
+    Collection:
       type: object
       required:
         - collection
@@ -101,16 +475,16 @@ components:
         collection:
           type: array
           items:
-            $ref: '#/components/schemas/EclipseCollectionInfo'
+            $ref: '#/components/schemas/CollectionInfo'
         deviations:
           type: array
           items:
-            $ref: '#/components/schemas/EclipseDeviation'
+            $ref: '#/components/schemas/Deviation'
         groups:
           type: array
           items:
-            $ref: '#/components/schemas/EclipseGruser'
-    EclipseCollectionInfo:
+            $ref: '#/components/schemas/Gruser'
+    CollectionInfo:
       type: object
       required:
         - folderId
@@ -145,7 +519,7 @@ components:
           type: string
           example: ''
         owner:
-          $ref: '#/components/schemas/EclipseGruser'
+          $ref: '#/components/schemas/Gruser'
         commentCount:
           type: integer
           example: 0
@@ -155,8 +529,8 @@ components:
         thumb:
           nullable: true
           allOf:
-            - $ref: '#/components/schemas/EclipseDeviation'
-    EclipseComment:
+            - $ref: '#/components/schemas/Deviation'
+    Comment:
       type: object
       required:
         - commentId
@@ -270,7 +644,7 @@ components:
           type: integer
           nullable: true
         textContent:
-          $ref: '#/components/schemas/EclipseCommentContent'
+          $ref: '#/components/schemas/TextContent'
         signature:
           type: string
           nullable: true
@@ -279,33 +653,11 @@ components:
           nullable: true
           example: Hobbyist Traditional Artist
         user:
-          $ref: '#/components/schemas/EclipseGruser'
+          $ref: '#/components/schemas/Gruser'
         legacyTextEditUrl:
           type: string
           nullable: true
-    EclipseCommentContent:
-      type: object
-      required:
-        - excerpt
-        - html
-      properties:
-        excerpt:
-          type: string
-          example: |
-            Great...:) http://itscash.cf/
-        html:
-          type: object
-          properties:
-            type:
-              type: string
-              example: draft
-            markup:
-              type: string
-              example: '{"blocks":[{"key":"foo","text":"Great...:) http://itscash.cf/\n","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[{"offset":8,"length":3,"key":0},{"offset":11,"length":18,"key":1}],"data":{}}],"entityMap":{"0":{"type":"DA_OFF_EMOTE","mutability":"IMMUTABLE","data":{"emote":":) "}},"1":{"type":"LINK","mutability":"MUTABLE","data":{"url":"http://itscash.cf/"}}}}'
-            features:
-              type: string
-              example: '[{"type":"FIRST_IMAGE_FEATURE","data":[]},{"type":"IS_EMPTY_FEATURE","data":{"isEmpty":false}},{"type":"MEDIA_COUNT_FEATURE","data":{"emoji":0,"emotes":1,"images":0,"mentions":0,"video":0,"previews":0}},{"type":"WORD_COUNT_FEATURE","data":{"words":4,"chars":28}}]'
-    EclipseCommentsList:
+    CommentsList:
       type: object
       required:
         - hasMore
@@ -350,8 +702,8 @@ components:
         thread:
           type: array
           items:
-            $ref: '#/components/schemas/EclipseComment'
-    EclipseDeviation:
+            $ref: '#/components/schemas/Comment'
+    Deviation:
       type: object
       required:
         - deviationId
@@ -460,16 +812,16 @@ components:
           example: false
         blockReasons:
           type: array
+          items:
+            type: string
           example: []
         author:
-          $ref: '#/components/schemas/EclipseGruser'
+          $ref: '#/components/schemas/Gruser'
         stats:
-          $ref: '#/components/schemas/EclipseStats'
+          $ref: '#/components/schemas/Stats'
         media:
-          $ref: '#/components/schemas/EclipseDeviationMedia'
-        extended:
-          $ref: '#/components/schemas/EclipseDeviationExtendedContent'
-    EclipseDeviationAwardedBadge:
+          $ref: '#/components/schemas/DeviationMedia'
+    DeviationAwardedBadge:
       type: object
       required:
         - id
@@ -513,7 +865,7 @@ components:
               className:
                 type: string
                 example: ''
-    EclipseDeviationExtendedContent:
+    DeviationExtendedContent:
       type: object
       required:
         - deviationUuid
@@ -542,36 +894,57 @@ components:
           type: string
           example: <div><p>Example description</p></div>
         originalFile:
-          $ref: '#/components/schemas/EclipseDeviationFileSpecs'
+          $ref: '#/components/schemas/DeviationFileSpecs'
         tags:
           type: array
           items:
-            $ref: '#/components/schemas/EclipseDeviationTag'
+            $ref: '#/components/schemas/DeviationTag'
         subjectTags:
           type: array
           items:
-            $ref: '#/components/schemas/EclipseDeviationTag'
+            $ref: '#/components/schemas/DeviationTag'
         typeFacet:
-          $ref: '#/components/schemas/EclipseDeviationTypeFacet'
+          $ref: '#/components/schemas/DeviationTypeFacet'
         license:
           type: string
           enum:
             - none
             - by-nc-nd
         download:
-          $ref: '#/components/schemas/EclipseDeviationFileSpecs'
+          $ref: '#/components/schemas/DeviationFileSpecs'
         relatedStreams:
-          $ref: '#/components/schemas/EclipseDeviationRelatedStreams'
+          $ref: '#/components/schemas/DeviationRelatedStreams'
         stats:
-          $ref: '#/components/schemas/EclipseDeviationExtendedStats'
+          $ref: '#/components/schemas/DeviationExtendedStats'
         reportUrl:
           type: string
           example: 'https://www.deviantart.com/deviation/report/112233445?is_modal=true'
         awardedBadges:
           type: array
           items:
-            $ref: '#/components/schemas/EclipseDeviationAwardedBadge'
-    EclipseDeviationExtendedStats:
+            $ref: '#/components/schemas/DeviationAwardedBadge'
+    DeviationExtendedResult:
+      type: object
+      required:
+        - deviation
+        - viewMode
+        - comments
+      properties:
+        deviation:
+          allOf:
+            - $ref: '#/components/schemas/Deviation'
+            - type: object
+              required:
+                - extended
+              properties:
+                extended:
+                  $ref: '#/components/schemas/DeviationExtendedContent'
+        viewMode:
+          type: string
+          example: regular
+        comments:
+          $ref: '#/components/schemas/CommentsList'
+    DeviationExtendedStats:
       type: object
       required:
         - views
@@ -595,7 +968,7 @@ components:
         groups:
           type: integer
           example: 0
-    EclipseDeviationFileSpecs:
+    DeviationFileSpecs:
       type: object
       required:
         - comments
@@ -617,12 +990,9 @@ components:
         filesize:
           type: integer
           example: 123456789
-    EclipseDeviationMedia:
+    DeviationMedia:
       type: object
       required:
-        - baseUri
-        - prettyName
-        - token
         - types
       properties:
         baseUri:
@@ -657,7 +1027,7 @@ components:
               w:
                 type: integer
                 example: 0
-    EclipseDeviationRelatedStreams:
+    DeviationRelatedStreams:
       type: object
       required:
         - gallery
@@ -667,16 +1037,16 @@ components:
         gallery:
           type: array
           items:
-            $ref: '#/components/schemas/EclipseDeviation'
+            $ref: '#/components/schemas/Deviation'
         recommended:
           type: array
           items:
-            $ref: '#/components/schemas/EclipseDeviation'
+            $ref: '#/components/schemas/Deviation'
         collections:
           type: array
           items:
-            $ref: '#/components/schemas/EclipseCollection'
-    EclipseDeviationTag:
+            $ref: '#/components/schemas/Collection'
+    DeviationTag:
       type: object
       required:
         - name
@@ -688,7 +1058,7 @@ components:
         url:
           type: string
           example: 'https://www.deviantart.com/tag/exampletag'
-    EclipseDeviationTypeFacet:
+    DeviationTypeFacet:
       type: object
       required:
         - linkTo
@@ -704,7 +1074,7 @@ components:
         displayNameEn:
           type: string
           example: Visual Art
-    EclipseGruser:
+    Gruser:
       type: object
       required:
         - userId
@@ -737,7 +1107,7 @@ components:
         isNewDeviant:
           type: boolean
           example: true
-    EclipseStats:
+    Stats:
       type: object
       required:
         - comments
@@ -749,21 +1119,58 @@ components:
         favourites:
           type: integer
           example: 2063
-  responses:
-    UnexpectedError:
-      description: unexpected error
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-              - code
-              - message
-            properties:
-              code:
-                type: integer
-                format: int32
-              message:
-                type: string
-    NullResponse:
-      description: Null response
+    Status:
+      allOf:
+        - $ref: '#/components/schemas/Deviation'
+        - type: object
+          required:
+            - textContent
+          properties:
+            textContent:
+              $ref: '#/components/schemas/TextContent'
+    TextContent:
+      type: object
+      required:
+        - excerpt
+        - html
+      properties:
+        excerpt:
+          type: string
+          example: |
+            Great...:) http://itscash.cf/
+        html:
+          type: object
+          properties:
+            type:
+              type: string
+              example: draft
+            markup:
+              type: string
+              description: Comment content as stringified draft-js payload.
+              example: '{"blocks":[{"key":"foo","text":"Great...:) http://itscash.cf/\n","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[{"offset":8,"length":3,"key":0},{"offset":11,"length":18,"key":1}],"data":{}}],"entityMap":{"0":{"type":"DA_OFF_EMOTE","mutability":"IMMUTABLE","data":{"emote":":) "}},"1":{"type":"LINK","mutability":"MUTABLE","data":{"url":"http://itscash.cf/"}}}}'
+            features:
+              type: string
+              example: '[{"type":"FIRST_IMAGE_FEATURE","data":[]},{"type":"IS_EMPTY_FEATURE","data":{"isEmpty":false}},{"type":"MEDIA_COUNT_FEATURE","data":{"emoji":0,"emotes":1,"images":0,"mentions":0,"video":0,"previews":0}},{"type":"WORD_COUNT_FEATURE","data":{"words":4,"chars":28}}]'
+    ErrorInvalidCSRF:
+      type: object
+      required:
+        - error
+        - errorDescription
+        - errorDetails
+        - status
+      properties:
+        error:
+          type: string
+          example: invalid_request
+        errorDescription:
+          type: string
+          example: Invalid or expired form submission
+        errorDetails:
+          type: object
+          properties:
+            csrf:
+              type: string
+              example: invalid
+        status:
+          type: string
+          example: error

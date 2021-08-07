@@ -31,13 +31,13 @@
                     <h2>API Documentation</h2>
                         <ul class="memberlist">
             <li>
-                    <a class="class" href="#EclipseDeviationExtendedContent">EclipseDeviationExtendedContent</a>
+                    <a class="class" href="#DeviationExtendedContent">DeviationExtendedContent</a>
                             <ul class="memberlist">
                         <li>
-                                <a class="function" href="#EclipseDeviationExtendedContent.__init__">EclipseDeviationExtendedContent</a>
+                                <a class="function" href="#DeviationExtendedContent.__init__">DeviationExtendedContent</a>
                         </li>
                         <li>
-                                <a class="function" href="#EclipseDeviationExtendedContent.from_dict">from_dict</a>
+                                <a class="function" href="#DeviationExtendedContent.from_dict">from_dict</a>
                         </li>
                 </ul>
 
@@ -64,22 +64,23 @@
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="sd">&quot;&quot;&quot;Model to represent DeviantArt Eclipse Deviation Extended Content.&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">daeclipse.models.deviationfilespecs</span> <span class="kn">import</span> <span class="n">EclipseDeviationFileSpecs</span>
-<span class="kn">from</span> <span class="nn">daeclipse.models.deviationrelatedstreams</span> <span class="kn">import</span> <span class="n">EclipseDeviationRelatedStreams</span>
-<span class="kn">from</span> <span class="nn">daeclipse.models.deviationextendedstats</span> <span class="kn">import</span> <span class="n">EclipseDeviationExtendedStats</span>
-<span class="kn">from</span> <span class="nn">daeclipse.models.deviationtag</span> <span class="kn">import</span> <span class="n">EclipseDeviationTag</span>
-<span class="kn">from</span> <span class="nn">daeclipse.models.deviationtypefacet</span> <span class="kn">import</span> <span class="n">EclipseDeviationTypeFacet</span>
-<span class="kn">from</span> <span class="nn">daeclipse.models.deviationawardedbadge</span> <span class="kn">import</span> <span class="n">EclipseDeviationAwardedBadge</span>
+<span class="kn">from</span> <span class="nn">daeclipse.models.deviationawardedbadge</span> <span class="kn">import</span> <span class="n">DeviationAwardedBadge</span>
+<span class="kn">from</span> <span class="nn">daeclipse.models.deviationextendedstats</span> <span class="kn">import</span> <span class="n">DeviationExtendedStats</span>
+<span class="kn">from</span> <span class="nn">daeclipse.models.deviationfilespecs</span> <span class="kn">import</span> <span class="n">DeviationFileSpecs</span>
+<span class="kn">from</span> <span class="nn">daeclipse.models.deviationrelatedstreams</span> <span class="kn">import</span> <span class="n">DeviationRelatedStreams</span>
+<span class="kn">from</span> <span class="nn">daeclipse.models.deviationtag</span> <span class="kn">import</span> <span class="n">DeviationTag</span>
+<span class="kn">from</span> <span class="nn">daeclipse.models.deviationtypefacet</span> <span class="kn">import</span> <span class="n">DeviationTypeFacet</span>
+<span class="kn">from</span> <span class="nn">daeclipse.models.model</span> <span class="kn">import</span> <span class="n">Model</span>
 
 
-<span class="k">class</span> <span class="nc">EclipseDeviationExtendedContent</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">DeviationExtendedContent</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Model to represent DeviantArt Eclipse Deviation Extended Content.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize EclipseDeviationExtendedContent.</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize DeviationExtendedContent.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict, optional): Dict of EclipseDeviationExtendedContent class attrs.</span>
+<span class="sd">            attrs (dict, optional): Dict of model attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">deviation_uuid</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">can_user_add_to_group</span> <span class="o">=</span> <span class="kc">None</span>
@@ -95,58 +96,61 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">report_url</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">awarded_badges</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_dict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">input_dict</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convert input_dict values to class attributes.</span>
+    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convert attrs values to class attributes.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict): Dict containing EclipseDeviationExtendedContent fields.</span>
+<span class="sd">            attrs (dict): Dict containing DeviationExtendedContent fields.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">deviation_uuid</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;deviationUuid&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">can_user_add_to_group</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;canUserAddToGroup&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">group_list_url</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;groupListUrl&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">original_file</span> <span class="o">=</span> <span class="n">EclipseDeviationFileSpecs</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;originalFile&#39;</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="p">[</span><span class="n">EclipseDeviationTag</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">)]</span>
-        <span class="k">if</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;subjectTags&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">subject_tags</span> <span class="o">=</span> <span class="p">[</span><span class="n">EclipseDeviationTag</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;subjectTags&#39;</span><span class="p">)]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">type_facet</span> <span class="o">=</span> <span class="n">EclipseDeviationTypeFacet</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;typeFacet&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">license</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;license&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">download</span> <span class="o">=</span> <span class="n">EclipseDeviationFileSpecs</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;download&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">related_streams</span> <span class="o">=</span> <span class="n">EclipseDeviationRelatedStreams</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;relatedStreams&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="n">EclipseDeviationExtendedStats</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;stats&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">report_url</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;reportUrl&#39;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;awardedBadges&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">awarded_badges</span> <span class="o">=</span> <span class="p">[</span><span class="n">EclipseDeviationAwardedBadge</span><span class="p">(</span><span class="n">badge</span><span class="p">)</span> <span class="k">for</span> <span class="n">badge</span> <span class="ow">in</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;awardedBadges&#39;</span><span class="p">)]</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">deviation_uuid</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;deviationUuid&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">can_user_add_to_group</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;canUserAddToGroup&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">group_list_url</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;groupListUrl&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">original_file</span> <span class="o">=</span> <span class="n">DeviationFileSpecs</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;originalFile&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel</span><span class="p">(</span><span class="n">DeviationTag</span><span class="p">,</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">subject_tags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel</span><span class="p">(</span>
+            <span class="n">DeviationTag</span><span class="p">,</span>
+            <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;subjectTags&#39;</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type_facet</span> <span class="o">=</span> <span class="n">DeviationTypeFacet</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;typeFacet&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">license</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;license&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">download</span> <span class="o">=</span> <span class="n">DeviationFileSpecs</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;download&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">related_streams</span> <span class="o">=</span> <span class="n">DeviationRelatedStreams</span><span class="p">(</span>
+            <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;relatedStreams&#39;</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="n">DeviationExtendedStats</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;stats&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">report_url</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;reportUrl&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">awarded_badges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel</span><span class="p">(</span>
+            <span class="n">DeviationAwardedBadge</span><span class="p">,</span>
+            <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;awardedBadges&#39;</span><span class="p">),</span>
+        <span class="p">)</span>
 </pre></div>
 
         </details>
 
             </section>
-                <section id="EclipseDeviationExtendedContent">
+                <section id="DeviationExtendedContent">
                                 <div class="attr class">
-        <a class="headerlink" href="#EclipseDeviationExtendedContent">#&nbsp;&nbsp</a>
+        <a class="headerlink" href="#DeviationExtendedContent">#&nbsp;&nbsp</a>
 
         
         <span class="def">class</span>
-        <span class="name">EclipseDeviationExtendedContent</span>:
+        <span class="name">DeviationExtendedContent</span><wbr>(<span class="base"><a href="model.html#Model">daeclipse.models.model.Model</a></span>):
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">EclipseDeviationExtendedContent</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+            <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">DeviationExtendedContent</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Model to represent DeviantArt Eclipse Deviation Extended Content.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize EclipseDeviationExtendedContent.</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize DeviationExtendedContent.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict, optional): Dict of EclipseDeviationExtendedContent class attrs.</span>
+<span class="sd">            attrs (dict, optional): Dict of model attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">deviation_uuid</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">can_user_add_to_group</span> <span class="o">=</span> <span class="kc">None</span>
@@ -162,34 +166,37 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">report_url</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">awarded_badges</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_dict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">input_dict</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convert input_dict values to class attributes.</span>
+    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convert attrs values to class attributes.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict): Dict containing EclipseDeviationExtendedContent fields.</span>
+<span class="sd">            attrs (dict): Dict containing DeviationExtendedContent fields.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">deviation_uuid</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;deviationUuid&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">can_user_add_to_group</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;canUserAddToGroup&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">group_list_url</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;groupListUrl&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">original_file</span> <span class="o">=</span> <span class="n">EclipseDeviationFileSpecs</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;originalFile&#39;</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="p">[</span><span class="n">EclipseDeviationTag</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">)]</span>
-        <span class="k">if</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;subjectTags&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">subject_tags</span> <span class="o">=</span> <span class="p">[</span><span class="n">EclipseDeviationTag</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;subjectTags&#39;</span><span class="p">)]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">type_facet</span> <span class="o">=</span> <span class="n">EclipseDeviationTypeFacet</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;typeFacet&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">license</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;license&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">download</span> <span class="o">=</span> <span class="n">EclipseDeviationFileSpecs</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;download&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">related_streams</span> <span class="o">=</span> <span class="n">EclipseDeviationRelatedStreams</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;relatedStreams&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="n">EclipseDeviationExtendedStats</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;stats&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">report_url</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;reportUrl&#39;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;awardedBadges&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">awarded_badges</span> <span class="o">=</span> <span class="p">[</span><span class="n">EclipseDeviationAwardedBadge</span><span class="p">(</span><span class="n">badge</span><span class="p">)</span> <span class="k">for</span> <span class="n">badge</span> <span class="ow">in</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;awardedBadges&#39;</span><span class="p">)]</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">deviation_uuid</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;deviationUuid&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">can_user_add_to_group</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;canUserAddToGroup&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">group_list_url</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;groupListUrl&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">original_file</span> <span class="o">=</span> <span class="n">DeviationFileSpecs</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;originalFile&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel</span><span class="p">(</span><span class="n">DeviationTag</span><span class="p">,</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">subject_tags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel</span><span class="p">(</span>
+            <span class="n">DeviationTag</span><span class="p">,</span>
+            <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;subjectTags&#39;</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type_facet</span> <span class="o">=</span> <span class="n">DeviationTypeFacet</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;typeFacet&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">license</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;license&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">download</span> <span class="o">=</span> <span class="n">DeviationFileSpecs</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;download&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">related_streams</span> <span class="o">=</span> <span class="n">DeviationRelatedStreams</span><span class="p">(</span>
+            <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;relatedStreams&#39;</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="n">DeviationExtendedStats</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;stats&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">report_url</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;reportUrl&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">awarded_badges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel</span><span class="p">(</span>
+            <span class="n">DeviationAwardedBadge</span><span class="p">,</span>
+            <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;awardedBadges&#39;</span><span class="p">),</span>
+        <span class="p">)</span>
 </pre></div>
 
         </details>
@@ -198,20 +205,20 @@
 </div>
 
 
-                            <div id="EclipseDeviationExtendedContent.__init__" class="classattr">
-                                        <div class="attr function"><a class="headerlink" href="#EclipseDeviationExtendedContent.__init__">#&nbsp;&nbsp</a>
+                            <div id="DeviationExtendedContent.__init__" class="classattr">
+                                        <div class="attr function"><a class="headerlink" href="#DeviationExtendedContent.__init__">#&nbsp;&nbsp</a>
 
         
-            <span class="name">EclipseDeviationExtendedContent</span><span class="signature">(input_dict=None)</span>
+            <span class="name">DeviationExtendedContent</span><span class="signature">(attrs=None)</span>
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize EclipseDeviationExtendedContent.</span>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize DeviationExtendedContent.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict, optional): Dict of EclipseDeviationExtendedContent class attrs.</span>
+<span class="sd">            attrs (dict, optional): Dict of model attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">deviation_uuid</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">can_user_add_to_group</span> <span class="o">=</span> <span class="kc">None</span>
@@ -227,66 +234,78 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">report_url</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">awarded_badges</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_dict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">input_dict</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
 </pre></div>
 
         </details>
 
-            <div class="docstring"><p>Initialize EclipseDeviationExtendedContent.</p>
+            <div class="docstring"><p>Initialize DeviationExtendedContent.</p>
 
 <p>Args:
-    input_dict (dict, optional): Dict of EclipseDeviationExtendedContent class attrs.</p>
+    attrs (dict, optional): Dict of model attributes.</p>
 </div>
 
 
                             </div>
-                            <div id="EclipseDeviationExtendedContent.from_dict" class="classattr">
-                                        <div class="attr function"><a class="headerlink" href="#EclipseDeviationExtendedContent.from_dict">#&nbsp;&nbsp</a>
+                            <div id="DeviationExtendedContent.from_dict" class="classattr">
+                                        <div class="attr function"><a class="headerlink" href="#DeviationExtendedContent.from_dict">#&nbsp;&nbsp</a>
 
         
             <span class="def">def</span>
-            <span class="name">from_dict</span><span class="signature">(self, input_dict)</span>:
+            <span class="name">from_dict</span><span class="signature">(self, attrs)</span>:
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convert input_dict values to class attributes.</span>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convert attrs values to class attributes.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict): Dict containing EclipseDeviationExtendedContent fields.</span>
+<span class="sd">            attrs (dict): Dict containing DeviationExtendedContent fields.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">deviation_uuid</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;deviationUuid&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">can_user_add_to_group</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;canUserAddToGroup&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">group_list_url</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;groupListUrl&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">original_file</span> <span class="o">=</span> <span class="n">EclipseDeviationFileSpecs</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;originalFile&#39;</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="p">[</span><span class="n">EclipseDeviationTag</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">)]</span>
-        <span class="k">if</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;subjectTags&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">subject_tags</span> <span class="o">=</span> <span class="p">[</span><span class="n">EclipseDeviationTag</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;subjectTags&#39;</span><span class="p">)]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">type_facet</span> <span class="o">=</span> <span class="n">EclipseDeviationTypeFacet</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;typeFacet&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">license</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;license&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">download</span> <span class="o">=</span> <span class="n">EclipseDeviationFileSpecs</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;download&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">related_streams</span> <span class="o">=</span> <span class="n">EclipseDeviationRelatedStreams</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;relatedStreams&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="n">EclipseDeviationExtendedStats</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;stats&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">report_url</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;reportUrl&#39;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;awardedBadges&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">awarded_badges</span> <span class="o">=</span> <span class="p">[</span><span class="n">EclipseDeviationAwardedBadge</span><span class="p">(</span><span class="n">badge</span><span class="p">)</span> <span class="k">for</span> <span class="n">badge</span> <span class="ow">in</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;awardedBadges&#39;</span><span class="p">)]</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">deviation_uuid</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;deviationUuid&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">can_user_add_to_group</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;canUserAddToGroup&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">group_list_url</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;groupListUrl&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">original_file</span> <span class="o">=</span> <span class="n">DeviationFileSpecs</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;originalFile&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel</span><span class="p">(</span><span class="n">DeviationTag</span><span class="p">,</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">subject_tags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel</span><span class="p">(</span>
+            <span class="n">DeviationTag</span><span class="p">,</span>
+            <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;subjectTags&#39;</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type_facet</span> <span class="o">=</span> <span class="n">DeviationTypeFacet</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;typeFacet&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">license</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;license&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">download</span> <span class="o">=</span> <span class="n">DeviationFileSpecs</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;download&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">related_streams</span> <span class="o">=</span> <span class="n">DeviationRelatedStreams</span><span class="p">(</span>
+            <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;relatedStreams&#39;</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="n">DeviationExtendedStats</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;stats&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">report_url</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;reportUrl&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">awarded_badges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel</span><span class="p">(</span>
+            <span class="n">DeviationAwardedBadge</span><span class="p">,</span>
+            <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;awardedBadges&#39;</span><span class="p">),</span>
+        <span class="p">)</span>
 </pre></div>
 
         </details>
 
-            <div class="docstring"><p>Convert input_dict values to class attributes.</p>
+            <div class="docstring"><p>Convert attrs values to class attributes.</p>
 
 <p>Args:
-    input_dict (dict): Dict containing EclipseDeviationExtendedContent fields.</p>
+    attrs (dict): Dict containing DeviationExtendedContent fields.</p>
 </div>
 
 
+                            </div>
+                            <div class="inherited">
+                                <h5>Inherited Members</h5>
+                                <dl>
+                                    <div><dt><a href="model.html#Model">daeclipse.models.model.Model</a></dt>
+                                <dd id="DeviationExtendedContent.to_submodel" class="function"><a href="model.html#Model.to_submodel">to_submodel</a></dd>
+
+            </div>
+                                </dl>
                             </div>
                 </section>
     </main>

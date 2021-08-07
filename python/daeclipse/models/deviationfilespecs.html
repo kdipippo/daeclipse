@@ -31,13 +31,13 @@
                     <h2>API Documentation</h2>
                         <ul class="memberlist">
             <li>
-                    <a class="class" href="#EclipseDeviationFileSpecs">EclipseDeviationFileSpecs</a>
+                    <a class="class" href="#DeviationFileSpecs">DeviationFileSpecs</a>
                             <ul class="memberlist">
                         <li>
-                                <a class="function" href="#EclipseDeviationFileSpecs.__init__">EclipseDeviationFileSpecs</a>
+                                <a class="function" href="#DeviationFileSpecs.__init__">DeviationFileSpecs</a>
                         </li>
                         <li>
-                                <a class="function" href="#EclipseDeviationFileSpecs.from_dict">from_dict</a>
+                                <a class="function" href="#DeviationFileSpecs.from_dict">from_dict</a>
                         </li>
                 </ul>
 
@@ -64,83 +64,81 @@
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="sd">&quot;&quot;&quot;Model to represent DeviantArt Eclipse Deviation File Specs.&quot;&quot;&quot;</span>
 
+<span class="kn">from</span> <span class="nn">daeclipse.models.model</span> <span class="kn">import</span> <span class="n">Model</span>
 
-<span class="k">class</span> <span class="nc">EclipseDeviationFileSpecs</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+<span class="k">class</span> <span class="nc">DeviationFileSpecs</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Model to represent DeviantArt Eclipse Deviation File Specs.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize EclipseDeviationFileSpecs.</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize DeviationFileSpecs.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict, optional): Dict of EclipseDeviationFileSpecs class attrs.</span>
+<span class="sd">            attrs (dict, optional): Dict of model attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">filesize</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_dict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">input_dict</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convert input_dict values to class attributes.</span>
+    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convert attrs values to class attributes.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict): Dict containing EclipseDeviationFileSpecs fields.</span>
+<span class="sd">            attrs (dict): Dict containing DeviationFileSpecs fields.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;width&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">filesize</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;filesize&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;width&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filesize</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;filesize&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
 
             </section>
-                <section id="EclipseDeviationFileSpecs">
+                <section id="DeviationFileSpecs">
                                 <div class="attr class">
-        <a class="headerlink" href="#EclipseDeviationFileSpecs">#&nbsp;&nbsp</a>
+        <a class="headerlink" href="#DeviationFileSpecs">#&nbsp;&nbsp</a>
 
         
         <span class="def">class</span>
-        <span class="name">EclipseDeviationFileSpecs</span>:
+        <span class="name">DeviationFileSpecs</span><wbr>(<span class="base"><a href="model.html#Model">daeclipse.models.model.Model</a></span>):
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">EclipseDeviationFileSpecs</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+            <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">DeviationFileSpecs</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Model to represent DeviantArt Eclipse Deviation File Specs.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize EclipseDeviationFileSpecs.</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize DeviationFileSpecs.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict, optional): Dict of EclipseDeviationFileSpecs class attrs.</span>
+<span class="sd">            attrs (dict, optional): Dict of model attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">filesize</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_dict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">input_dict</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convert input_dict values to class attributes.</span>
+    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convert attrs values to class attributes.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict): Dict containing EclipseDeviationFileSpecs fields.</span>
+<span class="sd">            attrs (dict): Dict containing DeviationFileSpecs fields.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;width&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">filesize</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;filesize&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;width&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filesize</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;filesize&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
@@ -149,74 +147,81 @@
 </div>
 
 
-                            <div id="EclipseDeviationFileSpecs.__init__" class="classattr">
-                                        <div class="attr function"><a class="headerlink" href="#EclipseDeviationFileSpecs.__init__">#&nbsp;&nbsp</a>
+                            <div id="DeviationFileSpecs.__init__" class="classattr">
+                                        <div class="attr function"><a class="headerlink" href="#DeviationFileSpecs.__init__">#&nbsp;&nbsp</a>
 
         
-            <span class="name">EclipseDeviationFileSpecs</span><span class="signature">(input_dict=None)</span>
+            <span class="name">DeviationFileSpecs</span><span class="signature">(attrs=None)</span>
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize EclipseDeviationFileSpecs.</span>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize DeviationFileSpecs.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict, optional): Dict of EclipseDeviationFileSpecs class attrs.</span>
+<span class="sd">            attrs (dict, optional): Dict of model attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">filesize</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_dict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">input_dict</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
 </pre></div>
 
         </details>
 
-            <div class="docstring"><p>Initialize EclipseDeviationFileSpecs.</p>
+            <div class="docstring"><p>Initialize DeviationFileSpecs.</p>
 
 <p>Args:
-    input_dict (dict, optional): Dict of EclipseDeviationFileSpecs class attrs.</p>
+    attrs (dict, optional): Dict of model attributes.</p>
 </div>
 
 
                             </div>
-                            <div id="EclipseDeviationFileSpecs.from_dict" class="classattr">
-                                        <div class="attr function"><a class="headerlink" href="#EclipseDeviationFileSpecs.from_dict">#&nbsp;&nbsp</a>
+                            <div id="DeviationFileSpecs.from_dict" class="classattr">
+                                        <div class="attr function"><a class="headerlink" href="#DeviationFileSpecs.from_dict">#&nbsp;&nbsp</a>
 
         
             <span class="def">def</span>
-            <span class="name">from_dict</span><span class="signature">(self, input_dict)</span>:
+            <span class="name">from_dict</span><span class="signature">(self, attrs)</span>:
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convert input_dict values to class attributes.</span>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convert attrs values to class attributes.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict): Dict containing EclipseDeviationFileSpecs fields.</span>
+<span class="sd">            attrs (dict): Dict containing DeviationFileSpecs fields.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;width&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">filesize</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;filesize&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;width&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filesize</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;filesize&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
 
-            <div class="docstring"><p>Convert input_dict values to class attributes.</p>
+            <div class="docstring"><p>Convert attrs values to class attributes.</p>
 
 <p>Args:
-    input_dict (dict): Dict containing EclipseDeviationFileSpecs fields.</p>
+    attrs (dict): Dict containing DeviationFileSpecs fields.</p>
 </div>
 
 
+                            </div>
+                            <div class="inherited">
+                                <h5>Inherited Members</h5>
+                                <dl>
+                                    <div><dt><a href="model.html#Model">daeclipse.models.model.Model</a></dt>
+                                <dd id="DeviationFileSpecs.to_submodel" class="function"><a href="model.html#Model.to_submodel">to_submodel</a></dd>
+
+            </div>
+                                </dl>
                             </div>
                 </section>
     </main>

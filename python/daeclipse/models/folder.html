@@ -31,13 +31,13 @@
                     <h2>API Documentation</h2>
                         <ul class="memberlist">
             <li>
-                    <a class="class" href="#EclipseFolder">EclipseFolder</a>
+                    <a class="class" href="#Folder">Folder</a>
                             <ul class="memberlist">
                         <li>
-                                <a class="function" href="#EclipseFolder.__init__">EclipseFolder</a>
+                                <a class="function" href="#Folder.__init__">Folder</a>
                         </li>
                         <li>
-                                <a class="function" href="#EclipseFolder.from_dict">from_dict</a>
+                                <a class="function" href="#Folder.from_dict">from_dict</a>
                         </li>
                 </ul>
 
@@ -64,18 +64,19 @@
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="sd">&quot;&quot;&quot;Model to represent DeviantArt Eclipse Group Folder.&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">daeclipse.models.deviation</span>
-<span class="kn">from</span> <span class="nn">daeclipse.models.gruser</span> <span class="kn">import</span> <span class="n">EclipseGruser</span>
+<span class="kn">from</span> <span class="nn">daeclipse.models.deviation</span> <span class="kn">import</span> <span class="n">Deviation</span>
+<span class="kn">from</span> <span class="nn">daeclipse.models.gruser</span> <span class="kn">import</span> <span class="n">Gruser</span>
+<span class="kn">from</span> <span class="nn">daeclipse.models.model</span> <span class="kn">import</span> <span class="n">Model</span>
 
 
-<span class="k">class</span> <span class="nc">EclipseFolder</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>  <span class="c1"># noqa: WPS230</span>
+<span class="k">class</span> <span class="nc">Folder</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Model to represent DeviantArt Eclipse Group Folder.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize EclipseFolder.</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize Folder.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict, optional): Dict of EclipseFolder class attrs.</span>
+<span class="sd">            attrs (dict, optional): Dict of model attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">folder_id</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gallection_uuid</span> <span class="o">=</span> <span class="kc">None</span>
@@ -89,61 +90,59 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">thumb</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">has_sub_folders</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">total_item_count</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_dict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">input_dict</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Representation of EclipseFolder.</span>
+        <span class="sd">&quot;&quot;&quot;Representation of Folder.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            string: EclipseFolder representation.</span>
+<span class="sd">            string: Folder representation.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">folder_id</span>
 
-    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convert input_dict values to class attributes.</span>
+    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convert attrs values to class attributes.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict): Dict containing EclipseFolder fields.</span>
+<span class="sd">            attrs (dict): Dict containing Folder fields.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">folder_id</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;folderId&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">gallection_uuid</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;gallectionUuid&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">parent_id</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;parentId&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">owner</span> <span class="o">=</span> <span class="n">EclipseGruser</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;owner&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">comment_count</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;commentCount&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;size&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">thumb</span> <span class="o">=</span> <span class="n">daeclipse</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">deviation</span><span class="o">.</span><span class="n">EclipseDeviation</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;thumb&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">has_sub_folders</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;hasSubfolders&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">total_item_count</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;totalItemCount&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">folder_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;folderId&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gallection_uuid</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;gallectionUuid&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;parentId&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">owner</span> <span class="o">=</span> <span class="n">Gruser</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;owner&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comment_count</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;commentCount&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;size&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thumb</span> <span class="o">=</span> <span class="n">Deviation</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;thumb&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">has_sub_folders</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;hasSubfolders&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total_item_count</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;totalItemCount&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
 
             </section>
-                <section id="EclipseFolder">
+                <section id="Folder">
                                 <div class="attr class">
-        <a class="headerlink" href="#EclipseFolder">#&nbsp;&nbsp</a>
+        <a class="headerlink" href="#Folder">#&nbsp;&nbsp</a>
 
         
         <span class="def">class</span>
-        <span class="name">EclipseFolder</span>:
+        <span class="name">Folder</span><wbr>(<span class="base"><a href="model.html#Model">daeclipse.models.model.Model</a></span>):
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">EclipseFolder</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>  <span class="c1"># noqa: WPS230</span>
+            <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Folder</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Model to represent DeviantArt Eclipse Group Folder.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize EclipseFolder.</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize Folder.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict, optional): Dict of EclipseFolder class attrs.</span>
+<span class="sd">            attrs (dict, optional): Dict of model attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">folder_id</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gallection_uuid</span> <span class="o">=</span> <span class="kc">None</span>
@@ -157,37 +156,35 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">thumb</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">has_sub_folders</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">total_item_count</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_dict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">input_dict</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Representation of EclipseFolder.</span>
+        <span class="sd">&quot;&quot;&quot;Representation of Folder.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            string: EclipseFolder representation.</span>
+<span class="sd">            string: Folder representation.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">folder_id</span>
 
-    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convert input_dict values to class attributes.</span>
+    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convert attrs values to class attributes.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict): Dict containing EclipseFolder fields.</span>
+<span class="sd">            attrs (dict): Dict containing Folder fields.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">folder_id</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;folderId&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">gallection_uuid</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;gallectionUuid&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">parent_id</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;parentId&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">owner</span> <span class="o">=</span> <span class="n">EclipseGruser</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;owner&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">comment_count</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;commentCount&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;size&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">thumb</span> <span class="o">=</span> <span class="n">daeclipse</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">deviation</span><span class="o">.</span><span class="n">EclipseDeviation</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;thumb&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">has_sub_folders</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;hasSubfolders&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">total_item_count</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;totalItemCount&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">folder_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;folderId&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gallection_uuid</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;gallectionUuid&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;parentId&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">owner</span> <span class="o">=</span> <span class="n">Gruser</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;owner&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comment_count</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;commentCount&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;size&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thumb</span> <span class="o">=</span> <span class="n">Deviation</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;thumb&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">has_sub_folders</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;hasSubfolders&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total_item_count</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;totalItemCount&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
@@ -196,20 +193,20 @@
 </div>
 
 
-                            <div id="EclipseFolder.__init__" class="classattr">
-                                        <div class="attr function"><a class="headerlink" href="#EclipseFolder.__init__">#&nbsp;&nbsp</a>
+                            <div id="Folder.__init__" class="classattr">
+                                        <div class="attr function"><a class="headerlink" href="#Folder.__init__">#&nbsp;&nbsp</a>
 
         
-            <span class="name">EclipseFolder</span><span class="signature">(input_dict=None)</span>
+            <span class="name">Folder</span><span class="signature">(attrs=None)</span>
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize EclipseFolder.</span>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize Folder.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict, optional): Dict of EclipseFolder class attrs.</span>
+<span class="sd">            attrs (dict, optional): Dict of model attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">folder_id</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gallection_uuid</span> <span class="o">=</span> <span class="kc">None</span>
@@ -223,61 +220,68 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">thumb</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">has_sub_folders</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">total_item_count</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_dict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">input_dict</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
 </pre></div>
 
         </details>
 
-            <div class="docstring"><p>Initialize EclipseFolder.</p>
+            <div class="docstring"><p>Initialize Folder.</p>
 
 <p>Args:
-    input_dict (dict, optional): Dict of EclipseFolder class attrs.</p>
+    attrs (dict, optional): Dict of model attributes.</p>
 </div>
 
 
                             </div>
-                            <div id="EclipseFolder.from_dict" class="classattr">
-                                        <div class="attr function"><a class="headerlink" href="#EclipseFolder.from_dict">#&nbsp;&nbsp</a>
+                            <div id="Folder.from_dict" class="classattr">
+                                        <div class="attr function"><a class="headerlink" href="#Folder.from_dict">#&nbsp;&nbsp</a>
 
         
             <span class="def">def</span>
-            <span class="name">from_dict</span><span class="signature">(self, input_dict)</span>:
+            <span class="name">from_dict</span><span class="signature">(self, attrs)</span>:
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convert input_dict values to class attributes.</span>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convert attrs values to class attributes.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict): Dict containing EclipseFolder fields.</span>
+<span class="sd">            attrs (dict): Dict containing Folder fields.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">folder_id</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;folderId&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">gallection_uuid</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;gallectionUuid&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">parent_id</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;parentId&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">owner</span> <span class="o">=</span> <span class="n">EclipseGruser</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;owner&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">comment_count</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;commentCount&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;size&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">thumb</span> <span class="o">=</span> <span class="n">daeclipse</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">deviation</span><span class="o">.</span><span class="n">EclipseDeviation</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;thumb&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">has_sub_folders</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;hasSubfolders&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">total_item_count</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;totalItemCount&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">folder_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;folderId&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gallection_uuid</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;gallectionUuid&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;parentId&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">owner</span> <span class="o">=</span> <span class="n">Gruser</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;owner&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comment_count</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;commentCount&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;size&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thumb</span> <span class="o">=</span> <span class="n">Deviation</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;thumb&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">has_sub_folders</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;hasSubfolders&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total_item_count</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;totalItemCount&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
 
-            <div class="docstring"><p>Convert input_dict values to class attributes.</p>
+            <div class="docstring"><p>Convert attrs values to class attributes.</p>
 
 <p>Args:
-    input_dict (dict): Dict containing EclipseFolder fields.</p>
+    attrs (dict): Dict containing Folder fields.</p>
 </div>
 
 
+                            </div>
+                            <div class="inherited">
+                                <h5>Inherited Members</h5>
+                                <dl>
+                                    <div><dt><a href="model.html#Model">daeclipse.models.model.Model</a></dt>
+                                <dd id="Folder.to_submodel" class="function"><a href="model.html#Model.to_submodel">to_submodel</a></dd>
+
+            </div>
+                                </dl>
                             </div>
                 </section>
     </main>

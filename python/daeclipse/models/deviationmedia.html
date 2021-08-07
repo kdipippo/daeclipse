@@ -31,13 +31,13 @@
                     <h2>API Documentation</h2>
                         <ul class="memberlist">
             <li>
-                    <a class="class" href="#EclipseDeviationMedia">EclipseDeviationMedia</a>
+                    <a class="class" href="#DeviationMedia">DeviationMedia</a>
                             <ul class="memberlist">
                         <li>
-                                <a class="function" href="#EclipseDeviationMedia.__init__">EclipseDeviationMedia</a>
+                                <a class="function" href="#DeviationMedia.__init__">DeviationMedia</a>
                         </li>
                         <li>
-                                <a class="function" href="#EclipseDeviationMedia.from_dict">from_dict</a>
+                                <a class="function" href="#DeviationMedia.from_dict">from_dict</a>
                         </li>
                 </ul>
 
@@ -64,79 +64,77 @@
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="sd">&quot;&quot;&quot;Model to represent DeviantArt Eclipse Deviation Media.&quot;&quot;&quot;</span>
 
+<span class="kn">from</span> <span class="nn">daeclipse.models.model</span> <span class="kn">import</span> <span class="n">Model</span>
 
-<span class="k">class</span> <span class="nc">EclipseDeviationMedia</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+<span class="k">class</span> <span class="nc">DeviationMedia</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Model to represent DeviantArt Eclipse Deviation Media.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize EclipseDeviationMedia.</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize DeviationMedia.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict, optional): Dict of EclipseDeviationMedia class attrs.</span>
+<span class="sd">            attrs (dict, optional): Dict of model attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pretty_name</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">types</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_dict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">input_dict</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convert input_dict values to class attributes.</span>
+    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convert attrs values to class attributes.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict): Dict containing EclipseDeviationMedia fields.</span>
+<span class="sd">            attrs (dict): Dict containing DeviationMedia fields.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;baseUri&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pretty_name</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;prettyName&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">types</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;types&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;baseUri&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pretty_name</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;prettyName&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">types</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;types&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
 
             </section>
-                <section id="EclipseDeviationMedia">
+                <section id="DeviationMedia">
                                 <div class="attr class">
-        <a class="headerlink" href="#EclipseDeviationMedia">#&nbsp;&nbsp</a>
+        <a class="headerlink" href="#DeviationMedia">#&nbsp;&nbsp</a>
 
         
         <span class="def">class</span>
-        <span class="name">EclipseDeviationMedia</span>:
+        <span class="name">DeviationMedia</span><wbr>(<span class="base"><a href="model.html#Model">daeclipse.models.model.Model</a></span>):
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">EclipseDeviationMedia</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+            <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">DeviationMedia</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Model to represent DeviantArt Eclipse Deviation Media.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize EclipseDeviationMedia.</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize DeviationMedia.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict, optional): Dict of EclipseDeviationMedia class attrs.</span>
+<span class="sd">            attrs (dict, optional): Dict of model attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pretty_name</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">types</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_dict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">input_dict</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convert input_dict values to class attributes.</span>
+    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convert attrs values to class attributes.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict): Dict containing EclipseDeviationMedia fields.</span>
+<span class="sd">            attrs (dict): Dict containing DeviationMedia fields.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;baseUri&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pretty_name</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;prettyName&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">types</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;types&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;baseUri&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pretty_name</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;prettyName&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">types</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;types&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
@@ -145,72 +143,79 @@
 </div>
 
 
-                            <div id="EclipseDeviationMedia.__init__" class="classattr">
-                                        <div class="attr function"><a class="headerlink" href="#EclipseDeviationMedia.__init__">#&nbsp;&nbsp</a>
+                            <div id="DeviationMedia.__init__" class="classattr">
+                                        <div class="attr function"><a class="headerlink" href="#DeviationMedia.__init__">#&nbsp;&nbsp</a>
 
         
-            <span class="name">EclipseDeviationMedia</span><span class="signature">(input_dict=None)</span>
+            <span class="name">DeviationMedia</span><span class="signature">(attrs=None)</span>
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize EclipseDeviationMedia.</span>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize DeviationMedia.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict, optional): Dict of EclipseDeviationMedia class attrs.</span>
+<span class="sd">            attrs (dict, optional): Dict of model attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pretty_name</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">types</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_dict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">input_dict</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
 </pre></div>
 
         </details>
 
-            <div class="docstring"><p>Initialize EclipseDeviationMedia.</p>
+            <div class="docstring"><p>Initialize DeviationMedia.</p>
 
 <p>Args:
-    input_dict (dict, optional): Dict of EclipseDeviationMedia class attrs.</p>
+    attrs (dict, optional): Dict of model attributes.</p>
 </div>
 
 
                             </div>
-                            <div id="EclipseDeviationMedia.from_dict" class="classattr">
-                                        <div class="attr function"><a class="headerlink" href="#EclipseDeviationMedia.from_dict">#&nbsp;&nbsp</a>
+                            <div id="DeviationMedia.from_dict" class="classattr">
+                                        <div class="attr function"><a class="headerlink" href="#DeviationMedia.from_dict">#&nbsp;&nbsp</a>
 
         
             <span class="def">def</span>
-            <span class="name">from_dict</span><span class="signature">(self, input_dict)</span>:
+            <span class="name">from_dict</span><span class="signature">(self, attrs)</span>:
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convert input_dict values to class attributes.</span>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convert attrs values to class attributes.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict): Dict containing EclipseDeviationMedia fields.</span>
+<span class="sd">            attrs (dict): Dict containing DeviationMedia fields.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;baseUri&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pretty_name</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;prettyName&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">types</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;types&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;baseUri&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pretty_name</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;prettyName&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">types</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;types&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
 
-            <div class="docstring"><p>Convert input_dict values to class attributes.</p>
+            <div class="docstring"><p>Convert attrs values to class attributes.</p>
 
 <p>Args:
-    input_dict (dict): Dict containing EclipseDeviationMedia fields.</p>
+    attrs (dict): Dict containing DeviationMedia fields.</p>
 </div>
 
 
+                            </div>
+                            <div class="inherited">
+                                <h5>Inherited Members</h5>
+                                <dl>
+                                    <div><dt><a href="model.html#Model">daeclipse.models.model.Model</a></dt>
+                                <dd id="DeviationMedia.to_submodel" class="function"><a href="model.html#Model.to_submodel">to_submodel</a></dd>
+
+            </div>
+                                </dl>
                             </div>
                 </section>
     </main>

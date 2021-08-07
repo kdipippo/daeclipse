@@ -31,13 +31,13 @@
                     <h2>API Documentation</h2>
                         <ul class="memberlist">
             <li>
-                    <a class="class" href="#EclipseComment">EclipseComment</a>
+                    <a class="class" href="#Comment">Comment</a>
                             <ul class="memberlist">
                         <li>
-                                <a class="function" href="#EclipseComment.__init__">EclipseComment</a>
+                                <a class="function" href="#Comment.__init__">Comment</a>
                         </li>
                         <li>
-                                <a class="function" href="#EclipseComment.from_dict">from_dict</a>
+                                <a class="function" href="#Comment.from_dict">from_dict</a>
                         </li>
                 </ul>
 
@@ -64,18 +64,19 @@
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="sd">&quot;&quot;&quot;Model to represent DeviantArt Eclipse Comments.&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">daeclipse.models.commentcontent</span> <span class="kn">import</span> <span class="n">EclipseCommentContent</span>
-<span class="kn">from</span> <span class="nn">daeclipse.models.gruser</span> <span class="kn">import</span> <span class="n">EclipseGruser</span>
+<span class="kn">from</span> <span class="nn">daeclipse.models.commentcontent</span> <span class="kn">import</span> <span class="n">CommentContent</span>
+<span class="kn">from</span> <span class="nn">daeclipse.models.gruser</span> <span class="kn">import</span> <span class="n">Gruser</span>
+<span class="kn">from</span> <span class="nn">daeclipse.models.model</span> <span class="kn">import</span> <span class="n">Model</span>
 
 
-<span class="k">class</span> <span class="nc">EclipseComment</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Comment</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Model to represent DeviantArt Eclipse Comments.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize EclipseComment.</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize Comment.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict, optional): Dict of EclipseComment class attrs.</span>
+<span class="sd">            attrs (dict, optional): Dict of model attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">comment_id</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">type_id</span> <span class="o">=</span> <span class="kc">None</span>
@@ -107,71 +108,69 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">author_info</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">legacy_text_edit_url</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_dict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">input_dict</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convert input_dict values to class attributes.</span>
+    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convert attrs values to class attributes.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict): Dict containing EclipseComment fields.</span>
+<span class="sd">            attrs (dict): Dict containing Comment fields.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">comment_id</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;commentId&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">type_id</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;typeId&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">item_id</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;itemId&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">parent_id</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;parentId&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">posted</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;posted&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">edited</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;edited&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">replies</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;replies&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_owner</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isOwner&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_violation</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isViolation&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_admin_hidden</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAdminHidden&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_hidden</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isHidden&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_locked</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isLocked&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_spam</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isSpam&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_private</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isPrivate&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_annotation</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAnnotation&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_deleted</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isDeleted&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_peekable</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isPeekable&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_author</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAuthor&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_author_highlighted</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAuthorHighlighted&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_admin_mode</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAdminMode&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_featured</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isFeatured&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_reportable</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isReportable&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_liked</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isLiked&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">likes</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;likes&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;hidden&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">text_content</span> <span class="o">=</span> <span class="n">EclipseCommentContent</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;textContent&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">signature</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;signature&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">author_info</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;authorInfo&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">EclipseGruser</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">legacy_text_edit_url</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;legacyTextEditUrl&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comment_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;commentId&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;typeId&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">item_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;itemId&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;parentId&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">posted</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;posted&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">edited</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;edited&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">replies</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;replies&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_owner</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isOwner&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_violation</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isViolation&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_admin_hidden</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAdminHidden&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_hidden</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isHidden&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_locked</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isLocked&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_spam</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isSpam&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_private</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isPrivate&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_annotation</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAnnotation&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_deleted</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isDeleted&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_peekable</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isPeekable&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_author</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAuthor&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_author_highlighted</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAuthorHighlighted&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_admin_mode</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAdminMode&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_featured</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isFeatured&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_reportable</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isReportable&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_liked</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isLiked&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">likes</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;likes&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;hidden&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text_content</span> <span class="o">=</span> <span class="n">CommentContent</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;textContent&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signature</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;signature&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">author_info</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;authorInfo&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">Gruser</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">legacy_text_edit_url</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;legacyTextEditUrl&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
 
             </section>
-                <section id="EclipseComment">
+                <section id="Comment">
                                 <div class="attr class">
-        <a class="headerlink" href="#EclipseComment">#&nbsp;&nbsp</a>
+        <a class="headerlink" href="#Comment">#&nbsp;&nbsp</a>
 
         
         <span class="def">class</span>
-        <span class="name">EclipseComment</span>:
+        <span class="name">Comment</span><wbr>(<span class="base"><a href="model.html#Model">daeclipse.models.model.Model</a></span>):
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">EclipseComment</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+            <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Comment</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Model to represent DeviantArt Eclipse Comments.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize EclipseComment.</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize Comment.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict, optional): Dict of EclipseComment class attrs.</span>
+<span class="sd">            attrs (dict, optional): Dict of model attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">comment_id</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">type_id</span> <span class="o">=</span> <span class="kc">None</span>
@@ -203,47 +202,45 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">author_info</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">legacy_text_edit_url</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_dict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">input_dict</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convert input_dict values to class attributes.</span>
+    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convert attrs values to class attributes.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict): Dict containing EclipseComment fields.</span>
+<span class="sd">            attrs (dict): Dict containing Comment fields.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">comment_id</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;commentId&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">type_id</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;typeId&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">item_id</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;itemId&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">parent_id</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;parentId&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">posted</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;posted&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">edited</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;edited&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">replies</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;replies&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_owner</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isOwner&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_violation</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isViolation&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_admin_hidden</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAdminHidden&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_hidden</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isHidden&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_locked</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isLocked&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_spam</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isSpam&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_private</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isPrivate&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_annotation</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAnnotation&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_deleted</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isDeleted&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_peekable</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isPeekable&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_author</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAuthor&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_author_highlighted</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAuthorHighlighted&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_admin_mode</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAdminMode&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_featured</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isFeatured&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_reportable</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isReportable&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_liked</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isLiked&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">likes</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;likes&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;hidden&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">text_content</span> <span class="o">=</span> <span class="n">EclipseCommentContent</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;textContent&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">signature</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;signature&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">author_info</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;authorInfo&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">EclipseGruser</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">legacy_text_edit_url</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;legacyTextEditUrl&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comment_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;commentId&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;typeId&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">item_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;itemId&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;parentId&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">posted</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;posted&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">edited</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;edited&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">replies</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;replies&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_owner</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isOwner&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_violation</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isViolation&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_admin_hidden</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAdminHidden&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_hidden</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isHidden&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_locked</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isLocked&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_spam</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isSpam&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_private</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isPrivate&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_annotation</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAnnotation&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_deleted</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isDeleted&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_peekable</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isPeekable&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_author</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAuthor&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_author_highlighted</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAuthorHighlighted&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_admin_mode</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAdminMode&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_featured</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isFeatured&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_reportable</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isReportable&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_liked</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isLiked&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">likes</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;likes&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;hidden&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text_content</span> <span class="o">=</span> <span class="n">CommentContent</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;textContent&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signature</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;signature&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">author_info</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;authorInfo&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">Gruser</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">legacy_text_edit_url</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;legacyTextEditUrl&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
@@ -252,20 +249,20 @@
 </div>
 
 
-                            <div id="EclipseComment.__init__" class="classattr">
-                                        <div class="attr function"><a class="headerlink" href="#EclipseComment.__init__">#&nbsp;&nbsp</a>
+                            <div id="Comment.__init__" class="classattr">
+                                        <div class="attr function"><a class="headerlink" href="#Comment.__init__">#&nbsp;&nbsp</a>
 
         
-            <span class="name">EclipseComment</span><span class="signature">(input_dict=None)</span>
+            <span class="name">Comment</span><span class="signature">(attrs=None)</span>
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize EclipseComment.</span>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize Comment.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict, optional): Dict of EclipseComment class attrs.</span>
+<span class="sd">            attrs (dict, optional): Dict of model attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">comment_id</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">type_id</span> <span class="o">=</span> <span class="kc">None</span>
@@ -297,79 +294,86 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">author_info</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">legacy_text_edit_url</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_dict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">input_dict</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
 </pre></div>
 
         </details>
 
-            <div class="docstring"><p>Initialize EclipseComment.</p>
+            <div class="docstring"><p>Initialize Comment.</p>
 
 <p>Args:
-    input_dict (dict, optional): Dict of EclipseComment class attrs.</p>
+    attrs (dict, optional): Dict of model attributes.</p>
 </div>
 
 
                             </div>
-                            <div id="EclipseComment.from_dict" class="classattr">
-                                        <div class="attr function"><a class="headerlink" href="#EclipseComment.from_dict">#&nbsp;&nbsp</a>
+                            <div id="Comment.from_dict" class="classattr">
+                                        <div class="attr function"><a class="headerlink" href="#Comment.from_dict">#&nbsp;&nbsp</a>
 
         
             <span class="def">def</span>
-            <span class="name">from_dict</span><span class="signature">(self, input_dict)</span>:
+            <span class="name">from_dict</span><span class="signature">(self, attrs)</span>:
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convert input_dict values to class attributes.</span>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convert attrs values to class attributes.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict): Dict containing EclipseComment fields.</span>
+<span class="sd">            attrs (dict): Dict containing Comment fields.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">comment_id</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;commentId&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">type_id</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;typeId&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">item_id</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;itemId&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">parent_id</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;parentId&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">posted</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;posted&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">edited</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;edited&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">replies</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;replies&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_owner</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isOwner&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_violation</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isViolation&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_admin_hidden</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAdminHidden&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_hidden</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isHidden&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_locked</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isLocked&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_spam</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isSpam&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_private</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isPrivate&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_annotation</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAnnotation&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_deleted</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isDeleted&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_peekable</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isPeekable&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_author</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAuthor&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_author_highlighted</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAuthorHighlighted&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_admin_mode</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAdminMode&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_featured</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isFeatured&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_reportable</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isReportable&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_liked</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isLiked&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">likes</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;likes&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;hidden&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">text_content</span> <span class="o">=</span> <span class="n">EclipseCommentContent</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;textContent&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">signature</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;signature&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">author_info</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;authorInfo&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">EclipseGruser</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">legacy_text_edit_url</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;legacyTextEditUrl&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comment_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;commentId&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;typeId&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">item_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;itemId&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;parentId&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">posted</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;posted&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">edited</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;edited&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">replies</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;replies&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_owner</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isOwner&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_violation</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isViolation&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_admin_hidden</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAdminHidden&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_hidden</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isHidden&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_locked</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isLocked&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_spam</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isSpam&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_private</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isPrivate&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_annotation</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAnnotation&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_deleted</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isDeleted&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_peekable</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isPeekable&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_author</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAuthor&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_author_highlighted</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAuthorHighlighted&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_admin_mode</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAdminMode&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_featured</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isFeatured&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_reportable</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isReportable&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_liked</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isLiked&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">likes</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;likes&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;hidden&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text_content</span> <span class="o">=</span> <span class="n">CommentContent</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;textContent&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signature</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;signature&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">author_info</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;authorInfo&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">Gruser</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">legacy_text_edit_url</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;legacyTextEditUrl&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
 
-            <div class="docstring"><p>Convert input_dict values to class attributes.</p>
+            <div class="docstring"><p>Convert attrs values to class attributes.</p>
 
 <p>Args:
-    input_dict (dict): Dict containing EclipseComment fields.</p>
+    attrs (dict): Dict containing Comment fields.</p>
 </div>
 
 
+                            </div>
+                            <div class="inherited">
+                                <h5>Inherited Members</h5>
+                                <dl>
+                                    <div><dt><a href="model.html#Model">daeclipse.models.model.Model</a></dt>
+                                <dd id="Comment.to_submodel" class="function"><a href="model.html#Model.to_submodel">to_submodel</a></dd>
+
+            </div>
+                                </dl>
                             </div>
                 </section>
     </main>

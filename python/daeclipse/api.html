@@ -51,6 +51,9 @@
                         <li>
                                 <a class="function" href="#Eclipse.add_deviation_to_group">add_deviation_to_group</a>
                         </li>
+                        <li>
+                                <a class="function" href="#Eclipse.post_status">post_status</a>
+                        </li>
                 </ul>
 
             </li>
@@ -65,6 +68,9 @@
             </li>
             <li>
                     <a class="function" href="#query_string">query_string</a>
+            </li>
+            <li>
+                    <a class="function" href="#validate_response_succeeds">validate_response_succeeds</a>
             </li>
             <li>
                     <a class="function" href="#raise_error">raise_error</a>
@@ -97,9 +103,11 @@
 <span class="kn">import</span> <span class="nn">browser_cookie3</span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">from</span> <span class="nn">html_to_draftjs</span> <span class="kn">import</span> <span class="n">html_to_draftjs</span>
 
-<span class="kn">from</span> <span class="nn">daeclipse.models.deviationextended</span> <span class="kn">import</span> <span class="n">EclipseDeviationExtended</span>
-<span class="kn">from</span> <span class="nn">daeclipse.models.folder</span> <span class="kn">import</span> <span class="n">EclipseFolder</span>
+<span class="kn">from</span> <span class="nn">daeclipse.models.deviationextendedresult</span> <span class="kn">import</span> <span class="n">DeviationExtendedResult</span>
+<span class="kn">from</span> <span class="nn">daeclipse.models.folder</span> <span class="kn">import</span> <span class="n">Folder</span>
+<span class="kn">from</span> <span class="nn">daeclipse.models.groupslist</span> <span class="kn">import</span> <span class="n">GroupsList</span>
 
 
 <span class="k">class</span> <span class="nc">Eclipse</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -115,12 +123,12 @@
         <span class="sd">&quot;&quot;&quot;Return a paginated call for the user&#39;s joined DeviantArt groups.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            username (string): DeviantArt username of user.</span>
+<span class="sd">            username (str): DeviantArt username of user.</span>
 <span class="sd">            offset (int): Offset to start with API call.</span>
 <span class="sd">            limit (int, optional): Limit of results to return. Defaults to 24.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            EclipseGroupsList: EclipseGroupsList instance.</span>
+<span class="sd">            GroupsList: GroupsList instance.</span>
 
 <span class="sd">        Raises:</span>
 <span class="sd">            ValueError: If `limit` is greater than 24.</span>
@@ -134,49 +142,46 @@
             <span class="s1">&#39;offset&#39;</span><span class="p">:</span> <span class="n">offset</span><span class="p">,</span>
             <span class="s1">&#39;limit&#39;</span><span class="p">:</span> <span class="n">limit</span><span class="p">,</span>
         <span class="p">}</span>
-        <span class="n">groups_url</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span><span class="p">,</span>
-            <span class="s1">&#39;/da-user-profile/api/module/groups/members&#39;</span><span class="p">,</span>
-            <span class="n">query_string</span><span class="p">(</span><span class="n">queries</span><span class="p">),</span>
-        <span class="p">])</span>
-
-        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">groups_url</span><span class="p">,</span> <span class="n">cookies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cookies</span><span class="p">)</span>
-
-        <span class="n">rjson</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">EclipseGroupsList</span><span class="p">(</span><span class="n">rjson</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span><span class="p">,</span>
+                <span class="s1">&#39;/da-user-profile/api/module/groups/members&#39;</span><span class="p">,</span>
+                <span class="n">query_string</span><span class="p">(</span><span class="n">queries</span><span class="p">),</span>
+            <span class="p">]),</span>
+            <span class="n">cookies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cookies</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">rjson</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">GroupsList</span><span class="p">(</span><span class="n">rjson</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">get_group_folders</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_id</span><span class="p">,</span> <span class="n">deviation_url</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return folders for group, if user is member of group.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            group_id (int): Group ID.</span>
-<span class="sd">            deviation_url (string): Deviation URL.</span>
+<span class="sd">            deviation_url (str): Deviation URL.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            EclipseFolder[]: List of EclipseFolder objects.</span>
+<span class="sd">            Folder[]: List of Folder objects.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">group_folders_url</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span><span class="p">,</span>
-            <span class="s1">&#39;/shared_api/deviation/group_folders&#39;</span><span class="p">,</span>
-            <span class="n">query_string</span><span class="p">({</span><span class="s1">&#39;groupid&#39;</span><span class="p">:</span> <span class="n">group_id</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;gallery&#39;</span><span class="p">}),</span>
-        <span class="p">])</span>
         <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;referer&#39;</span><span class="p">:</span> <span class="n">deviation_url</span><span class="p">}</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-            <span class="n">group_folders_url</span><span class="p">,</span>
+            <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span><span class="p">,</span>
+                <span class="s1">&#39;/shared_api/deviation/group_folders&#39;</span><span class="p">,</span>
+                <span class="n">query_string</span><span class="p">({</span><span class="s1">&#39;groupid&#39;</span><span class="p">:</span> <span class="n">group_id</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;gallery&#39;</span><span class="p">}),</span>
+            <span class="p">]),</span>
             <span class="n">cookies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cookies</span><span class="p">,</span>
             <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
         <span class="p">)</span>
 
-        <span class="n">folder_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-        <span class="k">if</span> <span class="s1">&#39;error&#39;</span> <span class="ow">in</span> <span class="n">folder_data</span><span class="p">:</span>
-            <span class="n">raise_error</span><span class="p">(</span><span class="n">folder_data</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">EclipseFolder</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span> <span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">folder_data</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">]]</span>
+        <span class="n">folder_data</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">Folder</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span> <span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">folder_data</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">]]</span>
 
     <span class="k">def</span> <span class="nf">get_deviation_tags</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deviation_url</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get list of tags for the provided deviation_id.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            deviation_url (string): Deviation URL.</span>
+<span class="sd">            deviation_url (str): Deviation URL.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            string[]: List of tags.</span>
@@ -193,9 +198,9 @@
             <span class="n">query_string</span><span class="p">(</span><span class="n">queries</span><span class="p">),</span>
         <span class="p">])</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">extended_fetch_url</span><span class="p">,</span> <span class="n">cookies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cookies</span><span class="p">)</span>
-        <span class="n">rjson</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-        <span class="n">deviation_extended</span> <span class="o">=</span> <span class="n">EclipseDeviationExtended</span><span class="p">(</span><span class="n">rjson</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">deviation_extended</span><span class="o">.</span><span class="n">deviation</span><span class="o">.</span><span class="n">get_tag_names</span><span class="p">()</span>
+        <span class="n">rjson</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+        <span class="n">deviation_extended_result</span> <span class="o">=</span> <span class="n">DeviationExtendedResult</span><span class="p">(</span><span class="n">rjson</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">deviation_extended_result</span><span class="o">.</span><span class="n">deviation</span><span class="o">.</span><span class="n">get_tag_names</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">add_deviation_to_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_id</span><span class="p">,</span> <span class="n">folder_id</span><span class="p">,</span> <span class="n">deviation_url</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Submit deviation to the specified folder in group.</span>
@@ -203,7 +208,7 @@
 <span class="sd">        Args:</span>
 <span class="sd">            group_id (int): Group ID.</span>
 <span class="sd">            folder_id (int): Folder ID.</span>
-<span class="sd">            deviation_url (string): Deviation URL.</span>
+<span class="sd">            deviation_url (str): Deviation URL.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            string: Success message of result.</span>
@@ -231,19 +236,68 @@
             <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span>
         <span class="p">)</span>
 
-        <span class="n">rjson</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-        <span class="k">if</span> <span class="s1">&#39;error&#39;</span> <span class="ow">in</span> <span class="n">rjson</span><span class="p">:</span>
-            <span class="n">raise_error</span><span class="p">(</span><span class="n">rjson</span><span class="p">)</span>
+        <span class="n">rjson</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">rjson</span><span class="p">[</span><span class="s1">&#39;needsVote&#39;</span><span class="p">]:</span>
             <span class="k">return</span> <span class="s1">&#39;✅ Deviation added to folder and automatically approved&#39;</span>
         <span class="k">return</span> <span class="s1">&#39;⌛ Deviation submitted to folder and pending mod approval&#39;</span>
+
+    <span class="k">def</span> <span class="nf">post_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deviation_url</span><span class="p">,</span> <span class="n">html_content</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a status to sta.sh and publish from sta.sh to DeviantArt.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            deviation_url (str): Deviation URL, just for CSRF purposes.</span>
+<span class="sd">            html_content (str): Text content of message in HTML-format.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            string: Success message of result.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;accept&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json, text/plain, */*&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;content-type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json;charset=UTF-8&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;origin&#39;</span><span class="p">:</span> <span class="s1">&#39;https://www.deviantart.com&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;referer&#39;</span><span class="p">:</span> <span class="n">deviation_url</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">csrf_token</span> <span class="o">=</span> <span class="n">get_csrf</span><span class="p">(</span><span class="n">deviation_url</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cookies</span><span class="p">)</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
+            <span class="s1">&#39;csrf_token&#39;</span><span class="p">:</span> <span class="n">csrf_token</span><span class="p">,</span>
+            <span class="s1">&#39;editorRaw&#39;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">html_to_draftjs</span><span class="p">(</span><span class="n">html_content</span><span class="p">)),</span>
+        <span class="p">})</span>
+        <span class="c1"># POST /status/create creates a sta.sh post from the provided payload.</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span><span class="p">,</span>
+                <span class="s1">&#39;/shared_api/status/create&#39;</span><span class="p">,</span>
+            <span class="p">]),</span>
+            <span class="n">cookies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cookies</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">rjson</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+        <span class="c1"># statusid is the sta.sh ID, not the production DeviantArt status ID.</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
+            <span class="s1">&#39;csrf_token&#39;</span><span class="p">:</span> <span class="n">csrf_token</span><span class="p">,</span>
+            <span class="s1">&#39;statusid&#39;</span><span class="p">:</span> <span class="n">rjson</span><span class="p">[</span><span class="s1">&#39;deviation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;deviationId&#39;</span><span class="p">),</span>
+        <span class="p">})</span>
+        <span class="c1"># POST /status/publish moves the status from sta.sh to DeviantArt.</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span><span class="p">,</span>
+                <span class="s1">&#39;/shared_api/status/publish&#39;</span><span class="p">,</span>
+            <span class="p">]),</span>
+            <span class="n">cookies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cookies</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">rjson</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;✅ Status created: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rjson</span><span class="p">[</span><span class="s1">&#39;deviation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">))</span>
 
 
 <span class="k">def</span> <span class="nf">get_deviation_id</span><span class="p">(</span><span class="n">deviation_url</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Extract the deviation_id from the full deviantart image URL.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        deviation_url (string): Deviation URL.</span>
+<span class="sd">        deviation_url (str): Deviation URL.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        string: Deviation ID.</span>
@@ -256,7 +310,7 @@
     <span class="sd">&quot;&quot;&quot;Regex parse deviation URL to retrieve username.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        deviation_url (string): Deviation URL.</span>
+<span class="sd">        deviation_url (str): Deviation URL.</span>
 
 <span class="sd">    Raises:</span>
 <span class="sd">        RuntimeError: If username is not present in URL string.</span>
@@ -274,15 +328,32 @@
     <span class="sd">&quot;&quot;&quot;Scrape deviation page for CSRF token.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        deviation_url (string): Deviation URL.</span>
+<span class="sd">        deviation_url (str): Deviation URL.</span>
 <span class="sd">        cookies (http.cookiejar.CookieJar): .deviantart.com Cookie Jar.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        string: CSRF validation token.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        RuntimeError: Unable to retrieve CSRF token from provided URL.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">deviation_url</span><span class="p">,</span> <span class="n">cookies</span><span class="o">=</span><span class="n">cookies</span><span class="p">)</span>
     <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;validate_token&#39;</span><span class="p">})[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Check for &lt;input type=&quot;hidden&quot; name=&quot;validate_token&quot; value=&quot;CSRF&quot; /&gt;.</span>
+    <span class="n">csrf_element</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;validate_token&#39;</span><span class="p">})</span>
+    <span class="k">if</span> <span class="n">csrf_element</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">csrf_element</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Check for window.__CSRF_TOKEN__ = &#39;CSRF&#39;;.</span>
+    <span class="n">window_csrf_regex</span> <span class="o">=</span> <span class="s2">&quot;window.__CSRF_TOKEN__ = &#39;(.*)&#39;;&quot;</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">window_csrf_regex</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">text</span><span class="p">:</span>
+        <span class="n">csrf_element</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">window_csrf_regex</span><span class="p">,</span> <span class="n">text</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">csrf_element</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">csrf_element</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;Unable to retrieve CSRF token from provided URL.&#39;</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">query_string</span><span class="p">(</span><span class="n">query_dict</span><span class="p">):</span>
@@ -299,6 +370,21 @@
     <span class="p">]</span>
     <span class="n">queries_string</span> <span class="o">=</span> <span class="s1">&#39;&amp;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">queries</span><span class="p">)</span>
     <span class="k">return</span> <span class="s1">&#39;?</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">queries_string</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Check if response returned error, otherwise return dictified response.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        response (Response): Response object.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: JSON response as dictionary.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s1">&#39;error&#39;</span> <span class="ow">in</span> <span class="n">response_dict</span><span class="p">:</span>
+        <span class="n">raise_error</span><span class="p">(</span><span class="n">response_dict</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response_dict</span>
 
 
 <span class="k">def</span> <span class="nf">raise_error</span><span class="p">(</span><span class="n">error_response</span><span class="p">):</span>
@@ -344,12 +430,12 @@
         <span class="sd">&quot;&quot;&quot;Return a paginated call for the user&#39;s joined DeviantArt groups.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            username (string): DeviantArt username of user.</span>
+<span class="sd">            username (str): DeviantArt username of user.</span>
 <span class="sd">            offset (int): Offset to start with API call.</span>
 <span class="sd">            limit (int, optional): Limit of results to return. Defaults to 24.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            EclipseGroupsList: EclipseGroupsList instance.</span>
+<span class="sd">            GroupsList: GroupsList instance.</span>
 
 <span class="sd">        Raises:</span>
 <span class="sd">            ValueError: If `limit` is greater than 24.</span>
@@ -363,49 +449,46 @@
             <span class="s1">&#39;offset&#39;</span><span class="p">:</span> <span class="n">offset</span><span class="p">,</span>
             <span class="s1">&#39;limit&#39;</span><span class="p">:</span> <span class="n">limit</span><span class="p">,</span>
         <span class="p">}</span>
-        <span class="n">groups_url</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span><span class="p">,</span>
-            <span class="s1">&#39;/da-user-profile/api/module/groups/members&#39;</span><span class="p">,</span>
-            <span class="n">query_string</span><span class="p">(</span><span class="n">queries</span><span class="p">),</span>
-        <span class="p">])</span>
-
-        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">groups_url</span><span class="p">,</span> <span class="n">cookies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cookies</span><span class="p">)</span>
-
-        <span class="n">rjson</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">EclipseGroupsList</span><span class="p">(</span><span class="n">rjson</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span><span class="p">,</span>
+                <span class="s1">&#39;/da-user-profile/api/module/groups/members&#39;</span><span class="p">,</span>
+                <span class="n">query_string</span><span class="p">(</span><span class="n">queries</span><span class="p">),</span>
+            <span class="p">]),</span>
+            <span class="n">cookies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cookies</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">rjson</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">GroupsList</span><span class="p">(</span><span class="n">rjson</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">get_group_folders</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_id</span><span class="p">,</span> <span class="n">deviation_url</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return folders for group, if user is member of group.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            group_id (int): Group ID.</span>
-<span class="sd">            deviation_url (string): Deviation URL.</span>
+<span class="sd">            deviation_url (str): Deviation URL.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            EclipseFolder[]: List of EclipseFolder objects.</span>
+<span class="sd">            Folder[]: List of Folder objects.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">group_folders_url</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span><span class="p">,</span>
-            <span class="s1">&#39;/shared_api/deviation/group_folders&#39;</span><span class="p">,</span>
-            <span class="n">query_string</span><span class="p">({</span><span class="s1">&#39;groupid&#39;</span><span class="p">:</span> <span class="n">group_id</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;gallery&#39;</span><span class="p">}),</span>
-        <span class="p">])</span>
         <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;referer&#39;</span><span class="p">:</span> <span class="n">deviation_url</span><span class="p">}</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-            <span class="n">group_folders_url</span><span class="p">,</span>
+            <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span><span class="p">,</span>
+                <span class="s1">&#39;/shared_api/deviation/group_folders&#39;</span><span class="p">,</span>
+                <span class="n">query_string</span><span class="p">({</span><span class="s1">&#39;groupid&#39;</span><span class="p">:</span> <span class="n">group_id</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;gallery&#39;</span><span class="p">}),</span>
+            <span class="p">]),</span>
             <span class="n">cookies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cookies</span><span class="p">,</span>
             <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
         <span class="p">)</span>
 
-        <span class="n">folder_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-        <span class="k">if</span> <span class="s1">&#39;error&#39;</span> <span class="ow">in</span> <span class="n">folder_data</span><span class="p">:</span>
-            <span class="n">raise_error</span><span class="p">(</span><span class="n">folder_data</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">EclipseFolder</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span> <span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">folder_data</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">]]</span>
+        <span class="n">folder_data</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">Folder</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span> <span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">folder_data</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">]]</span>
 
     <span class="k">def</span> <span class="nf">get_deviation_tags</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deviation_url</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get list of tags for the provided deviation_id.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            deviation_url (string): Deviation URL.</span>
+<span class="sd">            deviation_url (str): Deviation URL.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            string[]: List of tags.</span>
@@ -422,9 +505,9 @@
             <span class="n">query_string</span><span class="p">(</span><span class="n">queries</span><span class="p">),</span>
         <span class="p">])</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">extended_fetch_url</span><span class="p">,</span> <span class="n">cookies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cookies</span><span class="p">)</span>
-        <span class="n">rjson</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-        <span class="n">deviation_extended</span> <span class="o">=</span> <span class="n">EclipseDeviationExtended</span><span class="p">(</span><span class="n">rjson</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">deviation_extended</span><span class="o">.</span><span class="n">deviation</span><span class="o">.</span><span class="n">get_tag_names</span><span class="p">()</span>
+        <span class="n">rjson</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+        <span class="n">deviation_extended_result</span> <span class="o">=</span> <span class="n">DeviationExtendedResult</span><span class="p">(</span><span class="n">rjson</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">deviation_extended_result</span><span class="o">.</span><span class="n">deviation</span><span class="o">.</span><span class="n">get_tag_names</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">add_deviation_to_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_id</span><span class="p">,</span> <span class="n">folder_id</span><span class="p">,</span> <span class="n">deviation_url</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Submit deviation to the specified folder in group.</span>
@@ -432,7 +515,7 @@
 <span class="sd">        Args:</span>
 <span class="sd">            group_id (int): Group ID.</span>
 <span class="sd">            folder_id (int): Folder ID.</span>
-<span class="sd">            deviation_url (string): Deviation URL.</span>
+<span class="sd">            deviation_url (str): Deviation URL.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            string: Success message of result.</span>
@@ -460,12 +543,61 @@
             <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span>
         <span class="p">)</span>
 
-        <span class="n">rjson</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-        <span class="k">if</span> <span class="s1">&#39;error&#39;</span> <span class="ow">in</span> <span class="n">rjson</span><span class="p">:</span>
-            <span class="n">raise_error</span><span class="p">(</span><span class="n">rjson</span><span class="p">)</span>
+        <span class="n">rjson</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">rjson</span><span class="p">[</span><span class="s1">&#39;needsVote&#39;</span><span class="p">]:</span>
             <span class="k">return</span> <span class="s1">&#39;✅ Deviation added to folder and automatically approved&#39;</span>
         <span class="k">return</span> <span class="s1">&#39;⌛ Deviation submitted to folder and pending mod approval&#39;</span>
+
+    <span class="k">def</span> <span class="nf">post_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deviation_url</span><span class="p">,</span> <span class="n">html_content</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a status to sta.sh and publish from sta.sh to DeviantArt.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            deviation_url (str): Deviation URL, just for CSRF purposes.</span>
+<span class="sd">            html_content (str): Text content of message in HTML-format.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            string: Success message of result.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;accept&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json, text/plain, */*&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;content-type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json;charset=UTF-8&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;origin&#39;</span><span class="p">:</span> <span class="s1">&#39;https://www.deviantart.com&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;referer&#39;</span><span class="p">:</span> <span class="n">deviation_url</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">csrf_token</span> <span class="o">=</span> <span class="n">get_csrf</span><span class="p">(</span><span class="n">deviation_url</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cookies</span><span class="p">)</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
+            <span class="s1">&#39;csrf_token&#39;</span><span class="p">:</span> <span class="n">csrf_token</span><span class="p">,</span>
+            <span class="s1">&#39;editorRaw&#39;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">html_to_draftjs</span><span class="p">(</span><span class="n">html_content</span><span class="p">)),</span>
+        <span class="p">})</span>
+        <span class="c1"># POST /status/create creates a sta.sh post from the provided payload.</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span><span class="p">,</span>
+                <span class="s1">&#39;/shared_api/status/create&#39;</span><span class="p">,</span>
+            <span class="p">]),</span>
+            <span class="n">cookies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cookies</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">rjson</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+        <span class="c1"># statusid is the sta.sh ID, not the production DeviantArt status ID.</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
+            <span class="s1">&#39;csrf_token&#39;</span><span class="p">:</span> <span class="n">csrf_token</span><span class="p">,</span>
+            <span class="s1">&#39;statusid&#39;</span><span class="p">:</span> <span class="n">rjson</span><span class="p">[</span><span class="s1">&#39;deviation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;deviationId&#39;</span><span class="p">),</span>
+        <span class="p">})</span>
+        <span class="c1"># POST /status/publish moves the status from sta.sh to DeviantArt.</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span><span class="p">,</span>
+                <span class="s1">&#39;/shared_api/status/publish&#39;</span><span class="p">,</span>
+            <span class="p">]),</span>
+            <span class="n">cookies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cookies</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">rjson</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;✅ Status created: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rjson</span><span class="p">[</span><span class="s1">&#39;deviation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">))</span>
 </pre></div>
 
         </details>
@@ -518,12 +650,12 @@
         <span class="sd">&quot;&quot;&quot;Return a paginated call for the user&#39;s joined DeviantArt groups.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            username (string): DeviantArt username of user.</span>
+<span class="sd">            username (str): DeviantArt username of user.</span>
 <span class="sd">            offset (int): Offset to start with API call.</span>
 <span class="sd">            limit (int, optional): Limit of results to return. Defaults to 24.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            EclipseGroupsList: EclipseGroupsList instance.</span>
+<span class="sd">            GroupsList: GroupsList instance.</span>
 
 <span class="sd">        Raises:</span>
 <span class="sd">            ValueError: If `limit` is greater than 24.</span>
@@ -537,16 +669,16 @@
             <span class="s1">&#39;offset&#39;</span><span class="p">:</span> <span class="n">offset</span><span class="p">,</span>
             <span class="s1">&#39;limit&#39;</span><span class="p">:</span> <span class="n">limit</span><span class="p">,</span>
         <span class="p">}</span>
-        <span class="n">groups_url</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span><span class="p">,</span>
-            <span class="s1">&#39;/da-user-profile/api/module/groups/members&#39;</span><span class="p">,</span>
-            <span class="n">query_string</span><span class="p">(</span><span class="n">queries</span><span class="p">),</span>
-        <span class="p">])</span>
-
-        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">groups_url</span><span class="p">,</span> <span class="n">cookies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cookies</span><span class="p">)</span>
-
-        <span class="n">rjson</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">EclipseGroupsList</span><span class="p">(</span><span class="n">rjson</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span><span class="p">,</span>
+                <span class="s1">&#39;/da-user-profile/api/module/groups/members&#39;</span><span class="p">,</span>
+                <span class="n">query_string</span><span class="p">(</span><span class="n">queries</span><span class="p">),</span>
+            <span class="p">]),</span>
+            <span class="n">cookies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cookies</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">rjson</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">GroupsList</span><span class="p">(</span><span class="n">rjson</span><span class="p">)</span>
 </pre></div>
 
         </details>
@@ -554,12 +686,12 @@
             <div class="docstring"><p>Return a paginated call for the user's joined DeviantArt groups.</p>
 
 <p>Args:
-    username (string): DeviantArt username of user.
+    username (str): DeviantArt username of user.
     offset (int): Offset to start with API call.
     limit (int, optional): Limit of results to return. Defaults to 24.</p>
 
 <p>Returns:
-    EclipseGroupsList: EclipseGroupsList instance.</p>
+    GroupsList: GroupsList instance.</p>
 
 <p>Raises:
     ValueError: If <code>limit</code> is greater than 24.</p>
@@ -582,27 +714,24 @@
 
 <span class="sd">        Args:</span>
 <span class="sd">            group_id (int): Group ID.</span>
-<span class="sd">            deviation_url (string): Deviation URL.</span>
+<span class="sd">            deviation_url (str): Deviation URL.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            EclipseFolder[]: List of EclipseFolder objects.</span>
+<span class="sd">            Folder[]: List of Folder objects.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">group_folders_url</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span><span class="p">,</span>
-            <span class="s1">&#39;/shared_api/deviation/group_folders&#39;</span><span class="p">,</span>
-            <span class="n">query_string</span><span class="p">({</span><span class="s1">&#39;groupid&#39;</span><span class="p">:</span> <span class="n">group_id</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;gallery&#39;</span><span class="p">}),</span>
-        <span class="p">])</span>
         <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;referer&#39;</span><span class="p">:</span> <span class="n">deviation_url</span><span class="p">}</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-            <span class="n">group_folders_url</span><span class="p">,</span>
+            <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span><span class="p">,</span>
+                <span class="s1">&#39;/shared_api/deviation/group_folders&#39;</span><span class="p">,</span>
+                <span class="n">query_string</span><span class="p">({</span><span class="s1">&#39;groupid&#39;</span><span class="p">:</span> <span class="n">group_id</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;gallery&#39;</span><span class="p">}),</span>
+            <span class="p">]),</span>
             <span class="n">cookies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cookies</span><span class="p">,</span>
             <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
         <span class="p">)</span>
 
-        <span class="n">folder_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-        <span class="k">if</span> <span class="s1">&#39;error&#39;</span> <span class="ow">in</span> <span class="n">folder_data</span><span class="p">:</span>
-            <span class="n">raise_error</span><span class="p">(</span><span class="n">folder_data</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">EclipseFolder</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span> <span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">folder_data</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">]]</span>
+        <span class="n">folder_data</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">Folder</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span> <span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">folder_data</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">]]</span>
 </pre></div>
 
         </details>
@@ -611,10 +740,10 @@
 
 <p>Args:
     group_id (int): Group ID.
-    deviation_url (string): Deviation URL.</p>
+    deviation_url (str): Deviation URL.</p>
 
 <p>Returns:
-    EclipseFolder[]: List of EclipseFolder objects.</p>
+    Folder[]: List of Folder objects.</p>
 </div>
 
 
@@ -633,7 +762,7 @@
         <span class="sd">&quot;&quot;&quot;Get list of tags for the provided deviation_id.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            deviation_url (string): Deviation URL.</span>
+<span class="sd">            deviation_url (str): Deviation URL.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            string[]: List of tags.</span>
@@ -650,9 +779,9 @@
             <span class="n">query_string</span><span class="p">(</span><span class="n">queries</span><span class="p">),</span>
         <span class="p">])</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">extended_fetch_url</span><span class="p">,</span> <span class="n">cookies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cookies</span><span class="p">)</span>
-        <span class="n">rjson</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-        <span class="n">deviation_extended</span> <span class="o">=</span> <span class="n">EclipseDeviationExtended</span><span class="p">(</span><span class="n">rjson</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">deviation_extended</span><span class="o">.</span><span class="n">deviation</span><span class="o">.</span><span class="n">get_tag_names</span><span class="p">()</span>
+        <span class="n">rjson</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+        <span class="n">deviation_extended_result</span> <span class="o">=</span> <span class="n">DeviationExtendedResult</span><span class="p">(</span><span class="n">rjson</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">deviation_extended_result</span><span class="o">.</span><span class="n">deviation</span><span class="o">.</span><span class="n">get_tag_names</span><span class="p">()</span>
 </pre></div>
 
         </details>
@@ -660,7 +789,7 @@
             <div class="docstring"><p>Get list of tags for the provided deviation_id.</p>
 
 <p>Args:
-    deviation_url (string): Deviation URL.</p>
+    deviation_url (str): Deviation URL.</p>
 
 <p>Returns:
     string[]: List of tags.</p>
@@ -684,7 +813,7 @@
 <span class="sd">        Args:</span>
 <span class="sd">            group_id (int): Group ID.</span>
 <span class="sd">            folder_id (int): Folder ID.</span>
-<span class="sd">            deviation_url (string): Deviation URL.</span>
+<span class="sd">            deviation_url (str): Deviation URL.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            string: Success message of result.</span>
@@ -712,9 +841,7 @@
             <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span>
         <span class="p">)</span>
 
-        <span class="n">rjson</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-        <span class="k">if</span> <span class="s1">&#39;error&#39;</span> <span class="ow">in</span> <span class="n">rjson</span><span class="p">:</span>
-            <span class="n">raise_error</span><span class="p">(</span><span class="n">rjson</span><span class="p">)</span>
+        <span class="n">rjson</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">rjson</span><span class="p">[</span><span class="s1">&#39;needsVote&#39;</span><span class="p">]:</span>
             <span class="k">return</span> <span class="s1">&#39;✅ Deviation added to folder and automatically approved&#39;</span>
         <span class="k">return</span> <span class="s1">&#39;⌛ Deviation submitted to folder and pending mod approval&#39;</span>
@@ -727,7 +854,83 @@
 <p>Args:
     group_id (int): Group ID.
     folder_id (int): Folder ID.
-    deviation_url (string): Deviation URL.</p>
+    deviation_url (str): Deviation URL.</p>
+
+<p>Returns:
+    string: Success message of result.</p>
+</div>
+
+
+                            </div>
+                            <div id="Eclipse.post_status" class="classattr">
+                                        <div class="attr function"><a class="headerlink" href="#Eclipse.post_status">#&nbsp;&nbsp</a>
+
+        
+            <span class="def">def</span>
+            <span class="name">post_status</span><span class="signature">(self, deviation_url, html_content)</span>:
+    </div>
+
+                <details>
+            <summary>View Source</summary>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">post_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deviation_url</span><span class="p">,</span> <span class="n">html_content</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a status to sta.sh and publish from sta.sh to DeviantArt.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            deviation_url (str): Deviation URL, just for CSRF purposes.</span>
+<span class="sd">            html_content (str): Text content of message in HTML-format.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            string: Success message of result.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;accept&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json, text/plain, */*&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;content-type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json;charset=UTF-8&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;origin&#39;</span><span class="p">:</span> <span class="s1">&#39;https://www.deviantart.com&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;referer&#39;</span><span class="p">:</span> <span class="n">deviation_url</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">csrf_token</span> <span class="o">=</span> <span class="n">get_csrf</span><span class="p">(</span><span class="n">deviation_url</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cookies</span><span class="p">)</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
+            <span class="s1">&#39;csrf_token&#39;</span><span class="p">:</span> <span class="n">csrf_token</span><span class="p">,</span>
+            <span class="s1">&#39;editorRaw&#39;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">html_to_draftjs</span><span class="p">(</span><span class="n">html_content</span><span class="p">)),</span>
+        <span class="p">})</span>
+        <span class="c1"># POST /status/create creates a sta.sh post from the provided payload.</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span><span class="p">,</span>
+                <span class="s1">&#39;/shared_api/status/create&#39;</span><span class="p">,</span>
+            <span class="p">]),</span>
+            <span class="n">cookies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cookies</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">rjson</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+        <span class="c1"># statusid is the sta.sh ID, not the production DeviantArt status ID.</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
+            <span class="s1">&#39;csrf_token&#39;</span><span class="p">:</span> <span class="n">csrf_token</span><span class="p">,</span>
+            <span class="s1">&#39;statusid&#39;</span><span class="p">:</span> <span class="n">rjson</span><span class="p">[</span><span class="s1">&#39;deviation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;deviationId&#39;</span><span class="p">),</span>
+        <span class="p">})</span>
+        <span class="c1"># POST /status/publish moves the status from sta.sh to DeviantArt.</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span><span class="p">,</span>
+                <span class="s1">&#39;/shared_api/status/publish&#39;</span><span class="p">,</span>
+            <span class="p">]),</span>
+            <span class="n">cookies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cookies</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">rjson</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;✅ Status created: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rjson</span><span class="p">[</span><span class="s1">&#39;deviation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">))</span>
+</pre></div>
+
+        </details>
+
+            <div class="docstring"><p>Create a status to sta.sh and publish from sta.sh to DeviantArt.</p>
+
+<p>Args:
+    deviation_url (str): Deviation URL, just for CSRF purposes.
+    html_content (str): Text content of message in HTML-format.</p>
 
 <p>Returns:
     string: Success message of result.</p>
@@ -750,7 +953,7 @@
     <span class="sd">&quot;&quot;&quot;Extract the deviation_id from the full deviantart image URL.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        deviation_url (string): Deviation URL.</span>
+<span class="sd">        deviation_url (str): Deviation URL.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        string: Deviation ID.</span>
@@ -764,7 +967,7 @@
             <div class="docstring"><p>Extract the deviation_id from the full deviantart image URL.</p>
 
 <p>Args:
-    deviation_url (string): Deviation URL.</p>
+    deviation_url (str): Deviation URL.</p>
 
 <p>Returns:
     string: Deviation ID.</p>
@@ -786,7 +989,7 @@
     <span class="sd">&quot;&quot;&quot;Regex parse deviation URL to retrieve username.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        deviation_url (string): Deviation URL.</span>
+<span class="sd">        deviation_url (str): Deviation URL.</span>
 
 <span class="sd">    Raises:</span>
 <span class="sd">        RuntimeError: If username is not present in URL string.</span>
@@ -805,7 +1008,7 @@
             <div class="docstring"><p>Regex parse deviation URL to retrieve username.</p>
 
 <p>Args:
-    deviation_url (string): Deviation URL.</p>
+    deviation_url (str): Deviation URL.</p>
 
 <p>Raises:
     RuntimeError: If username is not present in URL string.</p>
@@ -830,15 +1033,32 @@
     <span class="sd">&quot;&quot;&quot;Scrape deviation page for CSRF token.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        deviation_url (string): Deviation URL.</span>
+<span class="sd">        deviation_url (str): Deviation URL.</span>
 <span class="sd">        cookies (http.cookiejar.CookieJar): .deviantart.com Cookie Jar.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        string: CSRF validation token.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        RuntimeError: Unable to retrieve CSRF token from provided URL.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">deviation_url</span><span class="p">,</span> <span class="n">cookies</span><span class="o">=</span><span class="n">cookies</span><span class="p">)</span>
     <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;validate_token&#39;</span><span class="p">})[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Check for &lt;input type=&quot;hidden&quot; name=&quot;validate_token&quot; value=&quot;CSRF&quot; /&gt;.</span>
+    <span class="n">csrf_element</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;validate_token&#39;</span><span class="p">})</span>
+    <span class="k">if</span> <span class="n">csrf_element</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">csrf_element</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Check for window.__CSRF_TOKEN__ = &#39;CSRF&#39;;.</span>
+    <span class="n">window_csrf_regex</span> <span class="o">=</span> <span class="s2">&quot;window.__CSRF_TOKEN__ = &#39;(.*)&#39;;&quot;</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">window_csrf_regex</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">text</span><span class="p">:</span>
+        <span class="n">csrf_element</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">window_csrf_regex</span><span class="p">,</span> <span class="n">text</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">csrf_element</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">csrf_element</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;Unable to retrieve CSRF token from provided URL.&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
@@ -846,11 +1066,14 @@
             <div class="docstring"><p>Scrape deviation page for CSRF token.</p>
 
 <p>Args:
-    deviation_url (string): Deviation URL.
+    deviation_url (str): Deviation URL.
     cookies (http.cookiejar.CookieJar): .deviantart.com Cookie Jar.</p>
 
 <p>Returns:
     string: CSRF validation token.</p>
+
+<p>Raises:
+    RuntimeError: Unable to retrieve CSRF token from provided URL.</p>
 </div>
 
 
@@ -890,6 +1113,44 @@
 
 <p>Returns:
     string: Query string, i.e. ?query1=value&amp;query2=value.</p>
+</div>
+
+
+                </section>
+                <section id="validate_response_succeeds">
+                            <div class="attr function"><a class="headerlink" href="#validate_response_succeeds">#&nbsp;&nbsp</a>
+
+        
+            <span class="def">def</span>
+            <span class="name">validate_response_succeeds</span><span class="signature">(response)</span>:
+    </div>
+
+                <details>
+            <summary>View Source</summary>
+            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Check if response returned error, otherwise return dictified response.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        response (Response): Response object.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: JSON response as dictionary.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s1">&#39;error&#39;</span> <span class="ow">in</span> <span class="n">response_dict</span><span class="p">:</span>
+        <span class="n">raise_error</span><span class="p">(</span><span class="n">response_dict</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response_dict</span>
+</pre></div>
+
+        </details>
+
+            <div class="docstring"><p>Check if response returned error, otherwise return dictified response.</p>
+
+<p>Args:
+    response (Response): Response object.</p>
+
+<p>Returns:
+    dict: JSON response as dictionary.</p>
 </div>
 
 

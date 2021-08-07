@@ -31,16 +31,13 @@
                     <h2>API Documentation</h2>
                         <ul class="memberlist">
             <li>
-                    <a class="class" href="#EclipseDeviation">EclipseDeviation</a>
+                    <a class="class" href="#Deviation">Deviation</a>
                             <ul class="memberlist">
                         <li>
-                                <a class="function" href="#EclipseDeviation.__init__">EclipseDeviation</a>
+                                <a class="function" href="#Deviation.__init__">Deviation</a>
                         </li>
                         <li>
-                                <a class="function" href="#EclipseDeviation.from_dict">from_dict</a>
-                        </li>
-                        <li>
-                                <a class="function" href="#EclipseDeviation.get_tag_names">get_tag_names</a>
+                                <a class="function" href="#Deviation.from_dict">from_dict</a>
                         </li>
                 </ul>
 
@@ -67,20 +64,20 @@
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="sd">&quot;&quot;&quot;Model to represent DeviantArt Eclipse Deviation.&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">daeclipse.models.deviationextendedcontent</span> <span class="kn">import</span> <span class="n">EclipseDeviationExtendedContent</span>
-<span class="kn">from</span> <span class="nn">daeclipse.models.deviationmedia</span> <span class="kn">import</span> <span class="n">EclipseDeviationMedia</span>
-<span class="kn">from</span> <span class="nn">daeclipse.models.gruser</span> <span class="kn">import</span> <span class="n">EclipseGruser</span>
-<span class="kn">from</span> <span class="nn">daeclipse.models.stats</span> <span class="kn">import</span> <span class="n">EclipseStats</span>
+<span class="kn">from</span> <span class="nn">daeclipse.models.deviationmedia</span> <span class="kn">import</span> <span class="n">DeviationMedia</span>
+<span class="kn">from</span> <span class="nn">daeclipse.models.gruser</span> <span class="kn">import</span> <span class="n">Gruser</span>
+<span class="kn">from</span> <span class="nn">daeclipse.models.model</span> <span class="kn">import</span> <span class="n">Model</span>
+<span class="kn">from</span> <span class="nn">daeclipse.models.stats</span> <span class="kn">import</span> <span class="n">Stats</span>
 
 
-<span class="k">class</span> <span class="nc">EclipseDeviation</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>  <span class="c1"># noqa: WPS230</span>
+<span class="k">class</span> <span class="nc">Deviation</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Model to represent DeviantArt Eclipse Deviation.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize EclipseDeviation.</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize Deviation.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict, optional): Dict of EclipseDeviation class attrs.</span>
+<span class="sd">            attrs (dict, optional): Dict of model attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">deviation_id</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="kc">None</span>
@@ -110,86 +107,75 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">media</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">extended</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_dict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">input_dict</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Representation of EclipseDeviation.</span>
+        <span class="sd">&quot;&quot;&quot;Representation of Deviation.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            string: EclipseDeviation representation.</span>
+<span class="sd">            string: Deviation representation.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">deviation_id</span>
 
-    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="p">):</span>  <span class="c1"># noqa: WPS231</span>
-        <span class="sd">&quot;&quot;&quot;Convert input_dict values to class attributes.</span>
+    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>  <span class="c1"># noqa: WPS231</span>
+        <span class="sd">&quot;&quot;&quot;Convert attrs values to class attributes.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict): Dict containing EclipseDeviation fields.</span>
+<span class="sd">            attrs (dict): Dict containing Deviation fields.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">deviation_id</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;deviationId&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">type_id</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;typeId&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">print_id</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;printId&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_journal</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isJournal&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_video</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isVideo&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_purchasable</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isPurchasable&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_favouritable</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isFavouritable&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">published_time</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;publishedTime&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_text_editable</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isTextEditable&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">legacy_text_edit_url</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;legacyTextEditUrl&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_shareable</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isShareable&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_commentable</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isCommentable&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_favourited</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isFavourited&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_deleted</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isDeleted&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_mature</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isMature&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_downloadable</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isDownloadable&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_antisocial</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAntisocial&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_blocked</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isBlocked&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_published</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isPublished&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_daily_deviation</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isDailyDeviation&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">has_private_comments</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;hasPrivateComments&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">block_reasons</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;blockReasons&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="n">EclipseGruser</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="n">EclipseStats</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;stats&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">media</span> <span class="o">=</span> <span class="n">EclipseDeviationMedia</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;media&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">extended</span> <span class="o">=</span> <span class="n">EclipseDeviationExtendedContent</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;extended&#39;</span><span class="p">))</span>
-
-    <span class="k">def</span> <span class="nf">get_tag_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">extended</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">[]</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">extended</span><span class="o">.</span><span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">[]</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">tag</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">extended</span><span class="o">.</span><span class="n">tags</span><span class="p">]</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">deviation_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;deviationId&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;typeId&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">print_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;printId&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_journal</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isJournal&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_video</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isVideo&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_purchasable</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isPurchasable&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_favouritable</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isFavouritable&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">published_time</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;publishedTime&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_text_editable</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isTextEditable&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">legacy_text_edit_url</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;legacyTextEditUrl&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_shareable</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isShareable&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_commentable</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isCommentable&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_favourited</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isFavourited&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_deleted</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isDeleted&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_mature</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isMature&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_downloadable</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isDownloadable&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_antisocial</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAntisocial&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_blocked</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isBlocked&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_published</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isPublished&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_daily_deviation</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isDailyDeviation&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">has_private_comments</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;hasPrivateComments&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">block_reasons</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;blockReasons&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="n">Gruser</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="n">Stats</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;stats&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">media</span> <span class="o">=</span> <span class="n">DeviationMedia</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;media&#39;</span><span class="p">))</span>
 </pre></div>
 
         </details>
 
             </section>
-                <section id="EclipseDeviation">
+                <section id="Deviation">
                                 <div class="attr class">
-        <a class="headerlink" href="#EclipseDeviation">#&nbsp;&nbsp</a>
+        <a class="headerlink" href="#Deviation">#&nbsp;&nbsp</a>
 
         
         <span class="def">class</span>
-        <span class="name">EclipseDeviation</span>:
+        <span class="name">Deviation</span><wbr>(<span class="base"><a href="model.html#Model">daeclipse.models.model.Model</a></span>):
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">EclipseDeviation</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>  <span class="c1"># noqa: WPS230</span>
+            <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Deviation</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Model to represent DeviantArt Eclipse Deviation.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize EclipseDeviation.</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize Deviation.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict, optional): Dict of EclipseDeviation class attrs.</span>
+<span class="sd">            attrs (dict, optional): Dict of model attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">deviation_id</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="kc">None</span>
@@ -219,62 +205,51 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">media</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">extended</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_dict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">input_dict</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Representation of EclipseDeviation.</span>
+        <span class="sd">&quot;&quot;&quot;Representation of Deviation.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            string: EclipseDeviation representation.</span>
+<span class="sd">            string: Deviation representation.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">deviation_id</span>
 
-    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="p">):</span>  <span class="c1"># noqa: WPS231</span>
-        <span class="sd">&quot;&quot;&quot;Convert input_dict values to class attributes.</span>
+    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>  <span class="c1"># noqa: WPS231</span>
+        <span class="sd">&quot;&quot;&quot;Convert attrs values to class attributes.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict): Dict containing EclipseDeviation fields.</span>
+<span class="sd">            attrs (dict): Dict containing Deviation fields.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">deviation_id</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;deviationId&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">type_id</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;typeId&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">print_id</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;printId&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_journal</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isJournal&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_video</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isVideo&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_purchasable</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isPurchasable&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_favouritable</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isFavouritable&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">published_time</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;publishedTime&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_text_editable</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isTextEditable&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">legacy_text_edit_url</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;legacyTextEditUrl&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_shareable</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isShareable&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_commentable</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isCommentable&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_favourited</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isFavourited&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_deleted</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isDeleted&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_mature</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isMature&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_downloadable</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isDownloadable&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_antisocial</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAntisocial&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_blocked</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isBlocked&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_published</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isPublished&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_daily_deviation</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isDailyDeviation&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">has_private_comments</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;hasPrivateComments&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">block_reasons</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;blockReasons&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="n">EclipseGruser</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="n">EclipseStats</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;stats&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">media</span> <span class="o">=</span> <span class="n">EclipseDeviationMedia</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;media&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">extended</span> <span class="o">=</span> <span class="n">EclipseDeviationExtendedContent</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;extended&#39;</span><span class="p">))</span>
-
-    <span class="k">def</span> <span class="nf">get_tag_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">extended</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">[]</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">extended</span><span class="o">.</span><span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">[]</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">tag</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">extended</span><span class="o">.</span><span class="n">tags</span><span class="p">]</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">deviation_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;deviationId&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;typeId&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">print_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;printId&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_journal</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isJournal&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_video</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isVideo&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_purchasable</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isPurchasable&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_favouritable</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isFavouritable&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">published_time</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;publishedTime&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_text_editable</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isTextEditable&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">legacy_text_edit_url</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;legacyTextEditUrl&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_shareable</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isShareable&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_commentable</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isCommentable&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_favourited</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isFavourited&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_deleted</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isDeleted&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_mature</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isMature&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_downloadable</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isDownloadable&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_antisocial</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAntisocial&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_blocked</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isBlocked&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_published</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isPublished&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_daily_deviation</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isDailyDeviation&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">has_private_comments</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;hasPrivateComments&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">block_reasons</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;blockReasons&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="n">Gruser</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="n">Stats</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;stats&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">media</span> <span class="o">=</span> <span class="n">DeviationMedia</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;media&#39;</span><span class="p">))</span>
 </pre></div>
 
         </details>
@@ -283,20 +258,20 @@
 </div>
 
 
-                            <div id="EclipseDeviation.__init__" class="classattr">
-                                        <div class="attr function"><a class="headerlink" href="#EclipseDeviation.__init__">#&nbsp;&nbsp</a>
+                            <div id="Deviation.__init__" class="classattr">
+                                        <div class="attr function"><a class="headerlink" href="#Deviation.__init__">#&nbsp;&nbsp</a>
 
         
-            <span class="name">EclipseDeviation</span><span class="signature">(input_dict=None)</span>
+            <span class="name">Deviation</span><span class="signature">(attrs=None)</span>
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize EclipseDeviation.</span>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize Deviation.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict, optional): Dict of EclipseDeviation class attrs.</span>
+<span class="sd">            attrs (dict, optional): Dict of model attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">deviation_id</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="kc">None</span>
@@ -326,102 +301,84 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">media</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">extended</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_dict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">input_dict</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
 </pre></div>
 
         </details>
 
-            <div class="docstring"><p>Initialize EclipseDeviation.</p>
+            <div class="docstring"><p>Initialize Deviation.</p>
 
 <p>Args:
-    input_dict (dict, optional): Dict of EclipseDeviation class attrs.</p>
+    attrs (dict, optional): Dict of model attributes.</p>
 </div>
 
 
                             </div>
-                            <div id="EclipseDeviation.from_dict" class="classattr">
-                                        <div class="attr function"><a class="headerlink" href="#EclipseDeviation.from_dict">#&nbsp;&nbsp</a>
+                            <div id="Deviation.from_dict" class="classattr">
+                                        <div class="attr function"><a class="headerlink" href="#Deviation.from_dict">#&nbsp;&nbsp</a>
 
         
             <span class="def">def</span>
-            <span class="name">from_dict</span><span class="signature">(self, input_dict)</span>:
+            <span class="name">from_dict</span><span class="signature">(self, attrs)</span>:
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dict</span><span class="p">):</span>  <span class="c1"># noqa: WPS231</span>
-        <span class="sd">&quot;&quot;&quot;Convert input_dict values to class attributes.</span>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>  <span class="c1"># noqa: WPS231</span>
+        <span class="sd">&quot;&quot;&quot;Convert attrs values to class attributes.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            input_dict (dict): Dict containing EclipseDeviation fields.</span>
+<span class="sd">            attrs (dict): Dict containing Deviation fields.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">input_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">deviation_id</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;deviationId&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">type_id</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;typeId&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">print_id</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;printId&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_journal</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isJournal&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_video</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isVideo&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_purchasable</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isPurchasable&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_favouritable</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isFavouritable&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">published_time</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;publishedTime&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_text_editable</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isTextEditable&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">legacy_text_edit_url</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;legacyTextEditUrl&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_shareable</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isShareable&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_commentable</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isCommentable&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_favourited</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isFavourited&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_deleted</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isDeleted&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_mature</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isMature&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_downloadable</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isDownloadable&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_antisocial</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAntisocial&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_blocked</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isBlocked&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_published</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isPublished&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">is_daily_deviation</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isDailyDeviation&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">has_private_comments</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;hasPrivateComments&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">block_reasons</span> <span class="o">=</span> <span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;blockReasons&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="n">EclipseGruser</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="n">EclipseStats</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;stats&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">media</span> <span class="o">=</span> <span class="n">EclipseDeviationMedia</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;media&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">extended</span> <span class="o">=</span> <span class="n">EclipseDeviationExtendedContent</span><span class="p">(</span><span class="n">input_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;extended&#39;</span><span class="p">))</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">deviation_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;deviationId&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;typeId&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">print_id</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;printId&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_journal</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isJournal&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_video</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isVideo&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_purchasable</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isPurchasable&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_favouritable</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isFavouritable&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">published_time</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;publishedTime&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_text_editable</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isTextEditable&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">legacy_text_edit_url</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;legacyTextEditUrl&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_shareable</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isShareable&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_commentable</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isCommentable&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_favourited</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isFavourited&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_deleted</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isDeleted&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_mature</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isMature&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_downloadable</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isDownloadable&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_antisocial</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isAntisocial&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_blocked</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isBlocked&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_published</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isPublished&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_daily_deviation</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;isDailyDeviation&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">has_private_comments</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;hasPrivateComments&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">block_reasons</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;blockReasons&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="n">Gruser</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="n">Stats</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;stats&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">media</span> <span class="o">=</span> <span class="n">DeviationMedia</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;media&#39;</span><span class="p">))</span>
 </pre></div>
 
         </details>
 
-            <div class="docstring"><p>Convert input_dict values to class attributes.</p>
+            <div class="docstring"><p>Convert attrs values to class attributes.</p>
 
 <p>Args:
-    input_dict (dict): Dict containing EclipseDeviation fields.</p>
+    attrs (dict): Dict containing Deviation fields.</p>
 </div>
 
 
                             </div>
-                            <div id="EclipseDeviation.get_tag_names" class="classattr">
-                                        <div class="attr function"><a class="headerlink" href="#EclipseDeviation.get_tag_names">#&nbsp;&nbsp</a>
+                            <div class="inherited">
+                                <h5>Inherited Members</h5>
+                                <dl>
+                                    <div><dt><a href="model.html#Model">daeclipse.models.model.Model</a></dt>
+                                <dd id="Deviation.to_submodel" class="function"><a href="model.html#Model.to_submodel">to_submodel</a></dd>
 
-        
-            <span class="def">def</span>
-            <span class="name">get_tag_names</span><span class="signature">(self)</span>:
-    </div>
-
-                <details>
-            <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">get_tag_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">extended</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">[]</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">extended</span><span class="o">.</span><span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">[]</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">tag</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">extended</span><span class="o">.</span><span class="n">tags</span><span class="p">]</span>
-</pre></div>
-
-        </details>
-
-    
-
+            </div>
+                                </dl>
                             </div>
                 </section>
     </main>
