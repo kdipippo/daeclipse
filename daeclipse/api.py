@@ -214,7 +214,7 @@ class Eclipse(object):
 
         queries = {
             'username': username,
-            'moduleid': '1717358865',  # "Comments" block ID.
+            'moduleid': '1717358865',  # "Comments" block ID. -- 3955035956
             'offset': offset,
             'limit': limit,
         }
@@ -318,6 +318,8 @@ def validate_response_succeeds(response):
     Returns:
         dict: JSON response as dictionary.
     """
+    if response.status_code == 500:
+        raise_error(response.reason)
     response_dict = json.loads(response.text)
     if 'error' in response_dict:
         raise_error(response_dict)

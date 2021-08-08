@@ -1,0 +1,26 @@
+type: object
+properties:
+  deviations:
+    type: integer
+    example: 100
+  watchers:
+    type: integer
+    example: 650
+  watching:
+    type: integer
+    example: 40
+  pageviews:
+    type: integer
+    example: 5000
+  commentsReceivedProfile:
+    type: integer
+    example: 10
+  commentsMade:
+    type: integer
+    example: 250
+  favourites:
+    type: integer
+    example: 90
+  friends:
+    type: integer
+    example: 30

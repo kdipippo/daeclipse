@@ -1,0 +1,40 @@
+type: object
+properties:
+  id:
+    type: integer
+    example: 1234567890
+  name:
+    type: string
+    example: watchers
+  position:
+    type: integer
+    example: 2
+  zoneId:
+    type: integer
+    example: 6
+  zonename:
+    type: string
+    example: bottom_right
+  version:
+    type: integer
+    example: 0
+  privileges:
+    type: object
+    properties:
+      edit:
+        type: boolean
+        example: false
+      delete:
+        type: boolean
+        example: false
+  moduleData:
+    oneOf:
+    - $ref: "./ProfileModuleDataWatching.yaml"
+    - $ref: "./ProfileModuleDataWatchers.yaml"
+    - $ref: "./ProfileModuleDataGroupListAdmins.yaml"
+    - $ref: "./ProfileModuleDataGroupListMembers.yaml"
+    - $ref: "./ProfileModuleDataBadgesActivity.yaml"
+    - $ref: "./ProfileModuleDataMyComments.yaml"
+    - $ref: "./ProfileModuleDataUserStats.yaml"
+    - $ref: "./ProfileModuleDataAbout.yaml"
+    - $ref: "./ProfileModuleDataCoverDeviation.yaml"

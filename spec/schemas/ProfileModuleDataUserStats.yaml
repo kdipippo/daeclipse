@@ -1,0 +1,7 @@
+type: object
+properties:
+  dataKey:
+    type: string
+    example: userstats
+  userstats:
+    $ref: "./ProfileUserStats.yaml"

@@ -23,8 +23,10 @@ tags:
 - name: Statuses
   description: Operations relating to tweet-like posts, Statuses.
 paths:
+  /da-user-profile/api/init/about:
+    $ref: "./resources/profile/init/about.yaml"
   /da-user-profile/api/module/my_comments:
-    $ref: "./resources/module/my_comments.yaml"
+    $ref: "./resources/profile/module/my_comments.yaml"
   /shared_api/deviation/extended_fetch:
     $ref: "./resources/deviation/extended_fetch.yaml"
   /shared_api/deviation/delete:

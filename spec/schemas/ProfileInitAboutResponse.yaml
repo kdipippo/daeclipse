@@ -1,0 +1,340 @@
+type: object
+properties:
+  pageData:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 3955035932
+      name:
+        type: string
+        example: papi_about
+      layout:
+        type: array
+        items:
+          type: string
+        example: ["home", "gallery", "favourites"]
+      gruserId:
+        type: integer
+        example: 67165567
+      isOwner:
+        type: boolean
+        example: false
+      gruserTypeid:
+        type: integer
+        example: 4
+      gruser:
+        $ref: "./Gruser.yaml"
+      gruserTagline:
+        type: string
+        example: Hello, I'm ExampleUsername!
+      gruserUrl:
+        type: string
+        example: https://www.deviantart.com/ExampleUsername
+      isWatcher:
+        type: boolean
+        example: false
+      isWatching:
+        type: boolean
+        example: false
+      privileges:
+        type: object
+        properties:
+          addModule:
+            type: boolean
+            example: false
+          moveModule:
+            type: boolean
+            example: false
+      stats:
+        $ref: "./ProfileUserStats.yaml"
+  sectionData:
+    type: object
+    properties:
+      layout:
+        type: object
+        properties:
+          version:
+            type: integer
+            example: 1
+          zones:
+            type: object
+            properties:
+              topRight:
+                $ref: "./SectionLayout.yaml"
+              midRight:
+                $ref: "./SectionLayout.yaml"
+              bottomRight:
+                $ref: "./SectionLayout.yaml"
+              topSecret:
+                $ref: "./SectionLayout.yaml"
+      modules:
+        type: array
+        items:
+          $ref: "./ProfileModule.yaml"
+  session:
+    type: object
+    properties:
+      user:
+        type: object
+        properties:
+          loggedin:
+            type: boolean
+            example: true
+          userId:
+            type: integer
+            example: 18069984
+          useridUuid:
+            type: string
+            format: uuid
+            example: feb984e4-30ea-4828-8313-1665e7767ff7
+          sessionId:
+            type: string
+            example: 2a604ce59515908cc43aa5136750ea37
+          biClientId:
+            type: string
+            format: uuid
+            example: ba4895d2-5aa8-41f2-a7ba-65e4e95f2d8c
+          biClientIdSigned:
+            type: string
+            example: H5jMyTVZszcUfTJTCV2RtSu99yc9Z46tuNXG.H5jMyTVZszcUfTJTCV2RtSu99yc9Z46tuNXG
+          username:
+            type: string
+            example: ExampleUsername
+          usericon:
+            type: string
+            example: https://a.deviantart.net/avatars/p/e/exampleusername.gif?5
+          'type':
+            type: string
+            example: regular
+          email:
+            type: string
+            example: example.username@gmail.com
+          matureContent:
+            type: boolean
+            example: true
+          verified:
+            type: boolean
+            example: true
+          newsletter:
+            type: boolean
+            example: false
+          utId:
+            type: string
+            example: 6CE99596-5549-4270-AE30-473E5FE881A4
+          sex:
+            type: string
+            example: f
+          dob:
+            type: string
+            example: "1970-01-23"
+          dobPublic:
+            type: string
+            example: "1970-01-23"
+          joindate:
+            type: string
+            format: date-time
+            example: 2011-06-23T19:00:23-0700
+          country:
+            type: string
+            example: United States
+          timezone:
+            type: string
+            example: America/Phoenix
+          authMode:
+            type: string
+            example: DA
+          hasWixPortfolio:
+            type: boolean
+            example: false
+          theme:
+            type: string
+            example: dark
+          commentsOrder:
+            type: string
+            example: newest
+          hasCoreMembership:
+            type: boolean
+            example: false
+          eclipseFeedbackUrl:
+            type: string
+            example: https://www.eclipsefeedback.com?username=ExampleUsername&t=1234567890&token=H5jMyTVZszcUfTJTCV2RtSu99yc9Z46tuNXG",
+          eclipseSwitcher:
+            type: boolean
+            example: false
+          hasJoinedWithEclipse:
+            type: boolean
+            example: false
+          deviationViewMode:
+            type: string
+            example: theater
+          pagingMode:
+            type: string
+            example: scroll
+          pageSize:
+            example: 24
+          privacy:
+            type: object
+            properties:
+              cookies:
+                type: object
+                properties:
+                  accepted:
+                    type: boolean
+                    example: false
+                  required:
+                    type: boolean
+                    example: false
+                  types:
+                    type: object
+                    properties:
+                      functional:
+                        type: boolean
+                        example: false
+                      analytics:
+                        type: boolean
+                        example: false
+                      marketing:
+                        type: boolean
+                        example: false
+          firstTimeFlags:
+            type: object
+            properties:
+              isProfileHeroAidNotClosed:
+                type: boolean
+                example: true
+              isProfileEditAidNotClosed:
+                type: boolean
+                example: true
+              isPortfolioPopupNotClosed:
+                type: boolean
+                example: true
+              isNetworkbarGroupWatchNotUsed:
+                type: boolean
+                example: true
+              isFallbackEditorNotUsed:
+                type: boolean
+                example: true
+              isDollarInputMessageNotShown:
+                type: boolean
+                example: true
+              isArtShopBuyButtonMessageNotShown:
+                type: boolean
+                example: true
+              isNewDywNotSeen:
+                type: boolean
+                example: true
+      counts:
+        type: object
+        properties:
+          feedback:
+            type: integer
+            example: 0
+          watch:
+            type: integer
+            example: 10000
+          notes:
+            type: integer
+            example: 0
+          points:
+            type: integer
+            example: 40
+          fragments:
+            type: integer
+            example: 600
+          cart:
+            type: integer
+            example: 0
+      csrfToken:
+        type: string
+        example: "AbCdEfGhIjKlMnOp.QrStUv.WxYzAbCdEfGhIjKlMnOpAbCd_EfGhIjKlMnOpQrStUv"
+      requestId:
+        type: string
+        example: NX3bQ4RgUuvMn245V2vmjaVdcWJZtdgus9bGHTW
+      features:
+        type: array
+        items:
+          type: string
+        example: ["birthday_loader", "updated_core_picker"]
+      geo:
+        type: object
+        properties:
+          countryCode:
+            type: string
+            example: us
+      trackers:
+        type: object
+        properties:
+          ganalytics:
+            type: array
+            items:
+              type: string
+            example: ["ga(\"set\",\"dimension2\",\"12_plus_months\");"]
+      seo:
+        type: object
+        properties:
+          canonical:
+            type: string
+            example: https://www.deviantart.com/ExampleUsername/about
+          title:
+            type: string
+            example: About ExampleUsername | DeviantArt
+          description:
+            type: string
+            example: ""
+          socialThumbSrc:
+            type: string
+            example: https://images-wixmp-ed.aksdfla.wixmp.com/f/asdjfalkdf
+      device:
+        type: object
+        properties:
+          isMobile:
+            type: boolean
+            example: true
+          isMobileDevice:
+            type: boolean
+            example: true
+          isTablet:
+            type: boolean
+            example: true
+          supportsWebp:
+            type: boolean
+            example: true
+          supportsLazy:
+            type: boolean
+            example: true
+      hub:
+        type: object
+        properties:
+          user:
+            type: string
+            example: fee5akls28c29e
+          ts:
+            type: string
+            example: "1234567890"
+          auth:
+            type: string
+            example: 45aa9f2a00018eb0fee528c29ea80f292
+          subs:
+            type: array
+            items:
+              type: string
+            example: ["mcfeedbacknew#fee5akls28c29e", "eclipsenotifications#fee5akls28c29e"]
+          endpoint:
+            type: string
+            example: https://hub.deviantart.net
+      chat:
+        type: object
+        properties:
+          online:
+            type: boolean
+            example: true
+          muted:
+            type: boolean
+            example: true
+          contactPermissions:
+            type: string
+            example: anyone
+          muteSound:
+            type: boolean
+            example: true

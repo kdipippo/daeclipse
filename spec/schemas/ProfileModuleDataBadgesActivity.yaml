@@ -1,0 +1,41 @@
+type: object
+properties:
+  dataKey:
+    type: string
+    example: badges_activity
+  badgesActivity:
+    type: object
+    required:
+    - totalSent
+    - totalReceived
+    - hasMore
+    - nextOffset
+    - results
+    properties:
+      totalSent:
+        type: integer
+        example: 0
+      totalReceived:
+        type: integer
+        example: 56
+      hasMore:
+        type: boolean
+        example: true
+      nextOffset:
+        type: integer
+        example: 5
+      results:
+        type: array
+        items:
+          type: object
+          properties:
+            giver:
+              $ref: "./Gruser.yaml"
+            receiver:
+              $ref: "./Gruser.yaml"
+            badge:
+              $ref: "./DeviationAwardedBadge.yaml"
+            timestamp:
+              type: string
+              format: date-time
+              example: 2021-05-18T12:23:01-0700
