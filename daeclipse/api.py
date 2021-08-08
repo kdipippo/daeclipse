@@ -41,7 +41,7 @@ class Eclipse(object):
 
         queries = {
             'username': username,
-            'moduleid': '1761969747',  # "Get Members" block ID.
+            'moduleid': self.get_module_id(username, "group_list_members"),
             'offset': offset,
             'limit': limit,
         }
@@ -214,7 +214,7 @@ class Eclipse(object):
 
         queries = {
             'username': username,
-            'moduleid': '1717358865',  # "Comments" block ID. -- 3955035956
+            'moduleid': self.get_module_id(username, "my_comments"),
             'offset': offset,
             'limit': limit,
         }
@@ -228,6 +228,38 @@ class Eclipse(object):
         )
         rjson = validate_response_succeeds(response)
         return UsersCommentsList(rjson)
+
+    def get_module_id(self, username, module_name):
+        """Return module ID for given module name associated with user.
+
+        Args:
+            username (str): DeviantArt username of user.
+            module_name (str): User profile module name.
+
+        Returns:
+            int: Module ID for the module_name.
+
+        Raises:
+            RuntimeError: If module with module_name not found.
+        """
+        queries = {
+            'username': username,
+        }
+        response = requests.get(
+            ''.join([
+                self.base_uri,
+                '/da-user-profile/api/init/about',
+                query_string(queries),
+            ]),
+            cookies=self.cookies,
+        )
+        rjson = validate_response_succeeds(response)
+        # For now, for simplicity, the result of this API call will not be
+        # loaded into a model due to how much data gets returned.
+        for module in rjson.get('sectionData').get('modules'):
+            if module.get('name') == module_name:
+                return module.get('id')
+        raise RuntimeError('module \'{0}\' not found.'.format(module_name))
 
 
 def get_deviation_id(deviation_url):

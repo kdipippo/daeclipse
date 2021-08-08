@@ -33,5 +33,4 @@ class UserComment(Model):
             self.subject = Deviation(attrs.get('subject').get('deviation'))
         elif attrs.get('subject').get('profile'):
             self.subject_type = 'profile'
-            # Note: Gruser will not contain the returned isSubscribed field.
             self.subject = Gruser(attrs.get('subject').get('profile'))
