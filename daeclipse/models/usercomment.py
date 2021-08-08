@@ -29,10 +29,33 @@ class UserComment(Model):
         super().from_dict(attrs)
         self.comment = Comment(attrs.get('comment'))
         if not attrs.get('subject'):
-            self.subject_type = 'status_post'
+            # Some comments may be retrieved that show as deleted
+            self.subject_type = 'deleted'
         elif attrs.get('subject').get('deviation'):
             self.subject_type = 'deviation'
             self.subject = Deviation(attrs.get('subject').get('deviation'))
         elif attrs.get('subject').get('profile'):
             self.subject_type = 'profile'
             self.subject = Gruser(attrs.get('subject').get('profile'))
+
+    def get_url(self):
+        """Return the URL of the comment."""
+        if self.subject_type == 'deviation':
+            return 'https://www.deviantart.com/comments/1/{0}/{1}'.format(
+                self.subject.deviation_id,
+                self.comment.comment_id,
+            )
+        if self.subject_type == 'profile':
+            return 'https://www.deviantart.com/comments/4/{0}/{1}'.format(
+                self.subject.user_id,
+                self.comment.comment_id,
+            )
+        return 'ID {0} Deleted'.format(self.comment.comment_id)
+
+    def get_text(self):
+        """Return text of comment.
+
+        Returns:
+            string: Text of comment.
+        """
+        return self.comment.get_text()

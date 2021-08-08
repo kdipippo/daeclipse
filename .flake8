@@ -4,6 +4,7 @@ max-module-members = 20
 per-file-ignores =
     test/*: S101
     daeclipse/models/*: WPS230
+    **/__init__.py: F401, WPS300
 ignore =
     # Ignore all 'flake8-bugbear' errors, which are related to Python 2 
     B301

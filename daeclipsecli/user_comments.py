@@ -1,6 +1,7 @@
 """Command to retrieve recent comments made by specified user."""
 
 import cli_ui
+import tabulate
 import typer
 
 import daeclipse
@@ -25,17 +26,22 @@ def user_comments(
         total (int): Total number of comments to return, defaults to 10.
     """
     eclipse = daeclipse.Eclipse()
-    user_comments = []
+    comment_result = []
     has_more = True
-    while len(user_comments) < total or has_more:
+    while len(comment_result) < total and has_more:
         user_comments_list = eclipse.get_user_comments(username, offset)
         offset = user_comments_list.next_offset
         has_more = user_comments_list.has_more
-        user_comments.extend(user_comments_list.comments)
-    user_comments = user_comments[:total]
-    cli_ui.info_table(
-        [
-            [(cli_ui.bold, user_comment.comment.comment_id), (cli_ui.green, user_comment.comment.text_content.excerpt)] for user_comment in user_comments
-        ],
-        headers=['ID', 'Comment'],
+        comment_result.extend(user_comments_list.comments)
+    comment_result = comment_result[:total]
+    cli_ui.info(
+        tabulate.tabulate(
+            [[
+                comm.get_url(),
+                comm.comment.posted,
+                comm.get_text(),
+            ] for comm in comment_result],
+            headers=['URL', 'Posted', 'Comment'],
+            tablefmt='grid'
+        )
     )

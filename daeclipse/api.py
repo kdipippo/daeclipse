@@ -213,6 +213,9 @@ class Eclipse(object):
         if limit > 49:
             raise ValueError('Limit must be equal to or below 49.')
 
+        # Note: this endpoint's behavior seems to be that it'll only return the
+        # 49 most recent comments associated with a particular user account.
+
         queries = {
             'username': username,
             'moduleid': self.get_module_id(username, 'my_comments'),
