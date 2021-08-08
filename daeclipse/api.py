@@ -13,6 +13,7 @@ from daeclipse.models.folder import Folder
 from daeclipse.models.groupslist import GroupsList
 from daeclipse.models.userscommentslist import UsersCommentsList
 
+
 class Eclipse(object):
     """Class to handle making calls to the DeviantArt Eclipse API."""
 
@@ -41,7 +42,7 @@ class Eclipse(object):
 
         queries = {
             'username': username,
-            'moduleid': self.get_module_id(username, "group_list_members"),
+            'moduleid': self.get_module_id(username, 'group_list_members'),
             'offset': offset,
             'limit': limit,
         }
@@ -214,7 +215,7 @@ class Eclipse(object):
 
         queries = {
             'username': username,
-            'moduleid': self.get_module_id(username, "my_comments"),
+            'moduleid': self.get_module_id(username, 'my_comments'),
             'offset': offset,
             'limit': limit,
         }
@@ -259,7 +260,7 @@ class Eclipse(object):
         for module in rjson.get('sectionData').get('modules'):
             if module.get('name') == module_name:
                 return module.get('id')
-        raise RuntimeError('module \'{0}\' not found.'.format(module_name))
+        raise RuntimeError("module '{0}' not found.".format(module_name))
 
 
 def get_deviation_id(deviation_url):

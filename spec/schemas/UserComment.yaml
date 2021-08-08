@@ -9,3 +9,7 @@ properties:
     oneOf:
     - $ref: "./UserCommentOnDeviation.yaml"
     - $ref: "./UserCommentOnProfile.yaml"
+    - type: array
+      items:
+        type: string
+      example: []

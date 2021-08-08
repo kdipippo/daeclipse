@@ -28,7 +28,9 @@ class UserComment(Model):
         """
         super().from_dict(attrs)
         self.comment = Comment(attrs.get('comment'))
-        if attrs.get('subject').get('deviation'):
+        if not attrs.get('subject'):
+            self.subject_type = 'status_post'
+        elif attrs.get('subject').get('deviation'):
             self.subject_type = 'deviation'
             self.subject = Deviation(attrs.get('subject').get('deviation'))
         elif attrs.get('subject').get('profile'):
