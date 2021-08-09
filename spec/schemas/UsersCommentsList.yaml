@@ -1,0 +1,17 @@
+type: object
+required:
+- hasMore
+- nextOffset
+- results
+properties:
+  hasMore:
+    type: boolean
+    example: false
+  nextOffset:
+    type: integer
+    nullable: true
+    example: 24
+  results:
+    type: array
+    items:
+      $ref: "./UserComment.yaml"

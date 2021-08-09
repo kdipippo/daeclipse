@@ -46,8 +46,8 @@ class DeviationExtendedContent(Model):
         self.group_list_url = attrs.get('groupListUrl')
         self.description = attrs.get('description')
         self.original_file = DeviationFileSpecs(attrs.get('originalFile'))
-        self.tags = self.to_submodel(DeviationTag, attrs.get('tags'))
-        self.subject_tags = self.to_submodel(
+        self.tags = self.to_submodel_list(DeviationTag, attrs.get('tags'))
+        self.subject_tags = self.to_submodel_list(
             DeviationTag,
             attrs.get('subjectTags'),
         )
@@ -59,7 +59,7 @@ class DeviationExtendedContent(Model):
         )
         self.stats = DeviationExtendedStats(attrs.get('stats'))
         self.report_url = attrs.get('reportUrl')
-        self.awarded_badges = self.to_submodel(
+        self.awarded_badges = self.to_submodel_list(
             DeviationAwardedBadge,
             attrs.get('awardedBadges'),
         )

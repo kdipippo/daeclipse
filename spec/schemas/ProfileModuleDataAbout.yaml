@@ -1,0 +1,152 @@
+type: object
+properties:
+  dataKey:
+    type: string
+    example: about
+  about:
+    type: object
+    required:
+    - username
+    - country
+    - countryId
+    - countrycode
+    - age
+    - dobYear
+    - dobMonth
+    - dobDay
+    - deviantFor
+    - isArtist
+    - level
+    - speciality
+    - website
+    - websiteLabel
+    - tagline
+    - twitterUsername
+    - gender
+    - isOpenForCommissions
+    - hasActiveCommissions
+    - showBadges
+    - interests
+    - badges
+    - socialLinks
+    - mutualWatchedUsers
+    - mutualWatchedUsersCount
+    - textContent
+    - isTextEditable
+    - legacyTextEditUrl
+    properties:
+      username:
+        type: string
+        example: ExampleUsername
+      country:
+        type: string
+        example: United States
+      countryId:
+        type: integer
+        example: 1
+      countrycode:
+        type: string
+        example: us
+      age:
+        type: integer
+        nullable: true
+        example: 20
+      dobYear:
+        type: integer
+        nullable: true
+        example: 2000
+      dobMonth:
+        type: integer
+        nullable: true
+        example: 6
+      dobDay:
+        type: integer
+        nullable: true
+        example: 1
+      deviantFor:
+        type: integer
+        example: 12345678
+      isArtist:
+        type: boolean
+        example: true
+      level:
+        type: integer
+        example: 2
+      speciality:
+        type: integer
+        example: 3
+      website:
+        type: string
+        example: examplewebsite.com
+      websiteLabel:
+        type: string
+        example: My Website
+      tagline:
+        type: string
+        example: Hello, I'm ExampleUsername!
+      twitterUsername:
+        type: string
+        nullable: true
+        example: exampleusername
+      gender:
+        type: string
+        nullable: true
+        enum: [male, female, other]
+        example: other
+      isOpenForCommissions:
+        type: boolean
+        example: false
+      hasActiveCommissions:
+        type: boolean
+        example: false
+      showBadges:
+        type: boolean
+        example: false
+      devidDeviation:
+        $ref: "./Deviation.yaml"
+      interests:
+        type: array
+        items:
+          type: object
+          nullable: true
+          properties:
+            id:
+              type: integer
+              example: 1
+            label:
+              type: string
+              example: Favorite games
+            value:
+              type: string
+              example: Azur Lane, Arknights, Fire emblem
+      badges:
+        type: array
+        items:
+          $ref: "./DeviationAwardedBadge.yaml"
+      socialLinks:
+        type: array
+        items:
+          type: object
+          nullable: true
+          properties:
+            id:
+              type: integer
+              example: 9
+            value:
+              type: string
+              example: https://www.patreon.com/ExampleUsername?alert=2
+      mutualWatchedUsers:
+        type: array
+        items:
+          $ref: "./Gruser.yaml"
+      mutualWatchedUsersCount:
+        type: integer
+        example: 5
+      textContent:
+        $ref: "./TextContent.yaml"
+      isTextEditable:
+        type: boolean
+        example: false
+      legacyTextEditUrl:
+        type: string
+        nullable: true

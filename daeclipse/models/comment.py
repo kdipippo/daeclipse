@@ -83,3 +83,11 @@ class Comment(Model):
         self.author_info = attrs.get('authorInfo')
         self.user = Gruser(attrs.get('user'))
         self.legacy_text_edit_url = attrs.get('legacyTextEditUrl')
+
+    def get_text(self):
+        """Return text of comment.
+
+        Returns:
+            string: Text of comment.
+        """
+        return self.text_content.excerpt

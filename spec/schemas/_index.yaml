@@ -28,13 +28,47 @@ DeviationTag:
   $ref: "./DeviationTag.yaml"
 DeviationTypeFacet:
   $ref: "./DeviationTypeFacet.yaml"
+ErrorInvalidCSRF:
+  $ref: "./ErrorInvalidCSRF.yaml"
 Gruser:
   $ref: "./Gruser.yaml"
+ProfileInitAboutResponse:
+  $ref: "./ProfileInitAboutResponse.yaml"
+ProfileModule:
+  $ref: "./ProfileModule.yaml"
+ProfileModuleDataAbout:
+  $ref: "./ProfileModuleDataAbout.yaml"
+ProfileModuleDataBadgesActivity:
+  $ref: "./ProfileModuleDataBadgesActivity.yaml"
+ProfileModuleDataCoverDeviation:
+  $ref: "./ProfileModuleDataCoverDeviation.yaml"
+ProfileModuleDataGroupListAdmins:
+  $ref: "./ProfileModuleDataGroupListAdmins.yaml"
+ProfileModuleDataGroupListMembers:
+  $ref: "./ProfileModuleDataGroupListMembers.yaml"
+ProfileModuleDataMyComments:
+  $ref: "./ProfileModuleDataMyComments.yaml"
+ProfileModuleDataUserStats:
+  $ref: "./ProfileModuleDataUserStats.yaml"
+ProfileModuleDataWatchers:
+  $ref: "./ProfileModuleDataWatchers.yaml"
+ProfileModuleDataWatching:
+  $ref: "./ProfileModuleDataWatching.yaml"
+ProfileUserStats:
+  $ref: "./ProfileUserStats.yaml"
+SectionLayout:
+  $ref: "./SectionLayout.yaml"
 Stats:
   $ref: "./Stats.yaml"
 Status:
   $ref: "./Status.yaml"
 TextContent:
   $ref: "./TextContent.yaml"
-ErrorInvalidCSRF:
-  $ref: "./ErrorInvalidCSRF.yaml"
+UserComment:
+  $ref: "./UserComment.yaml"
+UserCommentOnDeviation:
+  $ref: "./UserCommentOnDeviation.yaml"
+UserCommentOnProfile:
+  $ref: "./UserCommentOnProfile.yaml"
+UsersCommentsList:
+  $ref: "./UsersCommentsList.yaml"

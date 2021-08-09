@@ -1,0 +1,15 @@
+type: object
+required:
+- comment
+- subject
+properties:
+  comment:
+    $ref: "./Comment.yaml"
+  subject:
+    oneOf:
+    - $ref: "./UserCommentOnDeviation.yaml"
+    - $ref: "./UserCommentOnProfile.yaml"
+    - type: array
+      items:
+        type: string
+      example: []

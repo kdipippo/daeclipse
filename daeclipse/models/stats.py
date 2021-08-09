@@ -12,9 +12,9 @@ class Stats(Model):
         Args:
             attrs (dict, optional): Dict of model attributes.
         """
-        super().__init__(attrs)
         self.comments = None
         self.favourites = None
+        super().__init__(attrs)
 
     def from_dict(self, attrs):
         """Convert attrs values to class attributes.

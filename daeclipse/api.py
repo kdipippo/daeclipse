@@ -1,5 +1,6 @@
 """Class to handle making calls to the DeviantArt Eclipse API."""
 
+import http
 import json
 import re
 
@@ -11,6 +12,7 @@ from html_to_draftjs import html_to_draftjs
 from daeclipse.models.deviationextendedresult import DeviationExtendedResult
 from daeclipse.models.folder import Folder
 from daeclipse.models.groupslist import GroupsList
+from daeclipse.models.userscommentslist import UsersCommentsList
 
 
 class Eclipse(object):
@@ -41,7 +43,7 @@ class Eclipse(object):
 
         queries = {
             'username': username,
-            'moduleid': '1761969747',  # "Get Members" block ID.
+            'moduleid': self.get_module_id(username, 'group_list_members'),
             'offset': offset,
             'limit': limit,
         }
@@ -195,6 +197,74 @@ class Eclipse(object):
         rjson = validate_response_succeeds(response)
         return '✅ Status created: {0}'.format(rjson['deviation'].get('url'))
 
+    def get_user_comments(self, username, offset, limit=49):
+        """Return a paginated call for 5 of the user's recent comments.
+
+        Args:
+            username (str): DeviantArt username of user.
+            offset (int): Offset to start with API call.
+            limit (int, optional): Limit of results to return. Defaults to 49.
+
+        Returns:
+            UsersCommentsList: UsersCommentsList instance.
+
+        Raises:
+            ValueError: If `limit` is greater than 49.
+        """
+        # Note: this endpoint's behavior seems to be that it'll only return the
+        # 49 most recent comments associated with a particular user account.
+        if limit > 49:  # noqa: WPS432
+            raise ValueError('Limit must be equal to or below 49.')
+
+        queries = {
+            'username': username,
+            'moduleid': self.get_module_id(username, 'my_comments'),
+            'offset': offset,
+            'limit': limit,
+        }
+        response = requests.get(
+            ''.join([
+                self.base_uri,
+                '/da-user-profile/api/module/my_comments',
+                query_string(queries),
+            ]),
+            cookies=self.cookies,
+        )
+        rjson = validate_response_succeeds(response)
+        return UsersCommentsList(rjson)
+
+    def get_module_id(self, username, module_name):
+        """Return module ID for given module name associated with user.
+
+        Args:
+            username (str): DeviantArt username of user.
+            module_name (str): User profile module name.
+
+        Returns:
+            int: Module ID for the module_name.
+
+        Raises:
+            RuntimeError: If module with module_name not found.
+        """
+        queries = {
+            'username': username,
+        }
+        response = requests.get(
+            ''.join([
+                self.base_uri,
+                '/da-user-profile/api/init/about',
+                query_string(queries),
+            ]),
+            cookies=self.cookies,
+        )
+        rjson = validate_response_succeeds(response)
+        # For now, for simplicity, the result of this API call will not be
+        # loaded into a model due to how much data gets returned.
+        for module in rjson.get('sectionData').get('modules'):
+            if module.get('name') == module_name:
+                return module.get('id')
+        raise RuntimeError("module '{0}' not found.".format(module_name))
+
 
 def get_deviation_id(deviation_url):
     """Extract the deviation_id from the full deviantart image URL.
@@ -284,6 +354,8 @@ def validate_response_succeeds(response):
     Returns:
         dict: JSON response as dictionary.
     """
+    if response.status_code == http.client.INTERNAL_SERVER_ERROR:
+        raise_error(response.reason)
     response_dict = json.loads(response.text)
     if 'error' in response_dict:
         raise_error(response_dict)

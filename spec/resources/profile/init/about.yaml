@@ -1,0 +1,15 @@
+get:
+  summary: Get user's profile information.
+  operationId: getUsersProfile
+  description: Get user's profile information.
+  tags:
+  - Comments
+  parameters:
+  - $ref: "../../../parameters/query/username.yaml"
+  responses:
+    '200':
+      description: Successfully fetched user's profile.
+      content:
+        application/json:
+          schema:
+            $ref : "../../../schemas/ProfileInitAboutResponse.yaml"
