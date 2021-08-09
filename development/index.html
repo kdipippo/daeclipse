@@ -662,11 +662,10 @@
                 <h1 id="development">Development</h1>
 <h2 id="python-related-code-development">Python-Related Code Development</h2>
 <h3 id="overview">Overview</h3>
-<p>There are 3 different components of the Python work in this repo:
+<p>There are 2 different components of the Python work in this repo:
 - <code>daeclipse</code> - The Python package that conveniently wraps around DeviantArt Eclipse API Calls.
-- <code>cli.py</code> - A CLI script to make calls to API behavior
-- <code>gif_generator</code> - An unrelated Python package (unpublished) to generate pixel art character gifs.</p>
-<p><code>poetry</code> is used for Python dependency management and packaging, specifically for the <code>daeclipse</code> project. The other two Python components are add-ons for local testing and usage.</p>
+- <code>cli.py</code> - A CLI script to make calls to API behavior. Functions called by the CLI are kept in the <a href="https://github.com/Pepper-Wood/daeclipse/tree/main/daeclipsecli">daeclipsecli folder</a>.</p>
+<p><code>poetry</code> is used for Python dependency management and packaging, specifically for the <code>daeclipse</code> project. The CLI is a handy add-on for local testing.</p>
 <h3 id="development_1">Development</h3>
 <p>To get started, make sure to install poetry dependencies at the root.</p>
 <pre><code>poetry install
