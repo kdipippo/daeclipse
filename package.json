@@ -1,6 +1,6 @@
 {
   "name": "daeclipse-openapi-spec",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Unofficial OpenAPI Specification for the DeviantArt Eclipse API.",
   "main": "index.js",
   "engines": {
