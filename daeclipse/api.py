@@ -197,12 +197,12 @@ class Eclipse(object):
         rjson = validate_response_succeeds(response)
         return '✅ Status created: {0}'.format(rjson['deviation'].get('url'))
 
-    def get_user_comments(self, username, offset, limit=49):
+    def get_user_comments(self, username, offset=0, limit=49):
         """Return a paginated call for 5 of the user's recent comments.
 
         Args:
             username (str): DeviantArt username of user.
-            offset (int): Offset to start with API call.
+            offset (int): Offset to start with API call. Defaults to 0.
             limit (int, optional): Limit of results to return. Defaults to 49.
 
         Returns:
