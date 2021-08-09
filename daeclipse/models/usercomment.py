@@ -18,6 +18,11 @@ class UserComment(Model):
         self.comment = None
         self.subject_type = None
         self.subject = None
+
+        # Constants for locations of user comments.
+        self.DEVIATION = 0
+        self.PROFILE = 1
+        self.DELETED = 2
         super().__init__(attrs)
 
     def from_dict(self, attrs):
@@ -28,24 +33,29 @@ class UserComment(Model):
         """
         super().from_dict(attrs)
         self.comment = Comment(attrs.get('comment'))
-        if not attrs.get('subject'):
+        subject = attrs.get('subject')
+        if not subject:
             # Some comments may be retrieved that show as deleted
-            self.subject_type = 'deleted'
-        elif attrs.get('subject').get('deviation'):
-            self.subject_type = 'deviation'
-            self.subject = Deviation(attrs.get('subject').get('deviation'))
-        elif attrs.get('subject').get('profile'):
-            self.subject_type = 'profile'
-            self.subject = Gruser(attrs.get('subject').get('profile'))
+            self.subject_type = self.DELETED
+        elif subject.get('deviation'):
+            self.subject_type = self.DEVIATION
+            self.subject = Deviation(subject.get('deviation'))
+        elif subject.get('profile'):
+            self.subject_type = self.PROFILE
+            self.subject = Gruser(subject.get('profile'))
 
     def get_url(self):
-        """Return the URL of the comment."""
-        if self.subject_type == 'deviation':
+        """Return the URL of the comment.
+
+        Returns:
+            string: URL pointed to comment.
+        """
+        if self.subject_type == self.DEVIATION:
             return 'https://www.deviantart.com/comments/1/{0}/{1}'.format(
                 self.subject.deviation_id,
                 self.comment.comment_id,
             )
-        if self.subject_type == 'profile':
+        if self.subject_type == self.PROFILE:
             return 'https://www.deviantart.com/comments/4/{0}/{1}'.format(
                 self.subject.user_id,
                 self.comment.comment_id,

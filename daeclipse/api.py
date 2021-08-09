@@ -1,5 +1,6 @@
 """Class to handle making calls to the DeviantArt Eclipse API."""
 
+import http
 import json
 import re
 
@@ -210,11 +211,10 @@ class Eclipse(object):
         Raises:
             ValueError: If `limit` is greater than 49.
         """
-        if limit > 49:
-            raise ValueError('Limit must be equal to or below 49.')
-
         # Note: this endpoint's behavior seems to be that it'll only return the
         # 49 most recent comments associated with a particular user account.
+        if limit > 49:  # noqa: WPS432
+            raise ValueError('Limit must be equal to or below 49.')
 
         queries = {
             'username': username,
@@ -354,7 +354,7 @@ def validate_response_succeeds(response):
     Returns:
         dict: JSON response as dictionary.
     """
-    if response.status_code == 500:
+    if response.status_code == http.client.INTERNAL_SERVER_ERROR:
         raise_error(response.reason)
     response_dict = json.loads(response.text)
     if 'error' in response_dict:

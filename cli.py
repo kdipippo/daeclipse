@@ -1,6 +1,7 @@
 """Main file for DeviantArt Eclipse CLI."""
 
 import typer
+
 import daeclipsecli
 
 app = typer.Typer(help='DeviantArt Eclipse CLI')

@@ -27,4 +27,7 @@ class UsersCommentsList(Model):
         super().from_dict(attrs)
         self.has_more = attrs.get('hasMore')
         self.next_offset = attrs.get('nextOffset')
-        self.comments = self.to_submodel_list(UserComment, attrs.get('results'))
+        self.comments = self.to_submodel_list(
+            UserComment,
+            attrs.get('results'),
+        )

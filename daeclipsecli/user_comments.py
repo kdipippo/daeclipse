@@ -36,12 +36,14 @@ def user_comments(
     comment_result = comment_result[:total]
     cli_ui.info(
         tabulate.tabulate(
-            [[
-                comm.get_url(),
-                comm.comment.posted,
-                comm.get_text(),
-            ] for comm in comment_result],
+            [
+                [
+                    comm.get_url(),
+                    comm.comment.posted,
+                    comm.get_text(),
+                ] for comm in comment_result
+            ],
             headers=['URL', 'Posted', 'Comment'],
-            tablefmt='grid'
-        )
+            tablefmt='grid',
+        ),
     )

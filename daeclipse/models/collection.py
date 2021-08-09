@@ -28,5 +28,8 @@ class Collection(Model):
         """
         super().from_dict(attrs)
         self.collection = CollectionInfo(attrs.get('collection'))
-        self.deviations = self.to_submodel_list(Deviation, attrs.get('deviations'))
+        self.deviations = self.to_submodel_list(
+            Deviation,
+            attrs.get('deviations'),
+        )
         self.groups = self.to_submodel_list(Gruser, attrs.get('groups'))

@@ -8,7 +8,7 @@ import daeclipse
 def post_status():
     """Post a DeviantArt status."""
     eclipse = daeclipse.Eclipse()
-    cli_ui.info_1('Deviation URL is required for CSRF token authorization.')
+    cli_ui.info_1('Deviation URL is required for CSRF token authentication.')
     deviation_url = cli_ui.ask_string('Paste deviation URL: ')
     status_content = cli_ui.ask_string('Enter HTML-formatted status text: ')
 
