@@ -41,4 +41,4 @@ class CommentsList(Model):
         self.can_post_comment = attrs.get('canPostComment')
         self.commentable_typeid = attrs.get('commentableTypeid')
         self.commentable_itemid = attrs.get('commentableItemid')
-        self.thread = self.to_submodel(Comment, attrs.get('thread'))
+        self.thread = self.to_submodel_list(Comment, attrs.get('thread'))

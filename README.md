@@ -14,19 +14,18 @@ Usage: cli.py [OPTIONS] COMMAND [ARGS]...
   DeviantArt Eclipse CLI
 
 Options:
-  --install-completion [bash|zsh|fish|powershell|pwsh]
-                                  Install completion for the specified shell.
-  --show-completion [bash|zsh|fish|powershell|pwsh]
-                                  Show completion for the specified shell, to
-                                  copy it or customize the installation.
+  --install-completion  Install completion for the current shell.
+  --show-completion     Show completion for the current shell, to copy it or
+                        customize the installation.
 
-  --help                          Show this message and exit.
+  --help                Show this message and exit.
 
 Commands:
   add-art-to-groups  Submit DeviantArt deviation to groups.
-  show-tags          Return list of tags for given deviation.
-  hot-tags           Return top 10 tags on the 100 hottest deviations.
+  hot-tags           Return top tags on the hottest deviations.
   post-status        Post a DeviantArt status.
+  show-tags          Return list of tags for given deviation.
+  user-comments      Retrieve recent comments made by specified user.
 ```
 
 ## Installation

@@ -1,0 +1,22 @@
+type: object
+properties:
+  dataKey:
+    type: string
+    example: watching
+  watching:
+    type: object
+    required:
+    - hasMore
+    - nextOffset
+    - results
+    properties:
+      hasMore:
+        type: boolean
+        example: false
+      nextOffset:
+        type: integer
+        example: 24
+      results:
+        type: array
+        items:
+          $ref: "./Gruser.yaml"

@@ -1,0 +1,18 @@
+get:
+  summary: Get 5 of a user's comments.
+  operationId: getUsersComments
+  description: Get 5 of a user's comments.
+  tags:
+  - Comments
+  parameters:
+  - $ref: "../../../parameters/query/moduleId.yaml"
+  - $ref: "../../../parameters/query/username.yaml"
+  - $ref: "../../../parameters/query/offset.yaml"
+  - $ref: "../../../parameters/query/limit.yaml"
+  responses:
+    '200':
+      description: Successfully fetched paginated user's comments.
+      content:
+        application/json:
+          schema:
+            $ref: "../../../schemas/UsersCommentsList.yaml"

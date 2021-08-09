@@ -1,0 +1,25 @@
+type: object
+properties:
+  dataKey:
+    type: string
+    example: group_list_admins
+  groupListAdmins:
+    type: object
+    required:
+    - hasMore
+    - nextOffset
+    - results
+    properties:
+      hasMore:
+        type: boolean
+        example: false
+      nextOffset:
+        type: integer
+        example: 24
+      total:
+        type: integer
+        example: 0
+      results:
+        type: array
+        items:
+          $ref: "./Gruser.yaml"

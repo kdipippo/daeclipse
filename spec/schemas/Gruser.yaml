@@ -27,6 +27,9 @@ properties:
   isWatching:
     type: boolean
     example: false
+  isSubscribed:
+    type: boolean
+    example: false
   isNewDeviant:
     type: boolean
     example: true

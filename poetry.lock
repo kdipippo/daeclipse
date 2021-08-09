@@ -688,7 +688,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7,<4.0.0"
-content-hash = "5e8ec42285b75222651fc1cc365abcd7f203f97f92fef4933fdbf2c9f76b86bf"
+content-hash = "2b78218415ed38f14e1c4c9533853358092a258c16d8e96aa5c1cc962b774308"
 
 [metadata.files]
 astunparse = [

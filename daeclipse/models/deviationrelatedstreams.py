@@ -26,12 +26,12 @@ class DeviationRelatedStreams(Model):
             attrs (dict): Dict containing DeviationRelatedStreams fields.
         """
         super().from_dict(attrs)
-        self.gallery = self.to_submodel(Deviation, attrs.get('gallery'))
-        self.recommended = self.to_submodel(
+        self.gallery = self.to_submodel_list(Deviation, attrs.get('gallery'))
+        self.recommended = self.to_submodel_list(
             Deviation,
             attrs.get('recommended'),
         )
-        self.collections = self.to_submodel(
+        self.collections = self.to_submodel_list(
             Collection,
             attrs.get('collections'),
         )
