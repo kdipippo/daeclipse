@@ -706,6 +706,9 @@
 </code></pre>
 <h3 id="linting_1">Linting</h3>
 <p>Courtesy of the boilerplate repo, the OpenAPI Spec is linted using <a href="https://github.com/stoplightio/spectral">Spectral</a>. This is also automatically checked via the GitHub Actions workflow <a href="https://github.com/Pepper-Wood/daeclipse/blob/main/.github/workflows/linter-openapi.yml">linter-openapi.yml</a>.</p>
+<p>OpenAPI linting can also be performed locally by running the below command to check if the document follows the OpenAPI 3.0 Specification.</p>
+<pre><code>npm run test
+</code></pre>
 <h3 id="documentation_1">Documentation</h3>
 <p><code>redoc</code> is used for automated OpenAPI documentation generation, courtesy of the boilerplate. All documentation is generated on the <code>main</code> branch into a <code>build/api/</code> folder, which is then deployed to the <code>gh-pages</code> branch via the GitHub Actions workflow <a href="https://github.com/Pepper-Wood/daeclipse/blob/main/.github/workflows/gh-pages.yml">gh-pages.yml</a>.</p>
 <h3 id="publishing_1">Publishing</h3>

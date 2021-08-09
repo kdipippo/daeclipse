@@ -10,8 +10,10 @@ info:
     url: 'https://kathryndipippo.com'
     email: dipippo.k@gmail.com
 servers:
-  - url: 'https://www.deviantart.com/_napi/shared_api'
+  - url: 'https://www.deviantart.com/_napi'
 tags:
+  - name: Comments
+    description: Operations relating to comments.
   - name: Deviations
     description: 'Operations relating to artwork posts, Deviations.'
   - name: Groups
@@ -21,7 +23,42 @@ tags:
   - name: Statuses
     description: 'Operations relating to tweet-like posts, Statuses.'
 paths:
-  /deviation/extended_fetch:
+  /da-user-profile/api/init/about:
+    get:
+      summary: Get user's profile information.
+      operationId: getUsersProfile
+      description: Get user's profile information.
+      tags:
+        - Comments
+      parameters:
+        - $ref: '#/components/parameters/username'
+      responses:
+        '200':
+          description: Successfully fetched user's profile.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProfileInitAboutResponse'
+  /da-user-profile/api/module/my_comments:
+    get:
+      summary: Get 5 of a user's comments.
+      operationId: getUsersComments
+      description: Get 5 of a user's comments.
+      tags:
+        - Comments
+      parameters:
+        - $ref: '#/components/parameters/moduleId'
+        - $ref: '#/components/parameters/username'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Successfully fetched paginated user's comments.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsersCommentsList'
+  /shared_api/deviation/extended_fetch:
     get:
       summary: Get extended information for a Deviation.
       operationId: getExtendedDeviationByID
@@ -40,7 +77,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeviationExtendedResult'
-  /deviation/delete:
+  /shared_api/deviation/delete:
     post:
       summary: Delete a deviation or journal.
       operationId: deleteDeviationOrJournal
@@ -66,7 +103,7 @@ paths:
       responses:
         '200':
           description: Successfully fetched extended deviation information.
-  /journal/create:
+  /shared_api/journal/create:
     post:
       summary: Create a journal.
       operationId: createJournal
@@ -96,7 +133,7 @@ paths:
       responses:
         '200':
           description: Journal successfully created.
-  /journal/update/content:
+  /shared_api/journal/update/content:
     post:
       summary: Update a journal.
       description: Update a journal.
@@ -126,7 +163,7 @@ paths:
       responses:
         '200':
           description: Journal successfully updated.
-  /journal/publish:
+  /shared_api/journal/publish:
     post:
       tags:
         - Journals
@@ -156,7 +193,7 @@ paths:
       responses:
         '200':
           description: Journal successfully published.
-  /deviation/groups:
+  /shared_api/deviation/groups:
     get:
       tags:
         - Groups
@@ -180,7 +217,7 @@ paths:
                   cursor:
                     type: string
                     example: NTkwYWNhZDA9MTQmZDBhM2M5NDI9MTcxMTUyMzQtMjc4MTg1NzEtMjA5OTM2NzctMjE0ODI1NDQtMjE0MTEwNjQtMTQ3MTgyOTItMTgzOTY2OTktMjgyMTIwMzEtMTMxMTQ5NTEtMjU3NTAwMDM
-  /deviation/group_folders:
+  /shared_api/deviation/group_folders:
     get:
       tags:
         - Groups
@@ -245,7 +282,7 @@ paths:
                         totalItemCount:
                           type: integer
                           example: 0
-  /deviation/group_add:
+  /shared_api/deviation/group_add:
     post:
       tags:
         - Groups
@@ -293,7 +330,7 @@ paths:
                   deviationGroupCount:
                     type: integer
                     example: 1
-  /status/create:
+  /shared_api/status/create:
     post:
       summary: Create a status.
       description: Create a status as a journal draft in sta.sh.
@@ -325,7 +362,7 @@ paths:
                 oneOf:
                   - $ref: '#/components/schemas/CreateOrPublishStatusSuccess'
                   - $ref: '#/components/schemas/ErrorInvalidCSRF'
-  /status/publish:
+  /shared_api/status/publish:
     post:
       tags:
         - Statuses
@@ -357,7 +394,7 @@ paths:
                 oneOf:
                   - $ref: '#/components/schemas/CreateOrPublishStatusSuccess'
                   - $ref: '#/components/schemas/ErrorInvalidCSRF'
-  /status/delete:
+  /shared_api/status/delete:
     post:
       tags:
         - Statuses
@@ -445,6 +482,20 @@ components:
       in: query
       name: limit
       description: The number of groups to return.
+      required: true
+      schema:
+        type: number
+    moduleId:
+      in: query
+      name: moduleid
+      description: DeviantArt user profile module ID.
+      required: true
+      schema:
+        type: number
+    offset:
+      in: query
+      name: offset
+      description: Offset for paginated API call.
       required: true
       schema:
         type: number
@@ -1074,6 +1125,29 @@ components:
         displayNameEn:
           type: string
           example: Visual Art
+    ErrorInvalidCSRF:
+      type: object
+      required:
+        - error
+        - errorDescription
+        - errorDetails
+        - status
+      properties:
+        error:
+          type: string
+          example: invalid_request
+        errorDescription:
+          type: string
+          example: Invalid or expired form submission
+        errorDetails:
+          type: object
+          properties:
+            csrf:
+              type: string
+              example: invalid
+        status:
+          type: string
+          example: error
     Gruser:
       type: object
       required:
@@ -1104,9 +1178,810 @@ components:
         isWatching:
           type: boolean
           example: false
+        isSubscribed:
+          type: boolean
+          example: false
         isNewDeviant:
           type: boolean
           example: true
+    ProfileInitAboutResponse:
+      type: object
+      properties:
+        pageData:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 3955035932
+            name:
+              type: string
+              example: papi_about
+            layout:
+              type: array
+              items:
+                type: string
+              example:
+                - home
+                - gallery
+                - favourites
+            gruserId:
+              type: integer
+              example: 67165567
+            isOwner:
+              type: boolean
+              example: false
+            gruserTypeid:
+              type: integer
+              example: 4
+            gruser:
+              $ref: '#/components/schemas/Gruser'
+            gruserTagline:
+              type: string
+              example: 'Hello, I''m ExampleUsername!'
+            gruserUrl:
+              type: string
+              example: 'https://www.deviantart.com/ExampleUsername'
+            isWatcher:
+              type: boolean
+              example: false
+            isWatching:
+              type: boolean
+              example: false
+            privileges:
+              type: object
+              properties:
+                addModule:
+                  type: boolean
+                  example: false
+                moveModule:
+                  type: boolean
+                  example: false
+            stats:
+              $ref: '#/components/schemas/ProfileUserStats'
+        sectionData:
+          type: object
+          properties:
+            layout:
+              type: object
+              properties:
+                version:
+                  type: integer
+                  example: 1
+                zones:
+                  type: object
+                  properties:
+                    topRight:
+                      $ref: '#/components/schemas/SectionLayout'
+                    midRight:
+                      $ref: '#/components/schemas/SectionLayout'
+                    bottomRight:
+                      $ref: '#/components/schemas/SectionLayout'
+                    topSecret:
+                      $ref: '#/components/schemas/SectionLayout'
+            modules:
+              type: array
+              items:
+                $ref: '#/components/schemas/ProfileModule'
+        session:
+          type: object
+          properties:
+            user:
+              type: object
+              properties:
+                loggedin:
+                  type: boolean
+                  example: true
+                userId:
+                  type: integer
+                  example: 18069984
+                useridUuid:
+                  type: string
+                  format: uuid
+                  example: feb984e4-30ea-4828-8313-1665e7767ff7
+                sessionId:
+                  type: string
+                  example: 2a604ce59515908cc43aa5136750ea37
+                biClientId:
+                  type: string
+                  format: uuid
+                  example: ba4895d2-5aa8-41f2-a7ba-65e4e95f2d8c
+                biClientIdSigned:
+                  type: string
+                  example: H5jMyTVZszcUfTJTCV2RtSu99yc9Z46tuNXG.H5jMyTVZszcUfTJTCV2RtSu99yc9Z46tuNXG
+                username:
+                  type: string
+                  example: ExampleUsername
+                usericon:
+                  type: string
+                  example: 'https://a.deviantart.net/avatars/p/e/exampleusername.gif?5'
+                type:
+                  type: string
+                  example: regular
+                email:
+                  type: string
+                  example: example.username@gmail.com
+                matureContent:
+                  type: boolean
+                  example: true
+                verified:
+                  type: boolean
+                  example: true
+                newsletter:
+                  type: boolean
+                  example: false
+                utId:
+                  type: string
+                  example: 6CE99596-5549-4270-AE30-473E5FE881A4
+                sex:
+                  type: string
+                  example: f
+                dob:
+                  type: string
+                  example: '1970-01-23'
+                dobPublic:
+                  type: string
+                  example: '1970-01-23'
+                joindate:
+                  type: string
+                  format: date-time
+                  example: '2011-06-23T19:00:23-0700'
+                country:
+                  type: string
+                  example: United States
+                timezone:
+                  type: string
+                  example: America/Phoenix
+                authMode:
+                  type: string
+                  example: DA
+                hasWixPortfolio:
+                  type: boolean
+                  example: false
+                theme:
+                  type: string
+                  example: dark
+                commentsOrder:
+                  type: string
+                  example: newest
+                hasCoreMembership:
+                  type: boolean
+                  example: false
+                eclipseFeedbackUrl:
+                  type: string
+                  example: 'https://www.eclipsefeedback.com?username=ExampleUsername&t=1234567890&token=H5jMyTVZszcUfTJTCV2RtSu99yc9Z46tuNXG",'
+                eclipseSwitcher:
+                  type: boolean
+                  example: false
+                hasJoinedWithEclipse:
+                  type: boolean
+                  example: false
+                deviationViewMode:
+                  type: string
+                  example: theater
+                pagingMode:
+                  type: string
+                  example: scroll
+                pageSize:
+                  example: 24
+                privacy:
+                  type: object
+                  properties:
+                    cookies:
+                      type: object
+                      properties:
+                        accepted:
+                          type: boolean
+                          example: false
+                        required:
+                          type: boolean
+                          example: false
+                        types:
+                          type: object
+                          properties:
+                            functional:
+                              type: boolean
+                              example: false
+                            analytics:
+                              type: boolean
+                              example: false
+                            marketing:
+                              type: boolean
+                              example: false
+                firstTimeFlags:
+                  type: object
+                  properties:
+                    isProfileHeroAidNotClosed:
+                      type: boolean
+                      example: true
+                    isProfileEditAidNotClosed:
+                      type: boolean
+                      example: true
+                    isPortfolioPopupNotClosed:
+                      type: boolean
+                      example: true
+                    isNetworkbarGroupWatchNotUsed:
+                      type: boolean
+                      example: true
+                    isFallbackEditorNotUsed:
+                      type: boolean
+                      example: true
+                    isDollarInputMessageNotShown:
+                      type: boolean
+                      example: true
+                    isArtShopBuyButtonMessageNotShown:
+                      type: boolean
+                      example: true
+                    isNewDywNotSeen:
+                      type: boolean
+                      example: true
+            counts:
+              type: object
+              properties:
+                feedback:
+                  type: integer
+                  example: 0
+                watch:
+                  type: integer
+                  example: 10000
+                notes:
+                  type: integer
+                  example: 0
+                points:
+                  type: integer
+                  example: 40
+                fragments:
+                  type: integer
+                  example: 600
+                cart:
+                  type: integer
+                  example: 0
+            csrfToken:
+              type: string
+              example: AbCdEfGhIjKlMnOp.QrStUv.WxYzAbCdEfGhIjKlMnOpAbCd_EfGhIjKlMnOpQrStUv
+            requestId:
+              type: string
+              example: NX3bQ4RgUuvMn245V2vmjaVdcWJZtdgus9bGHTW
+            features:
+              type: array
+              items:
+                type: string
+              example:
+                - birthday_loader
+                - updated_core_picker
+            geo:
+              type: object
+              properties:
+                countryCode:
+                  type: string
+                  example: us
+            trackers:
+              type: object
+              properties:
+                ganalytics:
+                  type: array
+                  items:
+                    type: string
+                  example:
+                    - 'ga("set","dimension2","12_plus_months");'
+            seo:
+              type: object
+              properties:
+                canonical:
+                  type: string
+                  example: 'https://www.deviantart.com/ExampleUsername/about'
+                title:
+                  type: string
+                  example: About ExampleUsername | DeviantArt
+                description:
+                  type: string
+                  example: ''
+                socialThumbSrc:
+                  type: string
+                  example: 'https://images-wixmp-ed.aksdfla.wixmp.com/f/asdjfalkdf'
+            device:
+              type: object
+              properties:
+                isMobile:
+                  type: boolean
+                  example: true
+                isMobileDevice:
+                  type: boolean
+                  example: true
+                isTablet:
+                  type: boolean
+                  example: true
+                supportsWebp:
+                  type: boolean
+                  example: true
+                supportsLazy:
+                  type: boolean
+                  example: true
+            hub:
+              type: object
+              properties:
+                user:
+                  type: string
+                  example: fee5akls28c29e
+                ts:
+                  type: string
+                  example: '1234567890'
+                auth:
+                  type: string
+                  example: 45aa9f2a00018eb0fee528c29ea80f292
+                subs:
+                  type: array
+                  items:
+                    type: string
+                  example:
+                    - mcfeedbacknew#fee5akls28c29e
+                    - eclipsenotifications#fee5akls28c29e
+                endpoint:
+                  type: string
+                  example: 'https://hub.deviantart.net'
+            chat:
+              type: object
+              properties:
+                online:
+                  type: boolean
+                  example: true
+                muted:
+                  type: boolean
+                  example: true
+                contactPermissions:
+                  type: string
+                  example: anyone
+                muteSound:
+                  type: boolean
+                  example: true
+    ProfileModule:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1234567890
+        name:
+          type: string
+          example: watchers
+        position:
+          type: integer
+          example: 2
+        zoneId:
+          type: integer
+          example: 6
+        zonename:
+          type: string
+          example: bottom_right
+        version:
+          type: integer
+          example: 0
+        privileges:
+          type: object
+          properties:
+            edit:
+              type: boolean
+              example: false
+            delete:
+              type: boolean
+              example: false
+        moduleData:
+          oneOf:
+            - $ref: '#/components/schemas/ProfileModuleDataWatching'
+            - $ref: '#/components/schemas/ProfileModuleDataWatchers'
+            - $ref: '#/components/schemas/ProfileModuleDataGroupListAdmins'
+            - $ref: '#/components/schemas/ProfileModuleDataGroupListMembers'
+            - $ref: '#/components/schemas/ProfileModuleDataBadgesActivity'
+            - $ref: '#/components/schemas/ProfileModuleDataMyComments'
+            - $ref: '#/components/schemas/ProfileModuleDataUserStats'
+            - $ref: '#/components/schemas/ProfileModuleDataAbout'
+            - $ref: '#/components/schemas/ProfileModuleDataCoverDeviation'
+    ProfileModuleDataAbout:
+      type: object
+      properties:
+        dataKey:
+          type: string
+          example: about
+        about:
+          type: object
+          required:
+            - username
+            - country
+            - countryId
+            - countrycode
+            - age
+            - dobYear
+            - dobMonth
+            - dobDay
+            - deviantFor
+            - isArtist
+            - level
+            - speciality
+            - website
+            - websiteLabel
+            - tagline
+            - twitterUsername
+            - gender
+            - isOpenForCommissions
+            - hasActiveCommissions
+            - showBadges
+            - interests
+            - badges
+            - socialLinks
+            - mutualWatchedUsers
+            - mutualWatchedUsersCount
+            - textContent
+            - isTextEditable
+            - legacyTextEditUrl
+          properties:
+            username:
+              type: string
+              example: ExampleUsername
+            country:
+              type: string
+              example: United States
+            countryId:
+              type: integer
+              example: 1
+            countrycode:
+              type: string
+              example: us
+            age:
+              type: integer
+              nullable: true
+              example: 20
+            dobYear:
+              type: integer
+              nullable: true
+              example: 2000
+            dobMonth:
+              type: integer
+              nullable: true
+              example: 6
+            dobDay:
+              type: integer
+              nullable: true
+              example: 1
+            deviantFor:
+              type: integer
+              example: 12345678
+            isArtist:
+              type: boolean
+              example: true
+            level:
+              type: integer
+              example: 2
+            speciality:
+              type: integer
+              example: 3
+            website:
+              type: string
+              example: examplewebsite.com
+            websiteLabel:
+              type: string
+              example: My Website
+            tagline:
+              type: string
+              example: 'Hello, I''m ExampleUsername!'
+            twitterUsername:
+              type: string
+              nullable: true
+              example: exampleusername
+            gender:
+              type: string
+              nullable: true
+              enum:
+                - male
+                - female
+                - other
+              example: other
+            isOpenForCommissions:
+              type: boolean
+              example: false
+            hasActiveCommissions:
+              type: boolean
+              example: false
+            showBadges:
+              type: boolean
+              example: false
+            devidDeviation:
+              $ref: '#/components/schemas/Deviation'
+            interests:
+              type: array
+              items:
+                type: object
+                nullable: true
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  label:
+                    type: string
+                    example: Favorite games
+                  value:
+                    type: string
+                    example: 'Azur Lane, Arknights, Fire emblem'
+            badges:
+              type: array
+              items:
+                $ref: '#/components/schemas/DeviationAwardedBadge'
+            socialLinks:
+              type: array
+              items:
+                type: object
+                nullable: true
+                properties:
+                  id:
+                    type: integer
+                    example: 9
+                  value:
+                    type: string
+                    example: 'https://www.patreon.com/ExampleUsername?alert=2'
+            mutualWatchedUsers:
+              type: array
+              items:
+                $ref: '#/components/schemas/Gruser'
+            mutualWatchedUsersCount:
+              type: integer
+              example: 5
+            textContent:
+              $ref: '#/components/schemas/TextContent'
+            isTextEditable:
+              type: boolean
+              example: false
+            legacyTextEditUrl:
+              type: string
+              nullable: true
+    ProfileModuleDataBadgesActivity:
+      type: object
+      properties:
+        dataKey:
+          type: string
+          example: badges_activity
+        badgesActivity:
+          type: object
+          required:
+            - totalSent
+            - totalReceived
+            - hasMore
+            - nextOffset
+            - results
+          properties:
+            totalSent:
+              type: integer
+              example: 0
+            totalReceived:
+              type: integer
+              example: 56
+            hasMore:
+              type: boolean
+              example: true
+            nextOffset:
+              type: integer
+              example: 5
+            results:
+              type: array
+              items:
+                type: object
+                properties:
+                  giver:
+                    $ref: '#/components/schemas/Gruser'
+                  receiver:
+                    $ref: '#/components/schemas/Gruser'
+                  badge:
+                    $ref: '#/components/schemas/DeviationAwardedBadge'
+                  timestamp:
+                    type: string
+                    format: date-time
+                    example: '2021-05-18T12:23:01-0700'
+    ProfileModuleDataCoverDeviation:
+      type: object
+      properties:
+        dataKey:
+          type: string
+          example: cover_deviation
+        coverDeviation:
+          type: object
+          properties:
+            coverDeviationid:
+              type: integer
+              example: 1234567890
+            coverDeviation:
+              $ref: '#/components/schemas/Deviation'
+            coverDeviationidOffsetY:
+              type: integer
+              example: 100
+            imageWidth:
+              type: integer
+              example: 100
+            imageHeight:
+              type: integer
+              example: 100
+            cropX:
+              type: integer
+              example: 100
+            cropY:
+              type: integer
+              example: 100
+            cropWidth:
+              type: integer
+              example: 100
+            cropHeight:
+              type: integer
+              example: 100
+    ProfileModuleDataGroupListAdmins:
+      type: object
+      properties:
+        dataKey:
+          type: string
+          example: group_list_admins
+        groupListAdmins:
+          type: object
+          required:
+            - hasMore
+            - nextOffset
+            - results
+          properties:
+            hasMore:
+              type: boolean
+              example: false
+            nextOffset:
+              type: integer
+              example: 24
+            total:
+              type: integer
+              example: 0
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/Gruser'
+    ProfileModuleDataGroupListMembers:
+      type: object
+      properties:
+        dataKey:
+          type: string
+          example: group_list_members
+        groupListMembers:
+          type: object
+          required:
+            - hasMore
+            - nextOffset
+            - results
+          properties:
+            hasMore:
+              type: boolean
+              example: false
+            nextOffset:
+              type: integer
+              example: 24
+            total:
+              type: integer
+              example: 0
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/Gruser'
+    ProfileModuleDataMyComments:
+      type: object
+      properties:
+        dataKey:
+          type: string
+          example: my_comments
+        myComments:
+          type: object
+          required:
+            - hasMore
+            - nextOffset
+            - results
+          properties:
+            hasMore:
+              type: boolean
+              example: false
+            nextOffset:
+              type: integer
+              example: 24
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/UserComment'
+    ProfileModuleDataUserStats:
+      type: object
+      properties:
+        dataKey:
+          type: string
+          example: userstats
+        userstats:
+          $ref: '#/components/schemas/ProfileUserStats'
+    ProfileModuleDataWatchers:
+      type: object
+      properties:
+        dataKey:
+          type: string
+          example: watchers
+        watchers:
+          type: object
+          required:
+            - hasMore
+            - nextOffset
+            - results
+          properties:
+            hasMore:
+              type: boolean
+              example: false
+            nextOffset:
+              type: integer
+              example: 24
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/Gruser'
+    ProfileModuleDataWatching:
+      type: object
+      properties:
+        dataKey:
+          type: string
+          example: watching
+        watching:
+          type: object
+          required:
+            - hasMore
+            - nextOffset
+            - results
+          properties:
+            hasMore:
+              type: boolean
+              example: false
+            nextOffset:
+              type: integer
+              example: 24
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/Gruser'
+    ProfileUserStats:
+      type: object
+      properties:
+        deviations:
+          type: integer
+          example: 100
+        watchers:
+          type: integer
+          example: 650
+        watching:
+          type: integer
+          example: 40
+        pageviews:
+          type: integer
+          example: 5000
+        commentsReceivedProfile:
+          type: integer
+          example: 10
+        commentsMade:
+          type: integer
+          example: 250
+        favourites:
+          type: integer
+          example: 90
+        friends:
+          type: integer
+          example: 30
+    SectionLayout:
+      type: object
+      properties:
+        installableModuleTypes:
+          type: array
+          items:
+            type: object
+            properties:
+              moduleName:
+                type: string
+                example: userstats
+              limit:
+                type: integer
+                example: 1
+        installedModulesIds:
+          type: array
+          items:
+            type: integer
+            example: 3955035958
     Stats:
       type: object
       required:
@@ -1151,26 +2026,51 @@ components:
             features:
               type: string
               example: '[{"type":"FIRST_IMAGE_FEATURE","data":[]},{"type":"IS_EMPTY_FEATURE","data":{"isEmpty":false}},{"type":"MEDIA_COUNT_FEATURE","data":{"emoji":0,"emotes":1,"images":0,"mentions":0,"video":0,"previews":0}},{"type":"WORD_COUNT_FEATURE","data":{"words":4,"chars":28}}]'
-    ErrorInvalidCSRF:
+    UserComment:
       type: object
       required:
-        - error
-        - errorDescription
-        - errorDetails
-        - status
+        - comment
+        - subject
       properties:
-        error:
-          type: string
-          example: invalid_request
-        errorDescription:
-          type: string
-          example: Invalid or expired form submission
-        errorDetails:
-          type: object
-          properties:
-            csrf:
-              type: string
-              example: invalid
-        status:
-          type: string
-          example: error
+        comment:
+          $ref: '#/components/schemas/Comment'
+        subject:
+          oneOf:
+            - $ref: '#/components/schemas/UserCommentOnDeviation'
+            - $ref: '#/components/schemas/UserCommentOnProfile'
+            - type: array
+              items:
+                type: string
+              example: []
+    UserCommentOnDeviation:
+      type: object
+      required:
+        - deviation
+      properties:
+        deviation:
+          $ref: '#/components/schemas/Deviation'
+    UserCommentOnProfile:
+      type: object
+      required:
+        - profile
+      properties:
+        profile:
+          $ref: '#/components/schemas/Gruser'
+    UsersCommentsList:
+      type: object
+      required:
+        - hasMore
+        - nextOffset
+        - results
+      properties:
+        hasMore:
+          type: boolean
+          example: false
+        nextOffset:
+          type: integer
+          nullable: true
+          example: 24
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserComment'

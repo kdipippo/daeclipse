@@ -54,6 +54,12 @@
                         <li>
                                 <a class="function" href="#Eclipse.post_status">post_status</a>
                         </li>
+                        <li>
+                                <a class="function" href="#Eclipse.get_user_comments">get_user_comments</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Eclipse.get_module_id">get_module_id</a>
+                        </li>
                 </ul>
 
             </li>
@@ -97,6 +103,7 @@
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="sd">&quot;&quot;&quot;Class to handle making calls to the DeviantArt Eclipse API.&quot;&quot;&quot;</span>
 
+<span class="kn">import</span> <span class="nn">http</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">re</span>
 
@@ -108,6 +115,7 @@
 <span class="kn">from</span> <span class="nn">daeclipse.models.deviationextendedresult</span> <span class="kn">import</span> <span class="n">DeviationExtendedResult</span>
 <span class="kn">from</span> <span class="nn">daeclipse.models.folder</span> <span class="kn">import</span> <span class="n">Folder</span>
 <span class="kn">from</span> <span class="nn">daeclipse.models.groupslist</span> <span class="kn">import</span> <span class="n">GroupsList</span>
+<span class="kn">from</span> <span class="nn">daeclipse.models.userscommentslist</span> <span class="kn">import</span> <span class="n">UsersCommentsList</span>
 
 
 <span class="k">class</span> <span class="nc">Eclipse</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -138,7 +146,7 @@
 
         <span class="n">queries</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span>
-            <span class="s1">&#39;moduleid&#39;</span><span class="p">:</span> <span class="s1">&#39;1761969747&#39;</span><span class="p">,</span>  <span class="c1"># &quot;Get Members&quot; block ID.</span>
+            <span class="s1">&#39;moduleid&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_module_id</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="s1">&#39;group_list_members&#39;</span><span class="p">),</span>
             <span class="s1">&#39;offset&#39;</span><span class="p">:</span> <span class="n">offset</span><span class="p">,</span>
             <span class="s1">&#39;limit&#39;</span><span class="p">:</span> <span class="n">limit</span><span class="p">,</span>
         <span class="p">}</span>
@@ -291,6 +299,74 @@
         <span class="p">)</span>
         <span class="n">rjson</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
         <span class="k">return</span> <span class="s1">&#39;✅ Status created: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rjson</span><span class="p">[</span><span class="s1">&#39;deviation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">get_user_comments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">49</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a paginated call for 5 of the user&#39;s recent comments.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            username (str): DeviantArt username of user.</span>
+<span class="sd">            offset (int): Offset to start with API call.</span>
+<span class="sd">            limit (int, optional): Limit of results to return. Defaults to 49.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            UsersCommentsList: UsersCommentsList instance.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If `limit` is greater than 49.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Note: this endpoint&#39;s behavior seems to be that it&#39;ll only return the</span>
+        <span class="c1"># 49 most recent comments associated with a particular user account.</span>
+        <span class="k">if</span> <span class="n">limit</span> <span class="o">&gt;</span> <span class="mi">49</span><span class="p">:</span>  <span class="c1"># noqa: WPS432</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Limit must be equal to or below 49.&#39;</span><span class="p">)</span>
+
+        <span class="n">queries</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span>
+            <span class="s1">&#39;moduleid&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_module_id</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="s1">&#39;my_comments&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;offset&#39;</span><span class="p">:</span> <span class="n">offset</span><span class="p">,</span>
+            <span class="s1">&#39;limit&#39;</span><span class="p">:</span> <span class="n">limit</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span><span class="p">,</span>
+                <span class="s1">&#39;/da-user-profile/api/module/my_comments&#39;</span><span class="p">,</span>
+                <span class="n">query_string</span><span class="p">(</span><span class="n">queries</span><span class="p">),</span>
+            <span class="p">]),</span>
+            <span class="n">cookies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cookies</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">rjson</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">UsersCommentsList</span><span class="p">(</span><span class="n">rjson</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_module_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">module_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return module ID for given module name associated with user.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            username (str): DeviantArt username of user.</span>
+<span class="sd">            module_name (str): User profile module name.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            int: Module ID for the module_name.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            RuntimeError: If module with module_name not found.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">queries</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span><span class="p">,</span>
+                <span class="s1">&#39;/da-user-profile/api/init/about&#39;</span><span class="p">,</span>
+                <span class="n">query_string</span><span class="p">(</span><span class="n">queries</span><span class="p">),</span>
+            <span class="p">]),</span>
+            <span class="n">cookies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cookies</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">rjson</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+        <span class="c1"># For now, for simplicity, the result of this API call will not be</span>
+        <span class="c1"># loaded into a model due to how much data gets returned.</span>
+        <span class="k">for</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">rjson</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sectionData&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;modules&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">module_name</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;module &#39;</span><span class="si">{0}</span><span class="s2">&#39; not found.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">module_name</span><span class="p">))</span>
 
 
 <span class="k">def</span> <span class="nf">get_deviation_id</span><span class="p">(</span><span class="n">deviation_url</span><span class="p">):</span>
@@ -381,6 +457,8 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        dict: JSON response as dictionary.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">INTERNAL_SERVER_ERROR</span><span class="p">:</span>
+        <span class="n">raise_error</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">reason</span><span class="p">)</span>
     <span class="n">response_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
     <span class="k">if</span> <span class="s1">&#39;error&#39;</span> <span class="ow">in</span> <span class="n">response_dict</span><span class="p">:</span>
         <span class="n">raise_error</span><span class="p">(</span><span class="n">response_dict</span><span class="p">)</span>
@@ -445,7 +523,7 @@
 
         <span class="n">queries</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span>
-            <span class="s1">&#39;moduleid&#39;</span><span class="p">:</span> <span class="s1">&#39;1761969747&#39;</span><span class="p">,</span>  <span class="c1"># &quot;Get Members&quot; block ID.</span>
+            <span class="s1">&#39;moduleid&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_module_id</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="s1">&#39;group_list_members&#39;</span><span class="p">),</span>
             <span class="s1">&#39;offset&#39;</span><span class="p">:</span> <span class="n">offset</span><span class="p">,</span>
             <span class="s1">&#39;limit&#39;</span><span class="p">:</span> <span class="n">limit</span><span class="p">,</span>
         <span class="p">}</span>
@@ -598,6 +676,74 @@
         <span class="p">)</span>
         <span class="n">rjson</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
         <span class="k">return</span> <span class="s1">&#39;✅ Status created: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rjson</span><span class="p">[</span><span class="s1">&#39;deviation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">get_user_comments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">49</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a paginated call for 5 of the user&#39;s recent comments.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            username (str): DeviantArt username of user.</span>
+<span class="sd">            offset (int): Offset to start with API call.</span>
+<span class="sd">            limit (int, optional): Limit of results to return. Defaults to 49.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            UsersCommentsList: UsersCommentsList instance.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If `limit` is greater than 49.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Note: this endpoint&#39;s behavior seems to be that it&#39;ll only return the</span>
+        <span class="c1"># 49 most recent comments associated with a particular user account.</span>
+        <span class="k">if</span> <span class="n">limit</span> <span class="o">&gt;</span> <span class="mi">49</span><span class="p">:</span>  <span class="c1"># noqa: WPS432</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Limit must be equal to or below 49.&#39;</span><span class="p">)</span>
+
+        <span class="n">queries</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span>
+            <span class="s1">&#39;moduleid&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_module_id</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="s1">&#39;my_comments&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;offset&#39;</span><span class="p">:</span> <span class="n">offset</span><span class="p">,</span>
+            <span class="s1">&#39;limit&#39;</span><span class="p">:</span> <span class="n">limit</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span><span class="p">,</span>
+                <span class="s1">&#39;/da-user-profile/api/module/my_comments&#39;</span><span class="p">,</span>
+                <span class="n">query_string</span><span class="p">(</span><span class="n">queries</span><span class="p">),</span>
+            <span class="p">]),</span>
+            <span class="n">cookies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cookies</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">rjson</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">UsersCommentsList</span><span class="p">(</span><span class="n">rjson</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_module_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">module_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return module ID for given module name associated with user.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            username (str): DeviantArt username of user.</span>
+<span class="sd">            module_name (str): User profile module name.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            int: Module ID for the module_name.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            RuntimeError: If module with module_name not found.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">queries</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span><span class="p">,</span>
+                <span class="s1">&#39;/da-user-profile/api/init/about&#39;</span><span class="p">,</span>
+                <span class="n">query_string</span><span class="p">(</span><span class="n">queries</span><span class="p">),</span>
+            <span class="p">]),</span>
+            <span class="n">cookies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cookies</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">rjson</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+        <span class="c1"># For now, for simplicity, the result of this API call will not be</span>
+        <span class="c1"># loaded into a model due to how much data gets returned.</span>
+        <span class="k">for</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">rjson</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sectionData&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;modules&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">module_name</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;module &#39;</span><span class="si">{0}</span><span class="s2">&#39; not found.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">module_name</span><span class="p">))</span>
 </pre></div>
 
         </details>
@@ -665,7 +811,7 @@
 
         <span class="n">queries</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span>
-            <span class="s1">&#39;moduleid&#39;</span><span class="p">:</span> <span class="s1">&#39;1761969747&#39;</span><span class="p">,</span>  <span class="c1"># &quot;Get Members&quot; block ID.</span>
+            <span class="s1">&#39;moduleid&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_module_id</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="s1">&#39;group_list_members&#39;</span><span class="p">),</span>
             <span class="s1">&#39;offset&#39;</span><span class="p">:</span> <span class="n">offset</span><span class="p">,</span>
             <span class="s1">&#39;limit&#39;</span><span class="p">:</span> <span class="n">limit</span><span class="p">,</span>
         <span class="p">}</span>
@@ -938,6 +1084,131 @@
 
 
                             </div>
+                            <div id="Eclipse.get_user_comments" class="classattr">
+                                        <div class="attr function"><a class="headerlink" href="#Eclipse.get_user_comments">#&nbsp;&nbsp</a>
+
+        
+            <span class="def">def</span>
+            <span class="name">get_user_comments</span><span class="signature">(self, username, offset, limit=49)</span>:
+    </div>
+
+                <details>
+            <summary>View Source</summary>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">get_user_comments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">49</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a paginated call for 5 of the user&#39;s recent comments.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            username (str): DeviantArt username of user.</span>
+<span class="sd">            offset (int): Offset to start with API call.</span>
+<span class="sd">            limit (int, optional): Limit of results to return. Defaults to 49.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            UsersCommentsList: UsersCommentsList instance.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If `limit` is greater than 49.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Note: this endpoint&#39;s behavior seems to be that it&#39;ll only return the</span>
+        <span class="c1"># 49 most recent comments associated with a particular user account.</span>
+        <span class="k">if</span> <span class="n">limit</span> <span class="o">&gt;</span> <span class="mi">49</span><span class="p">:</span>  <span class="c1"># noqa: WPS432</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Limit must be equal to or below 49.&#39;</span><span class="p">)</span>
+
+        <span class="n">queries</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span>
+            <span class="s1">&#39;moduleid&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_module_id</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="s1">&#39;my_comments&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;offset&#39;</span><span class="p">:</span> <span class="n">offset</span><span class="p">,</span>
+            <span class="s1">&#39;limit&#39;</span><span class="p">:</span> <span class="n">limit</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span><span class="p">,</span>
+                <span class="s1">&#39;/da-user-profile/api/module/my_comments&#39;</span><span class="p">,</span>
+                <span class="n">query_string</span><span class="p">(</span><span class="n">queries</span><span class="p">),</span>
+            <span class="p">]),</span>
+            <span class="n">cookies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cookies</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">rjson</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">UsersCommentsList</span><span class="p">(</span><span class="n">rjson</span><span class="p">)</span>
+</pre></div>
+
+        </details>
+
+            <div class="docstring"><p>Return a paginated call for 5 of the user's recent comments.</p>
+
+<p>Args:
+    username (str): DeviantArt username of user.
+    offset (int): Offset to start with API call.
+    limit (int, optional): Limit of results to return. Defaults to 49.</p>
+
+<p>Returns:
+    UsersCommentsList: UsersCommentsList instance.</p>
+
+<p>Raises:
+    ValueError: If <code>limit</code> is greater than 49.</p>
+</div>
+
+
+                            </div>
+                            <div id="Eclipse.get_module_id" class="classattr">
+                                        <div class="attr function"><a class="headerlink" href="#Eclipse.get_module_id">#&nbsp;&nbsp</a>
+
+        
+            <span class="def">def</span>
+            <span class="name">get_module_id</span><span class="signature">(self, username, module_name)</span>:
+    </div>
+
+                <details>
+            <summary>View Source</summary>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">get_module_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">module_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return module ID for given module name associated with user.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            username (str): DeviantArt username of user.</span>
+<span class="sd">            module_name (str): User profile module name.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            int: Module ID for the module_name.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            RuntimeError: If module with module_name not found.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">queries</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">base_uri</span><span class="p">,</span>
+                <span class="s1">&#39;/da-user-profile/api/init/about&#39;</span><span class="p">,</span>
+                <span class="n">query_string</span><span class="p">(</span><span class="n">queries</span><span class="p">),</span>
+            <span class="p">]),</span>
+            <span class="n">cookies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cookies</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">rjson</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+        <span class="c1"># For now, for simplicity, the result of this API call will not be</span>
+        <span class="c1"># loaded into a model due to how much data gets returned.</span>
+        <span class="k">for</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">rjson</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sectionData&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;modules&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">module_name</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;module &#39;</span><span class="si">{0}</span><span class="s2">&#39; not found.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">module_name</span><span class="p">))</span>
+</pre></div>
+
+        </details>
+
+            <div class="docstring"><p>Return module ID for given module name associated with user.</p>
+
+<p>Args:
+    username (str): DeviantArt username of user.
+    module_name (str): User profile module name.</p>
+
+<p>Returns:
+    int: Module ID for the module_name.</p>
+
+<p>Raises:
+    RuntimeError: If module with module_name not found.</p>
+</div>
+
+
+                            </div>
                 </section>
                 <section id="get_deviation_id">
                             <div class="attr function"><a class="headerlink" href="#get_deviation_id">#&nbsp;&nbsp</a>
@@ -1136,6 +1407,8 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        dict: JSON response as dictionary.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">INTERNAL_SERVER_ERROR</span><span class="p">:</span>
+        <span class="n">raise_error</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">reason</span><span class="p">)</span>
     <span class="n">response_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
     <span class="k">if</span> <span class="s1">&#39;error&#39;</span> <span class="ow">in</span> <span class="n">response_dict</span><span class="p">:</span>
         <span class="n">raise_error</span><span class="p">(</span><span class="n">response_dict</span><span class="p">)</span>

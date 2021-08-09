@@ -110,8 +110,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">group_list_url</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;groupListUrl&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">original_file</span> <span class="o">=</span> <span class="n">DeviationFileSpecs</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;originalFile&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel</span><span class="p">(</span><span class="n">DeviationTag</span><span class="p">,</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">subject_tags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel_list</span><span class="p">(</span><span class="n">DeviationTag</span><span class="p">,</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">subject_tags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel_list</span><span class="p">(</span>
             <span class="n">DeviationTag</span><span class="p">,</span>
             <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;subjectTags&#39;</span><span class="p">),</span>
         <span class="p">)</span>
@@ -123,7 +123,7 @@
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="n">DeviationExtendedStats</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;stats&#39;</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">report_url</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;reportUrl&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">awarded_badges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">awarded_badges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel_list</span><span class="p">(</span>
             <span class="n">DeviationAwardedBadge</span><span class="p">,</span>
             <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;awardedBadges&#39;</span><span class="p">),</span>
         <span class="p">)</span>
@@ -180,8 +180,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">group_list_url</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;groupListUrl&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">original_file</span> <span class="o">=</span> <span class="n">DeviationFileSpecs</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;originalFile&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel</span><span class="p">(</span><span class="n">DeviationTag</span><span class="p">,</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">subject_tags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel_list</span><span class="p">(</span><span class="n">DeviationTag</span><span class="p">,</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">subject_tags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel_list</span><span class="p">(</span>
             <span class="n">DeviationTag</span><span class="p">,</span>
             <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;subjectTags&#39;</span><span class="p">),</span>
         <span class="p">)</span>
@@ -193,7 +193,7 @@
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="n">DeviationExtendedStats</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;stats&#39;</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">report_url</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;reportUrl&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">awarded_badges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">awarded_badges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel_list</span><span class="p">(</span>
             <span class="n">DeviationAwardedBadge</span><span class="p">,</span>
             <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;awardedBadges&#39;</span><span class="p">),</span>
         <span class="p">)</span>
@@ -269,8 +269,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">group_list_url</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;groupListUrl&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">original_file</span> <span class="o">=</span> <span class="n">DeviationFileSpecs</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;originalFile&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel</span><span class="p">(</span><span class="n">DeviationTag</span><span class="p">,</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">subject_tags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel_list</span><span class="p">(</span><span class="n">DeviationTag</span><span class="p">,</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">subject_tags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel_list</span><span class="p">(</span>
             <span class="n">DeviationTag</span><span class="p">,</span>
             <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;subjectTags&#39;</span><span class="p">),</span>
         <span class="p">)</span>
@@ -282,7 +282,7 @@
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="n">DeviationExtendedStats</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;stats&#39;</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">report_url</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;reportUrl&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">awarded_badges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">awarded_badges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel_list</span><span class="p">(</span>
             <span class="n">DeviationAwardedBadge</span><span class="p">,</span>
             <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;awardedBadges&#39;</span><span class="p">),</span>
         <span class="p">)</span>
@@ -302,7 +302,7 @@
                                 <h5>Inherited Members</h5>
                                 <dl>
                                     <div><dt><a href="model.html#Model">daeclipse.models.model.Model</a></dt>
-                                <dd id="DeviationExtendedContent.to_submodel" class="function"><a href="model.html#Model.to_submodel">to_submodel</a></dd>
+                                <dd id="DeviationExtendedContent.to_submodel_list" class="function"><a href="model.html#Model.to_submodel_list">to_submodel_list</a></dd>
 
             </div>
                                 </dl>

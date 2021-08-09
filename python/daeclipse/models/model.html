@@ -40,7 +40,7 @@
                                 <a class="function" href="#Model.from_dict">from_dict</a>
                         </li>
                         <li>
-                                <a class="function" href="#Model.to_submodel">to_submodel</a>
+                                <a class="function" href="#Model.to_submodel_list">to_submodel_list</a>
                         </li>
                 </ul>
 
@@ -89,7 +89,7 @@
         <span class="k">if</span> <span class="n">attrs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span>
 
-    <span class="k">def</span> <span class="nf">to_submodel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">submodel_class</span><span class="p">,</span> <span class="n">submodel_attrs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">to_submodel_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">submodel_class</span><span class="p">,</span> <span class="n">submodel_attrs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return list of dictionaries as a list of specified objects.</span>
 
 <span class="sd">        Args:</span>
@@ -138,7 +138,7 @@
         <span class="k">if</span> <span class="n">attrs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span>
 
-    <span class="k">def</span> <span class="nf">to_submodel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">submodel_class</span><span class="p">,</span> <span class="n">submodel_attrs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">to_submodel_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">submodel_class</span><span class="p">,</span> <span class="n">submodel_attrs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return list of dictionaries as a list of specified objects.</span>
 
 <span class="sd">        Args:</span>
@@ -217,17 +217,17 @@
 
 
                             </div>
-                            <div id="Model.to_submodel" class="classattr">
-                                        <div class="attr function"><a class="headerlink" href="#Model.to_submodel">#&nbsp;&nbsp</a>
+                            <div id="Model.to_submodel_list" class="classattr">
+                                        <div class="attr function"><a class="headerlink" href="#Model.to_submodel_list">#&nbsp;&nbsp</a>
 
         
             <span class="def">def</span>
-            <span class="name">to_submodel</span><span class="signature">(self, submodel_class, submodel_attrs)</span>:
+            <span class="name">to_submodel_list</span><span class="signature">(self, submodel_class, submodel_attrs)</span>:
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">to_submodel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">submodel_class</span><span class="p">,</span> <span class="n">submodel_attrs</span><span class="p">):</span>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">to_submodel_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">submodel_class</span><span class="p">,</span> <span class="n">submodel_attrs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return list of dictionaries as a list of specified objects.</span>
 
 <span class="sd">        Args:</span>

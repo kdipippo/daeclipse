@@ -105,7 +105,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">can_post_comment</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;canPostComment&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">commentable_typeid</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;commentableTypeid&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">commentable_itemid</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;commentableItemid&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">thread</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel</span><span class="p">(</span><span class="n">Comment</span><span class="p">,</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;thread&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thread</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel_list</span><span class="p">(</span><span class="n">Comment</span><span class="p">,</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;thread&#39;</span><span class="p">))</span>
 </pre></div>
 
         </details>
@@ -159,7 +159,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">can_post_comment</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;canPostComment&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">commentable_typeid</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;commentableTypeid&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">commentable_itemid</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;commentableItemid&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">thread</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel</span><span class="p">(</span><span class="n">Comment</span><span class="p">,</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;thread&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thread</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel_list</span><span class="p">(</span><span class="n">Comment</span><span class="p">,</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;thread&#39;</span><span class="p">))</span>
 </pre></div>
 
         </details>
@@ -232,7 +232,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">can_post_comment</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;canPostComment&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">commentable_typeid</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;commentableTypeid&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">commentable_itemid</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;commentableItemid&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">thread</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel</span><span class="p">(</span><span class="n">Comment</span><span class="p">,</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;thread&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thread</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_submodel_list</span><span class="p">(</span><span class="n">Comment</span><span class="p">,</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;thread&#39;</span><span class="p">))</span>
 </pre></div>
 
         </details>
@@ -249,7 +249,7 @@
                                 <h5>Inherited Members</h5>
                                 <dl>
                                     <div><dt><a href="model.html#Model">daeclipse.models.model.Model</a></dt>
-                                <dd id="CommentsList.to_submodel" class="function"><a href="model.html#Model.to_submodel">to_submodel</a></dd>
+                                <dd id="CommentsList.to_submodel_list" class="function"><a href="model.html#Model.to_submodel_list">to_submodel_list</a></dd>
 
             </div>
                                 </dl>
