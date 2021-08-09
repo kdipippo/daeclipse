@@ -75,16 +75,7 @@ If you have a feature request, run into a bug, or are unsure about anything, fee
 
 If you are interested in creating a Pull Request, please read the [guide on this repository's development process](docs/development.md).
 
-Commit titles on the `main` branch follow the [Emoji-Log](https://opensource.com/article/19/2/emoji-log-git-commit-messages) naming convention:
-
-| Emoji | Usage |
-| --- | --- |
-| 📦 | New feature |
-| 👌 | Improvement |
-| 🐛 | Bug fix |
-| 📖 | Documentation update |
-| 🚀 | Release-related commit |
-| ✅ | Test addition or update |
+Commit titles on the `main` branch follow the [emoji-commit-messages](https://github.com/cooperka/emoji-commit-messages) naming convention.
 
 ## Caveats / Disclaimer
 
