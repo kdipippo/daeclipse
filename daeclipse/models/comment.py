@@ -94,51 +94,58 @@ class Comment(Model):
         Returns:
             string: Text of comment.
         """
-        # {'type': 'writer', 'markup': 'Hidden by Owner', 'features': ''}
+        # Writer means text_content stored as string in markup.
         if self.text_content.html.get('type') == 'writer':
             return self.text_content.html.get('markup')
 
-        # {'type': 'draft', 'markup': '{"blocks":[{"key":"foo","text": ... }
+        # Draft means text_content stored as Draft.js dictionary in markup.
         draftjs = json.loads(self.text_content.html.get('markup'))
         return draftjs_to_html(draftjs)
 
 
 def draftjs_to_html(draftjs):
+    """Return HTML markdown of given Draft.js dictionary.
+
+    Args:
+        draftjs (dict): Draft.js dictionary.
+
+    Returns:
+        string: HTML-formatted string.
+    """
     exporter = HTML(
         {
-            "entity_decorators": {
-                "LINK": "link",
-                "IMAGE": "image",
-                "HORIZONTAL_RULE": "hr",
+            'entity_decorators': {
+                'LINK': 'link',
+                'IMAGE': 'image',
+                'HORIZONTAL_RULE': 'hr',
             },
-            "block_map": {
-                "unstyled": "p",
-                "header-three": "h3",
-                "header-four": "h4",
-                "ordered-list-item": {
-                    "element": "li",
-                    "wrapper": "ol",
+            'block_map': {
+                'unstyled': 'p',
+                'header-three': 'h3',
+                'header-four': 'h4',
+                'ordered-list-item': {
+                    'element': 'li',
+                    'wrapper': 'ol',
                 },
-                "unordered-list-item": {
-                    "element": "li",
-                    "wrapper": "ul",
-                    "wrapper_props": {
-                        "class": "bullet-list",
-                    }
-                }
+                'unordered-list-item': {
+                    'element': 'li',
+                    'wrapper': 'ul',
+                    'wrapper_props': {
+                        'class': 'bullet-list',
+                    },
+                },
             },
-            "style_map": {
-                "BOLD": "strong",
-                "ITALIC": {
-                    "element": "em",
-                    "props": {
-                        "class": "u-font-italic"
-                    }
-                }
-            }
-        }
+            'style_map': {
+                'BOLD': 'strong',
+                'ITALIC': {
+                    'element': 'em',
+                    'props': {
+                        'class': 'u-font-italic',
+                    },
+                },
+            },
+        },
     )
 
     html = exporter.render(draftjs)
-    html = html.replace("</p><p>", "\n").replace("<p>", "").replace("</p>", "")
-    return html
+    return html.replace('</p><p>', '\n').replace('<p>', '').replace('</p>', '')

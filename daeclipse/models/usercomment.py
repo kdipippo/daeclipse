@@ -62,6 +62,14 @@ class UserComment(Model):
             )
         return 'ID {0} Deleted'.format(self.comment.comment_id)
 
+    def get_posted_date(self):
+        """Return the ISO-8601-formatted date comment was posted.
+
+        Returns:
+            str: ISO-8601-formatted date.
+        """
+        return self.comment.posted
+
     def get_text(self):
         """Return text of comment.
 
