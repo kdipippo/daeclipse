@@ -2,7 +2,7 @@
 
 import cli_ui
 from itertools import combinations
-import typer
+import operator
 
 import daeclipse
 
@@ -18,7 +18,6 @@ def spammer(
     cli_ui.info_1(cli_ui.bold, 'REPORT LINK: https://contact.deviantartsupport.com/en?subOptionId=How-do-I-report-Spam?78094\n', cli_ui.reset)
     cli_ui.info(cli_ui.bold, "Report Spammer: {0}\n".format(username), cli_ui.reset)
 
-
     eclipse = daeclipse.Eclipse()
     comment_result = []
     has_more = True
@@ -33,8 +32,9 @@ def spammer(
         comments.append(comm.get_text())
         urls.append('- {0}'.format(comm.get_url()))
 
-    cli_ui.info(get_longest_substrings(comments))
+    cli_ui.info('{0} frequently posts "{1}"'.format(username, get_spam_string(comments)))
     cli_ui.info()
+    cli_ui.info('All recent comments: https://www.deviantart.com/{0}/about#my_comments\n'.format(username))
     cli_ui.info('\n'.join(urls))
 
 
@@ -121,3 +121,6 @@ def get_longest_substrings(full_strings):
             substrings[substring] = 2
     return substrings
 
+def get_spam_string(full_strings):
+    spam_strings = get_longest_substrings(full_strings)
+    return max(spam_strings.items(), key = operator.itemgetter(1))[0]
