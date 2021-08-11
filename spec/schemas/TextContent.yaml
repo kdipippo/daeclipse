@@ -11,6 +11,7 @@ properties:
     properties:
       'type':
         type: string
+        enum: ["writer", "draft"]
         example: draft
       markup:
         type: string

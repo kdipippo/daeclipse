@@ -25,7 +25,7 @@ class Gruser(Model):
         """Representation of Gruser.
 
         Returns:
-            string: Gruser representation.
+            str: Gruser representation.
         """
         return self.user_id
 

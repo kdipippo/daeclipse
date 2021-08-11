@@ -32,7 +32,7 @@ class Folder(Model):
         """Representation of Folder.
 
         Returns:
-            string: Folder representation.
+            str: Folder representation.
         """
         return self.folder_id
 

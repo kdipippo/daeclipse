@@ -66,7 +66,7 @@ class Eclipse(object):
             deviation_url (str): Deviation URL.
 
         Returns:
-            Folder[]: List of Folder objects.
+            list[Folder]: List of Folder objects.
         """
         headers = {'referer': deviation_url}
         response = requests.get(
@@ -89,7 +89,7 @@ class Eclipse(object):
             deviation_url (str): Deviation URL.
 
         Returns:
-            string[]: List of tags.
+            list[str]: List of tags.
         """
         queries = {
             'deviationid': get_deviation_id(deviation_url),
@@ -116,7 +116,7 @@ class Eclipse(object):
             deviation_url (str): Deviation URL.
 
         Returns:
-            string: Success message of result.
+            str: Success message of result.
         """
         group_add_url = ''.join([
             self.base_uri,
@@ -154,7 +154,7 @@ class Eclipse(object):
             html_content (str): Text content of message in HTML-format.
 
         Returns:
-            string: Success message of result.
+            str: Success message of result.
         """
         headers = {
             'accept': 'application/json, text/plain, */*',
@@ -197,12 +197,12 @@ class Eclipse(object):
         rjson = validate_response_succeeds(response)
         return '✅ Status created: {0}'.format(rjson['deviation'].get('url'))
 
-    def get_user_comments(self, username, offset, limit=49):
+    def get_user_comments(self, username, offset=0, limit=49):
         """Return a paginated call for 5 of the user's recent comments.
 
         Args:
             username (str): DeviantArt username of user.
-            offset (int): Offset to start with API call.
+            offset (int): Offset to start with API call. Defaults to 0.
             limit (int, optional): Limit of results to return. Defaults to 49.
 
         Returns:
@@ -273,7 +273,7 @@ def get_deviation_id(deviation_url):
         deviation_url (str): Deviation URL.
 
     Returns:
-        string: Deviation ID.
+        str: Deviation ID.
     """
     url_parts = deviation_url.split('-')
     return url_parts[-1]
@@ -289,7 +289,7 @@ def get_username_from_url(deviation_url):
         RuntimeError: If username is not present in URL string.
 
     Returns:
-        string: DeviantArt username.
+        str: DeviantArt username.
     """
     username = re.search('deviantart.com/(.+?)/art/', deviation_url)
     if username:
@@ -305,7 +305,7 @@ def get_csrf(deviation_url, cookies):
         cookies (http.cookiejar.CookieJar): .deviantart.com Cookie Jar.
 
     Returns:
-        string: CSRF validation token.
+        str: CSRF validation token.
 
     Raises:
         RuntimeError: Unable to retrieve CSRF token from provided URL.
@@ -336,7 +336,7 @@ def query_string(query_dict):
         query_dict (dict): Dictionary of query keys and values.
 
     Returns:
-        string: Query string, i.e. ?query1=value&query2=value.
+        str: Query string, i.e. ?query1=value&query2=value.
     """
     queries = [
         '{0}={1}'.format(key, query_dict[key]) for key in query_dict.keys()

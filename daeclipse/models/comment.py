@@ -1,5 +1,9 @@
 """Model to represent DeviantArt Eclipse Comments."""
 
+import json
+
+from draftjs_exporter.html import HTML
+
 from daeclipse.models.commentcontent import CommentContent
 from daeclipse.models.gruser import Gruser
 from daeclipse.models.model import Model
@@ -88,6 +92,60 @@ class Comment(Model):
         """Return text of comment.
 
         Returns:
-            string: Text of comment.
+            str: Text of comment.
         """
-        return self.text_content.excerpt
+        # Writer means text_content stored as string in markup.
+        if self.text_content.html.get('type') == 'writer':
+            return self.text_content.html.get('markup')
+
+        # Draft means text_content stored as Draft.js dictionary in markup.
+        draftjs = json.loads(self.text_content.html.get('markup'))
+        return draftjs_to_html(draftjs)
+
+
+def draftjs_to_html(draftjs):
+    """Return HTML markdown of given Draft.js dictionary.
+
+    Args:
+        draftjs (dict): Draft.js dictionary.
+
+    Returns:
+        str: HTML-formatted string.
+    """
+    exporter = HTML(
+        {
+            'entity_decorators': {
+                'LINK': 'link',
+                'IMAGE': 'image',
+                'HORIZONTAL_RULE': 'hr',
+            },
+            'block_map': {
+                'unstyled': 'p',
+                'header-three': 'h3',
+                'header-four': 'h4',
+                'ordered-list-item': {
+                    'element': 'li',
+                    'wrapper': 'ol',
+                },
+                'unordered-list-item': {
+                    'element': 'li',
+                    'wrapper': 'ul',
+                    'wrapper_props': {
+                        'class': 'bullet-list',
+                    },
+                },
+            },
+            'style_map': {
+                'BOLD': 'strong',
+                'ITALIC': {
+                    'element': 'em',
+                    'props': {
+                        'class': 'u-font-italic',
+                    },
+                },
+            },
+        },
+    )
+
+    html = exporter.render(draftjs)
+    return html.replace('</p><p>', '\n').replace('<p>', '').replace('</p>', '')

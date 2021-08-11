@@ -30,7 +30,7 @@ class Model(object):
             submodel_attrs (dict[]]): List of attribute dictionaries.
 
         Returns:
-            submodel_class[]: List of specified submodel class instances.
+            list[submodel_class]: List of specified submodel class instances.
         """
         if submodel_attrs is not None:
             return [submodel_class(entry) for entry in submodel_attrs]
