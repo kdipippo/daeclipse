@@ -3,11 +3,7 @@
 ## Python-Related Code Development
 
 ### Overview
-There are 2 different components of the Python work in this repo:
-- `daeclipse` - The Python package that conveniently wraps around DeviantArt Eclipse API Calls.
-- `cli.py` - A CLI script to make calls to API behavior. Functions called by the CLI are kept in the [daeclipsecli folder](https://github.com/Pepper-Wood/daeclipse/tree/main/daeclipsecli).
-
-`poetry` is used for Python dependency management and packaging, specifically for the `daeclipse` project. The CLI is a handy add-on for local testing.
+The `/daeclipse` folder contains the contents of the `daeclipse` Python package. The purpose of the package is to conveniently wrap DeviantArt Eclipse API calls, similar to an SDK. `poetry` is used for Python dependency management and packaging.
 
 ### Development
 To get started, make sure to install poetry dependencies at the root.

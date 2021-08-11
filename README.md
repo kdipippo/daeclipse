@@ -3,31 +3,7 @@
 
 [daeclipse](https://pypi.org/project/daeclipse/) is a reverse-engineered Python library for DeviantArt Eclipse functionality.
 
-This repo also contains a handy CLI to expose and test `daeclipse` capabilities.
-
-```bash
-python3 cli.py --help
-```
-```
-Usage: cli.py [OPTIONS] COMMAND [ARGS]...
-
-  DeviantArt Eclipse CLI
-
-Options:
-  --install-completion  Install completion for the current shell.
-  --show-completion     Show completion for the current shell, to copy it or
-                        customize the installation.
-
-  --help                Show this message and exit.
-
-Commands:
-  add-art-to-groups  Submit DeviantArt deviation to groups.
-  hot-tags           Return top tags on the hottest deviations.
-  post-status        Post a DeviantArt status.
-  show-tags          Return list of tags for given deviation.
-  spammer            Return information and output for spam report helpdesk ticket creation.
-  user-comments      Retrieve recent comments made by specified user.
-```
+Also check out [daeclipse-cli](https://github.com/Pepper-Wood/daeclipse-cli), a handy CLI to bundle `daeclipse` capabilities.
 
 ## Installation
 
@@ -35,12 +11,6 @@ The Python library is available via https://pypi.org/project/daeclipse/
 
 ```bash
 pip install daeclipse
-```
-
-The CLI is only available by downloading / cloning the repo to your local machine:
-
-```bash
-git clone git@github.com:Pepper-Wood/daeclipse.git
 ```
 
 ## Usage
@@ -55,6 +25,8 @@ groups, has_more, next_offset, total = eclipse.get_groups("Pepper-Wood", 0)
 for group in groups:
     print(group.username)
 ```
+
+For more examples, see the [code snippets within the daeclipse-cli commands](https://github.com/Pepper-Wood/daeclipse-cli/tree/main/daeclipse_cli/commands).
 
 ## Build Status and Checks
 
