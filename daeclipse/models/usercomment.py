@@ -48,7 +48,7 @@ class UserComment(Model):
         """Return the URL of the comment.
 
         Returns:
-            string: URL pointed to comment.
+            str: URL pointed to comment.
         """
         if self.subject_type == self.DEVIATION:
             return 'https://www.deviantart.com/comments/1/{0}/{1}'.format(
@@ -74,6 +74,6 @@ class UserComment(Model):
         """Return text of comment.
 
         Returns:
-            string: Text of comment.
+            str: Text of comment.
         """
         return self.comment.get_text()

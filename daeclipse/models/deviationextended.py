@@ -29,7 +29,7 @@ class DeviationExtended(Deviation):
         """Return list of tag names for extended Deviation object.
 
         Returns:
-            str[]: List of tag names.
+            list[str]: List of tag names.
         """
         if self.extended is None:
             return []

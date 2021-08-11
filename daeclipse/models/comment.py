@@ -92,7 +92,7 @@ class Comment(Model):
         """Return text of comment.
 
         Returns:
-            string: Text of comment.
+            str: Text of comment.
         """
         # Writer means text_content stored as string in markup.
         if self.text_content.html.get('type') == 'writer':
@@ -110,7 +110,7 @@ def draftjs_to_html(draftjs):
         draftjs (dict): Draft.js dictionary.
 
     Returns:
-        string: HTML-formatted string.
+        str: HTML-formatted string.
     """
     exporter = HTML(
         {

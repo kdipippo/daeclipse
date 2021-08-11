@@ -1,6 +1,5 @@
 """Command to assist with reporting DeviantArt users for spam."""
 
-import operator
 from itertools import combinations
 
 import cli_ui
@@ -28,8 +27,7 @@ def spammer(
     cli_ui.info(
         spammer_cmd_body(
             username,
-            [comm.get_text() for comm in comment_result],
-            ['- {0}'.format(comm.get_url()) for comm in comment_result],
+            comment_result,
         ),
     )
 
@@ -183,7 +181,7 @@ def get_longest_substrings(full_strings):
     """Return a dict of top substrings with hits from a given list of strings.
 
     Args:
-        full_strings (str[]): List of strings to find patterning substrings.
+        full_strings (list[str]): List of strings to test against each other.
 
     Returns:
         dict: substrings with their respective frequencies in full_strings.
@@ -196,8 +194,8 @@ def get_longest_substrings(full_strings):
         # Set entry to 2, matches with string_a and string_b, else + 1.
         all_substrings.update(
             {
-                substring: all_substrings.get(substring, 1) + 1
-            }
+                substring: all_substrings.get(substring, 1) + 1,
+            },
         )
     return all_substrings
 
@@ -206,7 +204,7 @@ def get_spam_string(full_strings):
     """Return key with largest value from longest common substrings (LCS) dict.
 
     Args:
-        full_strings (str[]): List of strings to compare for LCS.
+        full_strings (list[str]): List of strings to compare for LCS.
 
     Returns:
         str: Longest common substring.
@@ -216,32 +214,18 @@ def get_spam_string(full_strings):
         'Hidden by Owner',
         'Hidden by Commenter',
     ]
-
-    spam_strings = get_longest_substrings(full_strings).keys()
-    spam_strings.sort(key=len)
+    spam_strings = list(get_longest_substrings(full_strings).keys())
+    spam_strings.sort(key=len, reverse=True)
     for spam_string in spam_strings:
         if spam_string not in exclude_flagged:
             return spam_string
-
-    # Filter results where substring <=1 in length or in exclude_flagged list.
-
-    print(spam_strings)
-    filtered_spam = dict(
-        filter(
-            lambda elem: len(elem[0]) > 1 and elem[0] not in exclude_flagged,
-            spam_strings.items(),
-        )
-    )
-    print("-"*40)
-    print(filtered_spam)
-    return max(filtered_spam.items(), key=operator.itemgetter(1))[0]
 
 
 def spammer_cmd_header(username):
     """Return formatted text for spammer command header.
 
     Args:
-        username (str): DeviantArt username to query.
+        username (str): DeviantArt username.
 
     Returns:
         str: Formatted text for spammer command header.
@@ -256,24 +240,41 @@ def spammer_cmd_header(username):
     )
 
 
-def spammer_cmd_body(username, comments, urls):
+def spammer_cmd_body(username, comment_result):
     """Return formatted text for spammer command body.
 
     Args:
-        username (str): DeviantArt username to query.
-        comments (str[]): List of comments' text contents.
-        urls (str[]): List of comments' urls.
+        username (str): DeviantArt username.
+        comment_result (list[UserComment]): List of UserComment objects.
 
     Returns:
         str: Formatted text for spammer command body.
     """
+    comments = [comm.get_text() for comm in comment_result]
+    spam_string = get_spam_string(comments)
+
+    urls = []
+    for comm in comment_result:
+        direct_match_flag = ''
+        if spam_string in comm.get_text():
+            direct_match_flag = '** '
+
+        urls.append(
+            '- {0}{1}'.format(
+                direct_match_flag,
+                comm.get_url(),
+            ),
+        )
+
     return '\n'.join([
         '{username} frequently spams "{top_spam_string}"',
         '',
         'All recent comments: https://www.deviantart.com/{username}/about#my_comments',  # noqa: E501
+        'URLs marked with ** have exact matches to the spam text above.',
+        '',
         '{comment_urls}',
     ]).format(
         username=username,
-        top_spam_string=get_spam_string(comments),
+        top_spam_string=spam_string,
         comment_urls='\n'.join(urls),
     )

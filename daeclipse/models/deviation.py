@@ -49,7 +49,7 @@ class Deviation(Model):
         """Representation of Deviation.
 
         Returns:
-            string: Deviation representation.
+            str: Deviation representation.
         """
         return self.deviation_id
 

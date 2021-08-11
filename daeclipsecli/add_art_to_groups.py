@@ -81,7 +81,7 @@ def get_username_from_url(deviation_url):
         RuntimeError: If username is not present in URL string.
 
     Returns:
-        string: DeviantArt username.
+        str: DeviantArt username.
     """
     username = re.search('deviantart.com/(.+?)/art/', deviation_url)
     if username:
@@ -98,7 +98,7 @@ def handle_selected_group(eclipse, group, deviation_url):
         deviation_url (str): Deviation URL.
 
     Returns:
-        boolean, string: success status and result message.
+        boolean, str: success status and result message.
     """
     try:
         folders_result = eclipse.get_group_folders(
@@ -147,7 +147,7 @@ def format_msg(group_name, folder_name, message):
         message (str): Status message.
 
     Returns:
-        string: Formatted status message containing all arguments.
+        str: Formatted status message containing all arguments.
     """
     return '{0} {1} {2}'.format(
         group_name.ljust(COLUMN_WIDTH),  # Max-length of username is 20 chars.

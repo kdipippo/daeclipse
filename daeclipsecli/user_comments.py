@@ -14,7 +14,7 @@ def user_comments(
         help='Offset to begin for paginated entry.',
     ),
     total: int = typer.Option(  # noqa: B008, WPS404
-        49,  # noqa: WPS425
+        49,  # noqa: WPS425, WPS432
         help='Total number of comments to return.',
     ),
     output: str = typer.Option(  # noqa: B008, WPS404
@@ -30,6 +30,7 @@ def user_comments(
         total (int): Total number of comments to return, defaults to max of 49.
         output (str): Output format, either list or table.
     """
+    # 49 is max num of recent comments Eclipse API allows with this endpoint.
     eclipse = daeclipse.Eclipse()
     comment_result = []
     has_more = True
