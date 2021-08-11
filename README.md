@@ -25,6 +25,7 @@ Commands:
   hot-tags           Return top tags on the hottest deviations.
   post-status        Post a DeviantArt status.
   show-tags          Return list of tags for given deviation.
+  spammer            Return information and output for spam report helpdesk ticket creation.
   user-comments      Retrieve recent comments made by specified user.
 ```
 
