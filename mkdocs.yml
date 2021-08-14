@@ -19,7 +19,7 @@
 # SOFTWARE.
 
 # Project information
-site_name: dAEclipse
+site_name: daeclipse
 site_url: https://www.kathryndipippo.com/daeclipse
 site_author: Kathryn DiPippo
 site_description: >-
@@ -36,17 +36,13 @@ copyright: Copyright &copy; 2021 Kathryn DiPippo
 # Configuration
 theme:
   name: material
-  logo: assets/favicon.png
-  favicon: assets/favicon.png
+  logo: assets/icon.png
+  favicon: assets/icon.png
   palette:
-    - scheme: default
-      toggle:
-        icon: material/toggle-switch-off-outline
-        name: Switch to dark mode
-    - scheme: slate
-      toggle:
-        icon: material/toggle-switch
-        name: Switch to light mode
+    scheme: default
+  font:
+    text: Roboto
+    code: Roboto Mono
 
 extra_css:
   - css/daeclipse.css
