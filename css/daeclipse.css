@@ -1,5 +1,12 @@
 :root {
-  --md-primary-fg-color:        #387BAE;
-  --md-primary-fg-color--light: #A8EBFF;
-  --md-primary-fg-color--dark:  #00275A;
+  --md-primary-fg-color:        #06070d;
+  --md-primary-fg-color--light: #00e59b;
+  --md-primary-fg-color--dark:  #161a1f;
+
+  --md-accent-fg-color:         #00e59b;
+}
+
+a {
+  text-decoration: underline;
+  font-weight: bold;
 }
