@@ -403,18 +403,18 @@
 <p>Also check out <a href="https://github.com/Pepper-Wood/daeclipse-cli">daeclipse-cli</a>, a handy CLI to bundle <code>daeclipse</code> capabilities.</p>
 <h2 id="installation">Installation</h2>
 <p>The Python library is available via https://pypi.org/project/daeclipse/</p>
-<pre><code class="language-bash">pip install daeclipse
-</code></pre>
+<div class="highlight"><pre><span></span><code>pip install daeclipse
+</code></pre></div>
 <h2 id="usage">Usage</h2>
-<pre><code class="language-py">import daeclipse
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">daeclipse</span>
 
-# Fetches a list of group names the user is a member of.
-# You will need to be logged into DeviantArt and have a chrome page open.
-eclipse = daeclipse.Eclipse()
-groups, has_more, next_offset, total = eclipse.get_groups(&quot;Pepper-Wood&quot;, 0)
-for group in groups:
-    print(group.username)
-</code></pre>
+<span class="c1"># Fetches a list of group names the user is a member of.</span>
+<span class="c1"># You will need to be logged into DeviantArt and have a chrome page open.</span>
+<span class="n">eclipse</span> <span class="o">=</span> <span class="n">daeclipse</span><span class="o">.</span><span class="n">Eclipse</span><span class="p">()</span>
+<span class="n">groups</span><span class="p">,</span> <span class="n">has_more</span><span class="p">,</span> <span class="n">next_offset</span><span class="p">,</span> <span class="n">total</span> <span class="o">=</span> <span class="n">eclipse</span><span class="o">.</span><span class="n">get_groups</span><span class="p">(</span><span class="s2">&quot;Pepper-Wood&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">group</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+</code></pre></div>
 <p>For more examples, see the <a href="https://github.com/Pepper-Wood/daeclipse-cli/tree/main/daeclipse_cli/commands">code snippets within the daeclipse-cli commands</a>.</p>
 <h2 id="python-package-reference">Python Package Reference</h2>
 <p>For reference on the <a href="https://pypi.org/project/daeclipse/">daeclipse python package</a> implementation, see the <a href="https://www.kathryndipippo.com/daeclipse/python">PDoc-generated documentation</a>.</p>

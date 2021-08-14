@@ -639,15 +639,15 @@
 <p>The <code>/daeclipse</code> folder contains the contents of the <code>daeclipse</code> Python package. The purpose of the package is to conveniently wrap DeviantArt Eclipse API calls, similar to an SDK. <code>poetry</code> is used for Python dependency management and packaging.</p>
 <h3 id="development_1">Development</h3>
 <p>To get started, make sure to install poetry dependencies at the root.</p>
-<pre><code>poetry install
-</code></pre>
+<div class="highlight"><pre><span></span><code>poetry install
+</code></pre></div>
 <h3 id="testing">Testing</h3>
 <p>There are no tests for any of the above written code yet.</p>
 <h3 id="linting">Linting</h3>
 <p>Code for all of the above follows the <a href="https://github.com/wemake-services/wemake-python-styleguide">wemake-python-styleguide</a> guidelines. This is also automatically checked via the GitHub Actions workflow <a href="https://github.com/Pepper-Wood/daeclipse/blob/main/.github/workflows/linter-python.yml">linter-python.yml</a>.</p>
 <p>Linting can be run locally via the below command at root, although the local linter is more restrictive than the GitHug Actiions linter:</p>
-<pre><code>flake8
-</code></pre>
+<div class="highlight"><pre><span></span><code>flake8
+</code></pre></div>
 <h3 id="documentation">Documentation</h3>
 <p><code>pdoc</code> is used for automated Python documentation generation. All documentation is generated on the <code>main</code> branch into a <code>build/python/</code> folder, which is then deployed to the <code>gh-pages</code> branch via the GitHub Actions workflow <a href="https://github.com/Pepper-Wood/daeclipse/blob/main/.github/workflows/gh-pages.yml">gh-pages.yml</a>.</p>
 <h3 id="publishing">Publishing</h3>
@@ -657,28 +657,28 @@
 <p>The <code>/spec</code> folder contains the modularized OpenAPI spec to document how the DeviantArt Eclipse API behaves. Implementation is based on <a href="https://github.com/dgarcia360/openapi-boilerplate">dgarcia360/openapi-boilerplate</a>.</p>
 <h3 id="development_2">Development</h3>
 <p>To get started, make sure to install node dependencies at the root.</p>
-<pre><code>npm install
-</code></pre>
+<div class="highlight"><pre><span></span><code>npm install
+</code></pre></div>
 <p>The below command bundles the spec as one <code>.yaml</code> file.</p>
-<pre><code>npm run build
-</code></pre>
+<div class="highlight"><pre><span></span><code>npm run build
+</code></pre></div>
 <p>The minified document is stored in <code>_build/api/openapi.yaml</code>.</p>
 <h3 id="testing_1">Testing</h3>
 <p>The below command checks if the document follows the OpenAPI 3.0 Specification.</p>
-<pre><code>npm run test
-</code></pre>
+<div class="highlight"><pre><span></span><code>npm run test
+</code></pre></div>
 <p>The below command builds a docs site so that you can view the rendering on your local browser.</p>
-<pre><code>npm run preview
-</code></pre>
+<div class="highlight"><pre><span></span><code>npm run preview
+</code></pre></div>
 <p>The server starts on http://127.0.0.1:8080</p>
 <p>You can optionally also generate the HTML and view <code>index.html</code>.</p>
-<pre><code>npm run html
-</code></pre>
+<div class="highlight"><pre><span></span><code>npm run html
+</code></pre></div>
 <h3 id="linting_1">Linting</h3>
 <p>Courtesy of the boilerplate repo, the OpenAPI Spec is linted using <a href="https://github.com/stoplightio/spectral">Spectral</a>. This is also automatically checked via the GitHub Actions workflow <a href="https://github.com/Pepper-Wood/daeclipse/blob/main/.github/workflows/linter-openapi.yml">linter-openapi.yml</a>.</p>
 <p>OpenAPI linting can also be performed locally by running the below command to check if the document follows the OpenAPI 3.0 Specification.</p>
-<pre><code>npm run test
-</code></pre>
+<div class="highlight"><pre><span></span><code>npm run test
+</code></pre></div>
 <h3 id="documentation_1">Documentation</h3>
 <p><code>redoc</code> is used for automated OpenAPI documentation generation, courtesy of the boilerplate. All documentation is generated on the <code>main</code> branch into a <code>build/api/</code> folder, which is then deployed to the <code>gh-pages</code> branch via the GitHub Actions workflow <a href="https://github.com/Pepper-Wood/daeclipse/blob/main/.github/workflows/gh-pages.yml">gh-pages.yml</a>.</p>
 <h3 id="publishing_1">Publishing</h3>
@@ -688,8 +688,8 @@
 <p>The documentation that links to the separate specific documentation is stored as Markdown files in <code>docs/</code>. <code>mkdocs</code> takes the contents and formats as a helpful documentation site via GitHub Pages and  the GitHub Actions workflow <a href="https://github.com/Pepper-Wood/daeclipse/blob/main/.github/workflows/gh-pages.yml">gh-pages.yml</a>.</p>
 <h3 id="testing_2">Testing</h3>
 <p>To preview the <code>docs/</code> folder as the HTML site locally:</p>
-<pre><code>mkdocs build
-</code></pre>
+<div class="highlight"><pre><span></span><code>mkdocs build
+</code></pre></div>
 <p>The command will generate a <code>build/</code> folder containing the website contents.</p>
 <h3 id="publishing_2">Publishing</h3>
 <p>The full documentation is deployed to the <code>gh-pages</code> branch via the GitHub Actions workflow <a href="https://github.com/Pepper-Wood/daeclipse/blob/main/.github/workflows/gh-pages.yml">gh-pages.yml</a>.</p>
