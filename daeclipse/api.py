@@ -102,6 +102,8 @@ class Eclipse(object):
             '/shared_api/deviation/extended_fetch',
             query_string(queries),
         ])
+        print(extended_fetch_url)
+        print("kathryn")
         response = requests.get(extended_fetch_url, cookies=self.cookies)
         rjson = validate_response_succeeds(response)
         deviation_extended_result = DeviationExtendedResult(rjson)
