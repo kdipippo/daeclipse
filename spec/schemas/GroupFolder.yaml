@@ -31,9 +31,9 @@ properties:
     type: integer
     example: 0
   thumb:
-    type: string
     nullable: true
-    example: null
+    allOf:
+    - $ref: "./Deviation.yaml"
   hasSubFolders:
     type: boolean
     example: false

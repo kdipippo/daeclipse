@@ -24,12 +24,12 @@ class Eclipse(object):
         """Initialize API by fetching Chrome's DeviantArt-related cookies."""
         self.cookies = browser_cookie3.chrome(domain_name='.deviantart.com')
 
-    def get_groups(self, username, offset, limit=24):
+    def get_groups(self, username, offset=0, limit=24):
         """Return a paginated call for the user's joined DeviantArt groups.
 
         Args:
             username (str): DeviantArt username of user.
-            offset (int): Offset to start with API call.
+            offset (int): Offset to start with API call. Defaults to 0.
             limit (int, optional): Limit of results to return. Defaults to 24.
 
         Returns:
@@ -102,8 +102,6 @@ class Eclipse(object):
             '/shared_api/deviation/extended_fetch',
             query_string(queries),
         ])
-        print(extended_fetch_url)
-        print("kathryn")
         response = requests.get(extended_fetch_url, cookies=self.cookies)
         rjson = validate_response_succeeds(response)
         deviation_extended_result = DeviationExtendedResult(rjson)

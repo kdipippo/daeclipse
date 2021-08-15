@@ -1,0 +1,75 @@
+{
+    "results": [
+        {
+            "folderId": 12345678,
+            "gallectionUuid": "15A01024-5565-4736-AB66-E3E5DB890868",
+            "parentId": null,
+            "type": "gallery",
+            "name": "Featured",
+            "description": "Example folder description.",
+            "owner": {
+                "userId": 12345678,
+                "useridUuid": "43d8f41c-cdd8-41d2-9878-11e0f77ea0a3",
+                "username": "ExampleGroup",
+                "usericon": "https://a.deviantart.net/avatars-big/m/o/examplegroup.jpg?4",
+                "type": "super group",
+                "isWatching": false,
+                "isSubscribed": false,
+                "isNewDeviant": true
+            },
+            "commentCount": 0,
+            "size": 1,
+            "thumb": {
+                "deviationId": 884919850,
+                "type": "journal",
+                "typeId": 5,
+                "printId": null,
+                "url": "https://www.deviantart.com/lunarnorthstar/journal/The-Giftart-Arena-Unofficial-Activity-Open-884919850",
+                "title": "The Giftart Arena (Unofficial Activity) - Open",
+                "isJournal": true,
+                "isVideo": false,
+                "isPurchasable": false,
+                "isFavouritable": true,
+                "publishedTime": "2021-07-06T19:50:48-0700",
+                "isTextEditable": true,
+                "legacyTextEditUrl": null,
+                "isShareable": true,
+                "isCommentable": true,
+                "isFavourited": false,
+                "isDeleted": false,
+                "isMature": false,
+                "isDownloadable": false,
+                "isAntisocial": false,
+                "isBlocked": false,
+                "isPublished": true,
+                "isDailyDeviation": false,
+                "hasPrivateComments": false,
+                "blockReasons": [],
+                "author": {
+                    "userId": 12345678,
+                    "useridUuid": "43d8f41c-cdd8-41d2-9878-11e0f77ea0a3",
+                    "username": "ExampleUsername",
+                    "usericon": "https://a.deviantart.net/avatars-big/m/o/exampleusername.jpg?4",
+                    "type": "regular",
+                    "isWatching": false,
+                    "isSubscribed": false,
+                    "isNewDeviant": true
+                },
+                "stats": {
+                    "comments": 92,
+                    "favourites": 16
+                },
+                "media": {
+                    "types": []
+                },
+                "textContent": {
+                    "excerpt": "This is an example folder description.",
+                    "html": {
+                        "type": "draft",
+                        "features": "[{\"type\":\"IS_EMPTY_FEATURE\",\"data\":{\"isEmpty\":false}},{\"type\":\"WORD_COUNT_FEATURE\",\"data\":{\"words\":176,\"chars\":998}},{\"type\":\"MEDIA_COUNT_FEATURE\",\"data\":{\"emoji\":0,\"emotes\":4,\"images\":1,\"mentions\":0,\"video\":0,\"previews\":0}}]"
+                    }
+                }
+            }
+        }
+    ]
+}

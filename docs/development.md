@@ -16,7 +16,7 @@ poetry install
 There are no tests for any of the above written code yet.
 
 ### Linting
-Code for all of the above follows the [wemake-python-styleguide](https://github.com/wemake-services/wemake-python-styleguide) guidelines. This is also automatically checked via the GitHub Actions workflow [linter-python.yml](https://github.com/Pepper-Wood/daeclipse/blob/main/.github/workflows/linter-python.yml).
+Code for all of the above follows the [wemake-python-styleguide](https://github.com/wemake-services/wemake-python-styleguide) guidelines. This is also automatically checked via the GitHub Actions workflow [lint-python.yml](https://github.com/Pepper-Wood/daeclipse/blob/main/.github/workflows/lint-python.yml).
 
 Linting can be run locally via the below command at root, although the local linter is more restrictive than the GitHug Actiions linter:
 
@@ -72,7 +72,7 @@ npm run html
 ```
 
 ### Linting
-Courtesy of the boilerplate repo, the OpenAPI Spec is linted using [Spectral](https://github.com/stoplightio/spectral). This is also automatically checked via the GitHub Actions workflow [linter-openapi.yml](https://github.com/Pepper-Wood/daeclipse/blob/main/.github/workflows/linter-openapi.yml).
+Courtesy of the boilerplate repo, the OpenAPI Spec is linted using [Spectral](https://github.com/stoplightio/spectral). This is also automatically checked via the GitHub Actions workflow [lint-openapi.yml](https://github.com/Pepper-Wood/daeclipse/blob/main/.github/workflows/lint-openapi.yml).
 
 OpenAPI linting can also be performed locally by running the below command to check if the document follows the OpenAPI 3.0 Specification.
 

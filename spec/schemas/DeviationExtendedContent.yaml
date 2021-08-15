@@ -6,7 +6,6 @@ required:
 - description
 - originalFile
 - license
-- download
 - relatedStreams
 - stats
 - reportUrl
