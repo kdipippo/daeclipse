@@ -11,18 +11,36 @@ jobs:
         os: [ubuntu-latest, macos-latest, windows-latest]
     env:
       OS: ${{ matrix.os }}
-      PYTHON: '3.7'
+      PYTHON: '3.9'
     steps:
-    - uses: actions/checkout@master
-    - name: Setup Python
-      uses: actions/setup-python@master
+    - name: Check out repository
+      uses: actions/checkout@v2
+    - name: Set up python
+      uses: actions/setup-python@v2
       with:
-        python-version: 3.7
+        python-version: 3.9
+    - name: Install Poetry
+      uses: snok/install-poetry@v1
+      with:
+        virtualenvs-create: true
+        virtualenvs-in-project: true
+    - name: Load cached venv
+      id: cached-poetry-dependencies
+      uses: actions/cache@v2
+      with:
+        path: .venv
+        key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+    - name: Install dependencies
+      if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+      run: poetry install --no-interaction --no-root
+    - name: Install library
+      run: poetry install --no-interaction
+    #----------------------------------------------
+    #         Run PyTest and Code Coverage         
+    #----------------------------------------------
     - name: Generate coverage report
       run: |
-        pip install pytest
-        pip install pytest-cov
-        pytest --cov=./ --cov-report=xml
+        poetry run pytest --cov=daeclipse --cov-report=xml test
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v2
       with:
