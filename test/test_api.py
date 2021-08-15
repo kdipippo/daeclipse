@@ -12,6 +12,14 @@ class Mock(object):
     def body(self, mock_name):
         with open('test/mocks/{0}.json'.format(mock_name)) as json_file:
             return json.load(json_file)
+    def id(self):
+        return 12345678
+    def group_id(self):
+        return self.id()
+    def folder_id(self):
+        return self.id()
+    def csrf(self):
+        return "AbCdEfGhIjKlMnOp.QrStUv.WxYzAbCdEfGhIjKlMnOpAbCd_EfGhIjKlMnOpQrStUv"
 
 
 @responses.activate
@@ -42,7 +50,7 @@ def test_get_groups(mocker):
 
 
 @responses.activate
-def get_group_folders(mocker):
+def test_get_group_folders(mocker):
     mock = Mock()
     responses.add(
         method=responses.GET,
@@ -54,10 +62,10 @@ def get_group_folders(mocker):
 
     mocker.patch('browser_cookie3.chrome')
     eclipse = daeclipse.Eclipse()
-    actual = eclipse.get_group_folders(mock.deviation_url())
+    actual = eclipse.get_group_folders(mock.group_id(), mock.deviation_url())
     expected_names = ['Featured']
-    assert len(actual.groups) == len(expected_names)
-    for index in range(len(actual.groups)):
+    assert len(actual) == len(expected_names)
+    for index in range(len(actual)):
         assert actual[index].name == expected_names[index]
 
 
@@ -81,20 +89,38 @@ def test_get_deviation_tags(mocker):
 
 
 @responses.activate
-def add_deviation_to_group():
-    pass
+def test_add_deviation_to_group(mocker):
+    mock = Mock()
+    responses.add(
+        method=responses.POST,
+        url='https://www.deviantart.com/_napi/shared_api/deviation/group_add',
+        json=mock.body('group_add'),
+        status=200,
+        match_querystring=False
+    )
+
+    mocker.patch('browser_cookie3.chrome')
+    mocker.patch('daeclipse.api.get_csrf', return_value=mock.csrf())
+    eclipse = daeclipse.Eclipse()
+    actual = eclipse.add_deviation_to_group(
+        mock.group_id(),
+        mock.folder_id(),
+        mock.deviation_url()
+    )
+    expected = '⌛ Deviation submitted to folder and pending mod approval'
+    assert actual == expected
 
 
 @responses.activate
-def post_status():
-    pass
+def test_post_status():
+    assert 5 == 5
 
 
 @responses.activate
-def get_user_comments():
-    pass
+def test_get_user_comments():
+    assert 5 == 5
 
 
 @responses.activate
-def get_module_id():
-    pass
+def test_get_module_id():
+    assert 5 == 5
