@@ -2,6 +2,7 @@ import responses
 import requests
 import daeclipse
 import json
+import pytest
 
 
 class Mock(object):
@@ -20,6 +21,8 @@ class Mock(object):
         return self.id()
     def csrf(self):
         return "AbCdEfGhIjKlMnOp.QrStUv.WxYzAbCdEfGhIjKlMnOpAbCd_EfGhIjKlMnOpQrStUv"
+    def html_content(self):
+        return "This is a <b>test message</b> to be sent into a <i>status</i>."
 
 
 @responses.activate
@@ -112,15 +115,81 @@ def test_add_deviation_to_group(mocker):
 
 
 @responses.activate
-def test_post_status():
-    assert 5 == 5
+def test_post_status(mocker):
+    mock = Mock()
+    responses.add(
+        method=responses.POST,
+        url='https://www.deviantart.com/_napi/shared_api/status/create',
+        json=mock.body('status_create_or_publish'),
+        status=200,
+        match_querystring=False
+    )
+    responses.add(
+        method=responses.POST,
+        url='https://www.deviantart.com/_napi/shared_api/status/publish',
+        json=mock.body('status_create_or_publish'),
+        status=200,
+        match_querystring=False
+    )
+
+    mocker.patch('browser_cookie3.chrome')
+    mocker.patch('daeclipse.api.get_csrf', return_value=mock.csrf())
+    eclipse = daeclipse.Eclipse()
+    actual = eclipse.post_status(
+        mock.deviation_url(),
+        mock.html_content(),
+    )
+    expected = '✅ Status created: https://www.deviantart.com/exampleusername/art/Example-Title-112233445'
+    assert actual == expected
 
 
 @responses.activate
-def test_get_user_comments():
-    assert 5 == 5
+def test_get_user_comments(mocker):
+    mock = Mock()
+    responses.add(
+        method=responses.GET,
+        url='https://www.deviantart.com/_napi/da-user-profile/api/init/about',
+        json=mock.body('module_init_about'),
+        status=200,
+        match_querystring=False
+    )
+    responses.add(
+        method=responses.GET,
+        url='https://www.deviantart.com/_napi/da-user-profile/api/module/my_comments',
+        json=mock.body('module_my_comments'),
+        status=200,
+        match_querystring=False
+    )
+
+    mocker.patch('browser_cookie3.chrome')
+    eclipse = daeclipse.Eclipse()
+    actual = eclipse.get_user_comments(mock.username())
+    assert actual.has_more
+    assert actual.next_offset == 10
+
+    actual_comment = actual.comments[0]
+    assert actual_comment.get_url() == "https://www.deviantart.com/comments/1/112233445/1234567890"
+    assert actual_comment.get_posted_date() == "2021-05-18T12:23:01-0700"
+    assert actual_comment.get_text() == 'Great...<span emote=":) ">:) </span><link url="http://spamlink.cf/"/>/'
 
 
 @responses.activate
-def test_get_module_id():
-    assert 5 == 5
+def test_get_module_id(mocker):
+    mock = Mock()
+    responses.add(
+        method=responses.GET,
+        url='https://www.deviantart.com/_napi/da-user-profile/api/init/about',
+        json=mock.body('module_init_about'),
+        status=200,
+        match_querystring=False
+    )
+
+    mocker.patch('browser_cookie3.chrome')
+    eclipse = daeclipse.Eclipse()
+    assert eclipse.get_module_id(mock.username(), 'watchers') == 1709114043
+    assert eclipse.get_module_id(mock.username(), 'group_list_members') == 1709114041
+    with pytest.raises(Exception) as execinfo:
+        eclipse.get_module_id(mock.username(), 'nonexistent')
+
+    assert execinfo.value.args[0] == "module 'nonexistent' not found."
+    assert str(execinfo.value) == "module 'nonexistent' not found."

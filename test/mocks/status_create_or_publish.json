@@ -1,0 +1,67 @@
+{
+    "deviation": {
+        "deviationId": 112233445,
+        "type": "image",
+        "typeId": 1,
+        "printId": 2,
+        "url": "https://www.deviantart.com/exampleusername/art/Example-Title-112233445",
+        "title": "Example Title",
+        "isJournal": false,
+        "isVideo": false,
+        "isPurchasable": false,
+        "isFavouritable": false,
+        "publishedTime": "2021-05-18T12:23:01-0700",
+        "isTextEditable": false,
+        "legacyTextEditUrl": "unknown",
+        "isShareable": false,
+        "isCommentable": false,
+        "isFavourited": false,
+        "isDeleted": false,
+        "isMature": false,
+        "isDownloadable": false,
+        "isAntisocial": false,
+        "isBlocked": false,
+        "isPublished": false,
+        "isDailyDeviation": false,
+        "hasPrivateComments": false,
+        "blockReasons": [],
+        "author": {
+            "userId": 12345678,
+            "useridUuid": "43d8f41c-cdd8-41d2-9878-11e0f77ea0a3",
+            "username": "ExampleUsername",
+            "usericon": "https://a.deviantart.net/avatars-big/m/o/exampleusername.jpg?4",
+            "type": "regular",
+            "isWatching": false,
+            "isSubscribed": false,
+            "isNewDeviant": true
+        },
+        "stats": {
+            "comments": 18,
+            "favourites": 2063
+        },
+        "media": {
+            "baseUri": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/49402c4d-1fe3-4f6d-8144-2f58aee8d82d/denu3kl-280bcd78-b8fc-4c60-911a-1ca732a2b7a9.jpg",
+            "prettyName": "example_title_by_exampleusername_denu3kl",
+            "token": [
+                "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiO"
+            ],
+            "types": [
+                {
+                    "t": "150",
+                    "r": 0,
+                    "c": "v1/fit/w_150,h_150,q_70,strp/<prettyName>-150.jpg",
+                    "h": 0,
+                    "w": 0
+                }
+            ]
+        },
+        "textContent": {
+            "excerpt": "Great...:) http://spamlink.cf/\n",
+            "html": {
+                "type": "draft",
+                "markup": "{\"blocks\":[{\"key\":\"foo\",\"text\":\"Great...:) http://spamlink.cf/\\n\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[{\"offset\":8,\"length\":3,\"key\":0},{\"offset\":11,\"length\":18,\"key\":1}],\"data\":{}}],\"entityMap\":{\"0\":{\"type\":\"DA_OFF_EMOTE\",\"mutability\":\"IMMUTABLE\",\"data\":{\"emote\":\":) \"}},\"1\":{\"type\":\"LINK\",\"mutability\":\"MUTABLE\",\"data\":{\"url\":\"http://spamlink.cf/\"}}}}",
+                "features": "[{\"type\":\"FIRST_IMAGE_FEATURE\",\"data\":[]},{\"type\":\"IS_EMPTY_FEATURE\",\"data\":{\"isEmpty\":false}},{\"type\":\"MEDIA_COUNT_FEATURE\",\"data\":{\"emoji\":0,\"emotes\":1,\"images\":0,\"mentions\":0,\"video\":0,\"previews\":0}},{\"type\":\"WORD_COUNT_FEATURE\",\"data\":{\"words\":4,\"chars\":28}}]"
+            }
+        }
+    }
+}

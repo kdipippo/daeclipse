@@ -118,6 +118,7 @@ def draftjs_to_html(draftjs):
                 'LINK': 'link',
                 'IMAGE': 'image',
                 'HORIZONTAL_RULE': 'hr',
+                'DA_OFF_EMOTE': 'span'
             },
             'block_map': {
                 'unstyled': 'p',
@@ -148,4 +149,4 @@ def draftjs_to_html(draftjs):
     )
 
     html = exporter.render(draftjs)
-    return html.replace('</p><p>', '\n').replace('<p>', '').replace('</p>', '')
+    return html.replace('</p><p>', '\n').replace('<p>', '').replace('</p>', '').strip()
