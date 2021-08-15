@@ -15,7 +15,7 @@ class Mock(object):
 
 
 @responses.activate
-def test_get_groups():
+def test_get_groups(mocker):
     mock = Mock()
     responses.add(
         method=responses.GET,
@@ -32,6 +32,7 @@ def test_get_groups():
         match_querystring=False
     )
 
+    mocker.patch('browser_cookie3.chrome')
     eclipse = daeclipse.Eclipse()
     actual = eclipse.get_groups(mock.username(), 0)
     expected_names = ['ExampleGroup1', 'ExampleGroup2']
@@ -41,7 +42,7 @@ def test_get_groups():
 
 
 @responses.activate
-def get_group_folders():
+def get_group_folders(mocker):
     mock = Mock()
     responses.add(
         method=responses.GET,
@@ -51,6 +52,7 @@ def get_group_folders():
         match_querystring=False
     )
 
+    mocker.patch('browser_cookie3.chrome')
     eclipse = daeclipse.Eclipse()
     actual = eclipse.get_group_folders(mock.deviation_url())
     expected_names = ['Featured']
@@ -60,7 +62,7 @@ def get_group_folders():
 
 
 @responses.activate
-def test_get_deviation_tags():
+def test_get_deviation_tags(mocker):
     mock = Mock()
     responses.add(
         method=responses.GET,
@@ -70,6 +72,7 @@ def test_get_deviation_tags():
         match_querystring=False
     )
 
+    mocker.patch('browser_cookie3.chrome')
     eclipse = daeclipse.Eclipse()
     actual = eclipse.get_deviation_tags(mock.deviation_url())
     expected = ['exampletag', 'exampletag2']

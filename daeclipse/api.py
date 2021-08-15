@@ -23,6 +23,9 @@ class Eclipse(object):
     def __init__(self):
         """Initialize API by fetching Chrome's DeviantArt-related cookies."""
         self.cookies = browser_cookie3.chrome(domain_name='.deviantart.com')
+        print("kathryn1")
+        print(self.cookies)
+        print("kathryn2")
 
     def get_groups(self, username, offset=0, limit=24):
         """Return a paginated call for the user's joined DeviantArt groups.
