@@ -133,9 +133,6 @@ class Eclipse(object):
             'deviationid': get_deviation_id(deviation_url),
             'csrf_token': get_csrf(deviation_url, self.cookies),
         })
-        print("kathryn2")
-        print(payload)
-        print("kathryn1")
 
         response = requests.post(
             group_add_url,

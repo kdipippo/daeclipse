@@ -1,50 +1,23 @@
-import responses
-import requests
-import daeclipse
-import json
 import pytest
+import requests
+import responses
 
-
-class Mock(object):
-    def username(self):
-        return "ExampleUsername"
-    def deviation_url(self):
-        return "https://www.deviantart.com/exampleusername/art/example-artwork-12345"
-    def body(self, mock_name):
-        with open('test/mocks/{0}.json'.format(mock_name)) as json_file:
-            return json.load(json_file)
-    def id(self):
-        return 12345678
-    def group_id(self):
-        return self.id()
-    def folder_id(self):
-        return self.id()
-    def csrf(self):
-        return "AbCdEfGhIjKlMnOp.QrStUv.WxYzAbCdEfGhIjKlMnOpAbCd_EfGhIjKlMnOpQrStUv"
-    def html_content(self):
-        return "This is a <b>test message</b> to be sent into a <i>status</i>."
+import daeclipse
+from test.helpers import Mocks
 
 
 @responses.activate
 def test_get_groups(mocker):
-    mock = Mock()
-    responses.add(
-        method=responses.GET,
-        url='https://www.deviantart.com/_napi/da-user-profile/api/init/about',
-        json=mock.body('module_init_about'),
-        status=200,
-        match_querystring=False
-    )
-    responses.add(
-        method=responses.GET,
-        url='https://www.deviantart.com/_napi/da-user-profile/api/module/groups/members',
-        json=mock.body('module_group_members'),
-        status=200,
-        match_querystring=False
-    )
+    """Test get_groups().
 
-    mocker.patch('browser_cookie3.chrome')
-    eclipse = daeclipse.Eclipse()
+    Args:
+        mocker (MagicMock): Mocker to override code functionality.
+    """
+    mock = Mocks()
+    mock.mock_user_init_about()
+    mock.mock_user_group_members()
+
+    eclipse = mock.eclipse(mocker)
     actual = eclipse.get_groups(mock.username(), 0)
     expected_names = ['ExampleGroup1', 'ExampleGroup2']
     assert len(actual.groups) == len(expected_names)
@@ -54,33 +27,36 @@ def test_get_groups(mocker):
 
 @responses.activate
 def test_get_group_folders(mocker):
-    mock = Mock()
-    responses.add(
-        method=responses.GET,
-        url='https://www.deviantart.com/_napi/shared_api/deviation/group_folders',
-        json=mock.body('group_folders'),
-        status=200,
-        match_querystring=False
-    )
+    """Test get_group_folders().
 
-    mocker.patch('browser_cookie3.chrome')
-    eclipse = daeclipse.Eclipse()
+    Args:
+        mocker (MagicMock): Mocker to override code functionality.
+    """
+    mock = Mocks()
+    mock.mock_group_folders()
+
+    eclipse = mock.eclipse(mocker)
     actual = eclipse.get_group_folders(mock.group_id(), mock.deviation_url())
     expected_names = ['Featured']
     assert len(actual) == len(expected_names)
     for index in range(len(actual)):
         assert actual[index].name == expected_names[index]
 
-
+'''
 @responses.activate
 def test_get_deviation_tags(mocker):
-    mock = Mock()
+    """Test get_deviation_tags().
+
+    Args:
+        mocker (MagicMock): Mocker to override code functionality.
+    """
+    mock = Mocks()
     responses.add(
         method=responses.GET,
-        url='https://www.deviantart.com/_napi/shared_api/deviation/extended_fetch',
+        url=mock.url('extended_fetch'),
         json=mock.body('extended_fetch'),
-        status=200,
-        match_querystring=False
+        status=HTTP_OK,
+        match_querystring=False,
     )
 
     mocker.patch('browser_cookie3.chrome')
@@ -93,13 +69,18 @@ def test_get_deviation_tags(mocker):
 
 @responses.activate
 def test_add_deviation_to_group(mocker):
-    mock = Mock()
+    """Test add_deviation_to_groups().
+
+    Args:
+        mocker (MagicMock): Mocker to override code functionality.
+    """
+    mock = Mocks()
     responses.add(
         method=responses.POST,
-        url='https://www.deviantart.com/_napi/shared_api/deviation/group_add',
+        url=mock.url('group_add'),
         json=mock.body('group_add'),
-        status=200,
-        match_querystring=False
+        status=HTTP_OK,
+        match_querystring=False,
     )
 
     mocker.patch('browser_cookie3.chrome')
@@ -116,20 +97,25 @@ def test_add_deviation_to_group(mocker):
 
 @responses.activate
 def test_post_status(mocker):
-    mock = Mock()
+    """Test post_status().
+
+    Args:
+        mocker (MagicMock): Mocker to override code functionality.
+    """
+    mock = Mocks()
     responses.add(
         method=responses.POST,
-        url='https://www.deviantart.com/_napi/shared_api/status/create',
+        url=mock.url('status_create'),
         json=mock.body('status_create_or_publish'),
-        status=200,
-        match_querystring=False
+        status=HTTP_OK,
+        match_querystring=False,
     )
     responses.add(
         method=responses.POST,
-        url='https://www.deviantart.com/_napi/shared_api/status/publish',
+        url=mock.url('status_publish'),
         json=mock.body('status_create_or_publish'),
-        status=200,
-        match_querystring=False
+        status=HTTP_OK,
+        match_querystring=False,
     )
 
     mocker.patch('browser_cookie3.chrome')
@@ -145,20 +131,25 @@ def test_post_status(mocker):
 
 @responses.activate
 def test_get_user_comments(mocker):
-    mock = Mock()
+    """Test get_user_comments().
+
+    Args:
+        mocker (MagicMock): Mocker to override code functionality.
+    """
+    mock = Mocks()
     responses.add(
         method=responses.GET,
-        url='https://www.deviantart.com/_napi/da-user-profile/api/init/about',
-        json=mock.body('module_init_about'),
-        status=200,
-        match_querystring=False
+        url=mock.url('user_init_about'),
+        json=mock.body('user_init_about'),
+        status=HTTP_OK,
+        match_querystring=False,
     )
     responses.add(
         method=responses.GET,
-        url='https://www.deviantart.com/_napi/da-user-profile/api/module/my_comments',
-        json=mock.body('module_my_comments'),
-        status=200,
-        match_querystring=False
+        url=mock.url('user_my_comments'),
+        json=mock.body('user_my_comments'),
+        status=HTTP_OK,
+        match_querystring=False,
     )
 
     mocker.patch('browser_cookie3.chrome')
@@ -168,20 +159,25 @@ def test_get_user_comments(mocker):
     assert actual.next_offset == 10
 
     actual_comment = actual.comments[0]
-    assert actual_comment.get_url() == "https://www.deviantart.com/comments/1/112233445/1234567890"
-    assert actual_comment.get_posted_date() == "2021-05-18T12:23:01-0700"
+    assert actual_comment.get_url() == 'https://www.deviantart.com/comments/1/112233445/1234567890'
+    assert actual_comment.get_posted_date() == '2021-05-18T12:23:01-0700'
     assert actual_comment.get_text() == 'Great...<span emote=":) ">:) </span><link url="http://spamlink.cf/"/>/'
 
 
 @responses.activate
 def test_get_module_id(mocker):
-    mock = Mock()
+    """Test get_module_id().
+
+    Args:
+        mocker (MagicMock): Mocker to override code functionality.
+    """
+    mock = Mocks()
     responses.add(
         method=responses.GET,
-        url='https://www.deviantart.com/_napi/da-user-profile/api/init/about',
-        json=mock.body('module_init_about'),
-        status=200,
-        match_querystring=False
+        url=mock.url('user_init_about'),
+        json=mock.body('user_init_about'),
+        status=HTTP_OK,
+        match_querystring=False,
     )
 
     mocker.patch('browser_cookie3.chrome')
@@ -193,3 +189,4 @@ def test_get_module_id(mocker):
 
     assert execinfo.value.args[0] == "module 'nonexistent' not found."
     assert str(execinfo.value) == "module 'nonexistent' not found."
+'''
