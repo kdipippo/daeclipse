@@ -189,6 +189,7 @@
                 <span class="s1">&#39;LINK&#39;</span><span class="p">:</span> <span class="s1">&#39;link&#39;</span><span class="p">,</span>
                 <span class="s1">&#39;IMAGE&#39;</span><span class="p">:</span> <span class="s1">&#39;image&#39;</span><span class="p">,</span>
                 <span class="s1">&#39;HORIZONTAL_RULE&#39;</span><span class="p">:</span> <span class="s1">&#39;hr&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;DA_OFF_EMOTE&#39;</span><span class="p">:</span> <span class="s1">&#39;span&#39;</span><span class="p">,</span>
             <span class="p">},</span>
             <span class="s1">&#39;block_map&#39;</span><span class="p">:</span> <span class="p">{</span>
                 <span class="s1">&#39;unstyled&#39;</span><span class="p">:</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span>
@@ -219,7 +220,14 @@
     <span class="p">)</span>
 
     <span class="n">html</span> <span class="o">=</span> <span class="n">exporter</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">draftjs</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">html</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&lt;/p&gt;&lt;p&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&lt;p&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&lt;/p&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">remove_p_tags</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s1">&#39;&lt;/p&gt;&lt;p&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;&lt;p&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;&lt;/p&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+    <span class="p">]</span>
+    <span class="k">for</span> <span class="n">remove_tag</span> <span class="ow">in</span> <span class="n">remove_p_tags</span><span class="p">:</span>
+        <span class="n">html</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">remove_tag</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">remove_tag</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">html</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 </pre></div>
 
         </details>
@@ -523,6 +531,7 @@
                 <span class="s1">&#39;LINK&#39;</span><span class="p">:</span> <span class="s1">&#39;link&#39;</span><span class="p">,</span>
                 <span class="s1">&#39;IMAGE&#39;</span><span class="p">:</span> <span class="s1">&#39;image&#39;</span><span class="p">,</span>
                 <span class="s1">&#39;HORIZONTAL_RULE&#39;</span><span class="p">:</span> <span class="s1">&#39;hr&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;DA_OFF_EMOTE&#39;</span><span class="p">:</span> <span class="s1">&#39;span&#39;</span><span class="p">,</span>
             <span class="p">},</span>
             <span class="s1">&#39;block_map&#39;</span><span class="p">:</span> <span class="p">{</span>
                 <span class="s1">&#39;unstyled&#39;</span><span class="p">:</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span>
@@ -553,7 +562,14 @@
     <span class="p">)</span>
 
     <span class="n">html</span> <span class="o">=</span> <span class="n">exporter</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">draftjs</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">html</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&lt;/p&gt;&lt;p&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&lt;p&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&lt;/p&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">remove_p_tags</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s1">&#39;&lt;/p&gt;&lt;p&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;&lt;p&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;&lt;/p&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+    <span class="p">]</span>
+    <span class="k">for</span> <span class="n">remove_tag</span> <span class="ow">in</span> <span class="n">remove_p_tags</span><span class="p">:</span>
+        <span class="n">html</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">remove_tag</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">remove_tag</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">html</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 </pre></div>
 
         </details>

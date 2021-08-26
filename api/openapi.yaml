@@ -273,9 +273,9 @@ paths:
                           type: integer
                           example: 0
                         thumb:
-                          type: string
                           nullable: true
-                          example: null
+                          allOf:
+                            - $ref: '#/components/schemas/Deviation'
                         hasSubFolders:
                           type: boolean
                           example: false
@@ -925,7 +925,6 @@ components:
         - description
         - originalFile
         - license
-        - download
         - relatedStreams
         - stats
         - reportUrl
@@ -2012,7 +2011,7 @@ components:
         excerpt:
           type: string
           example: |
-            Great...:) http://itscash.cf/
+            Great...:) http://spamlink.cf/
         html:
           type: object
           properties:
@@ -2025,7 +2024,7 @@ components:
             markup:
               type: string
               description: Comment content as stringified draft-js payload.
-              example: '{"blocks":[{"key":"foo","text":"Great...:) http://itscash.cf/\n","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[{"offset":8,"length":3,"key":0},{"offset":11,"length":18,"key":1}],"data":{}}],"entityMap":{"0":{"type":"DA_OFF_EMOTE","mutability":"IMMUTABLE","data":{"emote":":) "}},"1":{"type":"LINK","mutability":"MUTABLE","data":{"url":"http://itscash.cf/"}}}}'
+              example: '{"blocks":[{"key":"foo","text":"Great...:) http://spamlink.cf/\n","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[{"offset":8,"length":3,"key":0},{"offset":11,"length":18,"key":1}],"data":{}}],"entityMap":{"0":{"type":"DA_OFF_EMOTE","mutability":"IMMUTABLE","data":{"emote":":) "}},"1":{"type":"LINK","mutability":"MUTABLE","data":{"url":"http://spamlink.cf/"}}}}'
             features:
               type: string
               example: '[{"type":"FIRST_IMAGE_FEATURE","data":[]},{"type":"IS_EMPTY_FEATURE","data":{"isEmpty":false}},{"type":"MEDIA_COUNT_FEATURE","data":{"emoji":0,"emotes":1,"images":0,"mentions":0,"video":0,"previews":0}},{"type":"WORD_COUNT_FEATURE","data":{"words":4,"chars":28}}]'

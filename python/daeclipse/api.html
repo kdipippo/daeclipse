@@ -128,12 +128,12 @@
         <span class="sd">&quot;&quot;&quot;Initialize API by fetching Chrome&#39;s DeviantArt-related cookies.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cookies</span> <span class="o">=</span> <span class="n">browser_cookie3</span><span class="o">.</span><span class="n">chrome</span><span class="p">(</span><span class="n">domain_name</span><span class="o">=</span><span class="s1">&#39;.deviantart.com&#39;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">get_groups</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">24</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_groups</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">24</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a paginated call for the user&#39;s joined DeviantArt groups.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            username (str): DeviantArt username of user.</span>
-<span class="sd">            offset (int): Offset to start with API call.</span>
+<span class="sd">            offset (int): Offset to start with API call. Defaults to 0.</span>
 <span class="sd">            limit (int, optional): Limit of results to return. Defaults to 24.</span>
 
 <span class="sd">        Returns:</span>
@@ -247,8 +247,8 @@
 
         <span class="n">rjson</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">rjson</span><span class="p">[</span><span class="s1">&#39;needsVote&#39;</span><span class="p">]:</span>
-            <span class="k">return</span> <span class="s1">&#39;✅ Deviation added to folder and automatically approved&#39;</span>
-        <span class="k">return</span> <span class="s1">&#39;⌛ Deviation submitted to folder and pending mod approval&#39;</span>
+            <span class="k">return</span> <span class="s1">&#39;⌛ Deviation submitted to folder and pending mod approval&#39;</span>
+        <span class="k">return</span> <span class="s1">&#39;✅ Deviation added to folder and automatically approved&#39;</span>
 
     <span class="k">def</span> <span class="nf">post_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deviation_url</span><span class="p">,</span> <span class="n">html_content</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create a status to sta.sh and publish from sta.sh to DeviantArt.</span>
@@ -505,12 +505,12 @@
         <span class="sd">&quot;&quot;&quot;Initialize API by fetching Chrome&#39;s DeviantArt-related cookies.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cookies</span> <span class="o">=</span> <span class="n">browser_cookie3</span><span class="o">.</span><span class="n">chrome</span><span class="p">(</span><span class="n">domain_name</span><span class="o">=</span><span class="s1">&#39;.deviantart.com&#39;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">get_groups</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">24</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_groups</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">24</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a paginated call for the user&#39;s joined DeviantArt groups.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            username (str): DeviantArt username of user.</span>
-<span class="sd">            offset (int): Offset to start with API call.</span>
+<span class="sd">            offset (int): Offset to start with API call. Defaults to 0.</span>
 <span class="sd">            limit (int, optional): Limit of results to return. Defaults to 24.</span>
 
 <span class="sd">        Returns:</span>
@@ -624,8 +624,8 @@
 
         <span class="n">rjson</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">rjson</span><span class="p">[</span><span class="s1">&#39;needsVote&#39;</span><span class="p">]:</span>
-            <span class="k">return</span> <span class="s1">&#39;✅ Deviation added to folder and automatically approved&#39;</span>
-        <span class="k">return</span> <span class="s1">&#39;⌛ Deviation submitted to folder and pending mod approval&#39;</span>
+            <span class="k">return</span> <span class="s1">&#39;⌛ Deviation submitted to folder and pending mod approval&#39;</span>
+        <span class="k">return</span> <span class="s1">&#39;✅ Deviation added to folder and automatically approved&#39;</span>
 
     <span class="k">def</span> <span class="nf">post_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deviation_url</span><span class="p">,</span> <span class="n">html_content</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create a status to sta.sh and publish from sta.sh to DeviantArt.</span>
@@ -788,17 +788,17 @@
 
         
             <span class="def">def</span>
-            <span class="name">get_groups</span><span class="signature">(self, username, offset, limit=24)</span>:
+            <span class="name">get_groups</span><span class="signature">(self, username, offset=0, limit=24)</span>:
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">get_groups</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">24</span><span class="p">):</span>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">get_groups</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">24</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a paginated call for the user&#39;s joined DeviantArt groups.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            username (str): DeviantArt username of user.</span>
-<span class="sd">            offset (int): Offset to start with API call.</span>
+<span class="sd">            offset (int): Offset to start with API call. Defaults to 0.</span>
 <span class="sd">            limit (int, optional): Limit of results to return. Defaults to 24.</span>
 
 <span class="sd">        Returns:</span>
@@ -834,7 +834,7 @@
 
 <p>Args:
     username (str): DeviantArt username of user.
-    offset (int): Offset to start with API call.
+    offset (int): Offset to start with API call. Defaults to 0.
     limit (int, optional): Limit of results to return. Defaults to 24.</p>
 
 <p>Returns:
@@ -990,8 +990,8 @@
 
         <span class="n">rjson</span> <span class="o">=</span> <span class="n">validate_response_succeeds</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">rjson</span><span class="p">[</span><span class="s1">&#39;needsVote&#39;</span><span class="p">]:</span>
-            <span class="k">return</span> <span class="s1">&#39;✅ Deviation added to folder and automatically approved&#39;</span>
-        <span class="k">return</span> <span class="s1">&#39;⌛ Deviation submitted to folder and pending mod approval&#39;</span>
+            <span class="k">return</span> <span class="s1">&#39;⌛ Deviation submitted to folder and pending mod approval&#39;</span>
+        <span class="k">return</span> <span class="s1">&#39;✅ Deviation added to folder and automatically approved&#39;</span>
 </pre></div>
 
         </details>
