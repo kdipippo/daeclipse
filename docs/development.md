@@ -13,7 +13,22 @@ poetry install
 ```
 
 ### Testing
-There are no tests for any of the above written code yet.
+`pytest` is used for unit testing, with all code written in the `tests/` directory. All coverage reports are sent to `codecov`.
+
+To run tests locally:
+```
+poetry run pytest test
+```
+
+To run tests locally with a coverage report returned in the terminal:
+```
+poetry run pytest --cov=daeclipse test
+```
+
+To run tests locally with a coverage report returned as xml:
+```
+poetry run pytest --cov=daeclipse --cov-report=xml test
+```
 
 ### Linting
 Code for all of the above follows the [wemake-python-styleguide](https://github.com/wemake-services/wemake-python-styleguide) guidelines. This is also automatically checked via the GitHub Actions workflow [lint-python.yml](https://github.com/Pepper-Wood/daeclipse/blob/main/.github/workflows/lint-python.yml).
