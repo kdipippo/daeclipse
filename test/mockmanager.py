@@ -7,7 +7,7 @@ import responses
 import daeclipse
 
 
-class MockManager(object):
+class MockManager(object):  # noqa: WPS214
     """Helper class to return mocks for specific fields."""
 
     http_ok = 200

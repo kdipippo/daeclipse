@@ -1,9 +1,13 @@
-"""Test to cover Eclipse class API call methods."""
+"""Test to cover Eclipse class API call methods."""  # noqa: WPS226
 
 from test.mockmanager import MockManager
 
 import pytest
 import responses
+
+MOCK = MockManager()
+USERNAME = MOCK.mock_field('username')
+DEVIATION_URL = MOCK.mock_field('deviation_url')
 
 
 @responses.activate
@@ -13,16 +17,14 @@ def test_get_groups(mocker):
     Args:
         mocker (MagicMock): Mocker to override code functionality.
     """
-    mock = MockManager()
-    mock.mock_user_init_about()
-    mock.mock_get('user_group_members')
+    MOCK.mock_user_init_about()
+    MOCK.mock_get('user_group_members')
 
-    eclipse = mock.eclipse(mocker)
-    actual = eclipse.get_groups(mock.mock_field('username'), 0)
+    actual = MOCK.eclipse(mocker).get_groups(USERNAME, 0)
     expected_names = ['ExampleGroup1', 'ExampleGroup2']
     assert len(actual.groups) == len(expected_names)
-    for index in range(len(actual.groups)):
-        assert actual.groups[index].username == expected_names[index]
+    for index, group in enumerate(actual.groups):
+        assert group.username == expected_names[index]
 
 
 @responses.activate
@@ -32,18 +34,16 @@ def test_get_group_folders(mocker):
     Args:
         mocker (MagicMock): Mocker to override code functionality.
     """
-    mock = MockManager()
-    mock.mock_get('group_folders')
+    MOCK.mock_get('group_folders')
 
-    eclipse = mock.eclipse(mocker)
-    actual = eclipse.get_group_folders(
-        mock.mock_field('group_id'),
-        mock.mock_field('deviation_url'),
+    actual = MOCK.eclipse(mocker).get_group_folders(
+        MOCK.mock_field('group_id'),
+        DEVIATION_URL,
     )
     expected_names = ['Featured']
     assert len(actual) == len(expected_names)
-    for index in range(len(actual)):
-        assert actual[index].name == expected_names[index]
+    for index, folder in enumerate(actual):
+        assert folder.name == expected_names[index]
 
 
 @responses.activate
@@ -53,11 +53,9 @@ def test_get_deviation_tags(mocker):
     Args:
         mocker (MagicMock): Mocker to override code functionality.
     """
-    mock = MockManager()
-    mock.mock_get('extended_fetch')
+    MOCK.mock_get('extended_fetch')
 
-    eclipse = mock.eclipse(mocker)
-    actual = eclipse.get_deviation_tags(mock.mock_field('deviation_url'))
+    actual = MOCK.eclipse(mocker).get_deviation_tags(DEVIATION_URL)
     expected = ['exampletag', 'exampletag2']
     assert len(actual) == len(expected)
     assert actual == expected
@@ -70,14 +68,12 @@ def test_add_deviation_to_group(mocker):
     Args:
         mocker (MagicMock): Mocker to override code functionality.
     """
-    mock = MockManager()
-    mock.mock_post('group_add')
+    MOCK.mock_post('group_add')
 
-    eclipse = mock.eclipse(mocker)
-    actual = eclipse.add_deviation_to_group(
-        mock.mock_field('group_id'),
-        mock.mock_field('folder_id'),
-        mock.mock_field('deviation_url'),
+    actual = MOCK.eclipse(mocker).add_deviation_to_group(
+        MOCK.mock_field('group_id'),
+        MOCK.mock_field('folder_id'),
+        DEVIATION_URL,
     )
     expected = '⌛ Deviation submitted to folder and pending mod approval'
     assert actual == expected
@@ -90,16 +86,15 @@ def test_post_status(mocker):
     Args:
         mocker (MagicMock): Mocker to override code functionality.
     """
-    mock = MockManager()
-    mock.mock_post('status_create', 'status_create_or_publish')
-    mock.mock_post('status_publish', 'status_create_or_publish')
+    MOCK.mock_post('status_create', 'status_create_or_publish')
+    MOCK.mock_post('status_publish', 'status_create_or_publish')
 
-    eclipse = mock.eclipse(mocker)
+    eclipse = MOCK.eclipse(mocker)
     actual = eclipse.post_status(
-        mock.mock_field('deviation_url'),
-        mock.mock_field('html_content'),
+        DEVIATION_URL,
+        MOCK.mock_field('html_content'),
     )
-    expected = '✅ Status created: {0}'.format(mock.mock_field('deviation_url'))
+    expected = '✅ Status created: {0}'.format(DEVIATION_URL)
     assert actual == expected
 
 
@@ -110,12 +105,10 @@ def test_get_user_comments(mocker):
     Args:
         mocker (MagicMock): Mocker to override code functionality.
     """
-    mock = MockManager()
-    mock.mock_user_init_about()
-    mock.mock_get('user_my_comments')
+    MOCK.mock_user_init_about()
+    MOCK.mock_get('user_my_comments')
 
-    eclipse = mock.eclipse(mocker)
-    actual = eclipse.get_user_comments(mock.mock_field('username'))
+    actual = MOCK.eclipse(mocker).get_user_comments(USERNAME)
     assert actual.has_more
     assert actual.next_offset == 10
 
@@ -142,14 +135,20 @@ def test_get_module_id(mocker):
     Args:
         mocker (MagicMock): Mocker to override code functionality.
     """
-    mock = MockManager()
-    mock.mock_user_init_about()
+    MOCK.mock_user_init_about()
 
-    eclipse = mock.eclipse(mocker)
-    assert eclipse.get_module_id(mock.mock_field('username'), 'watchers') == 1709114043
-    assert eclipse.get_module_id(mock.mock_field('username'), 'group_list_members') == 1709114041
+    eclipse = MOCK.eclipse(mocker)
+    expected_modules = [
+        ('watchers', 1709114043),
+        ('group_list_members', 1709114041),
+    ]
+    for expected_module in expected_modules:
+        assert expected_module[1] == eclipse.get_module_id(
+            USERNAME,
+            expected_module[0],
+        )
 
     with pytest.raises(Exception) as execinfo:
-        eclipse.get_module_id(mock.mock_field('username'), 'nonexistent')
+        eclipse.get_module_id(USERNAME, 'nonexistent')
         assert execinfo.value.args[0] == "module 'nonexistent' not found."
         assert str(execinfo.value) == "module 'nonexistent' not found."
