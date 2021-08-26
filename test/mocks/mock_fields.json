@@ -1,0 +1,19 @@
+{
+    "username": "ExampleUsername",
+    "deviation_url": "https://www.deviantart.com/exampleusername/art/example-artwork-12345",
+    "base_uri": "https://www.deviantart.com/_napi/",
+    "api_urls": {
+        "user_init_about": "da-user-profile/api/init/about",
+        "user_group_members": "da-user-profile/api/module/groups/members",
+        "user_my_comments": "da-user-profile/api/module/my_comments",
+        "group_folders": "shared_api/deviation/group_folders",
+        "extended_fetch": "shared_api/deviation/extended_fetch",
+        "group_add": "shared_api/deviation/group_add",
+        "status_create": "shared_api/status/create",
+        "status_publish": "shared_api/status/publish"
+    },
+    "group_id": 12345678,
+    "folder_id": 12345678,
+    "csrf": "AbCdEfGhIjKlMnOp.QrStUv.WxYzAbCdEfGhIjKlMnOpAbCd_EfGhIjKlMnOpQrStUv",
+    "html_content": "This is a <b>test message</b> to be sent into a <i>status</i>."
+}
