@@ -642,7 +642,16 @@
 <div class="highlight"><pre><span></span><code>poetry install
 </code></pre></div>
 <h3 id="testing">Testing</h3>
-<p>There are no tests for any of the above written code yet.</p>
+<p><code>pytest</code> is used for unit testing, with all code written in the <code>tests/</code> directory. All coverage reports are sent to <code>codecov</code>.</p>
+<p>To run tests locally:
+<div class="highlight"><pre><span></span><code>poetry run pytest test
+</code></pre></div></p>
+<p>To run tests locally with a coverage report returned in the terminal:
+<div class="highlight"><pre><span></span><code>poetry run pytest --cov=daeclipse test
+</code></pre></div></p>
+<p>To run tests locally with a coverage report returned as xml:
+<div class="highlight"><pre><span></span><code>poetry run pytest --cov=daeclipse --cov-report=xml test
+</code></pre></div></p>
 <h3 id="linting">Linting</h3>
 <p>Code for all of the above follows the <a href="https://github.com/wemake-services/wemake-python-styleguide">wemake-python-styleguide</a> guidelines. This is also automatically checked via the GitHub Actions workflow <a href="https://github.com/Pepper-Wood/daeclipse/blob/main/.github/workflows/lint-python.yml">lint-python.yml</a>.</p>
 <p>Linting can be run locally via the below command at root, although the local linter is more restrictive than the GitHug Actiions linter:</p>
