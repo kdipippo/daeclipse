@@ -24,12 +24,12 @@ class Eclipse(object):
         """Initialize API by fetching Chrome's DeviantArt-related cookies."""
         self.cookies = browser_cookie3.chrome(domain_name='.deviantart.com')
 
-    def get_groups(self, username, offset, limit=24):
+    def get_groups(self, username, offset=0, limit=24):
         """Return a paginated call for the user's joined DeviantArt groups.
 
         Args:
             username (str): DeviantArt username of user.
-            offset (int): Offset to start with API call.
+            offset (int): Offset to start with API call. Defaults to 0.
             limit (int, optional): Limit of results to return. Defaults to 24.
 
         Returns:
@@ -143,8 +143,8 @@ class Eclipse(object):
 
         rjson = validate_response_succeeds(response)
         if rjson['needsVote']:
-            return '✅ Deviation added to folder and automatically approved'
-        return '⌛ Deviation submitted to folder and pending mod approval'
+            return '⌛ Deviation submitted to folder and pending mod approval'
+        return '✅ Deviation added to folder and automatically approved'
 
     def post_status(self, deviation_url, html_content):
         """Create a status to sta.sh and publish from sta.sh to DeviantArt.

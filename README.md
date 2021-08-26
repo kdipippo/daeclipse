@@ -1,6 +1,6 @@
 # daeclipse
 ![daeclipse Project Banner](docs/assets/banner.png "daeclipse Project Banner")
-[![PyPI](https://img.shields.io/pypi/v/daeclipse)](https://pypi.org/project/daeclipse/) [![PyPI - Downloads](https://img.shields.io/pypi/dm/daeclipse)](https://pypi.org/project/daeclipse/) [![PyPI - License](https://img.shields.io/pypi/l/daeclipse)](https://github.com/Pepper-Wood/daeclipse/blob/main/LICENSE)
+[![PyPI](https://img.shields.io/pypi/v/daeclipse)](https://pypi.org/project/daeclipse/) [![PyPI - Downloads](https://img.shields.io/pypi/dm/daeclipse)](https://pypi.org/project/daeclipse/) [![codecov](https://codecov.io/gh/Pepper-Wood/daeclipse/branch/main/graph/badge.svg?token=6HRQ3Y58TS)](https://codecov.io/gh/Pepper-Wood/daeclipse) [![PyPI - License](https://img.shields.io/pypi/l/daeclipse)](https://github.com/Pepper-Wood/daeclipse/blob/main/LICENSE)
 
 [daeclipse](https://pypi.org/project/daeclipse/) is a reverse-engineered Python library for DeviantArt Eclipse functionality.
 
@@ -35,7 +35,7 @@ CICD is run thorugh GitHub Actions and makes the below checks on the two compone
 
 | | Python Package | OpenAPI Spec |
 | --- | --- | --- |
-| Lint | ![Python Linter Workflow Status](https://github.com/Pepper-Wood/daeclipse/actions/workflows/linter-python.yml/badge.svg) | ![OpenAPI Linter Workflow Status](https://github.com/Pepper-Wood/daeclipse/actions/workflows/linter-openapi.yml/badge.svg) |
+| Lint | ![Python Lint Workflow Status](https://github.com/Pepper-Wood/daeclipse/actions/workflows/lint-python.yml/badge.svg) | ![OpenAPI Lint Workflow Status](https://github.com/Pepper-Wood/daeclipse/actions/workflows/lint-openapi.yml/badge.svg) |
 | Test | Coming Soon... | Coming soon... |
 | Deploy | ![PyPI Package Workflow Status](https://github.com/Pepper-Wood/daeclipse/actions/workflows/pypi.yml/badge.svg) | ![GitHub Pages Workflow Status](https://github.com/Pepper-Wood/daeclipse/actions/workflows/gh-pages.yml/badge.svg) |
 

@@ -1,0 +1,27 @@
+{
+    "hasMore": true,
+    "nextOffset": 39,
+    "total": 153,
+    "results": [
+        {
+            "userId": 11112222,
+            "useridUuid": "72c7c4c3-4d7b-405b-93b1-cb388af05a47",
+            "username": "ExampleGroup1",
+            "usericon": "https://a.deviantart.net/avatars-big/s/i/examplegroup1.png?1",
+            "type": "group",
+            "isWatching": false,
+            "isSubscribed": false,
+            "isNewDeviant": false
+        },
+        {
+            "userId": 33334444,
+            "useridUuid": "f6326869-651a-4339-a59c-008f8fec9f0f",
+            "username": "ExampleGroup2",
+            "usericon": "https://a.deviantart.net/avatars-big/d/e/examplegroup2.gif?1",
+            "type": "group",
+            "isWatching": false,
+            "isSubscribed": false,
+            "isNewDeviant": false
+        }
+    ]
+}
