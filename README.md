@@ -36,7 +36,7 @@ CICD is run thorugh GitHub Actions and makes the below checks on the two compone
 | | Python Package | OpenAPI Spec |
 | --- | --- | --- |
 | Lint | ![Python Lint Workflow Status](https://github.com/Pepper-Wood/daeclipse/actions/workflows/lint-python.yml/badge.svg) | ![OpenAPI Lint Workflow Status](https://github.com/Pepper-Wood/daeclipse/actions/workflows/lint-openapi.yml/badge.svg) |
-| Test | Coming Soon... | Coming soon... |
+| Test | ![Pytest Workflow Status](https://github.com/Pepper-Wood/daeclipse/actions/workflows/test-python.yml/badge.svg) | Coming soon... |
 | Deploy | ![PyPI Package Workflow Status](https://github.com/Pepper-Wood/daeclipse/actions/workflows/pypi.yml/badge.svg) | ![GitHub Pages Workflow Status](https://github.com/Pepper-Wood/daeclipse/actions/workflows/gh-pages.yml/badge.svg) |
 
 ## Contributing

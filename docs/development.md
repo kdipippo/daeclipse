@@ -13,7 +13,7 @@ poetry install
 ```
 
 ### Testing
-`pytest` is used for unit testing, with all code written in the `tests/` directory. All coverage reports are sent to `codecov`.
+`pytest` is used for unit testing, with all code written in the `tests/` directory. All coverage reports are sent to `codecov`. This is also automatically checked and sent via the GitHub Actions workflow [test-python.yml](https://github.com/Pepper-Wood/daeclipse/blob/main/.github/workflows/test-python.yml).
 
 To run tests locally:
 ```
