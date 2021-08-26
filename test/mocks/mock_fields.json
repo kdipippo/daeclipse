@@ -1,6 +1,6 @@
 {
     "username": "ExampleUsername",
-    "deviation_url": "https://www.deviantart.com/exampleusername/art/example-artwork-12345",
+    "deviation_url": "https://www.deviantart.com/exampleusername/art/Example-Title-112233445",
     "base_uri": "https://www.deviantart.com/_napi/",
     "api_urls": {
         "user_init_about": "da-user-profile/api/init/about",

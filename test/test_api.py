@@ -124,8 +124,10 @@ def test_get_user_comments(mocker):
         'url': 'https://www.deviantart.com/comments/1/112233445/1234567890',
         'posted_date': '2021-05-18T12:23:01-0700',
         'text': ''.join(
-            'Great...<span emote=":) ">:) ',
-            '</span><link url="http://spamlink.cf/"/>/',
+            [
+                'Great...<span emote=":) ">:) ',
+                '</span><link url="http://spamlink.cf/"/>/',
+            ],
         ),
     }
     assert actual_comment.get_url() == expected.get('url')

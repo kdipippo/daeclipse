@@ -37,7 +37,7 @@ class MockManager(object):
         Returns:
             str: API query URL.
         """
-        return '{0}/_napi/{1}'.format(
+        return '{0}{1}'.format(
             self.mock_field('base_uri'),
             self.mock_field('api_urls').get(query_name),
         )
@@ -90,7 +90,7 @@ class MockManager(object):
 
     def mock_user_init_about(self):
         """Mock user_init_about."""
-        self.mock_call('GET', 'user_init_about')
+        self.mock_get('user_init_about')
 
     def eclipse(self, mocker):
         """Mock Eclipse with browser_cookie3 and CSRF-fetching disabled.
