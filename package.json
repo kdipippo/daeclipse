@@ -24,7 +24,7 @@
   "homepage": "https://wwww.kathryndipippo.com/daeclipse",
   "dependencies": {
     "@apidevtools/swagger-cli": "^4.0.4",
-    "@stoplight/spectral": "^5.9.2",
+    "@stoplight/spectral": "^6.5.0",
     "redoc-cli": "^0.12.3"
   }
 }
