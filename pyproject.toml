@@ -23,7 +23,7 @@ requests = "^2.26.0"
 [tool.poetry.dev-dependencies]
 pytest = "^6.2"
 pdoc = "^7.3.1"
-mkdocs = "^1.2.2"
+mkdocs = "^1.4.1"
 mkdocs-material = "^7.2.2"
 responses = "^0.13.4"
 pytest-cov = "^2.12.1"
